@@ -332,6 +332,18 @@ section h2 {
     color: #555;
     margin-bottom: 1rem;
     font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.project-content ul {
+    color: #555;
+    margin-bottom: 1rem;
+    padding-left: 1.2rem;
+}
+
+.project-content li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
 }
 
 .project-tech {
@@ -352,6 +364,49 @@ section h2 {
 .project-links {
     display: flex;
     gap: 1rem;
+}
+
+/* Enhanced Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.skill-category {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.skill-category h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.skill-tag {
+    background: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.skill-tag:hover {
+    background: #2980b9;
 }
 
 /* Experience Section */
@@ -394,6 +449,7 @@ section h2 {
     background: #3498db;
     border-radius: 50%;
     top: 1rem;
+    box-shadow: 0 0 0 3px #2c3e50;
 }
 
 .timeline-content {
@@ -404,6 +460,7 @@ section h2 {
     margin-left: 50%;
     margin-left: calc(50% + 2rem);
     width: calc(50% - 2rem);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .timeline-item:nth-child(even) .timeline-content {
@@ -414,17 +471,31 @@ section h2 {
 .timeline-content h3 {
     color: #2c3e50;
     margin-bottom: 0.5rem;
+    font-size: 1.3rem;
 }
 
 .timeline-content h4 {
     color: #3498db;
     margin-bottom: 0.5rem;
+    font-size: 1.1rem;
 }
 
 .timeline-date {
     color: #777;
     font-size: 0.9rem;
     font-style: italic;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.timeline-content ul {
+    margin-top: 1rem;
+    padding-left: 1.2rem;
+}
+
+.timeline-content li {
+    margin-bottom: 0.5rem;
+    color: #555;
 }
 
 /* Contact Section */
