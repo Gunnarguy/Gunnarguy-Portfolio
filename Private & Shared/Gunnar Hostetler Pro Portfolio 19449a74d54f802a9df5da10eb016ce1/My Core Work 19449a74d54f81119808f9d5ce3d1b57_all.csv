@@ -1,0 +1,6 @@
+﻿Name,App Store,Date,Description,Distribution,GitHub,Industry,Key skills,Text
+OpenAssistant,https://apps.apple.com/us/app/openassistant/id6692613772,,Native iOS App designed to interact with the OpenAI Assistants=v2 API,,https://github.com/Gunnarguy/OpenAssistant,iOS Development,"Combine, REST, Swift, SwiftUI",
+OpenCone,https://apps.apple.com/us/app/opencone/id6744467668,,Native iOS App designed to interact with the Pinecone and OpenAI APIs,,https://github.com/Gunnarguy/OpenCone,iOS Development,"Combine, REST, Swift, SwiftUI",
+OpenResponses,,,Native iOS App designed to interact with the OpenAI Responses API (superseding OpenAssistant once Assistants API is deprecated),,https://github.com/Gunnarguy/OpenResponses,iOS Development,"Combine, REST, Swift, SwiftUI",
+Raspberry Pi,,,,,,Embedded Systems,"Linux, Python, SSH",
+Python Automations,,,,,,,Python,
