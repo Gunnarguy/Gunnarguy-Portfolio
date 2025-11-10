@@ -7,7 +7,7 @@ A modern, responsive portfolio website showcasing my work as a Medical Device Sp
 This portfolio presents my journey from Medical Device Specialist to iOS Developer, highlighting my expertise in:
 
 - **iOS Development**: Swift, SwiftUI, Combine framework
-- **AI Integration**: OpenAI API, Pinecone vector databases, RAG workflows
+- **AI Integration**: OpenAI API, Pinecone vector databases, Apple Intelligence, RAG workflows
 - **Python Automation**: 30+ scripts spanning computer vision, embedded systems, and data engineering
 - **Embedded Systems**: Raspberry Pi development, sensor integration, hardware control
 
@@ -17,7 +17,8 @@ This portfolio presents my journey from Medical Device Specialist to iOS Develop
 
 - **[OpenAssistant](https://apps.apple.com/us/app/openassistant/id6692613772)** - Native iOS app for OpenAI Assistants API interaction
 - **[OpenCone](https://apps.apple.com/us/app/opencone/id6744467668)** - Semantic search and RAG workflow app with Pinecone integration
-- **OpenResponses** - Next-generation response system for OpenAI API
+- **[OpenResponses](https://github.com/Gunnarguy/OpenResponses)** - OpenAI Responses API client with multi-model streaming, computer-use automation, and MCP connectors (Notion, Google, remote compute)
+- **[OpenIntelligence (RAGMLCore)](https://github.com/Gunnarguy/RAGMLCore)** - On-device RAG stack for iOS 18 with Vision OCR ingestion, Apple Intelligence routing, and telemetry-backed pipeline visualizations
 
 ### Technical Projects
 
@@ -27,9 +28,9 @@ This portfolio presents my journey from Medical Device Specialist to iOS Develop
 ## Technical Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Mobile**: Swift, SwiftUI, Combine, UIKit
+- **Mobile**: Swift, SwiftUI, Combine, UIKit, Apple Intelligence
 - **Backend**: Python, Flask, FastAPI
-- **AI/ML**: OpenAI API, Pinecone, LangChain, vector embeddings
+- **AI/ML**: OpenAI API, Pinecone, Apple Intelligence, LangChain, vector embeddings, RAG systems
 - **DevOps**: Git, GitHub Actions, Docker, CI/CD
 - **Embedded**: Raspberry Pi, Linux, I2C/SPI, GPIO
 
@@ -41,7 +42,7 @@ This portfolio presents my journey from Medical Device Specialist to iOS Develop
 
 ## Contact
 
-- **Email**: Gunnarguy@me.com
+- **Email**: [Gunnarguy@me.com](mailto:Gunnarguy@me.com)
 - **LinkedIn**: [linkedin.com/in/gunnar-hostetler](https://www.linkedin.com/in/gunnar-hostetler/)
 - **GitHub**: [github.com/Gunnarguy](https://github.com/Gunnarguy)
 
