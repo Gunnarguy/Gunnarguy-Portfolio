@@ -77,8 +77,8 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I’m an iOS Engineer focused on pushing the boundaries of what's possible with on-device AI and LLM integration. My work centers on the <strong>Open-</strong> suite: a collection of production-grade applications that bring powerful AI workflows—from RAG and Agents to Computer Use and MCP—natively to Apple platforms.</p>
-                    <p>I specialize in Swift, SwiftUI, and the complex orchestration required to make advanced AI models feel instant and native. Whether it's building privacy-first RAG systems with <strong>OpenIntelligence</strong>, enabling browser automation with <strong>OpenResponses</strong>, or managing vector stores with <strong>OpenCone</strong>, I build tools that empower users to own their intelligence.</p>
+                    <p>I’m an iOS Engineer focused on pushing the boundaries of what's possible with on-device AI and LLM integration. My work centers on the <strong>Open-</strong> suite: a collection of production-grade applications that bring powerful AI workflows – from RAG and Agents to Computer Use and Model Context Protocol (MCP) – natively to Apple platforms.</p>
+                    <p>I specialize in <strong>Swift 6</strong>, <strong>SwiftUI</strong>, and the complex orchestration required to make advanced AI models feel instant and native. Whether it's architecting privacy-first RAG systems with <strong>OpenIntelligence</strong> (using Actors and Core ML), enabling browser automation with <strong>OpenResponses</strong> (powered by GPT-5 and Computer Use), or managing vector stores with <strong>OpenCone</strong>, I build tools that empower users to own their intelligence.</p>
                     <div class="philosophy">
                         <h3>My Philosophy</h3>
                         <ul>
@@ -204,19 +204,20 @@
                     </div>
                     <div class="project-content">
                         <h3>OpenResponses</h3>
-                        <p>The flagship native iOS client for the OpenAI Responses API. A powerful playground for developers and power users to explore the latest AI capabilities.</p>
+                        <p>A "Super Beta" native iOS client for the OpenAI Responses API, engineered for power users to explore the bleeding edge of agentic AI. Features an "Ultra-strict" Computer Use mode that disables app-side helpers for pure model-driven browser automation.</p>
                         <ul>
-                            <li><strong>Multi-Model Support:</strong> Seamless switching between GPT-4o, o1-preview, and Computer Use models.</li>
-                            <li><strong>Advanced Tooling:</strong> Features "Computer Use" for browser automation, Code Interpreter, and Web Search.</li>
-                            <li><strong>MCP Integration:</strong> First-class support for Model Context Protocol to connect with Notion, GitHub, and more.</li>
-                            <li><strong>Real-Time Streaming:</strong> Granular status updates, token estimation, and interactive activity feeds.</li>
+                            <li><strong>Advanced Model Support:</strong> Day-one support for <strong>GPT-5</strong>, o1 (Reasoning), and the dedicated <code>computer-use-preview</code> model.</li>
+                            <li><strong>Agentic Architecture:</strong> Implements a full "Perceive-Reason-Act" loop with 100% action coverage for the <code>computer</code> tool (clicking, typing, scrolling).</li>
+                            <li><strong>Model Context Protocol (MCP):</strong> Built-in registry for MCP Connectors including Dropbox, Gmail, and Google Calendar, plus support for custom MCP servers.</li>
+                            <li><strong>Enterprise Features:</strong> Includes Prompt Caching for low-latency workflows, Structured Outputs (JSON Schema/Pydantic), and Code Interpreter (Python sandbox).</li>
+                            <li><strong>Observability:</strong> Real-time streaming of "Thinking" states, tool calls, and token usage with semantic server-sent events.</li>
                         </ul>
                         <div class="project-tech">
                             <span>SwiftUI</span>
-                            <span>OpenAI Responses API</span>
-                            <span>MCP</span>
+                            <span>GPT-5</span>
                             <span>Computer Use</span>
-                            <span>WebSockets</span>
+                            <span>MCP</span>
+                            <span>Python Sandbox</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/Gunnarguy/OpenResponses" class="btn-link" target="_blank">GitHub</a>
@@ -231,19 +232,19 @@
                     </div>
                     <div class="project-content">
                         <h3>OpenIntelligence</h3>
-                        <p>A privacy-first RAG system for iOS 18 that orchestrates on-device intelligence with hybrid search.</p>
+                        <p>A forward-looking, privacy-first RAG system architected for iOS 26+. It leverages Apple Intelligence (Foundation Models) and Private Cloud Compute (PCC) to deliver zero-retention AI processing.</p>
                         <ul>
-                            <li><strong>Hybrid Search Engine:</strong> Combines BM25 (keyword) and Vector Search with Reciprocal Rank Fusion (RRF).</li>
-                            <li><strong>Privacy by Design:</strong> All processing happens on-device or via Private Cloud Compute (PCC).</li>
-                            <li><strong>Multi-Backend:</strong> Supports Apple Intelligence, Local GGUF (Llama 3), and OpenAI.</li>
-                            <li><strong>Agentic Tooling:</strong> 12+ tools allowing the LLM to search, summarize, and analyze your library.</li>
+                            <li><strong>Hybrid Search Engine:</strong> A sophisticated retrieval pipeline combining BM25 (keyword) and Vector Search (Cosine Similarity) using Reciprocal Rank Fusion (RRF).</li>
+                            <li><strong>Protocol-Oriented Design:</strong> Modular <code>LLMService</code> architecture allowing hot-swapping between Apple Foundation Models, OpenAI, and on-device Core ML (GGUF) backends.</li>
+                            <li><strong>On-Device Processing:</strong> Uses <code>NLEmbedding</code> for 512-dim vector generation and <code>PDFKit</code>/<code>Vision</code> for local OCR and semantic chunking (400w windows).</li>
+                            <li><strong>Performance:</strong> Achieves &lt;100ms embedding generation and &lt;50ms vector search for 1K chunks using highly optimized Swift concurrency.</li>
                         </ul>
                         <div class="project-tech">
                             <span>Swift 6</span>
                             <span>Actors</span>
+                            <span>Private Cloud Compute</span>
                             <span>Core ML</span>
-                            <span>Local LLMs</span>
-                            <span>RAG</span>
+                            <span>Hybrid Search</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/Gunnarguy/OpenIntelligence" class="btn-link" target="_blank">GitHub</a>
@@ -258,19 +259,19 @@
                     </div>
                     <div class="project-content">
                         <h3>OpenCone</h3>
-                        <p>On-device RAG that turns personal documents into a searchable knowledge base using Pinecone and OpenAI.</p>
+                        <p>A production-grade on-device RAG application that transforms personal document collections into a secure, searchable knowledge base using Pinecone and OpenAI.</p>
                         <ul>
-                            <li><strong>Multi-Format Ingestion:</strong> Processes PDF, DOCX, Images (OCR), and Code with semantic chunking.</li>
-                            <li><strong>Vector Search:</strong> High-performance retrieval using Pinecone vector database.</li>
-                            <li><strong>Observability:</strong> Structured logging and real-time processing stats for full transparency.</li>
-                            <li><strong>Secure Storage:</strong> Security-scoped bookmarks and Keychain integration for credentials.</li>
+                            <li><strong>MVVM-S Architecture:</strong> Built on a strict Model-View-ViewModel-Service pattern with dependency injection for maximum testability and separation of concerns.</li>
+                            <li><strong>Async Pipeline:</strong> A complex, non-blocking ingestion pipeline using Swift's <code>async/await</code> to handle PDF text extraction, MIME-type aware chunking, and vector upserts.</li>
+                            <li><strong>Reactive Data Flow:</strong> Extensive use of <strong>Combine</strong> and <code>@Published</code> properties for real-time UI updates and a decoupled, singleton-based logging system.</li>
+                            <li><strong>Security & Persistence:</strong> Utilizes Security-Scoped Bookmarks for persistent file access and Keychain for secure API key storage.</li>
                         </ul>
                         <div class="project-tech">
                             <span>SwiftUI</span>
                             <span>Pinecone</span>
-                            <span>VisionKit</span>
-                            <span>PDFKit</span>
-                            <span>OpenAI</span>
+                            <span>Combine</span>
+                            <span>Async/Await</span>
+                            <span>Security-Scoped Bookmarks</span>
                         </div>
                         <div class="project-links">
                             <a href="https://apps.apple.com/us/app/opencone/id6744467668" class="btn-link" target="_blank">App Store</a>
@@ -286,17 +287,18 @@
                     </div>
                     <div class="project-content">
                         <h3>OpenAssistant</h3>
-                        <p>A feature-rich native client for the OpenAI Assistants API, managing the full lifecycle of AI assistants.</p>
+                        <p>A comprehensive, native SwiftUI client for the OpenAI Assistants API, designed to manage the full lifecycle of AI assistants, threads, and runs.</p>
                         <ul>
-                            <li><strong>Assistant Management:</strong> Create, configure, and manage assistants with specific instructions and models.</li>
-                            <li><strong>Vector Stores:</strong> Full CRUD operations for vector stores and file associations.</li>
-                            <li><strong>Code Interpreter:</strong> Enable advanced data analysis and code execution capabilities.</li>
-                            <li><strong>Robust Architecture:</strong> Built with MVVM and Combine for a reactive, reliable experience.</li>
+                            <li><strong>Assistant Lifecycle:</strong> Full CRUD capabilities for Assistants, enabling precise configuration of instructions, models (GPT-4o), and tools (Code Interpreter, File Search).</li>
+                            <li><strong>Vector Store Management:</strong> Dedicated UI for managing Vector Stores, including file uploads, association with assistants, and chunking strategy configuration.</li>
+                            <li><strong>Robust Networking:</strong> A specialized <code>APIService</code> layer handling multipart file uploads, error recovery, and server-sent events for streaming responses.</li>
+                            <li><strong>State Management:</strong> Leverages <code>ObservableObject</code> and <code>NotificationCenter</code> for decoupled communication across the app's MVVM architecture.</li>
                         </ul>
                         <div class="project-tech">
                             <span>SwiftUI</span>
-                            <span>Combine</span>
                             <span>OpenAI Assistants API</span>
+                            <span>Code Interpreter</span>
+                            <span>File Search</span>
                             <span>MVVM</span>
                         </div>
                         <div class="project-links">
