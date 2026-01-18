@@ -1,91 +1,458 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenCone - Project Deep Dive | Gunnar Hostetler</title>
-    <meta name="description" content="Semantic search and RAG workflow app with Pinecone integration for iOS.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-:root {
-    --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
-    --text-primary: #fff; --text-secondary: #a0a0b0;
-    --accent: #f59e0b; --accent-light: #f59e0b99;
-    --border-color: #2a2a3a;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-.project-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-color); }
-.back-link { color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
-.back-link:hover { color: var(--accent); }
-.nav-links { display: flex; gap: 1.5rem; }
-.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
-.nav-links a:hover { color: var(--accent); }
-.project-hero { padding: 8rem 0 4rem; background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary)); text-align: center; }
-.project-hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; }
-.hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.2s; }
-.btn-primary { background: var(--accent); color: white; }
-.btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
-.btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); }
-.btn-secondary:hover { border-color: var(--accent); }
-.btn-appstore { background: #000; color: white; border: 1px solid #333; }
-.btn-appstore:hover { background: #1a1a1a; }
-.section { padding: 5rem 0; }
-.section-alt { background: var(--bg-secondary); }
-.section h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.feature-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); transition: border-color 0.2s; }
-.feature-card:hover { border-color: var(--accent); }
-.feature-card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
-.feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
-.tech-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
-.tech-tag { background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--border-color); }
-.project-footer { padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color); }
-.project-footer a { color: var(--accent); text-decoration: none; }
-.sync-time { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
-@media (max-width: 768px) { .project-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hero-actions { flex-direction: column; align-items: center; } }
-    </style>
-</head>
-<body>
-    <nav class="project-nav">
-        <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
-        <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="https://github.com/Gunnarguy/OpenCone" target="_blank"><i class="fab fa-github"></i></a>
-        </div>
-    </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenCone Docs - Gunnar Hostetler</title>
+    <meta name="description" content="Snapshot documentation for OpenCone." />
 
-    <header class="project-hero">
-        <div class="container">
-            <h1>OpenCone</h1>
-            <p class="hero-subtitle">Semantic search and RAG workflow app with Pinecone integration for iOS.</p>
-            <div class="hero-actions">
-                <a href="https://github.com/Gunnarguy/OpenCone" class="btn btn-primary" target="_blank">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
-                <a href="https://apps.apple.com/us/app/opencone/id6744467668" class="btn btn-appstore" target="_blank">
-            <i class="fab fa-app-store-ios"></i> App Store
-        </a>
-            </div>
-            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">Combine</span><span class="tech-tag">OpenAI</span><span class="tech-tag">Pinecone</span><span class="tech-tag">RAG</span><span class="tech-tag">Vision</span><span class="tech-tag">MVVM</span></div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <div class="nav-brand">
+          <h1><a href="../../index.html">Gunnar Hostetler</a></h1>
         </div>
+        <ul class="nav-menu">
+          <li><a href="../../index.html#home">Home</a></li>
+          <li><a href="../../index.html#about">About</a></li>
+          <li><a href="../../index.html#skills">Skills</a></li>
+          <li><a href="../../index.html#projects">Projects</a></li>
+          <li><a href="../../index.html#experience">Experience</a></li>
+          <li><a href="../../index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
     </header>
 
-    <section id="features" class="section">
-        <div class="container">
-            <h2>Features</h2>
-            <div class="features-grid"><p style="text-align:center;color:var(--text-secondary);">See the README for full feature list.</p></div>
+    <main class="docs-main">
+      <div class="container">
+        <div class="docs-hero">
+          <p class="docs-kicker">Snapshot • Jan 17, 2026</p>
+          <h1>OpenCone Docs</h1>
+          <p>App Store RAG pipeline combining Pinecone serverless indexes with streaming Responses answers.</p>
+          <div class="docs-actions">
+            <a class="btn-link" href="https://github.com/Gunnarguy/OpenCone" target="_blank" rel="noopener">GitHub Repo</a>
+            <a class="btn-link" href="https://apps.apple.com/us/app/opencone/id6744467668" target="_blank" rel="noopener">App Store</a>
+            <a class="btn-link" href="../../index.html#projects">Back to Projects</a>
+          </div>
         </div>
-    </section>
 
-    <footer class="project-footer">
-        <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
-        <p class="sync-time">Generated: 2026-01-17 22:59 UTC</p>
-    </footer>
-</body>
+        <div class="docs-layout">
+          <aside class="docs-sidebar">
+            <div class="docs-sidebar-title">Sections</div>
+            <ul class="docs-nav">
+              <li><a href="#doc-readme">README</a></li><li><a href="#doc-roadmap">Roadmap</a></li><li><a href="#doc-architecture">Architecture</a></li>
+            </ul>
+            <div class="docs-status">Generated from GitHub on Jan 17, 2026.</div>
+          </aside>
+
+          <article class="md-content">
+            
+      <section class="docs-section" id="doc-readme">
+        <div class="docs-section-header">
+          <h2>README</h2>
+          <div class="docs-section-meta">
+            <a href="https://github.com/Gunnarguy/OpenCone/blob/main/README.md" target="_blank" rel="noopener">View source</a>
+            
+          </div>
+        </div>
+        <div class="docs-section-body">
+          <h1 id="opencone">OpenCone</h1>
+<p>On-device Retrieval Augmented Generation (RAG) for iOS, built with SwiftUI, async/await, and first-class OpenAI + Pinecone integrations.</p>
+<p><img alt="Platform" src="https://img.shields.io/badge/platform-iOS%2017%2B-blue.svg" /> <img alt="Swift" src="https://img.shields.io/badge/Swift-5.10-orange.svg" /> <img alt="License" src="https://img.shields.io/badge/license-MIT-lightgrey.svg" /></p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#feature-highlights">Feature Highlights</a></li>
+<li><a href="#system-architecture">System Architecture</a></li>
+<li><a href="#document-ingestion-pipeline">Document Ingestion Pipeline</a></li>
+<li><a href="#search-conversation-and-rag">Search, Conversation, and RAG</a></li>
+<li><a href="#key-modules">Key Modules</a></li>
+<li><a href="#design-system">Design System</a></li>
+<li><a href="#developer-workflow">Developer Workflow</a></li>
+<li><a href="#privacy--compliance">Privacy &amp; Compliance</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#manual-qa-guide">Manual QA Guide</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>OpenCone turns personal documents into a device-native knowledge base. Users ingest PDFs, Office files, plain text, code snippets, or images, and the app extracts text (with OCR support), chunks content, generates OpenAI embeddings, and stores vectors in Pinecone. Searches embed the user's query, retrieve matching chunks from Pinecone, and stream grounded answers back through OpenAI's Responses API. The entire experience is delivered through a custom SwiftUI tab interface that runs on iPhone, iPad, and macOS via Catalyst.</p>
+<hr />
+<h2 id="feature-highlights">Feature Highlights</h2>
+<ul>
+<li><strong>Guided onboarding</strong> - Welcome flow validates OpenAI and Pinecone credentials before unlocking the main app.</li>
+<li><strong>Multi-format ingestion</strong> - Handles PDF, DOCX, plain text, HTML, CSV, Markdown, JSON, common image types, and code documents.</li>
+<li><strong>Security-scoped persistence</strong> - Copies documents into the sandbox and keeps bookmarks so files remain accessible across launches.</li>
+<li><strong>Chunk-aware processing</strong> - MIME-specific chunking with configurable size/overlap keeps semantic context intact.</li>
+<li><strong>Observability-first logs</strong> - All pipeline stages emit structured logs to the Logs tab for instant diagnosis.</li>
+<li><strong>Search + conversation</strong> - Runs top-k semantic search, supports server-managed and local chat history, and streams token deltas into the UI.</li>
+<li><strong>Index control</strong> - Lists Pinecone indexes/namespaces, records recent selections, and exposes namespace stats.</li>
+<li><strong>Design system</strong> - Theme manager, reusable components, and typography modifiers keep the UI consistent and brandable.</li>
+</ul>
+<hr />
+<h2 id="system-architecture">System Architecture</h2>
+<p>OpenCone follows MVVM with a focused service layer:</p>
+<ul>
+<li><strong>App shell</strong> (<code>OpenConeApp</code>) orchestrates onboarding, dependency wiring, and top-level <code>AppState</code> transitions (loading -&gt; welcome -&gt; main).</li>
+<li><strong>Views</strong> (SwiftUI) subscribe to their <code>ObservableObject</code> view models and never communicate with services directly.</li>
+<li><strong>View models</strong> coordinate user intent, call into services, and publish state updates (e.g., <code>DocumentsViewModel</code>, <code>SearchViewModel</code>, <code>SettingsViewModel</code>, <code>ProcessingViewModel</code>).</li>
+<li><strong>Services</strong> encapsulate external interactions and heavy lifting:</li>
+<li><code>FileProcessorService</code> for text extraction (PDFKit/Vision OCR) and MIME detection.</li>
+<li><code>TextProcessorService</code> for chunk segmentation, token metrics, and hashing.</li>
+<li><code>EmbeddingService</code> for batching requests to <code>OpenAIService</code> and normalising vectors.</li>
+<li><code>OpenAIService</code> for embedding + Responses API streaming.</li>
+<li><code>PineconeService</code> for index discovery, vector upsert/query/delete, retries, and circuit breaking.</li>
+<li><strong>Shared infrastructure</strong> includes <code>Logger.shared</code> for structured logging, <code>SecureSettingsStore</code> for Keychain-backed secrets, and <code>PineconePreferenceResolver</code> for persisting last-used index and namespace.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>flowchart LR
+    subgraph UI
+        W[WelcomeView]
+        M[MainView Tabs]
+    end
+    subgraph ViewModels
+        SV[SettingsViewModel]
+        DV[DocumentsViewModel]
+        QV[SearchViewModel]
+        LV[ProcessingViewModel]
+    end
+    subgraph Services
+        FP[FileProcessorService]
+        TP[TextProcessorService]
+        ES[EmbeddingService]
+        OA[OpenAIService]
+        PC[PineconeService]
+    end
+    subgraph External
+        Files[Filesystem + OCR]
+        OpenAI[OpenAI API]
+        Pinecone[Pinecone API]
+    end
+
+    W --&gt; SV
+    M --&gt; DV
+    M --&gt; QV
+    M --&gt; LV
+    DV --&gt; FP --&gt; Files
+    DV --&gt; TP
+    DV --&gt; ES --&gt; OA --&gt; OpenAI
+    DV --&gt; PC --&gt; Pinecone
+    QV --&gt; ES
+    QV --&gt; PC
+    QV --&gt; OA
+    SV --&gt; PC
+    LV --&gt; Logger
+</code></pre></div>
+
+<hr />
+<h2 id="document-ingestion-pipeline">Document Ingestion Pipeline</h2>
+<p><code>DocumentsViewModel</code> runs a multi-stage workflow and reports granular progress for each document:</p>
+<ol>
+<li><strong>Pick</strong> - Users select files via <code>DocumentPicker</code>. URLs are secured with <code>startAccessingSecurityScopedResource()</code>.</li>
+<li><strong>Persist</strong> - Files copy into the sandbox (<code>persistDocumentCopy</code>) and receive a minimal bookmark for future access.</li>
+<li><strong>Deduplicate &amp; validate</strong> - <code>makeDocumentIdentifier</code> combines path, size, and timestamps; duplicates or 100 MB+ files are rejected early.</li>
+<li><strong>Extract</strong> - <code>FileProcessorService</code> turns PDFs and images into text (PDFKit + Vision OCR) and passes through plain text/code types.</li>
+<li><strong>Chunk</strong> - <code>TextProcessorService</code> generates MIME-aware chunks, calculates token counts, and keeps overlap metadata.</li>
+<li><strong>Embed</strong> - <code>EmbeddingService</code> batches chunk text into OpenAI embedding requests, aligns with the configured dimension (3072 by default), and handles rate limits.</li>
+<li><strong>Upsert</strong> - <code>PineconeService</code> writes vectors with metadata (<code>doc_id</code>, chunk ranges, MIME) into the selected index/namespace.</li>
+<li><strong>Report</strong> - <code>ProcessingStats</code> capture phase durations and counts; logs stream to the Logs tab for transparency.</li>
+</ol>
+<p>Phase weights (<code>phaseWeightExtraction</code>, <code>phaseWeightChunking</code>, <code>phaseWeightEmbedding</code>, <code>phaseWeightUploading</code>) drive the progress bar; adjust them if you insert new phases so dashboards remain accurate.</p>
+<hr />
+<h2 id="search-conversation-and-rag">Search, Conversation, and RAG</h2>
+<p><code>SearchViewModel</code> delivers the full RAG experience:</p>
+<ul>
+<li><strong>Index bootstrap</strong> - On launch, both Documents and Search view models call <code>PineconeService.listIndexes()</code>. <code>PineconePreferenceResolver</code> selects the best candidate based on history and user defaults.</li>
+<li><strong>Query embedding</strong> - User prompts embed via <code>EmbeddingService</code>, matching the document embedding model to keep cosine similarity meaningful.</li>
+<li><strong>Vector search</strong> - Pinecone is queried with configurable top-k (stored in <code>SettingsStorageKeys.searchTopK</code>). Metadata filters can be defined in Settings and are parsed with <code>PineconeMetadataFilter.parse</code> before each query.</li>
+<li><strong>Answer generation</strong> - Retrieved chunks become prompt context for <code>OpenAIService.streamCompletion</code>, which streams tokens over SSE. The UI updates <code>messages</code>, <code>generatedAnswer</code>, and <code>answerGenerationProgress</code> as deltas arrive.</li>
+<li><strong>Conversation modes</strong> - <code>SettingsViewModel.conversationMode</code> toggles between OpenAI's server-managed conversation (<code>conversationId</code> persisted in <code>UserDefaults</code>) and a client-managed short history. Both paths must continue to operate when evolving the experience.</li>
+<li><strong>Watchdogs &amp; cancellation</strong> - A watchdog (<code>Constants.watchdogDelayNanoseconds</code>) guards long-running streams. <code>currentStreamTask</code> is cancelled when navigating away to avoid orphaned network calls.</li>
+</ul>
+<hr />
+<h2 id="key-modules">Key Modules</h2>
+<ul>
+<li><strong>App/</strong> - Entry point (<code>OpenConeApp</code>), tab router (<code>MainView</code>), onboarding (<code>WelcomeView</code>), plus loading/error states.</li>
+<li><strong>Core/</strong> - Configuration, logging, shared extensions, and the <code>OCDesignSystem</code> theme infrastructure.</li>
+<li><strong>Features/Documents/</strong> - Document list/detail views, bookmark-aware persistence, dashboard metrics, and processing charts.</li>
+<li><strong>Features/Search/</strong> - RAG UI, metadata filter editor, search result cards, and conversation transcript handling.</li>
+<li><strong>Features/ProcessingLog/</strong> - Log viewer with filtering tied to <code>Logger.shared</code>.</li>
+<li><strong>Features/Settings/</strong> - Credential management, model selection, search defaults, metadata preset editor, logging preferences, and validation flows.</li>
+<li><strong>Services/</strong> - Pinecone/OpenAI clients, embedding orchestrator, file processing, text chunking. All network calls go through <code>PineconeService</code> and <code>OpenAIService</code> wrappers rather than ad-hoc <code>URLSession</code> usage.</li>
+<li><strong>Preview Content/</strong> - Sample data/assets for SwiftUI previews.</li>
+<li><strong>OpenConeTests/</strong> - Currently focused on metadata preset persistence (<code>SearchViewModelMetadataPersistenceTests</code>); extend this target when adjusting settings persistence logic.</li>
+</ul>
+<hr />
+<h2 id="design-system">Design System</h2>
+<p>OpenCone ships with a bespoke design system located in <code>Core/DesignSystem</code>:</p>
+<ul>
+<li><code>OCTheme</code>, <code>ThemeManager</code>, and <code>ThemeEnvironment</code> expose theme colors, typography, and gradients through <code>@Environment(\.theme)</code>.</li>
+<li>Components like <code>OCButton</code>, <code>OCCard</code>, <code>OCBadge</code>, input fields, and layout helpers provide consistent styling. Use them when building new surfaces.</li>
+<li><code>ThemeManager.shared</code> is the single source of truth; subscribe to its <code>@Published</code> state instead of hardcoding color literals.</li>
+<li><code>withTheme()</code> modifier applies theming globally from <code>OpenConeApp</code>.</li>
+</ul>
+<hr />
+<h2 id="developer-workflow">Developer Workflow</h2>
+<ul>
+<li><strong>Build target</strong> - Open <code>OpenCone.xcodeproj</code> in Xcode 16.0 or later. The project supports iOS 17+ and macOS 14+ (Catalyst).</li>
+<li><strong>Secrets</strong> - Credentials live in <code>SecureSettingsStore</code> (Keychain). The welcome flow can store keys, or you can set environment variables in your Run scheme (<code>OPENAI_API_KEY</code>, <code>PINECONE_API_KEY</code>, <code>PINECONE_PROJECT_ID</code>).</li>
+<li><strong>Settings sync</strong> - <code>SettingsViewModel</code> mirrors user input into <code>UserDefaults</code> and Keychain. Use <code>saveSettings()</code> after changing defaults in code so the UI reflects updates.</li>
+<li><strong>Logging</strong> - Always log significant events via <code>Logger.shared.log(level:message:context:)</code>. The Logs tab is the canonical place to debug ingestion/search behaviour.</li>
+<li><strong>Index insights</strong> - After upserting or deleting vectors, call <code>refreshIndexInsights()</code> to update the namespace list and index stats used by both Documents and Search tabs.</li>
+<li><strong>Background safety</strong> - Long-running work should execute inside <code>Task {}</code>. Use <code>await MainActor.run {}</code> before mutating published state to avoid cross-actor violations.</li>
+<li><strong>Release guard</strong> - Release builds fatal-error if <code>OPENAI_API_KEY</code>, <code>PINECONE_API_KEY</code>, or <code>PINECONE_PROJECT_ID</code> are injected via scheme overrides; clear those environment variables before archiving for TestFlight/App Store.</li>
+<li><strong>Icon generation</strong> - Maintain <code>AppIcon.appiconset</code> by running <code>scripts/generate_app_icons.sh</code> (derives all required sizes from the 1024px marketing source).</li>
+<li><strong>Screenshot capture</strong> - Use <code>scripts/capture_screenshots.sh</code> for guided simulator captures (prompts you to stage each screen then saves a PNG into the provided directory).</li>
+</ul>
+<hr />
+<h2 id="privacy-compliance">Privacy &amp; Compliance</h2>
+<ul>
+<li><strong>Canonical docs</strong> — <a href="PRIVACY.md">PRIVACY.md</a> explains on-device vs cloud processing; <a href="APP_STORE.md">APP_STORE.md</a> provides App Store copy and reviewer walkthrough.</li>
+<li><strong>Secret handling</strong> — <a href="SECURITY.md">SECURITY.md</a> outlines Keychain storage, the Release fatal guard, and the <code>preflight_check.sh</code>/<code>secret_scan.py</code> workflow.</li>
+<li><strong>Data &amp; Privacy controls</strong> — Settings exposes a "Reset Stored Keys &amp; Preferences" action that clears Keychain secrets, conversation history, and bookmark consent.</li>
+<li><strong>Preflight script</strong> — Run <code>scripts/preflight_check.sh</code> before TestFlight upload; it executes <code>secret_scan.py</code>, validates Info.plist usage descriptions, confirms privacy docs include a timestamp, and runs <code>xcodebuild test</code>. Override the simulator with <code>OPEN_CONE_TEST_DESTINATION="platform=&lt;custom destination&gt;"</code> or skip tests with <code>SKIP_TESTS=1</code>.</li>
+<li><strong>CI guardrail</strong> — GitHub Actions workflow <code>.github/workflows/preflight.yml</code> runs the same preflight script on macOS runners.</li>
+</ul>
+<hr />
+<h2 id="documentation">Documentation</h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="README.md">README.md</a></td>
+<td>Project overview, setup, and usage</td>
+</tr>
+<tr>
+<td><a href="ARCHITECTURE.md">ARCHITECTURE.md</a></td>
+<td>Technical architecture and data flows</td>
+</tr>
+<tr>
+<td><a href="ROADMAP.md">ROADMAP.md</a></td>
+<td>Feature status and future plans</td>
+</tr>
+<tr>
+<td><a href="PRIVACY.md">PRIVACY.md</a></td>
+<td>Privacy policy and data handling</td>
+</tr>
+<tr>
+<td><a href="SECURITY.md">SECURITY.md</a></td>
+<td>Secret management and compliance</td>
+</tr>
+<tr>
+<td><a href="APP_STORE.md">APP_STORE.md</a></td>
+<td>App Store copy, reviewer notes, screenshots</td>
+</tr>
+<tr>
+<td><a href="docs/CASE_STUDY.md">docs/CASE_STUDY.md</a></td>
+<td>Marketing case study</td>
+</tr>
+<tr>
+<td><a href="docs/reference/PineconeDocs/">docs/reference/PineconeDocs/</a></td>
+<td>Pinecone API reference (external)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li>
+<p><strong>Clone and open</strong></p>
+<p><code>bash
+git clone https://github.com/Gunnarguy/OpenCone.git
+cd OpenCone
+open OpenCone.xcodeproj</code></p>
+</li>
+<li>
+<p><strong>Configure environment variables (optional but recommended for debugging)</strong></p>
+<ul>
+<li>In Xcode, choose <strong>Product &gt; Scheme &gt; Edit Scheme...</strong></li>
+<li>Under <strong>Run &gt; Arguments</strong>, add environment variables:<ul>
+<li><code>OPENAI_API_KEY</code></li>
+<li><code>PINECONE_API_KEY</code></li>
+<li><code>PINECONE_PROJECT_ID</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Run the app</strong></p>
+<ul>
+<li>Select an iOS 17+ simulator or connect a device.</li>
+<li>Press <strong>Command+R</strong>. The welcome flow will prompt for any missing credentials and validate them in real time.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="configuration">Configuration</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Where to change</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenAI API Key</td>
+<td>Settings tab or environment variable</td>
+<td>Stored securely via <code>SecureSettingsStore</code>. Validation uses <code>CredentialValidator</code> with debounced checks.</td>
+</tr>
+<tr>
+<td>Pinecone API Key / Project ID</td>
+<td>Settings tab or environment variable</td>
+<td>Keys must start with <code>pcsk_</code>; region/cloud defaults pulled from secure store.</td>
+</tr>
+<tr>
+<td>Embedding model</td>
+<td>Settings &gt; Models</td>
+<td>Defaults to <code>text-embedding-3-large</code> with dimension 3072. Keep in sync with Pinecone index dimensions.</td>
+</tr>
+<tr>
+<td>Completion model</td>
+<td>Settings &gt; Models</td>
+<td>Includes GPT-5 reasoning flag. <code>Configuration.isReasoningModel</code> toggles extra parameters.</td>
+</tr>
+<tr>
+<td>Chunk size / overlap</td>
+<td>Settings &gt; Processing</td>
+<td>Validate overlap &lt; size; updates used by <code>TextProcessorService</code>.</td>
+</tr>
+<tr>
+<td>Default Top K</td>
+<td>Settings &gt; Search</td>
+<td>Persists to <code>UserDefaults</code> key <code>searchTopK</code>; <code>SearchViewModel</code> reads it during queries.</td>
+</tr>
+<tr>
+<td>Metadata presets</td>
+<td>Settings &gt; Metadata Filters</td>
+<td>Stored as JSON presets; parsed through <code>PineconeMetadataFilter</code>. Invalid entries are skipped with warnings.</td>
+</tr>
+<tr>
+<td>Appearance</td>
+<td>Theme selector (Settings)</td>
+<td>Theme changes propagate through <code>ThemeManager.shared</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Document processing accepts the MIME types defined in <code>Configuration.acceptedMimeTypes</code>. Unsupported files surface a user-facing warning through <code>Logger</code> + <code>errorMessage</code> binding.</p>
+<hr />
+<h2 id="manual-qa-guide">Manual QA Guide</h2>
+<p>Run this sequence after significant changes:</p>
+<ol>
+<li><strong>Fresh launch</strong> - Delete the app, run again, walk through the welcome flow, and ensure credential validation messages appear.</li>
+<li><strong>Ingest PDF</strong> - Add a medium-size PDF; confirm extraction, chunking, embedding, and upsert logs appear and the namespace vector count increases.</li>
+<li><strong>OCR path</strong> - Import an image with text to verify Vision OCR extraction.</li>
+<li><strong>Duplicate guard</strong> - Add the same file twice; the second attempt should warn that the document already exists.</li>
+<li><strong>Search</strong> - Run a query that hits the ingested document. Observe streaming answer updates and relevance badges.</li>
+<li><strong>Metadata filters</strong> - Add a preset in Settings (e.g., <code>doc_id = MyDoc.pdf</code>), then search to confirm requests include the filter.</li>
+<li><strong>Namespace cleanup</strong> - Delete the processed document and verify Pinecone vectors are removed and Logs report success.</li>
+<li><strong>Theme switch</strong> - Toggle themes and ensure all tabs adhere to the design system colors.</li>
+<li><strong>Consent &amp; reset</strong> - Visit Settings → Data &amp; Privacy, follow the Privacy Overview link, and trigger the reset control to confirm credentials are cleared and the welcome flow returns on relaunch.</li>
+</ol>
+<hr />
+<h2 id="testing">Testing</h2>
+<ul>
+<li><strong>Unit tests</strong> - Execute from Xcode (<strong>Command+U</strong>) or via <code>xcodebuild test</code>. Current coverage focuses on metadata preset persistence (<code>OpenConeTests/SearchViewModelMetadataPersistenceTests</code>). Add new tests alongside changes to <code>SettingsViewModel</code> or filter parsing; the preflight script invokes the same command to guard submissions.</li>
+<li><strong>Integration tests</strong> - Not yet automated; rely on the Manual QA Guide until more UI tests are introduced.</li>
+</ul>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li><strong>Missing API keys</strong> - The app returns to the welcome screen if keys are absent. Re-run the setup or set environment variables.</li>
+<li><strong>Pinecone errors</strong> - Check the Logs tab for detailed error messages. <code>PineconeService</code> will trip its circuit breaker (<code>isCircuitOpen</code>) after repeated failures; switching indexes resets the circuit.</li>
+<li><strong>Embedding dimension mismatch</strong> - Ensure Pinecone index dimension equals the selected embedding model's output (3072 for <code>text-embedding-3-large</code>). <code>DocumentsViewModel.dashboardMetrics</code> will show zero vectors if uploads fail.</li>
+<li><strong>Filesystem access issues</strong> - If Files app permissions are denied, <code>DocumentsViewModel</code> surfaces <code>Unable to access ...</code> warnings. Re-select the document to regain security scope access.</li>
+<li><strong>Long-running uploads</strong> - Streaming completions can time out; <code>SearchViewModel</code> watchdog cancels the stream and sets an error. Adjust network conditions or retry.</li>
+</ul>
+<hr />
+<h2 id="license">License</h2>
+<p>OpenCone is distributed under the <a href="LICENSE">MIT License</a>.</p>
+        </div>
+      </section>
+    
+
+      <section class="docs-section docs-section-missing" id="doc-roadmap">
+        <div class="docs-section-header">
+          <h2>Roadmap</h2>
+          <div class="docs-section-meta">
+            <a href="https://github.com/Gunnarguy/OpenCone/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener">View source</a>
+            <span class="docs-status-pill">Missing</span>
+          </div>
+        </div>
+        <div class="docs-section-body">
+          <p><strong>Could not load this document.</strong></p><p>Path: <code>docs/ROADMAP.md</code></p><p>HTTP Error 404: Not Found</p>
+        </div>
+      </section>
+    
+
+      <section class="docs-section docs-section-missing" id="doc-architecture">
+        <div class="docs-section-header">
+          <h2>Architecture</h2>
+          <div class="docs-section-meta">
+            <a href="https://github.com/Gunnarguy/OpenCone/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener">View source</a>
+            <span class="docs-status-pill">Missing</span>
+          </div>
+        </div>
+        <div class="docs-section-body">
+          <p><strong>Could not load this document.</strong></p><p>Path: <code>docs/ARCHITECTURE.md</code></p><p>HTTP Error 404: Not Found</p>
+        </div>
+      </section>
+    
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('nav-menu-active');
+          navToggle.classList.toggle('nav-toggle-active');
+        });
+      }
+
+      const normalizeMermaid = () => {
+        document.querySelectorAll('pre > code.language-mermaid').forEach((block) => {
+          const parent = block.parentElement;
+          const wrapper = document.createElement('div');
+          wrapper.className = 'mermaid';
+          wrapper.textContent = block.textContent || '';
+          parent.replaceWith(wrapper);
+        });
+        if (window.mermaid) {
+          mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+          mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+        }
+      };
+
+      document.addEventListener('DOMContentLoaded', normalizeMermaid);
+    </script>
+  </body>
 </html>

@@ -2,55 +2,55 @@ name: Sync Project Documentation
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Daily at 6 AM UTC
-  workflow_dispatch:      # Manual trigger
+    - cron: "0 6 * * *" # Daily at 6 AM UTC
+  workflow_dispatch: # Manual trigger
   push:
     branches: [main]
     paths:
-      - 'scripts/**'
+      - "scripts/**"
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     steps:
       - name: Checkout Portfolio
         uses: actions/checkout@v4
-      
+
       - name: Checkout OpenResponses
         uses: actions/checkout@v4
         with:
           repository: Gunnarguy/OpenResponses
           path: _repos/OpenResponses
-      
+
       - name: Checkout OpenIntelligence
         uses: actions/checkout@v4
         with:
-          repository: Gunnarguy/RAGMLCore
+          repository: Gunnarguy/OpenIntelligence
           path: _repos/OpenIntelligence
-      
+
       - name: Checkout OpenCone
         uses: actions/checkout@v4
         with:
           repository: Gunnarguy/OpenCone
           path: _repos/OpenCone
-      
+
       - name: Checkout OpenAssistant
         uses: actions/checkout@v4
         with:
           repository: Gunnarguy/OpenAssistant
           path: _repos/OpenAssistant
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      
+          python-version: "3.11"
+
       - name: Generate Snapshots
         run: python3 scripts/generate_snapshots_ci.py
-      
+
       - name: Commit and Push
         run: |
           git config user.name "github-actions[bot]"
