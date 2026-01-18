@@ -1,607 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OpenAssistant Docs - Gunnar Hostetler</title>
-    <meta name="description" content="Snapshot documentation for OpenAssistant." />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="../../styles.css" />
-    <link rel="icon" type="image/x-icon" href="../../favicon.ico" />
-  </head>
-  <body>
-    <header class="header">
-      <nav class="nav">
-        <div class="nav-brand">
-          <h1><a href="../../index.html">Gunnar Hostetler</a></h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAssistant - Project Deep Dive | Gunnar Hostetler</title>
+    <meta name="description" content="Native iOS app for OpenAI Assistants API interaction.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+:root {
+    --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
+    --text-primary: #fff; --text-secondary: #a0a0b0;
+    --accent: #8b5cf6; --accent-light: #8b5cf699;
+    --border-color: #2a2a3a;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.project-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-color); }
+.back-link { color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+.back-link:hover { color: var(--accent); }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+.nav-links a:hover { color: var(--accent); }
+.project-hero { padding: 8rem 0 4rem; background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary)); text-align: center; }
+.project-hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; }
+.hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.2s; }
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+.btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); }
+.btn-secondary:hover { border-color: var(--accent); }
+.btn-appstore { background: #000; color: white; border: 1px solid #333; }
+.btn-appstore:hover { background: #1a1a1a; }
+.section { padding: 5rem 0; }
+.section-alt { background: var(--bg-secondary); }
+.section h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.feature-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); transition: border-color 0.2s; }
+.feature-card:hover { border-color: var(--accent); }
+.feature-card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+.feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
+.tech-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
+.tech-tag { background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--border-color); }
+.project-footer { padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color); }
+.project-footer a { color: var(--accent); text-decoration: none; }
+.sync-time { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
+@media (max-width: 768px) { .project-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hero-actions { flex-direction: column; align-items: center; } }
+    </style>
+</head>
+<body>
+    <nav class="project-nav">
+        <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="https://github.com/Gunnarguy/OpenAssistant" target="_blank"><i class="fab fa-github"></i></a>
         </div>
-        <ul class="nav-menu">
-          <li><a href="../../index.html#home">Home</a></li>
-          <li><a href="../../index.html#about">About</a></li>
-          <li><a href="../../index.html#skills">Skills</a></li>
-          <li><a href="../../index.html#projects">Projects</a></li>
-          <li><a href="../../index.html#experience">Experience</a></li>
-          <li><a href="../../index.html#contact">Contact</a></li>
-        </ul>
-        <div class="nav-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container">
+            <h1>OpenAssistant</h1>
+            <p class="hero-subtitle">Native iOS app for OpenAI Assistants API interaction.</p>
+            <div class="hero-actions">
+                <a href="https://github.com/Gunnarguy/OpenAssistant" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="https://apps.apple.com/us/app/openassistant/id6692613772" class="btn btn-appstore" target="_blank">
+            <i class="fab fa-app-store-ios"></i> App Store
+        </a>
+            </div>
+            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">Combine</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">Code Interpreter</span><span class="tech-tag">MVVM</span></div>
         </div>
-      </nav>
     </header>
 
-    <main class="docs-main">
-      <div class="container">
-        <div class="docs-hero">
-          <p class="docs-kicker">Snapshot • Jan 17, 2026</p>
-          <h1>OpenAssistant Docs</h1>
-          <p>Legacy Assistants v2 client with tool coverage, vector stores, and threaded chat UI.</p>
-          <div class="docs-actions">
-            <a class="btn-link" href="https://github.com/Gunnarguy/OpenAssistant" target="_blank" rel="noopener">GitHub Repo</a>
-            <a class="btn-link" href="https://apps.apple.com/us/app/openassistant/id6692613772" target="_blank" rel="noopener">App Store</a>
-            <a class="btn-link" href="../../index.html#projects">Back to Projects</a>
-          </div>
+    <section id="features" class="section">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="features-grid"><p style="text-align:center;color:var(--text-secondary);">See the README for full feature list.</p></div>
         </div>
-
-        <div class="docs-layout">
-          <aside class="docs-sidebar">
-            <div class="docs-sidebar-title">Sections</div>
-            <ul class="docs-nav">
-              <li><a href="#doc-readme">README</a></li><li><a href="#doc-roadmap">Roadmap</a></li><li><a href="#doc-architecture">Architecture</a></li>
-            </ul>
-            <div class="docs-status">Generated from GitHub on Jan 17, 2026.</div>
-          </aside>
-
-          <article class="md-content">
-            
-      <section class="docs-section" id="doc-readme">
-        <div class="docs-section-header">
-          <h2>README</h2>
-          <div class="docs-section-meta">
-            <a href="https://github.com/Gunnarguy/OpenAssistant/blob/main/README.md" target="_blank" rel="noopener">View source</a>
-            
-          </div>
-        </div>
-        <div class="docs-section-body">
-          <div align="center">
-<h1 align="center">
-<img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
-<br>
-OpenAssistant (iOS Client)
-</h1>
-<h3 align="center">📍 A Native SwiftUI iOS Client for the OpenAI Assistants API</h3>
-<h3 align="center"> Dive deep into an application designed for seamless interaction with powerful AI. This document provides an exhaustive guide to its architecture, components, and their intricate interactions.</h3>
-<h3 align="center">⚙️ Developed with Swift & SwiftUI</h3>
-
-<p align="center">
-<img src="https://img.shields.io/badge/Swift-F05138.svg?style=for-the-badge&logo=Swift&logoColor=white" alt="Swift" />
-<img src="https://img.shields.io/badge/SwiftUI-007AFF.svg?style=for-the-badge&logo=SwiftUI&logoColor=white" alt="SwiftUI" />
-<img src="https://img.shields.io/badge/Combine-007AFF.svg?style=for-the-badge&logo=Combine&logoColor=white" alt="Combine Framework" />
-<img src="https://img.shields.io/badge/OpenAI%20API-412991.svg?style=for-the-badge&logo=OpenAI&logoColor=white" alt="OpenAI API" />
-</p>
-
-<p align="center">
-<img src="https://img.shields.io/badge/iOS-15.0+-blue?style=flat-square" alt="iOS 15.0+">
-<img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License">
-<img src="https://img.shields.io/github/issues/Gunnarguy/OpenAssistant?style=flat-square" alt="GitHub issues">
-<img src="https://img.shields.io/github/stars/Gunnarguy/OpenAssistant?style=flat-square" alt="GitHub stars">
-<img src="https://img.shields.io/github/forks/Gunnarguy/OpenAssistant?style=flat-square" alt="GitHub forks">
-</p>
-</div>
-
-<hr />
-<h2 id="table-of-contents">📚 Table of Contents</h2>
-<ul>
-<li><a href="#-overview">📍 Overview</a></li>
-<li><a href="#-key-features">✨ Key Features</a></li>
-<li><a href="#-quick-start">🚀 Quick Start</a></li>
-<li><a href="#-documentation">📖 Documentation</a></li>
-<li><a href="#-architecture">🏗️ Architecture</a></li>
-<li><a href="#-contributing">🤝 Contributing</a></li>
-<li><a href="#-license">📄 License</a></li>
-</ul>
-<h2 id="quick-start">🚀 Quick Start</h2>
-<h3 id="prerequisites">Prerequisites</h3>
-<ul>
-<li>iOS 15.0+ device</li>
-<li>Xcode 15+</li>
-<li>OpenAI API key</li>
-</ul>
-<h3 id="installation">Installation</h3>
-<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Gunnarguy/OpenAssistant.git
-<span class="nb">cd</span><span class="w"> </span>OpenAssistant
-open<span class="w"> </span>OpenAssistant.xcodeproj
-</code></pre></div>
-
-<p><strong>Detailed setup instructions</strong>: <a href="docs/installation/INSTALLATION.md">docs/installation/INSTALLATION.md</a></p>
-<h2 id="documentation">� Documentation</h2>
-<p>All documentation is organized in the <a href="docs/"><code>docs/</code></a> directory:</p>
-<ul>
-<li><strong><a href="docs/README.md">📖 Documentation Index</a></strong> - Complete documentation overview</li>
-<li><strong><a href="docs/installation/INSTALLATION.md">�️ Installation Guide</a></strong> - Setup instructions</li>
-<li><strong><a href="docs/contributing/CONTRIBUTING.md">🤝 Contributing</a></strong> - How to contribute</li>
-<li><strong><a href="docs/PRIVACY.md">� Privacy Policy</a></strong> - Data handling information</li>
-<li><strong><a href="docs/interactions.html">🏗️ Architecture Diagram</a></strong> - Visual component interactions</li>
-</ul>
-<hr />
-<h2 id="overview">📍 Overview</h2>
-<p>OpenAssistant is a feature-rich, native iOS application built meticulously with SwiftUI and the Combine framework. It serves as a sophisticated client for the OpenAI Assistants API, empowering users to harness the full potential of AI assistants directly from their Apple devices. The application offers comprehensive management of assistants, vector stores for retrieval, and file handling, all wrapped in an intuitive user interface. It is designed to handle the complexities of asynchronous API interactions, thread management, and local data persistence, providing a robust and user-friendly mobile experience.</p>
-<hr />
-<h2 id="key-features">✨ Key Features</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Feature</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>🤖 Assistant Lifecycle Management</strong></td>
-<td style="text-align: left;">Create, view, meticulously configure (name, instructions, model selection including GPT-4o/4.1/O-series, description, temperature, top P, reasoning effort), and delete OpenAI Assistants.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>🛠️ Advanced Tool Configuration</strong></td>
-<td style="text-align: left;">Dynamically enable or disable powerful tools for assistants, such as Code Interpreter and File Search (Retrieval).</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>🗂️ Vector Store Operations</strong></td>
-<td style="text-align: left;">Full CRUD (Create, Read, Update, Delete) for Vector Stores. Associate Vector Stores with Assistants to enable precise, file-based knowledge retrieval.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>📄 Comprehensive File Handling</strong></td>
-<td style="text-align: left;">Upload various file types (PDF, TXT, DOCX, etc.) to OpenAI, associate them with specific Vector Stores using configurable chunking strategies (size and overlap). View detailed file metadata and manage files within these stores.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>💬 Dynamic Chat Interface</strong></td>
-<td style="text-align: left;">Engage in interactive conversations with selected Assistants. Features include Markdown rendering for assistant responses, robust message history management (persisted locally via <code>MessageStore</code>), and OpenAI thread lifecycle control.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>🔄 Reactive UI &amp; Data Sync</strong></td>
-<td style="text-align: left;">Leverages the Combine framework for managing asynchronous operations and <code>NotificationCenter</code> for decoupled, real-time updates across the UI when assistants, stores, or settings change.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>🔑 Secure &amp; Persistent API Key</strong></td>
-<td style="text-align: left;">Securely stores and manages the OpenAI API key using <code>@AppStorage</code>, ensuring it persists across app sessions.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>🎨 Adaptive Appearance</strong></td>
-<td style="text-align: left;">Supports Light, Dark, and System-defined appearance modes, configurable via in-app settings for a personalized user experience.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>📱 Native iOS Excellence</strong></td>
-<td style="text-align: left;">Built from the ground up using SwiftUI, ensuring a modern, responsive, and platform-native user experience optimized for iOS.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>🏗️ Robust MVVM Architecture</strong></td>
-<td style="text-align: left;">Organizes code using the Model-View-ViewModel (MVVM) pattern, promoting clear separation of concerns, enhanced testability, and superior maintainability.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>⚙️ Dedicated API Service Layer</strong></td>
-<td style="text-align: left;">A specialized service layer (<code>APIService</code>) encapsulates all interactions with the OpenAI API, efficiently handling requests, responses, error conditions, and retries.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="architecture-mvvm">📐 Architecture (MVVM)</h2>
-<p>The application is architected using the <strong>Model-View-ViewModel (MVVM)</strong> pattern, a cornerstone for building scalable and maintainable SwiftUI applications.</p>
-<ul>
-<li><strong>Model</strong>: Represents the data structures and business logic. These are primarily Codable structs that mirror the OpenAI API entities (e.g., <code>Assistant</code>, <code>Message</code>, <code>Thread</code>, <code>Run</code>, <code>VectorStore</code>, <code>File</code>) and internal application data constructs.</li>
-<li><strong>View</strong>: The UI layer, built declaratively with SwiftUI. Views observe ViewModels for state changes and render the UI accordingly. Examples: <code>ChatView</code>, <code>AssistantManagerView</code>, <code>VectorStoreDetailView</code>. They delegate user actions to their respective ViewModels.</li>
-<li><strong>ViewModel</strong>: Acts as the bridge between the View and the Model. It prepares and provides data for the View, processes user input, manages UI state (e.g., loading indicators, error messages), and orchestrates operations by interacting with services (primarily <code>APIService</code>). Examples: <code>ChatViewModel</code>, <code>AssistantManagerViewModel</code>, <code>VectorStoreManagerViewModel</code>.</li>
-</ul>
-<div class="codehilite"><pre><span></span><code>graph TD
-    subgraph &quot;User Interface (SwiftUI Views)&quot;
-        direction LR
-        V_Chat[ChatView]
-        V_AsstMgr[AssistantManagerView]
-        V_AsstDetail[AssistantDetailView]
-        V_VecStoreList[VectorStoreListView]
-        V_VecStoreDetail[VectorStoreDetailView]
-        V_Settings[SettingsView]
-        V_Picker[AssistantPickerView]
-        V_CreateAsst[CreateAssistantView]
-        V_MainTab[MainTabView]
-        V_Content[ContentView]
-    end
-
-    subgraph &quot;ViewModels (State &amp; Business Logic)&quot;
-        direction LR
-        VM_Base[BaseViewModel]
-        VM_BaseAsst[BaseAssistantViewModel] --- VM_Base
-        VM_Content[ContentViewModel] --- VM_Base
-        VM_Chat[ChatViewModel] --- VM_BaseAsst
-        VM_AsstMgr[AssistantManagerViewModel] --- VM_BaseAsst
-        VM_AsstDetail[AssistantDetailViewModel] --- VM_BaseAsst
-        VM_AsstPicker[AssistantPickerViewModel] --- VM_BaseAsst
-        VM_VecStoreMgr[VectorStoreManagerViewModel] --- VM_Base
-    end
-
-    subgraph &quot;Services (API &amp; File Handling)&quot;
-        direction LR
-        S_OpenAI_Init[OpenAIInitializer]
-        S_OpenAI[OpenAIService] -. Uses .-&gt; S_OpenAI_Init
-        S_OpenAI_AsstExt[OpenAIService-Assistant Ext.] -- Extends --&gt; S_OpenAI
-        S_OpenAI_ThreadExt[OpenAIService-Threads Ext.] -- Extends --&gt; S_OpenAI
-        S_OpenAI_VecExt[OpenAIService-Vector Ext.] -- Extends --&gt; S_OpenAI
-        S_FileUpload[FileUploadService] -. Uses .-&gt; S_OpenAI
-    end
-
-    subgraph &quot;Data Persistence &amp; System Services&quot;
-        P_AppStorage[&quot;@AppStorage (API Key, Settings)&quot;]
-        P_MessageStore[&quot;MessageStore (Chat History)&quot;]
-        P_NotifCenter[NotificationCenter]
-        P_Combine[&quot;Combine Framework&quot;]
-    end
-
-    subgraph &quot;External Dependencies&quot;
-        Ext_OpenAI_API[OpenAI API]
-    end
-
-    %% View to ViewModel (User Actions &amp; Data Binding)
-    V_Content --&gt; VM_Content
-    V_MainTab --&gt; V_Picker
-    V_MainTab --&gt; V_AsstMgr
-    V_MainTab --&gt; V_VecStoreList
-    V_MainTab --&gt; V_Settings
-    V_Picker --&gt; VM_AsstPicker
-    V_AsstMgr --&gt; VM_AsstMgr
-    V_AsstMgr --- V_CreateAsst
-    V_AsstMgr --- V_AsstDetail
-    V_CreateAsst --&gt; VM_AsstMgr
-    V_AsstDetail --&gt; VM_AsstDetail
-    V_VecStoreList --&gt; VM_VecStoreMgr
-    V_VecStoreDetail --&gt; VM_VecStoreMgr
-    V_Chat --&gt; VM_Chat
-    V_Settings --&gt; P_AppStorage
-    V_Settings -. Posts .-&gt; P_NotifCenter
-
-    %% ViewModel to Service (Requesting Data/Actions)
-    VM_Base --&gt; S_OpenAI
-    VM_Chat -.-&gt; S_OpenAI_ThreadExt
-    VM_AsstMgr -.-&gt; S_OpenAI_AsstExt
-    VM_AsstMgr -.-&gt; S_OpenAI_VecExt
-    VM_AsstDetail -.-&gt; S_OpenAI_AsstExt
-    VM_AsstDetail -.-&gt; VM_VecStoreMgr
-    VM_AsstPicker -.-&gt; VM_AsstMgr
-    VM_VecStoreMgr -.-&gt; S_OpenAI_VecExt
-    VM_VecStoreMgr -.-&gt; S_FileUpload
-
-    %% Service to External API
-    S_OpenAI --&gt; Ext_OpenAI_API
-    S_FileUpload --&gt; Ext_OpenAI_API
-
-    %% Data Flow &amp; State Management
-    P_MessageStore &lt;--&gt; VM_Chat
-    P_AppStorage &lt;--&gt; VM_Base
-    P_NotifCenter &lt;--&gt; VM_Base
-    P_NotifCenter &lt;--&gt; VM_Content
-    P_Combine &lt;--&gt; S_OpenAI
-    P_Combine &lt;--&gt; VM_Base
-    P_Combine &lt;--&gt; VM_VecStoreMgr
-
-
-    classDef view fill:#B0E0E6,stroke:#4682B4,stroke-width:2px;
-    classDef viewModel fill:#98FB98,stroke:#2E8B57,stroke-width:2px;
-    classDef service fill:#FFA07A,stroke:#CD5C5C,stroke-width:2px;
-    classDef persistence fill:#DDA0DD,stroke:#8A2BE2,stroke-width:2px;
-    classDef external fill:#FFD700,stroke:#B8860B,stroke-width:2px;
-
-    class V_Chat,V_AsstMgr,V_AsstDetail,V_VecStoreList,V_VecStoreDetail,V_Settings,V_Picker,V_CreateAsst,V_MainTab,V_Content view;
-    class VM_Base,VM_BaseAsst,VM_Content,VM_Chat,VM_AsstMgr,VM_AsstDetail,VM_AsstPicker,VM_VecStoreMgr viewModel;
-    class S_OpenAI_Init,S_OpenAI,S_OpenAI_AsstExt,S_OpenAI_ThreadExt,S_OpenAI_VecExt,S_FileUpload service;
-    class P_AppStorage,P_MessageStore,P_NotifCenter,P_Combine persistence;
-    class Ext_OpenAI_API external;
-````
-
------
-
-## 📂 Detailed Project Structure
-
-### iOS Project Source Code Structure
-
-The project is organized into several directories, each serving a specific purpose. Here&#39;s a detailed breakdown:
-
-&lt;details&gt;
-&lt;summary&gt;&lt;strong&gt;APIService (Networking &amp; OpenAI Interaction)&lt;/strong&gt;&lt;/summary&gt;
-
-| File | Summary |
-| :--- | :--- |
-| CommonMethods.swift | Defines an extension on `OpenAIService` with methods for configuring and creating `URLRequest` objects. |
-| FileUploadService.swift | Defines a `FileUploadService` class for uploading files to OpenAI and managing vector stores. |
-| OpenAIInitializer.swift | Manages the initialization of the shared `OpenAIService` instance with thread safety. |
-| OpenAIService-Assistant.swift | Extension for `OpenAIService` to manage assistants (CRUD operations). |
-| OpenAIService-Threads.swift | Extension for `OpenAIService` to manage threads, runs, and messages. |
-| OpenAIService-Vector.swift | Extension for `OpenAIService` to manage vector stores and files. |
-| OpenAIService.swift | The main `OpenAIService` class for handling API requests, responses, and errors. |
-| OpenAIServiceError.swift | Defines custom error types for `OpenAIService` operations. |
-
-&lt;/details&gt;
-
-&lt;details&gt;
-&lt;summary&gt;&lt;strong&gt;Main Application Logic &amp; Shared Components (Main/)&lt;/strong&gt;&lt;/summary&gt;
-
-| File | Summary |
-| :--- | :--- |
-| Additional.swift | Defines various data models used across the application. |
-| Appearance.swift | Manages appearance-related settings (e.g., Light, Dark, System modes). |
-| Errors.swift | Defines custom error types and error handling utilities. |
-| LoadingView.swift | A SwiftUI view for displaying a loading indicator. |
-| MainTabView.swift | The main tab view of the application. |
-| ModelCapabilities.swift | Helper for checking the capabilities of different AI models. |
-| OpenAssistantApp.swift | The main entry point of the SwiftUI application. |
-| ResponseFormat.swift | Defines structs and enums for handling JSON response formats. |
-| SettingsView.swift | A SwiftUI view for managing user settings. |
-| Content/ContentView.swift | The root view of the application. |
-| Content/ContentViewModel.swift | The view model for the `ContentView`. |
-
-&lt;/details&gt;
-
-&lt;details&gt;
-&lt;summary&gt;&lt;strong&gt;MVVM Components (MVVMs/)&lt;/strong&gt;&lt;/summary&gt;
-
-| File | Summary |
-| :--- | :--- |
-| **Bases** | |
-| BaseAssistantViewModel.swift | A base class for ViewModels related to Assistants. |
-| BaseViewModel.swift | The primary base class for all ViewModels. |
-| **Assistants Feature** | |
-| AssistantDetailView.swift | SwiftUI view for managing an assistant&#39;s details. |
-| AssistantDetailViewModel.swift | ViewModel for `AssistantDetailView`. |
-| AssistantManagerView.swift | SwiftUI view for listing and managing assistants. |
-| AssistantManagerViewModel.swift | ViewModel for `AssistantManagerView`. |
-| AssistantPickerView.swift | SwiftUI view for selecting an assistant to start a chat. |
-| AssistantPickerViewModel.swift | ViewModel for `AssistantPickerView`. |
-| **Chat Feature** | |
-| ChatView.swift | The main chat interface. |
-| ChatViewModel.swift | Core chat logic and state management. |
-| MessageStore.swift | Manages the persistence of chat messages. |
-| **VectorStores Feature** | |
-| VectorStoreDetailView.swift | Displays the details of a `VectorStore`. |
-| VectorStoreListView.swift | Manages the list of vector stores. |
-| VectorStoreManagerViewModel.swift | Manages all API interactions for vector stores. |
-| AddFileView.swift | SwiftUI view for uploading files to a vector store. |
-
-&lt;/details&gt;
-
------
-
-## 🌊 Core Application &amp; Data Flow
-
-### 1\. App Initialization &amp; Setup
-
-The application starts with `OpenAssistantApp`, which sets up the main `ContentView` and injects essential environment objects like `AssistantManagerViewModel`, `VectorStoreManagerViewModel`, and `MessageStore`.
-
-### 2\. API Key Management
-
-The OpenAI API key is securely stored using `@AppStorage`. The application prompts the user for the key on first launch via the `SettingsView`. The `BaseViewModel` ensures that the `OpenAIService` is re-initialized whenever the key is updated.
-
-### 3\. Main Navigation (`MainTabView`)
-
-The `MainTabView` is the central navigation hub, providing access to the main features:
-
-  - **Assistants**: Select an assistant for a chat (`AssistantPickerView`).
-  - **Manage**: Create, edit, and delete assistants (`AssistantManagerView`).
-  - **Vector Stores**: Manage vector stores and their files (`VectorStoreListView`).
-  - **Settings**: Configure the API key and app appearance (`SettingsView`).
-
-### 4\. Data Fetching &amp; Display
-
-ViewModels are responsible for fetching data from the `APIService`. They use `@Published` properties to expose data to the SwiftUI views, which automatically update when the data changes. The `Combine` framework is used extensively for handling asynchronous data streams.
-
-### 5\. User Interactions &amp; Actions
-
-User actions in the views are delegated to their respective ViewModels. The ViewModel processes the action, interacts with the `APIService` or other services, and updates its state, which in turn updates the UI.
-
------
-
-## 🧩 Core Components &amp; Their Interactions
-
-### App Entry &amp; Root UI
-
-`OpenAssistantApp` is the entry point, setting up the main window and environment. `ContentView` acts as the root view, displaying `MainTabView` or a loading indicator based on the state managed by `ContentViewModel`.
-
-### API Service Layer
-
-The `APIService` and its extensions form a dedicated layer for all OpenAI API communications. It handles request creation, authentication, response decoding, and error handling. The `FileUploadService` specializes in handling multipart file uploads.
-
-### Base ViewModels
-
-`BaseViewModel` provides common functionalities like `OpenAIService` access and error handling. `BaseAssistantViewModel` extends this for assistant-specific ViewModels.
-
-### Assistant Management
-
-This feature allows users to perform full CRUD operations on assistants. `AssistantManagerView` and its `ViewModel` handle the list of assistants, while `AssistantDetailView` and its `ViewModel` manage the configuration of individual assistants.
-
-### Chat Functionality
-
-`ChatView` and its `ViewModel` provide the core chat experience. They manage the creation of threads, sending and receiving messages, and polling for run status updates. `MessageStore` ensures that chat history is persisted locally.
-
-### Vector Store &amp; File Management
-
-This feature allows users to manage vector stores and their associated files. `VectorStoreListView` and its `ViewModel` handle the list of vector stores, while `VectorStoreDetailView` provides details and file management options.
-
-### Settings
-
-The `SettingsView` allows users to configure the application, including the OpenAI API key and appearance settings.
-
-### Data Persistence
-
-  - **`MessageStore`**: Persists chat history using `UserDefaults` and JSON serialization.
-  - **`@AppStorage`**: Used for storing the API key and appearance settings.
-
-### Decoupled Communication
-
-`NotificationCenter` is used to broadcast significant events (e.g., `assistantCreated`, `settingsUpdated`), allowing different parts of the application to stay in sync without being tightly coupled.
-
------
-
-## 📊 Visualizing Interactions (`interactions.html`)
-
-The `interactions.html` file provides a visual, interactive diagram of the component interactions within the application, offering a clear overview of the architecture and data flow.
-
------
-
-## 🛠️ Potential Refinements &amp; Considerations
-
-  - **Error Handling**: Enhance error handling with more specific error messages and user-friendly recovery options.
-  - **Unit Testing**: Increase unit test coverage for ViewModels and services to ensure robustness.
-  - **Performance Optimization**: Profile and optimize data fetching and UI rendering for a smoother experience.
-  - **Accessibility**: Improve accessibility by adding labels and hints to all UI elements for better VoiceOver support.
-
------
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-  - Xcode 15 or later
-  - Swift 5.9 or later
-  - An OpenAI API key
-
-### Installation &amp; Setup
-
-1.  **Clone the repository:**
-
-    ```sh
-    git clone [https://github.com/Gunnarguy/OpenAssistant.git](https://github.com/Gunnarguy/OpenAssistant.git)
-    cd OpenAssistant
-    ```
-
-2.  **Open the project in Xcode:**
-
-    ```sh
-    open OpenAssistant.xcodeproj
-    ```
-
-3.  **Set your OpenAI API key:**
-
-      - Run the application.
-      - Navigate to the **Settings** tab.
-      - Enter your OpenAI API key and tap &quot;Save Settings&quot;.
-
-4.  **Build and run** the project on your iOS device or simulator.
-
----
-
-## 🏗️ Architecture
-
-OpenAssistant follows the **MVVM (Model-View-ViewModel)** pattern with:
-
-- **Models**: OpenAI API entities (`Assistant`, `Message`, `VectorStore`)
-- **Views**: SwiftUI components (`ChatView`, `AssistantManagerView`)
-- **ViewModels**: Business logic and state management
-- **Services**: API communication layer
-</code></pre></div>
-
-<p>OpenAssistant/
-├── Main/                   # App entry point &amp; core utilities
-├── APIService/             # OpenAI API integration layer
-├── MVVMs/                  # ViewModels and Views by feature
-│   ├── Bases/              # Base classes for inheritance
-│   ├── Chat/               # Chat interface components
-│   ├── Assistants/         # Assistant management
-│   └── VectorStores/       # File and vector store management
-└── Assets.xcassets/        # App icons and resources</p>
-<div class="codehilite"><pre><span></span><code>**See detailed architecture**: [docs/interactions.html](docs/interactions.html)
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](docs/contributing/CONTRIBUTING.md) for:
-
-- Development setup
-- Code style guidelines  
-- Pull request process
-- Architecture patterns
-
-**Quick start for contributors:**
-1. Fork the repository
-2. Create a feature branch
-3. Follow our MVVM patterns
-4. Submit a pull request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-**TL;DR**: Free to use, modify, and distribute. No warranty provided.
-</code></pre></div>
-
-<p>```</p>
-        </div>
-      </section>
-    
-
-      <section class="docs-section docs-section-missing" id="doc-roadmap">
-        <div class="docs-section-header">
-          <h2>Roadmap</h2>
-          <div class="docs-section-meta">
-            <a href="https://github.com/Gunnarguy/OpenAssistant/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener">View source</a>
-            <span class="docs-status-pill">Missing</span>
-          </div>
-        </div>
-        <div class="docs-section-body">
-          <p><strong>Could not load this document.</strong></p><p>Path: <code>docs/ROADMAP.md</code></p><p>HTTP Error 404: Not Found</p>
-        </div>
-      </section>
-    
-
-      <section class="docs-section docs-section-missing" id="doc-architecture">
-        <div class="docs-section-header">
-          <h2>Architecture</h2>
-          <div class="docs-section-meta">
-            <a href="https://github.com/Gunnarguy/OpenAssistant/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener">View source</a>
-            <span class="docs-status-pill">Missing</span>
-          </div>
-        </div>
-        <div class="docs-section-body">
-          <p><strong>Could not load this document.</strong></p><p>Path: <code>docs/ARCHITECTURE.md</code></p><p>HTTP Error 404: Not Found</p>
-        </div>
-      </section>
-    
-          </article>
-        </div>
-      </div>
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-    <script>
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu = document.querySelector('.nav-menu');
-      if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-          navMenu.classList.toggle('nav-menu-active');
-          navToggle.classList.toggle('nav-toggle-active');
-        });
-      }
-
-      const normalizeMermaid = () => {
-        document.querySelectorAll('pre > code.language-mermaid').forEach((block) => {
-          const parent = block.parentElement;
-          const wrapper = document.createElement('div');
-          wrapper.className = 'mermaid';
-          wrapper.textContent = block.textContent || '';
-          parent.replaceWith(wrapper);
-        });
-        if (window.mermaid) {
-          mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
-          mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-        }
-      };
-
-      document.addEventListener('DOMContentLoaded', normalizeMermaid);
-    </script>
-  </body>
+    </section>
+
+    <footer class="project-footer">
+        <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
+        <p class="sync-time">Generated: 2026-01-18 06:09 UTC</p>
+    </footer>
+</body>
 </html>

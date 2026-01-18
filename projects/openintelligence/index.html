@@ -1,329 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OpenIntelligence Docs - Gunnar Hostetler</title>
-    <meta name="description" content="Snapshot documentation for OpenIntelligence." />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="../../styles.css" />
-    <link rel="icon" type="image/x-icon" href="../../favicon.ico" />
-  </head>
-  <body>
-    <header class="header">
-      <nav class="nav">
-        <div class="nav-brand">
-          <h1><a href="../../index.html">Gunnar Hostetler</a></h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenIntelligence - Project Deep Dive | Gunnar Hostetler</title>
+    <meta name="description" content="On-device RAG engine for iOS with Vision OCR, Apple Intelligence routing, and privacy-first telemetry.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+:root {
+    --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
+    --text-primary: #fff; --text-secondary: #a0a0b0;
+    --accent: #10b981; --accent-light: #10b98199;
+    --border-color: #2a2a3a;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.project-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-color); }
+.back-link { color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+.back-link:hover { color: var(--accent); }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+.nav-links a:hover { color: var(--accent); }
+.project-hero { padding: 8rem 0 4rem; background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary)); text-align: center; }
+.project-hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; }
+.hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.2s; }
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+.btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); }
+.btn-secondary:hover { border-color: var(--accent); }
+.btn-appstore { background: #000; color: white; border: 1px solid #333; }
+.btn-appstore:hover { background: #1a1a1a; }
+.section { padding: 5rem 0; }
+.section-alt { background: var(--bg-secondary); }
+.section h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.feature-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); transition: border-color 0.2s; }
+.feature-card:hover { border-color: var(--accent); }
+.feature-card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+.feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
+.tech-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
+.tech-tag { background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--border-color); }
+.project-footer { padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color); }
+.project-footer a { color: var(--accent); text-decoration: none; }
+.sync-time { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
+@media (max-width: 768px) { .project-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hero-actions { flex-direction: column; align-items: center; } }
+    </style>
+</head>
+<body>
+    <nav class="project-nav">
+        <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="https://github.com/Gunnarguy/RAGMLCore" target="_blank"><i class="fab fa-github"></i></a>
         </div>
-        <ul class="nav-menu">
-          <li><a href="../../index.html#home">Home</a></li>
-          <li><a href="../../index.html#about">About</a></li>
-          <li><a href="../../index.html#skills">Skills</a></li>
-          <li><a href="../../index.html#projects">Projects</a></li>
-          <li><a href="../../index.html#experience">Experience</a></li>
-          <li><a href="../../index.html#contact">Contact</a></li>
-        </ul>
-        <div class="nav-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container">
+            <h1>OpenIntelligence</h1>
+            <p class="hero-subtitle">On-device RAG engine for iOS with Vision OCR, Apple Intelligence routing, and privacy-first telemetry.</p>
+            <div class="hero-actions">
+                <a href="https://github.com/Gunnarguy/RAGMLCore" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                
+            </div>
+            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">Combine</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">Vision</span><span class="tech-tag">CoreML</span><span class="tech-tag">Apple Intelligence</span></div>
         </div>
-      </nav>
     </header>
 
-    <main class="docs-main">
-      <div class="container">
-        <div class="docs-hero">
-          <p class="docs-kicker">Snapshot • Jan 17, 2026</p>
-          <h1>OpenIntelligence Docs</h1>
-          <p>On-device RAG engine with SemanticChunker, hybrid retrieval, and consent-aware SwiftUI.</p>
-          <div class="docs-actions">
-            <a class="btn-link" href="https://github.com/Gunnarguy/OpenIntelligence" target="_blank" rel="noopener">GitHub Repo</a>
-            
-            <a class="btn-link" href="../../index.html#projects">Back to Projects</a>
-          </div>
+    <section id="features" class="section">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="features-grid"><p style="text-align:center;color:var(--text-secondary);">See the README for full feature list.</p></div>
         </div>
+    </section>
 
-        <div class="docs-layout">
-          <aside class="docs-sidebar">
-            <div class="docs-sidebar-title">Sections</div>
-            <ul class="docs-nav">
-              <li><a href="#doc-readme">README</a></li><li><a href="#doc-roadmap">Roadmap</a></li><li><a href="#doc-architecture">Architecture</a></li>
-            </ul>
-            <div class="docs-status">Generated from GitHub on Jan 17, 2026.</div>
-          </aside>
-
-          <article class="md-content">
-            
-      <section class="docs-section" id="doc-readme">
-        <div class="docs-section-header">
-          <h2>README</h2>
-          <div class="docs-section-meta">
-            <a href="https://github.com/Gunnarguy/OpenIntelligence/blob/main/README.md" target="_blank" rel="noopener">View source</a>
-            
-          </div>
-        </div>
-        <div class="docs-section-body">
-          <p>﻿# OpenIntelligence</p>
-<p><a href="https://developer.apple.com/ios/"><img alt="Platform" src="https://img.shields.io/badge/platform-iOS%2026.0%2B-blue.svg" /></a>
-<a href="https://swift.org"><img alt="Swift" src="https://img.shields.io/badge/Swift-6.0-orange.svg" /></a>
-<a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-green.svg" /></a>
-<a href="Docs/reference/ARCHITECTURE.md"><img alt="Architecture" src="https://img.shields.io/badge/architecture-RAG%20%2B%20Actors-purple.svg" /></a></p>
-<p><strong>Privacy-first RAG for iOS.</strong> Import documents, ask questions, and receive grounded answers powered by advanced hybrid search and on-device intelligence.</p>
-<p>OpenIntelligence is a reference implementation of a production-grade <strong>Retrieval-Augmented Generation (RAG)</strong> pipeline on iOS. It demonstrates how to orchestrate local LLMs, vector databases, and hybrid search algorithms (BM25 + Vector + RRF) in a highly concurrent, memory-safe Swift environment.</p>
-<hr />
-<h2 id="key-features">🚀 Key Features</h2>
-<ul>
-<li><strong>Privacy by Design</strong>: All processing happens on-device by default. Optional Private Cloud Compute (PCC) with cryptographic zero-retention.</li>
-<li><strong>Hybrid Search Engine</strong>: Combines <strong>BM25</strong> (keyword) and <strong>Vector Search</strong> (semantic) using <strong>Reciprocal Rank Fusion (RRF)</strong> and <strong>Maximal Marginal Relevance (MMR)</strong> for diverse, high-quality retrieval.</li>
-<li><strong>Multi-Model Support</strong>:</li>
-<li><strong>Apple Intelligence</strong>: Foundation Models with PCC fallback.</li>
-<li><strong>Local GGUF</strong>: Run Llama 3, Mistral, etc., directly on-device via <code>llama.cpp</code>.</li>
-<li><strong>Core ML</strong>: Native Neural Engine acceleration.</li>
-<li><strong>OpenAI</strong>: Optional API integration for macOS/testing.</li>
-<li><strong>Agentic Tooling</strong>: 12+ <code>@Tool</code> decorated functions allowing the LLM to search, summarize, and analyze your library.</li>
-<li><strong>Observability</strong>: Real-time telemetry badges (📱/☁️/🔑), execution timers (TTFT), and vector space visualization.</li>
-</ul>
-<hr />
-<h2 id="architecture">🏗 Architecture</h2>
-<p>OpenIntelligence uses a <strong>Protocol-First</strong> architecture with strict <strong>Actor Isolation</strong> to handle heavy RAG workloads without blocking the main thread.</p>
-<h3 id="data-flow-pipeline">Data Flow Pipeline</h3>
-<div class="codehilite"><pre><span></span><code>graph TD
-    User[User Document] --&gt;|Ingest| DP[DocumentProcessor]
-    DP --&gt;|Extract Text| PDF[PDFKit / Vision]
-    DP --&gt;|Chunk| SC[SemanticChunker]
-    SC --&gt;|400w Chunks| ES[EmbeddingService]
-    ES --&gt;|512-dim Vector| VSR[VectorStoreRouter]
-    VSR --&gt;|Persist| DB[(VectorDatabase)]
-
-    Query[User Query] --&gt;|Expand| QE[QueryEnhancement]
-    QE --&gt;|Embed| ES
-    ES --&gt;|Vector Search| HS[HybridSearchService]
-    DB --&gt;|BM25 Score| HS
-    HS --&gt;|RRF Fusion| RE[RAGEngine Actor]
-    RE --&gt;|MMR Diversification| Context[Final Context]
-    Context --&gt;|Prompt| LLM[LLMService]
-    LLM --&gt;|Stream| UI[Chat Interface]
-</code></pre></div>
-
-<h3 id="core-components">Core Components</h3>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Responsibility</th>
-<th>Implementation Details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong><code>RAGService</code></strong></td>
-<td>Orchestration</td>
-<td><code>@MainActor</code> singleton. Manages state, ingestion, and routing.</td>
-</tr>
-<tr>
-<td><strong><code>RAGEngine</code></strong></td>
-<td>Math &amp; Logic</td>
-<td><code>actor</code>. Offloads BM25 scoring, RRF fusion, and MMR to background threads.</td>
-</tr>
-<tr>
-<td><strong><code>VectorStoreRouter</code></strong></td>
-<td>Storage Access</td>
-<td>Manages container-isolated <code>PersistentVectorDatabase</code> instances.</td>
-</tr>
-<tr>
-<td><strong><code>LLMService</code></strong></td>
-<td>Generation</td>
-<td>Protocol with 6 implementations (Apple FM, GGUF, OpenAI, etc.).</td>
-</tr>
-<tr>
-<td><strong><code>SemanticChunker</code></strong></td>
-<td>Pre-processing</td>
-<td>Intelligent splitting with topic boundary detection and overlap.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="reference-docs">📚 Reference Docs</h2>
-<ul>
-<li>Architecture overview: <a href="Docs/reference/ARCHITECTURE.md"><code>Docs/reference/ARCHITECTURE.md</code></a></li>
-<li>Apple Intelligence deep dive: <a href="Docs/reference/AFW.md"><code>Docs/reference/AFW.md</code></a></li>
-</ul>
-<hr />
-<h2 id="getting-started">🛠 Getting Started</h2>
-<h3 id="prerequisites">Prerequisites</h3>
-<ul>
-<li><strong>Xcode 26+</strong> (Required for Swift 6)</li>
-<li><strong>iOS 26.0+</strong> (Minimum deployment)</li>
-<li><strong>Device</strong>: iPhone 15 Pro or newer recommended for local inference.</li>
-</ul>
-<h3 id="installation">Installation</h3>
-<ol>
-<li><strong>Clone the repository</strong>:</li>
-</ol>
-<p><code>bash
-   git clone https://github.com/yourusername/OpenIntelligence.git
-   cd OpenIntelligence</code></p>
-<ol start="2">
-<li><strong>Fetch git submodules</strong> (required for the local <code>swift-transformers</code> package):</li>
-</ol>
-<p><code>bash
-   git submodule update --init --recursive</code></p>
-<ol start="3">
-<li><strong>Open in Xcode</strong>:</li>
-</ol>
-<p><code>bash
-   open OpenIntelligence.xcodeproj</code></p>
-<ol start="4">
-<li><strong>Build &amp; Run</strong>:
-   - Select the <strong>OpenIntelligence</strong> scheme.
-   - Destination: <strong>iPhone 17 Pro Max</strong> (Simulator) or physical device.
-   - Press <code>Cmd+R</code>.</li>
-</ol>
-<h3 id="troubleshooting">Troubleshooting</h3>
-<p>If you encounter build issues or UI glitches, run the clean script:</p>
-<div class="codehilite"><pre><span></span><code>./clean_and_rebuild.sh
-</code></pre></div>
-
-<hr />
-<h2 id="usage-guide">📖 Usage Guide</h2>
-<h3 id="1-ingestion">1. Ingestion</h3>
-<p>Navigate to the <strong>Documents</strong> tab. Drag and drop PDFs, Markdown, or Text files. The app will:</p>
-<ul>
-<li><strong>Parse</strong> text using PDFKit or Vision OCR.</li>
-<li><strong>Chunk</strong> content into optimized 280-400 word segments with 17% overlap.</li>
-<li><strong>Embed</strong> chunks using on-device models:</li>
-<li><strong>CoreML Sentence</strong> (default): Fast 384-dim sentence embeddings.</li>
-<li><strong>NL Embedding</strong>: Fallback word-averaged embeddings via <code>NLEmbedding</code>.</li>
-<li><strong>Index</strong> for both vector and BM25 keyword search.</li>
-</ul>
-<blockquote>
-<p>💡 <strong>Tip</strong>: Enable high-accuracy mode in Library Settings → Embedding Model for technical or complex documents.</p>
-</blockquote>
-<h3 id="2-chat-retrieval">2. Chat &amp; Retrieval</h3>
-<p>Go to the <strong>Chat</strong> tab. Ask questions about your documents.</p>
-<ul>
-<li><strong>Telemetry Badges</strong>:</li>
-<li>📱 <strong>On-Device</strong>: Inference ran locally.</li>
-<li>☁️ <strong>PCC</strong>: Private Cloud Compute was used.</li>
-<li>🔑 <strong>API</strong>: External API (e.g., OpenAI) was used.</li>
-<li>🔧 <strong>Tools</strong>: Shows how many agent tools were called.</li>
-<li><strong>Citations</strong>: Tap any citation to view the source chunk.</li>
-</ul>
-<h3 id="3-model-configuration">3. Model Configuration</h3>
-<p>In <strong>Settings</strong>, choose your AI backend:</p>
-<ul>
-<li><strong>Apple Intelligence</strong>: Best for privacy and integration.</li>
-<li><strong>GGUF Local</strong>: Download models like Llama 3.2 directly in the app.</li>
-<li><strong>OpenAI</strong>: Requires an API key (stored in Keychain).</li>
-</ul>
-<hr />
-<h2 id="project-structure">📂 Project Structure</h2>
-<div class="codehilite"><pre><span></span><code>OpenIntelligence/
-├── App/                    # Entry point and configuration
-├── Models/                 # Shared data structures (RAGQuery, Chunk)
-├── Services/               # Core business logic
-│   ├── RAG/                # RAGService, RAGEngine, HybridSearch
-│   ├── LLM/                # LLMService implementations
-│   ├── Ingestion/          # DocumentProcessor, SemanticChunker
-│   └── Storage/            # VectorDatabase, ModelRegistry
-├── Views/                  # SwiftUI Views
-│   ├── Chat/               # Chat interface components
-│   ├── Documents/          # Document management
-│   └── Telemetry/          # Debug dashboards
-└── Resources/              # Assets and Localizations
-</code></pre></div>
-
-<hr />
-<h2 id="contributing">🤝 Contributing</h2>
-<p>Contributions are welcome! Please follow these steps:</p>
-<ol>
-<li><strong>Fork &amp; Clone</strong>: Create your own fork of the repository.</li>
-<li><strong>Branch</strong>: Create a feature branch (<code>git checkout -b feature/amazing-feature</code>).</li>
-<li><strong>Implement</strong>: Write clean, Swift 6 compliant code. Prefer <code>actor</code> isolation for heavy tasks.</li>
-<li><strong>Test</strong>:
-   - Run the <strong>Smoke Test</strong> procedure outlined in <a href="smoke_test.md"><code>smoke_test.md</code></a>.
-   - Verify no regressions in the Telemetry Dashboard.</li>
-<li><strong>Pull Request</strong>: Submit a PR with a clear description of changes.</li>
-</ol>
-<h3 id="coding-standards">Coding Standards</h3>
-<ul>
-<li><strong>Concurrency</strong>: Use <code>Task</code>, <code>actor</code>, and <code>await</code>. Avoid GCD (<code>DispatchQueue</code>) unless absolutely necessary.</li>
-<li><strong>Privacy</strong>: Never send user data to the cloud without explicit, logged consent.</li>
-<li><strong>Documentation</strong>: Update <code>Docs/reference/</code> if changing architecture.</li>
-</ul>
-<hr />
-<h2 id="license">📄 License</h2>
-<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
-        </div>
-      </section>
-    
-
-      <section class="docs-section docs-section-missing" id="doc-roadmap">
-        <div class="docs-section-header">
-          <h2>Roadmap</h2>
-          <div class="docs-section-meta">
-            <a href="https://github.com/Gunnarguy/OpenIntelligence/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener">View source</a>
-            <span class="docs-status-pill">Missing</span>
-          </div>
-        </div>
-        <div class="docs-section-body">
-          <p><strong>Could not load this document.</strong></p><p>Path: <code>docs/ROADMAP.md</code></p><p>HTTP Error 404: Not Found</p>
-        </div>
-      </section>
-    
-
-      <section class="docs-section docs-section-missing" id="doc-architecture">
-        <div class="docs-section-header">
-          <h2>Architecture</h2>
-          <div class="docs-section-meta">
-            <a href="https://github.com/Gunnarguy/OpenIntelligence/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener">View source</a>
-            <span class="docs-status-pill">Missing</span>
-          </div>
-        </div>
-        <div class="docs-section-body">
-          <p><strong>Could not load this document.</strong></p><p>Path: <code>docs/ARCHITECTURE.md</code></p><p>HTTP Error 404: Not Found</p>
-        </div>
-      </section>
-    
-          </article>
-        </div>
-      </div>
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-    <script>
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu = document.querySelector('.nav-menu');
-      if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-          navMenu.classList.toggle('nav-menu-active');
-          navToggle.classList.toggle('nav-toggle-active');
-        });
-      }
-
-      const normalizeMermaid = () => {
-        document.querySelectorAll('pre > code.language-mermaid').forEach((block) => {
-          const parent = block.parentElement;
-          const wrapper = document.createElement('div');
-          wrapper.className = 'mermaid';
-          wrapper.textContent = block.textContent || '';
-          parent.replaceWith(wrapper);
-        });
-        if (window.mermaid) {
-          mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
-          mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-        }
-      };
-
-      document.addEventListener('DOMContentLoaded', normalizeMermaid);
-    </script>
-  </body>
+    <footer class="project-footer">
+        <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
+        <p class="sync-time">Generated: 2026-01-18 06:09 UTC</p>
+    </footer>
+</body>
 </html>
