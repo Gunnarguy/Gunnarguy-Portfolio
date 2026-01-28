@@ -29,7 +29,8 @@ All processing happens on-device by default. Your files never leave your iPhone 
 - **Apple Intelligence**: Powered by iOS 26 Foundation Models running on your device's Neural Engine.
 - **CoreML Embeddings**: 384-dimensional sentence embeddings via bundled all-MiniLM-L6-v2 model.
 - **Neural Reranking**: Cross-encoder CoreML model for precision relevance scoring.
-- **Enhanced OCR**: 360 DPI rendering with Metal GPU synchronization for scanned documents.
+- **Enhanced OCR**: 360 DPI rendering with device-tier-aware concurrency (A17-A19 Pro, M-series optimized).
+- **Platform Optimized**: Tuned for iPhone, iPad, and Mac (via iPad compatibility mode).
 - **Office Support**: Native extraction for DOCX, XLSX, PPTX (no external dependencies).
 - **8 Agentic Tools**: `@Tool` functions let the AI search, summarize, count patterns, compare documents, and analyze your library.
 - **Multi-Session Reasoning**: Deep Think mode uses 4-8 parallel reasoning sessions with Self-RAG 2.0 enrichment.
