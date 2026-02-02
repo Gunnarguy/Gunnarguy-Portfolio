@@ -189,12 +189,23 @@
                                     alt="Last Commit" />
                             </div>
                             </div>
-                        <p>The successor to my Assistants-era client, rebuilt as an iOS OpenAI Responses API playground with AppContainer dependency injection, SwiftUI, and MVVM handling Responses streaming events.</p>
+                        <p>OpenResponses is a native iOS client for OpenAI's Responses API. It runs on iPhone, iPad, and Mac (Catalyst) with iOS
+                            17 or later.</p>
                         <ul>
-                            <li><strong>Model routing:</strong> Configurable routes optimized for GPT-5.x (including gpt-5.2 / gpt-5.2-pro / gpt-5.1) plus GPT-4.1/4o mini and <code>computer-use-preview</code>, with cancellable runs, reasoning traces, and per-conversation parameters.</li>
-                            <li><strong>Tool coverage:</strong> Supports Computer Use preview, Code Interpreter (sandboxed Python + container file retrieval; artifact preview for images and common text/data formats), File Search, Web Search, Image Generation, and custom function schemas.</li>
-                            <li><strong>MCP integrations:</strong> Includes starter Model Context Protocol connector configs (e.g., Notion, Gmail, SharePoint, Dropbox) plus remote server templates, all keychain-backed with approval gates.</li>
-                            <li><strong>Streaming telemetry:</strong> <code>OpenAIService</code> streams token counts, tool execution cards, and status chips across iPhone and iPad.</li>
+                            <li><strong>Models:</strong> Supports 15+ models including GPT-5.2, GPT-5.1, GPT-4.1, and o3/o1 series. Reasoning models
+                                display thinking process; effort is configurable.</li>
+                            <li><strong>Tools:</strong> Code Interpreter (sandboxed Python), Web Search (with citations), File Search (vector
+                                stores), and Image Generation (gpt-image-1).</li>
+                            <li><strong>File Handling:</strong> DocumentPicker accepts 43+ formats including PDF, DOCX, XLSX, images, and code.
+                                Automatic conversion for unsupported formats.</li>
+                            <li><strong>MCP Integration:</strong> Connects to Notion, Dropbox, Gmail, etc. via Model Context Protocol. Supports
+                                custom remote servers.</li>
+                            <li><strong>Configuration:</strong> Granular control over parameters (temperature, top_p, reasoning effort). Prompt
+                                Library for saving configs. Request Inspector for raw payloads.</li>
+                            <li><strong>Privacy:</strong> API keys in Keychain. Local JSON conversation storage. No default analytics. No accounts.
+                            </li>
+                            <li><strong>Pricing:</strong> Free app. BYOK (Bring Your Own Key) model paying OpenAI directly.</li>
+                            <li><strong>Audience:</strong> Developers, researchers, and power users needing parameter-level control.</li>
                         </ul>
                         <div class="project-tech">
                             <span>SwiftUI</span>
@@ -233,12 +244,23 @@
                                     alt="Last Commit" />
                             </div>
                             </div>
-                        <p>An on-device RAG engine (RAGMLCore) built for iOS with SemanticChunker, NLEmbedding, and hybrid retrieval fused through RRF + MMR, all wrapped in a consent-aware SwiftUI interface.</p>
+                        <p>OpenIntelligence builds an offline knowledge base on your iPhone. It imports PDFs, images, code, and more, extracting
+                            text via high-res OCR and native parsers.</p>
                         <ul>
-                            <li><strong>Document ingestion:</strong> PDFKit + Vision OCR feed SemanticChunker (400-word target, 75-word overlap) before on-device embeddings via <code>NLEmbedding</code>.</li>
-                            <li><strong>Hybrid retrieval:</strong> Reciprocal Rank Fusion combines cosine similarity and BM25 lexical scores, then MMR diversification assembles citations.</li>
-                            <li><strong>Service graph:</strong> <code>ContainerService</code>, <code>RAGService</code>, <code>HybridSearchService</code>, and <code>PersistentVectorDatabase</code> coordinate ingestion, retrieval, and storage per isolated KnowledgeContainer.</li>
-                            <li><strong>Privacy + consent:</strong> Cloud calls are blocked until Telemetry-backed consent is granted, with per-provider revocation and on-device observability.</li>
+                            <li><strong>Ingestion:</strong> Content is split into logical sections and indexed locally using both keyword and neural
+                                search indexes.</li>
+                            <li><strong>Retrieval Pipeline:</strong> 23-step process with query expansion, hybrid search (text + embeddings), and
+                                neural reranking. Best evidence is prioritized for on-device AI.</li>
+                            <li><strong>Verification Gates:</strong> Four checks per response validate confidence, citations, numbers, and
+                                contradictions. System abstains if checks fail.</li>
+                            <li><strong>Autonomous Tools:</strong> Eight built-in tools handle searching, summarizing, file comparison, pattern
+                                counting, and related content discovery.</li>
+                            <li><strong>Quality Modes:</strong> Standard (2-3s), Deep Think (5-15s), and Maximum (15-60s) using Self-RAG 2.0 with up
+                                to 50 parallel reasoning sessions.</li>
+                            <li><strong>Supported Formats:</strong> PDF (native + scanned), Word, Excel, PowerPoint, Markdown, CSV, RTF, plain text,
+                                16 code languages, images, and A/V transcription.</li>
+                            <li><strong>Privacy:</strong> All 78 services run entirely on-device. No accounts, uploads, or tracking. Zero-retention
+                                Private Cloud Compute activates only when needed.</li>
                         </ul>
                         <div class="project-tech">
                             <span>On-Device RAG</span>
@@ -276,13 +298,28 @@
                                     alt="Last Commit" />
                             </div>
                             </div>
-                        <p>A shipped iOS knowledge base that ingests local documents, builds Pinecone serverless indexes, and streams OpenAI Responses answers with inline citations.</p>
+                        <p>OpenCone is a retrieval-augmented generation (RAG) app for iOS that indexes your documents and answers questions
+                            using AI.</p>
                         <ul>
-                            <li><strong>Processing pipeline:</strong> DocumentPicker + security-scoped bookmarks feed PDFKit/Vision OCR, MIME-aware chunking, and OpenAI embeddings before Pinecone upserts.</li>
-                            <li><strong>Search flow:</strong> User queries are embedded, top-k Pinecone matches stream into Responses model answers with inline citations.</li>
-                            <li><strong>Operational telemetry:</strong> DocumentsView + DocumentDetailsView expose timing charts, token counts, and per-step logs for every ingestion.</li>
-                            <li><strong>SwiftUI system:</strong> MVVM feature modules (Documents, Search, Logs, Settings) share the OCDesignSystem
-                                themes, with Keychain-backed credential storage (including legacy UserDefaults migration) and persistent UI preferences.</li>
+                            <li><strong>Processing pipeline:</strong> Documents import via the system file picker. The app copies files to local
+                                storage with bookmark persistence. Duplicate detection uses SHA256 hashing. Text extraction runs locally—PDFKit for
+                                PDFs, Vision OCR for images. A recursive text splitter creates chunks respecting document structure. Chunks embed
+                                via OpenAI (text-embedding-3-large, 3072 dimensions, batches of 50). Vectors store in your Pinecone index.</li>
+                            <li><strong>Search modes:</strong> Semantic search, Hybrid search (requires dotproduct index), and Reranking (BGE,
+                                Cohere, Pinecone).</li>
+                            <li><strong>Answer generation:</strong> Queries embed, retrieve top-k results, and pass to OpenAI's Responses API.
+                                Answers stream via SSE. Models include GPT-5.2 (400K context), GPT-4o, and o-series. Reasoning models support effort
+                                levels.</li>
+                            <li><strong>AI tools:</strong> Code Interpreter runs Python for charts, calculations, and data analysis. Web Search
+                                retrieves current information beyond your documents. Both are optional toggles.</li>
+                            <li><strong>Supported formats:</strong> PDF, DOCX, DOC, TXT, RTF, HTML, CSS, Markdown, JSON, XML, CSV, TSV, Python,
+                                JavaScript, PNG, JPEG, GIF, TIFF, BMP.</li>
+                            <li><strong>Data handling:</strong> On-device: file access, extraction, chunking, deduplication. Cloud: text chunks to
+                                OpenAI, vectors to Pinecone. No third-party analytics.</li>
+                            <li><strong>Resilience:</strong> Retry logic with exponential backoff. Circuit breaker opens after 2 consecutive
+                                failures. Rate limiting at 100ms. 30-second watchdog for stalled streams. 100MB file limit.</li>
+                            <li><strong>Pricing:</strong> BYOK - bring your own API keys. No subscription.</li>
+                            <li><strong>Audience:</strong> Researchers, legal professionals, developers, knowledge workers.</li>
                         </ul>
                         <div class="project-tech">
                             <span>SwiftUI</span>
@@ -315,12 +352,23 @@
                                     alt="Last Commit" />
                             </div>
                             </div>
-                        <p>The original Assistants API (v2) client that managed assistants, vector stores, and tool stacks before the Responses API shipped; now maintained as a legacy reference.</p>
+                        <p>OpenAssistant is an iOS app that provides access to the OpenAI Assistants API. It allows you to create, configure,
+                            and interact with AI assistants from your iPhone or iPad.</p>
                         <ul>
-                            <li><strong>Assistant lifecycle:</strong> CRUD workflows for models, instructions, tool toggles, and deletion built atop async/await + Combine.</li>
-                            <li><strong>Vector store tooling:</strong> Complete CRUD plus file uploads and store-to-assistant linking.</li>
-                            <li><strong>File + tool handling:</strong> Multipart uploads feed Code Interpreter and File Search with Keychain-backed credential storage.</li>
-                            <li><strong>Threaded chat:</strong> Markdown-rendered chat UI mirrors OpenAI threads with streaming SSE updates and persistent history.</li>
+                            <li><strong>Assistants & Models:</strong> Create assistants using GPT-4o, GPT-4.1, or O-series models. Configure
+                                parameters like temperature, top_p, and reasoning_effort.</li>
+                            <li><strong>Tools:</strong> Supports Code Interpreter for executing Python and File Search for retrieving information
+                                from uploaded documents.</li>
+                            <li><strong>File Handling:</strong> Create vector stores and upload files (PDF, DOCX, CSV, code, images). Configurable
+                                chunk size and overlap for retrieval.</li>
+                            <li><strong>Chat Experience:</strong> Thread-based sessions with 2s polling interval. Markdown rendering. History saves
+                                locally by thread ID.</li>
+                            <li><strong>Data Handling:</strong> API keys and history stored locally on-device. Direct connection to OpenAI—no
+                                third-party servers.</li>
+                            <li><strong>Reliability:</strong> Robust networking with automatic retries (up to 3 attempts) and increasing wait times.
+                            </li>
+                            <li><strong>Pricing:</strong> Free and open-source (MIT). BYOK - pay OpenAI directly.</li>
+                            <li><strong>Audience:</strong> Developers, researchers, and students managing OpenAI assistants on mobile.</li>
                         </ul>
                         <div class="project-tech">
                             <span>SwiftUI</span>
