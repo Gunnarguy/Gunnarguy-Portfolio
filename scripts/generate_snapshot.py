@@ -60,7 +60,7 @@ CONFIG: List[RepoConfig] = [
         owner="Gunnarguy",
         repo="OpenIntelligence",
         ref="main",
-        app_store_url=None,
+        app_store_url="https://apps.apple.com/us/app/openintelligence/id6756559175",
         docs=[
             DocItem("README", "README.md"),
             DocItem("Roadmap", "docs/ROADMAP.md"),
