@@ -1,550 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenIntelligence - Project Deep Dive | Gunnar Hostetler</title>
-    <meta name="description"
-      content="On-device RAG engine for iOS with Vision OCR, Apple Intelligence routing, and privacy-first telemetry." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <meta name="description" content="On-device RAG engine for iOS with Vision OCR, Apple Intelligence routing, and privacy-first telemetry.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-      :root {
-        --bg-primary: #0a0a0f;
-        --bg-secondary: #12121a;
-        --bg-card: #1a1a24;
-        --text-primary: #fff;
-        --text-secondary: #a0a0b0;
-        --accent: #10b981;
-        --accent-light: #10b98199;
-        --border-color: #2a2a3a;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family: "Inter", sans-serif;
-        background: var(--bg-primary);
-        color: var(--text-primary);
-        line-height: 1.6;
-      }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-      .project-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: rgba(10, 10, 15, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 1000;
-        border-bottom: 1px solid var(--border-color);
-      }
-      .back-link {
-        color: var(--text-secondary);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .back-link:hover {
-        color: var(--accent);
-      }
-      .nav-links {
-        display: flex;
-        gap: 1.5rem;
-      }
-      .nav-links a {
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-size: 0.9rem;
-      }
-      .nav-links a:hover {
-        color: var(--accent);
-      }
-      .project-hero {
-        padding: 8rem 0 4rem;
-        background: linear-gradient(
-          180deg,
-          var(--bg-secondary),
-          var(--bg-primary)
-        );
-        text-align: center;
-      }
-      .project-hero h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-        background: linear-gradient(135deg, #fff, var(--accent));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .hero-subtitle {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        max-width: 700px;
-        margin: 0 auto 2rem;
-      }
-      .hero-actions {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1.5rem;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.2s;
-      }
-      .btn-primary {
-        background: var(--accent);
-        color: white;
-      }
-      .btn-primary:hover {
-        filter: brightness(1.1);
-        transform: translateY(-2px);
-      }
-      .btn-secondary {
-        background: var(--bg-card);
-        color: var(--text-primary);
-        border: 1px solid var(--border-color);
-      }
-      .btn-secondary:hover {
-        border-color: var(--accent);
-      }
-      .btn-appstore {
-        background: #000;
-        color: white;
-        border: 1px solid #333;
-      }
-      .btn-appstore:hover {
-        background: #1a1a1a;
-      }
-      .section {
-        padding: 5rem 0;
-      }
-      .section-alt {
-        background: var(--bg-secondary);
-      }
-      .section h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        text-align: center;
-      }
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
-      }
-      .feature-card {
-        background: var(--bg-card);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 1px solid var(--border-color);
-        transition: border-color 0.2s;
-      }
-      .feature-card:hover {
-        border-color: var(--accent);
-      }
-      .feature-card h3 {
-        color: var(--accent);
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
-      }
-      .feature-card p {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-      }
-      .tech-stack {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.75rem;
-        margin-top: 2rem;
-      }
-      .tech-tag {
-        background: var(--bg-card);
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        border: 1px solid var(--border-color);
-      }
-      .project-footer {
-        padding: 2rem 0;
-        text-align: center;
-        border-top: 1px solid var(--border-color);
-      }
-      .project-footer a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      .sync-time {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        margin-top: 0.5rem;
-      }
-      /* Tab Styles */
-      .tabs-container {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      .tabs-nav {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 2rem;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 1rem;
-        flex-wrap: wrap;
-      }
-      .tab-btn {
-        background: transparent;
-        border: none;
-        color: var(--text-secondary);
-        font-size: 1rem;
-        font-weight: 500;
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        transition: all 0.2s;
-      }
-      .tab-btn:hover {
-        color: var(--text-primary);
-        background: var(--bg-card);
-      }
-      .tab-btn.active {
-        color: var(--accent);
-        background: rgba(16, 185, 129, 0.1);
-      }
-      .tab-content {
-        display: none;
-        animation: fadeIn 0.3s ease;
-      }
-      .tab-content.active {
-        display: block;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .content-block h3 {
-        margin-top: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--text-primary);
-        font-size: 1.3rem;
-      }
-      .content-block p {
-        margin-bottom: 1rem;
-        color: var(--text-secondary);
-      }
-      .content-block ul {
-        margin-bottom: 1rem;
-        padding-left: 1.5rem;
-        color: var(--text-secondary);
-      }
-      .content-block li {
-        margin-bottom: 0.5rem;
-      }
-      @media (max-width: 768px) {
-        .project-hero h1 {
-          font-size: 2.5rem;
-        }
-        .nav-links {
-          display: none;
-        }
-        .hero-actions {
-          flex-direction: column;
-          align-items: center;
-        }
-      }
+:root {
+    --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
+    --text-primary: #fff; --text-secondary: #a0a0b0;
+    --accent: #10b981; --accent-light: #10b98199;
+    --border-color: #2a2a3a;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.project-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-color); }
+.back-link { color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+.back-link:hover { color: var(--accent); }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+.nav-links a:hover { color: var(--accent); }
+.project-hero { padding: 8rem 0 4rem; background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary)); text-align: center; }
+.project-hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; }
+.hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.2s; }
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+.btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); }
+.btn-secondary:hover { border-color: var(--accent); }
+.btn-appstore { background: #000; color: white; border: 1px solid #333; }
+.btn-appstore:hover { background: #1a1a1a; }
+.section { padding: 5rem 0; }
+.section-alt { background: var(--bg-secondary); }
+.section h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.feature-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); transition: border-color 0.2s; }
+.feature-card:hover { border-color: var(--accent); }
+.feature-card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+.feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
+.tech-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
+.tech-tag { background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--border-color); }
+.project-footer { padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color); }
+.project-footer a { color: var(--accent); text-decoration: none; }
+.sync-time { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
+@media (max-width: 768px) { .project-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hero-actions { flex-direction: column; align-items: center; } }
     </style>
-  </head>
-
-  <body>
+</head>
+<body>
     <nav class="project-nav">
-      <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
-      <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="https://github.com/Gunnarguy/RAGMLCore" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="https://github.com/Gunnarguy/RAGMLCore" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </nav>
 
     <header class="project-hero">
-      <div class="container">
-        <h1>OpenIntelligence</h1>
-        <p class="hero-subtitle">
-          On-device RAG engine for iOS with Vision OCR, Apple Intelligence
-          routing, and privacy-first telemetry.
-        </p>
-        <div class="hero-actions">
-          <a href="https://github.com/Gunnarguy/RAGMLCore" class="btn btn-primary" target="_blank">
-            <i class="fab fa-github"></i> View on GitHub
-          </a>
-        </div>
-        <div class="tech-stack">
-          <span class="tech-tag">Swift</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span
-            class="tech-tag">Vision</span><span class="tech-tag">CoreML</span><span class="tech-tag">Apple Intelligence</span>
-        </div>
+        <div class="container">
+            <h1>OpenIntelligence</h1>
+            <p class="hero-subtitle">On-device RAG engine for iOS with Vision OCR, Apple Intelligence routing, and privacy-first telemetry.</p>
+            <div class="hero-actions">
+                <a href="https://github.com/Gunnarguy/RAGMLCore" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                
+            </div>
+            <div class="tech-stack"><span class="tech-tag">Swift</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">Vision</span><span class="tech-tag">CoreML</span><span class="tech-tag">Apple Intelligence</span></div>
         </div>
     </header>
 
     <section id="features" class="section">
-      <div class="container">
-        <h2>Deep Dive</h2>
-
-        <div class="tabs-container">
-          <nav class="tabs-nav">
-            <button class="tab-btn" onclick="openTab('layman')">
-              Simple Explanation
-            </button>
-            <button class="tab-btn active" onclick="openTab('balanced')">
-              System Overview
-            </button>
-            <button class="tab-btn" onclick="openTab('technical')">
-              Architecture
-            </button>
-          </nav>
-          
-          <!-- Layman's Tab -->
-          <div id="layman" class="tab-content content-block">
-            <p>
-              OpenIntelligence turns your iPhone into a private research
-              assistant. Drop in any document—PDFs, Word files, spreadsheets,
-              presentations, images, audio recordings, even code—and the app
-              reads everything automatically. It builds a personal knowledge
-              base that lives entirely on your phone.
-            </p>
-            <p>
-              Ask a question in plain English. The app finds the answer and
-              shows you exactly where it came from. Every response includes
-              citations you can tap to see the original source. This isn't AI
-              guessing—it's AI proving its work.
-            </p>
-            <p>
-              The search understands meaning, not just keywords. Ask "what's the
-              deadline?" and it finds passages about "due dates" and "submission
-              windows" too. Four automatic checks verify every answer before you
-              see it—catching errors, contradictions, and unsupported claims.
-            </p>
-            <p>
-              The AI can work independently too. It searches across all your
-              documents, writes summaries, compares files side-by-side, counts
-              how often things appear, and finds related content—all without you
-              directing every step.
-            </p>
-          
-            <h3>Three quality modes let you choose speed versus depth:</h3>
-            <ul>
-              <li>
-                <strong>Standard</strong> — Answers in 2-3 seconds for quick
-                lookups
-              </li>
-              <li>
-                <strong>Deep Think</strong> — Cross-checks multiple sources,
-                takes 5-15 seconds
-              </li>
-              <li>
-                <strong>Maximum</strong> — Runs up to 50 reasoning passes for
-                exhaustive research, 15-60 seconds. Best for legal review,
-                academic research, or document comparison
-              </li>
-            </ul>
-          
-            <p>
-              Privacy is absolute. Your documents never leave your device. No
-              account required. No cloud storage. No tracking. The AI runs
-              directly on your iPhone. If a question exceeds device capacity,
-              Apple's Private Cloud Compute can assist—but your data is
-              processed and immediately discarded.
-            </p>
-            <p>
-              <strong>Supported formats:</strong> PDF (including scanned), Word,
-              Excel, PowerPoint, Markdown, CSV, plain text, images, audio,
-              video, and code files.
-            </p>
-            <p>
-              OpenIntelligence is for students, researchers, lawyers, doctors,
-              or anyone who needs verified answers from their own documents.
-            </p>
-          </div>
-          
-          <!-- Balanced Tab -->
-          <div id="balanced" class="tab-content content-block active">
-            <p>
-              OpenIntelligence builds an offline knowledge base on your iPhone.
-              Import PDFs, Word documents, spreadsheets, presentations, images,
-              audio recordings, or code files—the app extracts text using
-              high-resolution OCR (360 DPI) and native parsers. Content is split
-              into logical sections and indexed locally using both keyword and
-              neural search indexes.
-            </p>
-            <p>
-              When you ask a question, a 23-step retrieval pipeline activates.
-              The system expands your query to find semantically similar content
-              (not just exact keywords), searches using both traditional text
-              matching and AI embeddings, then reranks every result with a
-              dedicated neural model. Redundant passages are filtered out, and
-              the best evidence is packed into context for Apple's on-device AI
-              while placing critical information where the model pays most
-              attention.
-            </p>
-            <p>
-              Four verification gates run on every response: checking retrieval
-              confidence, ensuring claims cite actual sources, validating
-              numbers against documents, and detecting contradictions. If checks
-              fail, the system abstains or re-retrieves.
-            </p>
-            <p>
-              Eight built-in AI tools operate autonomously: searching documents,
-              generating summaries, comparing files, counting patterns, finding
-              exact matches, reporting statistics, discovering related content,
-              and analyzing differences between documents.
-            </p>
-          
-            <h3>Three quality modes:</h3>
-            <ul>
-              <li>
-                <strong>Standard</strong> — 1-3 reasoning sessions, answers in
-                2-3 seconds
-              </li>
-              <li>
-                <strong>Deep Think</strong> — 4-8 sessions with
-                cross-validation, 5-15 seconds
-              </li>
-              <li>
-                <strong>Maximum</strong> — 8-50 parallel sessions for exhaustive
-                research, 15-60 seconds
-              </li>
-            </ul>
-          
-            <p>
-              Deep Think and Maximum use Self-RAG 2.0: multiple reasoning chains
-              that enrich answers by synthesizing evidence from different
-              retrieval paths.
-            </p>
-            <p>
-              <strong>Supported formats:</strong> PDF (native + scanned), Word,
-              Excel, PowerPoint, Markdown, CSV, RTF, plain text, 16 code
-              languages, images, and audio/video transcription.
-            </p>
-            <p>
-              All 78 services run entirely on your device. No accounts, no
-              uploads, no tracking. Private Cloud Compute activates only when
-              needed—with zero data retention.
-            </p>
-          </div>
-          
-          <!-- Technical Tab -->
-          <div id="technical" class="tab-content content-block">
-            <p>
-              OpenIntelligence is a 78-service iOS application implementing a
-              complete 23-step RAG pipeline on-device. It ingests PDFs, DOCX,
-              XLSX, PPTX, Markdown, CSV, RTF, images, audio, video, and 16
-              programming languages using Metal-accelerated Vision OCR at 360
-              DPI and native ZIP-based Office extraction. Text is split via
-              semantic chunking (&le;310 words with 30-word contextual prefixes)
-              and embedded into 384-dimensional vectors using bundled CoreML
-              MiniLM-L6-v2 with BertTokenizer validation (510 token max).
-            </p>
-            <p>
-              Query execution follows 17 retrieval steps: HyDE generates
-              hypothetical answers to bridge vocabulary gaps, Hybrid Search
-              fuses BM25 keyword matching (SQLite FTS5, Porter stemmer) with
-              vector similarity via Reciprocal Rank Fusion (k=60), and
-              Cross-Encoder neural reranking scores every candidate. MMR
-              diversification (&lambda;=0.6) filters redundancy. Parent Document
-              Retrieval expands matches to surrounding paragraphs. Graph Context
-              Packing optimizes the 4,096-token budget using graph theory.
-              Lost-in-Middle mitigation reorders evidence so critical passages
-              appear at context boundaries.
-            </p>
-            <p>
-              Four verification gates execute on every response: Retrieval
-              Confidence validates score thresholds and margins, Evidence
-              Coverage ensures all claims cite retrieved chunks, Numeric Sanity
-              cross-checks extracted numbers against sources, and Contradiction
-              Sweep detects conflicting evidence.
-            </p>
-            <p>
-              Eight agentic @Tool functions enable autonomous operation:
-              SearchDocuments, ListDocuments, GetDocumentSummary, CountPattern,
-              SearchExactPattern, GetCorpusStats, FindRelatedDocuments, and
-              CompareDocuments.
-            </p>
-          
-            <h3>Three quality modes scale reasoning depth:</h3>
-            <ul>
-              <li>
-                <strong>Standard</strong> (1-3 sessions, 2-3 seconds) — Quick
-                factual lookups
-              </li>
-              <li>
-                <strong>Deep Think</strong> (4-8 sessions, 5-15 seconds) —
-                Multi-step analysis with Self-RAG 2.0
-              </li>
-              <li>
-                <strong>Maximum</strong> (8-50 sessions, 15-60 seconds) —
-                Exhaustive research across parallel retrieval chains
-              </li>
-            </ul>
-          
-            <p>
-              Generation uses Apple Foundation Models (~3B parameters, Neural
-              Engine, 30 tokens/sec). Private Cloud Compute activates only when
-              Apple's system requires it—zero data retention. No accounts. No
-              uploads. Complete on-device execution.
-            </p>
-          </div>
+        <div class="container">
+            <h2>Features</h2>
+            <div class="features-grid"><p style="text-align:center;color:var(--text-secondary);">See the README for full feature list.</p></div>
         </div>
-      </div>
     </section>
 
     <footer class="project-footer">
-      <p>
-        Part of the <a href="../../index.html#projects">Open- Series</a> by
-        Gunnar Hostetler
-      </p>
-      <p class="sync-time">Generated: 2026-02-01 06:21 UTC</p>
+        <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
+        <p class="sync-time">Generated: 2026-02-02 05:21 UTC</p>
     </footer>
-    <script>
-        function openTab(tabName) {
-          document.querySelectorAll(".tab-content").forEach((content) => {
-            content.classList.remove("active");
-          });
-          document.querySelectorAll(".tab-btn").forEach((btn) => {
-            btn.classList.remove("active");
-          });
-          document.getElementById(tabName).classList.add("active");
-          // Find the button that called this function - simple approach
-          const buttons = document.getElementsByClassName("tab-btn");
-          for (let btn of buttons) {
-            if (btn.onclick.toString().includes(tabName)) {
-              btn.classList.add("active");
-            }
-          }
-        }
-    </script>
-  </body>
+</body>
 </html>
