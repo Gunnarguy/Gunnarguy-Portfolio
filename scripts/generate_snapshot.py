@@ -42,7 +42,7 @@ CONFIG: List[RepoConfig] = [
     RepoConfig(
         slug="openresponses",
         title="OpenResponses",
-        tagline="OpenAI Responses playground with streaming tools, MCP connectors, and a production SwiftUI client.",
+        tagline="The OpenAI Responses API Playground for iOS.",
         owner="Gunnarguy",
         repo="OpenResponses",
         ref="main",
@@ -56,7 +56,7 @@ CONFIG: List[RepoConfig] = [
     RepoConfig(
         slug="openintelligence",
         title="OpenIntelligence",
-        tagline="On-device RAG engine with SemanticChunker, hybrid retrieval, and consent-aware SwiftUI.",
+        tagline="The first iOS app to run RAG through Apple Intelligence.",
         owner="Gunnarguy",
         repo="OpenIntelligence",
         ref="main",

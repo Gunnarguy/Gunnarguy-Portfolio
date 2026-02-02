@@ -1,109 +1,598 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OpenResponses - Project Deep Dive | Gunnar Hostetler</title>
-    <meta name="description" content="SwiftUI-powered AI assistant for OpenAI Responses API with computer use, code interpreter, and MCP integrations.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description"
+      content="SwiftUI-powered AI assistant for OpenAI Responses API with computer use, code interpreter, and MCP integrations." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-:root {
-    --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
-    --text-primary: #fff; --text-secondary: #a0a0b0;
-    --accent: #6366f1; --accent-light: #6366f199;
-    --border-color: #2a2a3a;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-.project-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-color); }
-.back-link { color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
-.back-link:hover { color: var(--accent); }
-.nav-links { display: flex; gap: 1.5rem; }
-.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
-.nav-links a:hover { color: var(--accent); }
-.project-hero { padding: 8rem 0 4rem; background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary)); text-align: center; }
-.project-hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; }
-.hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.2s; }
-.btn-primary { background: var(--accent); color: white; }
-.btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
-.btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); }
-.btn-secondary:hover { border-color: var(--accent); }
-.btn-appstore { background: #000; color: white; border: 1px solid #333; }
-.btn-appstore:hover { background: #1a1a1a; }
-.section { padding: 5rem 0; }
-.section-alt { background: var(--bg-secondary); }
-.section h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.feature-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); transition: border-color 0.2s; }
-.feature-card:hover { border-color: var(--accent); }
-.feature-card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
-.feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
-.tech-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
-.tech-tag { background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--border-color); }
-.project-footer { padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color); }
-.project-footer a { color: var(--accent); text-decoration: none; }
-.sync-time { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
-@media (max-width: 768px) { .project-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hero-actions { flex-direction: column; align-items: center; } }
+      :root {
+        --bg-primary: #0a0a0f;
+        --bg-secondary: #12121a;
+        --bg-card: #1a1a24;
+        --text-primary: #fff;
+        --text-secondary: #a0a0b0;
+        --accent: #6366f1;
+        --accent-light: #6366f199;
+        --border-color: #2a2a3a;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .project-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .back-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .back-link:hover {
+        color: var(--accent);
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+      .project-hero {
+        padding: 8rem 0 4rem;
+        background: linear-gradient(
+          180deg,
+          var(--bg-secondary),
+          var(--bg-primary)
+        );
+        text-align: center;
+      }
+      .project-hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #fff, var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto 2rem;
+      }
+      .hero-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+      }
+      .btn-primary:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+      }
+      .btn-secondary {
+        background: var(--bg-card);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+      }
+      .btn-secondary:hover {
+        border-color: var(--accent);
+      }
+      .btn-appstore {
+        background: #000;
+        color: white;
+        border: 1px solid #333;
+      }
+      .btn-appstore:hover {
+        background: #1a1a1a;
+      }
+      .section {
+        padding: 5rem 0;
+      }
+      .section-alt {
+        background: var(--bg-secondary);
+      }
+      .section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .feature-card {
+        background: var(--bg-card);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        transition: border-color 0.2s;
+      }
+      .feature-card:hover {
+        border-color: var(--accent);
+      }
+      .feature-card h3 {
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+      .feature-card p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-top: 2rem;
+      }
+      .tech-tag {
+        background: var(--bg-card);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        border: 1px solid var(--border-color);
+      }
+      .project-footer {
+        padding: 2rem 0;
+        text-align: center;
+        border-top: 1px solid var(--border-color);
+      }
+      .project-footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .sync-time {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-top: 0.5rem;
+      }
+      /* Tab Styles */
+      .tabs-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .tabs-nav {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      .tab-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+      .tab-btn:hover {
+        color: var(--text-primary);
+        background: var(--bg-card);
+      }
+      .tab-btn.active {
+        color: var(--accent);
+        background: rgba(99, 102, 241, 0.1);
+      }
+      .tab-content {
+        display: none;
+        animation: fadeIn 0.3s ease;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .content-block h3 {
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        font-size: 1.3rem;
+      }
+      .content-block p {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+      }
+      .content-block ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        color: var(--text-secondary);
+      }
+      .content-block li {
+        margin-bottom: 0.5rem;
+      }
+      @media (max-width: 768px) {
+        .project-hero h1 {
+          font-size: 2.5rem;
+        }
+        .nav-links {
+          display: none;
+        }
+        .hero-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
     <nav class="project-nav">
-        <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
-        <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="https://github.com/Gunnarguy/OpenResponses" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="https://github.com/Gunnarguy/OpenResponses" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </nav>
 
     <header class="project-hero">
-        <div class="container">
-            <h1>OpenResponses</h1>
-            <p class="hero-subtitle">SwiftUI-powered AI assistant for OpenAI Responses API with computer use, code interpreter, and MCP integrations.</p>
-            <div class="hero-actions">
-                <a href="https://github.com/Gunnarguy/OpenResponses" class="btn btn-primary" target="_blank">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
-                
-            </div>
-            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">Apple Intelligence</span><span class="tech-tag">MCP</span><span class="tech-tag">Computer Use</span><span class="tech-tag">Code Interpreter</span><span class="tech-tag">MVVM</span></div>
+      <div class="container">
+        <h1>OpenResponses</h1>
+        <p class="hero-subtitle">
+          The OpenAI Responses API Playground for iOS.
+        </p>
+        <div class="hero-actions">
+          <a href="https://github.com/Gunnarguy/OpenResponses" class="btn btn-primary" target="_blank">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
         </div>
+        <div class="tech-stack">
+          <span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">OpenAI</span><span
+            class="tech-tag">RAG</span><span class="tech-tag">Apple Intelligence</span><span class="tech-tag">MCP</span><span
+            class="tech-tag">Computer Use</span><span class="tech-tag">Code Interpreter</span><span class="tech-tag">MVVM</span>
+        </div>
+      </div>
     </header>
 
     <section id="features" class="section">
-        <div class="container">
-            <h2>Features</h2>
-            <div class="features-grid">
-        <div class="feature-card">
-            <h3>Model Playground:</h3>
-            <p>Live model catalogue with compatibility gating, preset management, and advanced request controls (streaming flags, prompt cache IDs, reasoning toggles).</p>
+      <div class="container">
+        <h2>Deep Dive</h2>
+
+        <div class="tabs-container">
+          <nav class="tabs-nav">
+            <button class="tab-btn" onclick="openTab('layman')">
+              Simple Explanation
+            </button>
+            <button class="tab-btn active" onclick="openTab('balanced')">
+              System Overview
+            </button>
+            <button class="tab-btn" onclick="openTab('technical')">
+              Architecture
+            </button>
+          </nav>
+          
+          <!-- Layman's Tab -->
+          <div id="layman" class="tab-content content-block">
+            <p>
+              OpenResponses connects your iPhone directly to OpenAI's AI. It
+              works with the latest models, including GPT-5.2 and the
+              reasoning-focused o3.
+            </p>
+          
+            <h3>What You Can Do:</h3>
+            <p>
+              Chat with the AI and watch it respond as it thinks. For hard
+              questions, you can see its reasoning steps before it answers.
+            </p>
+            <p>
+              The AI can run code to solve math, analyze numbers, or make
+              charts. It can search the web and show you where it found the
+              information. If you upload documents—reports, manuals, notes—it
+              can answer questions about them. It can also create images from
+              your descriptions.
+            </p>
+          
+            <h3>Connect Your Apps:</h3>
+            <p>
+              Link Notion, Gmail, Google Calendar, Dropbox, SharePoint, or
+              GitHub. The AI can check your calendar, search your workspace, or
+              pull files when you ask it to. You control what it can access.
+            </p>
+          
+            <h3>File Support:</h3>
+            <p>
+              Upload PDFs, Word documents, Excel files, images, code files, and
+              more. The app handles 43 file types.
+            </p>
+          
+            <h3>Settings:</h3>
+            <p>
+              Adjust how the AI responds. Make it more creative or more focused.
+              Set limits on response length. Save your preferred settings for
+              different tasks. An inspector shows exactly what the app sends to
+              OpenAI.
+            </p>
+          
+            <h3>Privacy:</h3>
+            <p>
+              Conversations stay on your device. Your API key is stored in the
+              iPhone's secure Keychain and never sent anywhere except to OpenAI
+              when you chat. There are no accounts to create, no analytics
+              tracking your usage, and no ads.
+            </p>
+          
+            <h3>Pricing:</h3>
+            <p>
+              The app is free to download. You need an OpenAI API key—the app
+              includes instructions for getting one. OpenAI charges based on
+              usage, typically a few cents per conversation.
+            </p>
+          
+            <h3>Who It's For:</h3>
+            <p>
+              People who want direct access to OpenAI's models without going
+              through ChatGPT. Useful for research, document analysis, coding
+              help, and connecting AI to your existing tools.
+            </p>
+          </div>
+          <!-- Balanced Tab -->
+          <div id="balanced" class="tab-content content-block active">
+            <p>
+              OpenResponses is a native iOS client for OpenAI's Responses API.
+              It runs on iPhone, iPad, and Mac (Catalyst) with iOS 17 or later.
+            </p>
+
+            <h3>Models:</h3>
+            <p>
+              The app supports 15+ models: GPT-5.2, GPT-5.2-pro, GPT-5.1,
+              GPT-5-mini, GPT-5-nano, GPT-4.1, GPT-4.1-mini, GPT-4o,
+              GPT-4-turbo, o3, o3-mini, o1-preview, o1-mini, and gpt-3.5-turbo.
+              Reasoning models display their thinking process in an expandable
+              panel. Reasoning effort is configurable as low, medium, or high.
+            </p>
+
+            <h3>Tools:</h3>
+            <ul>
+              <li>
+                <strong>Code Interpreter:</strong> Executes Python in a sandbox.
+                Container options: auto, secure, or GPU. Parses output artifacts
+                including charts, CSVs, and logs.
+              </li>
+              <li>
+                <strong>Web Search:</strong> Returns live results with URL
+                citations. Optional domain filtering limits sources.
+              </li>
+              <li>
+                <strong>File Search:</strong> Queries vector stores you create.
+                Supports multiple stores, adjustable result count (1-50), and
+                ranking thresholds.
+              </li>
+              <li>
+                <strong>Image Generation:</strong> Uses gpt-image-1. Streams
+                previews during generation.
+              </li>
+            </ul>
+
+            <h3>File Handling:</h3>
+            <p>
+              DocumentPicker accepts 43+ formats: PDF, DOCX, XLSX, CSV, JSON,
+              Python, JavaScript, images, and more. Unsupported formats are
+              converted automatically.
+            </p>
+
+            <h3>MCP Integration:</h3>
+            <p>
+              Model Context Protocol client connects to Notion, Dropbox, Gmail,
+              Google Calendar, SharePoint, GitHub, and Slack. Custom remote
+              servers are also supported. OAuth tokens are stored in the
+              Keychain.
+            </p>
+
+            <h3>Configuration:</h3>
+            <p>
+              Settings expose temperature, top_p, max tokens, reasoning effort,
+              tool choice, and parallel tool calls. The Prompt Library saves
+              configurations for reuse. Request Inspector shows raw API
+              payloads.
+            </p>
+
+            <h3>Privacy:</h3>
+            <p>
+              API keys are stored in the iOS Keychain. Conversations persist
+              locally as JSON files. No analytics are collected by default. No
+              accounts are required.
+            </p>
+
+            <h3>Pricing:</h3>
+            <p>
+              The app is free. Users provide their own OpenAI API key and pay
+              OpenAI directly based on token usage.
+            </p>
+
+            <h3>Audience:</h3>
+            <p>
+              Developers testing API integrations, researchers exploring model
+              behavior, and users who need parameter-level control over AI
+              responses.
+            </p>
+          </div>
+          <!-- Technical Tab -->
+          <div id="technical" class="tab-content content-block">
+            <p>
+              OpenResponses is a SwiftUI MVVM client for OpenAI's Responses API,
+              targeting iOS 17+, iPadOS, and macOS Catalyst.
+            </p>
+
+            <h3>Model Coverage:</h3>
+            <p>
+              15+ models supported: GPT-5.2, GPT-5.2-pro, GPT-5.1, GPT-5-mini,
+              GPT-5-nano, GPT-4.1, GPT-4.1-mini, GPT-4o, GPT-4-turbo, GPT-4, o3,
+              o3-mini, o1-preview, o1-mini, gpt-3.5-turbo.
+              ModelCompatibilityService gates tool and parameter availability
+              per model. Reasoning effort (low/medium/high) configurable for
+              o-series and GPT-5 family.
+            </p>
+
+            <h3>Streaming:</h3>
+            <p>
+              AsyncThrowingStream handles 40+ SSE event types: response
+              lifecycle (created, queued, in_progress, completed, failed),
+              content deltas (output_text.delta), tool calls, and reasoning
+              traces. ChatViewModel+Streaming dispatches events to UI state.
+            </p>
+
+            <h3>Tools:</h3>
+            <ul>
+              <li>
+                <strong>Code Interpreter:</strong> Python sandbox with container
+                selection (auto/secure/gpu). file_ids preloading supported.
+                Artifact parsing covers 43 file types (CSV, JSON, logs, Python,
+                documents). ArtifactView renders output with copy functionality.
+              </li>
+              <li>
+                <strong>Web Search:</strong> Domain filtering via
+                allowed_domains array (max 20). URL citations parsed from
+                annotations.
+              </li>
+              <li>
+                <strong>File Search:</strong> Multi-vector-store queries.
+                Parameters: max_num_results (1-50), ranking_options (ranker,
+                score_threshold), chunking_strategy.
+              </li>
+              <li>
+                <strong>Image Generation:</strong> gpt-image-1 tool with
+                streaming partial previews. Output config: size, quality,
+                format.
+              </li>
+            </ul>
+
+            <h3>MCP:</h3>
+            <p>
+              Native MCP client supports OAuth connectors (Dropbox, Gmail,
+              Google Calendar, SharePoint, GitHub, Slack) and remote servers
+              including Notion. Keychain-backed token storage. Approval UI for
+              tool calls.
+            </p>
+
+            <h3>Input Pipeline:</h3>
+            <p>
+              DocumentPicker with 43+ format support. FileConverterService
+              handles OCR via Vision framework, PDF extraction via PDFKit, and
+              format normalization. InputImage supports detail level
+              (auto/low/high) and file_id references.
+            </p>
+
+            <h3>Parameters:</h3>
+            <p>
+              Exposed: temperature, top_p, max_output_tokens,
+              parallel_tool_calls, truncation_strategy, service_tier,
+              reasoning_effort, reasoning_summary, tool_choice, metadata,
+              user_identifier. Prompt object persists configurations.
+            </p>
+
+            <h3>Storage:</h3>
+            <p>
+              ConversationStorageService persists conversations as local JSON.
+              KeychainService stores API keys and OAuth tokens. No remote sync
+              in v1.0.
+            </p>
+
+            <h3>Privacy:</h3>
+            <p>
+              BYOK model. Zero analytics default. No accounts. Credentials
+              Keychain-only.
+            </p>
+
+            <h3>Target:</h3>
+            <p>
+              Developers, engineers, QA teams validating OpenAI API
+              integrations.
+            </p>
+          </div>
         </div>
-        <div class="feature-card">
-            <h3>Observability Surface:</h3>
-            <p>Streaming activity feed, live token usage, “Assistant Thinking” trace viewer, analytics events, and structured logging for every tool event.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Tooling Portfolio:</h3>
-            <p>Computer use with safety approvals, code interpreter with artifact viewer, multi-vector file search, direct file and image attachments, Notion/MCP connectors, custom function calls.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Knowledge Workflows:</h3>
-            <p>Vector store management flows, file conversion pipeline, and document picker enhancements built on `FileConverterService`.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Native Shell:</h3>
-            <p>SwiftUI UI with accessibility support, keyboard shortcuts, share sheets, prompt library, onboarding, and settings tuned for fast iteration.</p>
-        </div></div>
-        </div>
+      </div>
     </section>
 
     <footer class="project-footer">
-        <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
-        <p class="sync-time">Generated: 2026-02-01 06:21 UTC</p>
+      <p>
+        Part of the <a href="../../index.html#projects">Open- Series</a> by
+        Gunnar Hostetler
+      </p>
+      <p class="sync-time">Generated: 2026-02-01 06:21 UTC</p>
     </footer>
-</body>
+    <script>
+        function openTab(tabName) {
+          document.querySelectorAll(".tab-content").forEach((content) => {
+            content.classList.remove("active");
+          });
+          document.querySelectorAll(".tab-btn").forEach((btn) => {
+            btn.classList.remove("active");
+          });
+          document.getElementById(tabName).classList.add("active");
+          // Find the button that called this function - simple approach
+          const buttons = document.getElementsByClassName("tab-btn");
+          for (let btn of buttons) {
+            if (btn.onclick.toString().includes(tabName)) {
+              btn.classList.add("active");
+            }
+          }
+        }
+    </script>
+  </body>
 </html>

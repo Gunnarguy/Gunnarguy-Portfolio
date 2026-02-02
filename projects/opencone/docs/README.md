@@ -7,6 +7,7 @@ On-device Retrieval Augmented Generation (RAG) for iOS, built with SwiftUI, asyn
 ---
 
 ## Table of Contents
+
 - [Overview](#overview)
 - [Feature Highlights](#feature-highlights)
 - [System Architecture](#system-architecture)
@@ -27,7 +28,39 @@ On-device Retrieval Augmented Generation (RAG) for iOS, built with SwiftUI, asyn
 
 ## Overview
 
-OpenCone turns personal documents into a device-native knowledge base. Users ingest PDFs, Office files, plain text, code snippets, or images, and the app extracts text (with OCR support), chunks content, generates OpenAI embeddings, and stores vectors in Pinecone. Searches embed the user's query, retrieve matching chunks from Pinecone, and stream grounded answers back through OpenAI's Responses API. The entire experience is delivered through a custom SwiftUI tab interface that runs on iPhone, iPad, and macOS via Catalyst.
+OpenCone is a retrieval-augmented generation (RAG) app for iOS that indexes your documents and answers questions using AI.
+
+**Processing pipeline:**
+Documents import via the system file picker. The app copies files to local storage with bookmark persistence. Duplicate detection uses SHA256 hashing. Text extraction runs locally—PDFKit for PDFs, Vision OCR for images. A recursive text splitter creates chunks respecting document structure. Chunks embed via OpenAI (text-embedding-3-large, 3072 dimensions, batches of 50). Vectors store in your Pinecone index.
+
+**Search modes:**
+
+1. Semantic search—finds similar content by vector distance
+2. Hybrid search—combines dense vectors with sparse keyword vectors; alpha slider controls the mix
+3. Reranking—applies a second model (BGE, Cohere, or Pinecone) to refine top results
+
+Hybrid search requires a Pinecone index with dotproduct metric.
+
+**Answer generation:**
+Queries embed, retrieve top-k results, and pass to OpenAI's Responses API. Answers stream via SSE. Models include GPT-5.2 (400K context), GPT-4o, and o-series. Reasoning models support effort levels (none through max). Standard models use temperature and top-p.
+
+**AI tools:**
+Code Interpreter runs Python for charts, calculations, and data analysis. Web Search retrieves current information beyond your documents. Both are optional toggles.
+
+**Supported formats:**
+PDF, DOCX, DOC, TXT, RTF, HTML, CSS, Markdown, JSON, XML, CSV, TSV, Python, JavaScript, PNG, JPEG, GIF, TIFF, BMP.
+
+**Data handling:**
+On-device: file access, extraction, chunking, deduplication. Cloud: text chunks to OpenAI, vectors to Pinecone. No third-party analytics.
+
+**Resilience:**
+Retry logic with exponential backoff (3 attempts). Circuit breaker opens after 2 consecutive failures, resets after 20 seconds. Rate limiting at 100ms between requests. 30-second watchdog for stalled streams. 100MB file limit.
+
+**Pricing:**
+BYOK—bring your own API keys. No subscription.
+
+**Audience:**
+Researchers, legal professionals, developers, knowledge workers.
 
 ---
 
@@ -199,24 +232,22 @@ OpenCone ships with a bespoke design system located in `Core/DesignSystem`:
 
 1. **Clone and open**
 
-    ```bash
-    git clone https://github.com/Gunnarguy/OpenCone.git
-    cd OpenCone
-    open OpenCone.xcodeproj
-    ```
+   ```bash
+   git clone https://github.com/Gunnarguy/OpenCone.git
+   cd OpenCone
+   open OpenCone.xcodeproj
+   ```
 
 2. **Configure environment variables (optional but recommended for debugging)**
-
-    - In Xcode, choose **Product > Scheme > Edit Scheme...**
-    - Under **Run > Arguments**, add environment variables:
-        - `OPENAI_API_KEY`
-        - `PINECONE_API_KEY`
-        - `PINECONE_PROJECT_ID`
+   - In Xcode, choose **Product > Scheme > Edit Scheme...**
+   - Under **Run > Arguments**, add environment variables:
+     - `OPENAI_API_KEY`
+     - `PINECONE_API_KEY`
+     - `PINECONE_PROJECT_ID`
 
 3. **Run the app**
-
-    - Select an iOS 17+ simulator or connect a device.
-    - Press **Command+R**. The welcome flow will prompt for any missing credentials and validate them in real time.
+   - Select an iOS 17+ simulator or connect a device.
+   - Press **Command+R**. The welcome flow will prompt for any missing credentials and validate them in real time.
 
 ---
 
