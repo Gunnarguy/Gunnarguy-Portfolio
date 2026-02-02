@@ -84,7 +84,7 @@ def extract_features(content):
 def extract_tech_stack(content):
     """Extract tech/tools mentioned."""
     tech = []
-    keywords = ["SwiftUI", "Swift", "Combine", "OpenAI", "Pinecone", "RAG", "Vision", "CoreML", 
+    keywords = ["SwiftUI", "Swift", "Combine", "OpenAI", "Pinecone", "RAG", "Vision", "CoreML",
                 "Apple Intelligence", "MCP", "Computer Use", "Code Interpreter", "MVVM", "EventKit"]
     for kw in keywords:
         if kw.lower() in content.lower():
@@ -110,11 +110,11 @@ def generate_page(project_id, config):
     readme = read_file_safe(os.path.join(config["repo_path"], "README.md"))
     features = extract_features(readme)
     tech = extract_tech_stack(readme)
-    
+
     # Check for docs folder
     docs_path = os.path.join(config["repo_path"], "docs")
     has_docs = os.path.isdir(docs_path)
-    
+
     feature_cards = ""
     for f in features:
         feature_cards += f'''
@@ -122,15 +122,15 @@ def generate_page(project_id, config):
             <h3>{html.escape(f["name"])}</h3>
             <p>{html.escape(f["description"])}</p>
         </div>'''
-    
+
     tech_tags = "".join(f'<span class="tech-tag">{html.escape(t)}</span>' for t in tech)
-    
+
     app_store_btn = ""
     if config.get("app_store_url"):
         app_store_btn = f'''<a href="{config["app_store_url"]}" class="btn btn-appstore" target="_blank">
             <i class="fab fa-app-store-ios"></i> App Store
         </a>'''
-    
+
     docs_section = ""
     if has_docs:
         docs_section = '''
@@ -140,7 +140,7 @@ def generate_page(project_id, config):
                 <p>Explore the full documentation in the <a href="docs/">docs folder</a>.</p>
             </div>
         </section>'''
-    
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -238,7 +238,7 @@ def copy_docs(project_id, config, output_dir):
     """Copy docs folder if it exists."""
     docs_src = os.path.join(config["repo_path"], "docs")
     docs_dst = os.path.join(output_dir, "docs")
-    
+
     if os.path.isdir(docs_src):
         os.makedirs(docs_dst, exist_ok=True)
         for item in os.listdir(docs_src):
@@ -254,27 +254,27 @@ def copy_docs(project_id, config, output_dir):
 
 def main():
     print("🚀 Generating snapshots for all Open- projects...")
-    
+
     for project_id, config in PROJECTS.items():
         print(f"\n📦 Processing {config['title']}...")
-        
+
         if not os.path.isdir(config["repo_path"]):
             print(f"  ⚠️  Repo not found: {config['repo_path']}")
             continue
-        
+
         output_dir = os.path.join(PORTFOLIO_PATH, "projects", project_id)
         os.makedirs(output_dir, exist_ok=True)
-        
+
         # Generate index.html
         page_html = generate_page(project_id, config)
         with open(os.path.join(output_dir, "index.html"), 'w') as f:
             f.write(page_html)
         print(f"  ✓ Generated index.html")
-        
+
         # Copy docs
         if copy_docs(project_id, config, output_dir):
             print(f"  ✓ Copied docs/")
-        
+
         # Copy README
         readme = read_file_safe(os.path.join(config["repo_path"], "README.md"))
         if readme:
@@ -282,7 +282,7 @@ def main():
             with open(os.path.join(output_dir, "docs", "README.md"), 'w') as f:
                 f.write(readme)
             print(f"  ✓ Copied README.md")
-        
+
         # Generate manifest
         manifest = {
             "project": project_id,
@@ -292,7 +292,7 @@ def main():
         }
         with open(os.path.join(output_dir, "manifest.json"), 'w') as f:
             json.dump(manifest, f, indent=2)
-    
+
     print(f"\n✅ All snapshots generated in {PORTFOLIO_PATH}/projects/")
 
 
