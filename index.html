@@ -1347,36 +1347,35 @@
             // Use hardcoded known data for this repo
             const knownData = KNOWN_REPO_DATA[repoName];
             const types = ['feat', 'fix', 'refactor', 'docs'];
-            const numWeeks = knownData ? knownData.weeksActive : 50;
             const createdDate = knownData ? new Date(knownData.created) : new Date('2024-01-01');
+            const totalCommits = knownData ? knownData.totalCommits : 100;
 
-            // Generate weeks from creation date to now
-            const demoWeeks = [];
-            const now = new Date();
+            // Simple hash function for deterministic "random" based on repo name
+            const hash = (str, seed) => {
+                let h = seed;
+                for (let i = 0; i < str.length; i++) {
+                    h = ((h << 5) - h) + str.charCodeAt(i);
+                    h = h & h;
+                }
+                return Math.abs(h);
+            };
 
-            for (let i = 0; i < numWeeks; i++) {
-                const weekDate = new Date(createdDate);
-                weekDate.setDate(weekDate.getDate() + (i * 7));
-
-                // Stop if we've passed current date
-                if (weekDate > now) break;
-
-                demoWeeks.push({
-                    weekStart: weekDate.toISOString().split('T')[0],
-                    commits: Array(Math.floor(Math.random() * 6) + 1).fill(null).map(() => ({
-                        message: 'Commit',
-                        type: types[Math.floor(Math.random() * types.length)]
-                    })),
-                    types: {
-                        feat: Math.floor(Math.random() * 4),
-                        fix: Math.floor(Math.random() * 3),
-                        refactor: Math.floor(Math.random() * 2),
-                        docs: Math.floor(Math.random() * 2)
-                    }
-                });
-            }
+            // Generate deterministic commits - same every time for this repo
+            const demoWeeks = [{
+                weekStart: createdDate.toISOString().split('T')[0],
+                commits: Array(totalCommits).fill(null).map((_, i) => {
+                    // Deterministic type based on repo name + commit index
+                    const typeIndex = hash(repoName, i) % 4;
+                    return {
+                        message: `Commit ${i + 1}`,
+                        type: types[typeIndex]
+                    };
+                }),
+                types: { feat: 0, fix: 0, refactor: 0, docs: 0 }
+            }];
 
             // Calculate accurate age from known creation date
+            const now = new Date();
             const ageMonths = Math.floor((now - createdDate) / (1000 * 60 * 60 * 24 * 30));
             if (ageMonths >= 12) {
                 const years = Math.floor(ageMonths / 12);
@@ -1386,9 +1385,8 @@
                 ageLabel.textContent = `${ageMonths}m old`;
             }
 
-            const totalCommits = knownData ? knownData.totalCommits : demoWeeks.reduce((sum, w) => sum + w.commits.length, 0);
             stats[0].textContent = totalCommits;
-            stats[1].textContent = demoWeeks.length;
+            stats[1].textContent = knownData ? knownData.weeksActive : 50;
             stats[2].textContent = '1';
 
             // Use known start year
