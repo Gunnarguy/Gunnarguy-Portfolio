@@ -1121,17 +1121,6 @@
         const coreRadius = 12;
         const maxRadius = 138;
 
-        // 1 COMMIT = 1 RING
-        // More commits = more rings = denser tree filling the space
-        const numRings = totalCommits;
-
-        // Ring spacing - all trees fill to maxRadius, but more commits = tighter rings
-        const availableSpace = maxRadius - coreRadius;
-        const RING_SPACING = availableSpace / Math.max(numRings, 1);
-
-        // Stroke width matches spacing so rings touch (no gaps)
-        const strokeWidth = Math.max(RING_SPACING, 0.5);
-
         // Flatten all commits from weekly data into one array with types
         const allCommits = [];
         weeklyData.forEach(week => {
@@ -1143,6 +1132,16 @@
                 });
             });
         });
+
+        // 1 COMMIT = 1 RING - use actual commit count from data
+        const numRings = allCommits.length || totalCommits || 1;
+
+        // Ring spacing - all trees fill to maxRadius completely
+        const availableSpace = maxRadius - coreRadius;
+        const RING_SPACING = availableSpace / numRings;
+
+        // Stroke width matches spacing so rings touch (no gaps)
+        const strokeWidth = RING_SPACING;
 
         // Clear existing
         svg.innerHTML = '';
@@ -1167,9 +1166,10 @@
         bg.setAttribute('fill', '#1a0f0a');
         svg.appendChild(bg);
 
-        // Create 1 ring per commit
+        // Create 1 ring per commit - fills entire circle
         allCommits.forEach((commit, i) => {
-            const radius = coreRadius + (i + 1) * RING_SPACING;
+            // Position ring so they fill from core to edge
+            const radius = coreRadius + (i + 0.5) * RING_SPACING;
             const type = commit.type || 'docs';
 
             const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
