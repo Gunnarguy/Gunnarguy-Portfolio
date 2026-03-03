@@ -4,20 +4,20 @@
 [![Platform](https://img.shields.io/badge/platform-iOS%2026.0%2B-blue.svg)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/Swift-6.0-orange.svg)](https://swift.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Services](https://img.shields.io/badge/services-81-purple.svg)](ARCHITECTURE.md)
+[![Services](https://img.shields.io/badge/services-102-purple.svg)](ARCHITECTURE.md)
 [![How It Works](https://img.shields.io/badge/Deep%20Dive-HOW%20IT%20WORKS-orange.svg)](HOW_IT_WORKS.md)
 
 **Ask your documents anything. Get cited answers.**
 
 ## Table of Contents
 
-1. [What's New in v1.2](#whats-new-in-v12-february-2026)
+1. [What's New in v2.0](#whats-new-in-v20-february-2026)
 2. [What It Does](#what-it-does)
 3. [Supported File Formats](#supported-file-formats)
 4. [Core Technology](#core-technology)
 5. [Apple's On-Device Language Model](#apples-on-device-language-model)
 6. [Quality Modes](#quality-modes)
-7. [25-Step Pipeline](#25-step-pipeline)
+7. [29-Step Pipeline](#29-step-pipeline)
 8. [Verification Gates](#verification-gates-anti-hallucination)
 9. [Architecture](#architecture)
 10. [Documentation](#documentation)
@@ -32,7 +32,7 @@ OpenIntelligence is a document question-answering app powered by Apple Intellige
 
 ---
 
-## What's New in v1.2 (February 2026)
+## What's New in v2.0 (March 2026)
 
 ### Device-Optimized Performance Engine
 
@@ -45,8 +45,10 @@ Every pipeline stage is now hardware-aware — tuned to the specific Apple Silic
 - **Concurrent GPU rendering** — CIFilter preprocessing runs in parallel (was serialized)
 - **5-candidate OCR** — Evaluates more transcription alternatives for higher accuracy on ambiguous text
 - **Font-encoded PDF detection** — Automatic PHASE -1 validation detects font substitution ciphers (Kia, Hyundai manuals) that trick every quality check, preventing 93% content loss
+- **RAG-grounded response transforms** — AI Hub toolbar with 5 document-aware transforms (Key Facts, Step-by-Step, Plain English, What's Missing?, Illustrate) powered by actual source chunks
+- **Image Playground LLM concepts** — On-device LLM translates domain jargon into visual scene descriptions instead of raw noun extraction
 
-### Rich Markdown Response Rendering (v1.2)
+### Rich Markdown Response Rendering (v2.0)
 
 Responses now render with full markdown formatting — headers, bullets, bold text, code blocks, and block quotes — instead of a single unformatted paragraph.
 
@@ -55,9 +57,18 @@ Responses now render with full markdown formatting — headers, bullets, bold te
 - **Formatting-aware prompts** — All LLM synthesis prompts instruct the model to use `### headers`, `- bullets`, and `**bold**` for key terms
 - **Pipeline preservation** — 7 response-cleaning functions audited; markdown is no longer stripped from responses
 
-### MMR Stability Fix (v1.2)
+### MMR Stability Fix (v2.0)
 
 - Fixed crash in `RAGEngine.applyMMR()` when GPU diversity matrix returned malformed results for edge-case embeddings (dimension 0)
+
+### True Parallel Hybrid Search (v2.0)
+
+Hybrid search rewritten from "FTS5 injection into vector pool" to **two fully independent searches merged via Reciprocal Rank Fusion**:
+
+- **Parallel execution** — Vector + FTS5 chunk search run concurrently via `async let` (~40% faster)
+- **Native SQLite `bm25()` scoring** — Replaces in-memory BM25 scorer; eliminates local IDF bias from small candidate pools
+- **FTS5-only matches visible** — Chunks found only by keyword search (no semantic similarity) now get fair RRF scores
+- **True RRF fusion** — Two independently ranked lists merged via UNION semantics
 
 ### Motherboard HUD — X-Ray Your iPhone (v1.1)
 
@@ -81,9 +92,25 @@ Near-perfect needle-in-haystack accuracy across any document type:
 - Year/integer exemption in numeric verification
 - Proportional hit-rate weighting in RRF fusion
 
-### Swift 6 Concurrency Compliance (v1.2)
+### Swift 6 Concurrency Compliance (v2.0)
 
 - 11 files updated with strict concurrency annotations — zero runtime change, eliminates all Swift 6 language mode warnings
+
+### Pipeline Reliability Hardening (v2.0)
+
+11 targeted fixes across the compression → generation → fallback chain that eliminated 0-token responses caused by rate-limited Apple FM calls cascading through the pipeline:
+
+- **Compression cap** — Maximum 5 chunks to compression, fresh session per chunk, per-chunk error isolation with 12s time budget
+- **Generation hardening** — Empty LLM output routes to reliability fallback instead of throwing; 2s rate-limit retry with typed `.rateLimited`/`.concurrentRequests` error cases
+- **Fallback quality** — Extractive Path B rewritten: 6 chunks × 500 chars with section titles and source names (was 3 × 240 chars, no metadata)
+
+### Memory-Safe Large PDF Ingestion (v2.0)
+
+Prevents OOM watchdog kills during ingestion of 500+ page PDFs:
+
+- **Results release** — Parsed page data freed before image analysis begins (~100-200MB reclaimed)
+- **Batch 20 → 5** — Peak CIImage memory per batch drops from ~200MB to ~50MB
+- **144 DPI image understanding** — Full-page renders for Vision classification use 2× scale (was 5×/360 DPI)
 
 ---
 
@@ -236,9 +263,9 @@ Deep Think and Maximum modes use **Self-RAG 2.0**: multiple reasoning sessions t
 
 ---
 
-## 25-Step Pipeline
+## 29-Step Pipeline
 
-OpenIntelligence processes every query through 25 distinct steps:
+OpenIntelligence processes every query through 29 distinct steps:
 
 ```
 INGESTION (6 steps):
@@ -249,7 +276,7 @@ INGESTION (6 steps):
   5. Embed         → CoreML MiniLM-L6-v2 (384-dim vectors)
   6. Store         → HNSW index + SQLite FTS5 + EntityIndex
 
-RETRIEVAL & GENERATION (17 steps):
+RETRIEVAL & GENERATION (21 steps):
   Step 0    Corpus Analysis        → Build vocabulary cache per container
   Step 1    Query Understanding    → Pronoun resolution, NER extraction
   Step 1.5  Query Expansion        → Corpus-aware synonym expansion
@@ -299,23 +326,23 @@ If any gate fails, the system either abstains or triggers iterative retrieval.
 
 ## Architecture
 
-**81 services** organized into **11 categories**:
+**102 services** organized into **11 categories**:
 
 | Category           | Count | Key Services                                                        |
 | ------------------ | ----- | ------------------------------------------------------------------- |
-| **RAG Pipeline**   | 14    | RAGService, RAGEngine, VerifiedGateService, AutoTuneService         |
-| **Query**          | 8     | QueryEnhancementService, HyDEService, ContextualCompressionService  |
-| **Document**       | 20    | IntelligentDocumentProcessor, StructuredDocumentParser, VisionOCR   |
-| **Embedding**      | 2     | EmbeddingService, CoreMLSentenceEmbeddingProvider                   |
+| **RAG Pipeline**   | 14    | RAGService, RAGEngine, VerificationGateService, AutoTuneService     |
+| **Query**          | 9     | QueryEnhancementService, HyDEService, ContextualCompressionService  |
+| **Document**       | 24    | IntelligentDocumentProcessor, StructuredDocumentParser, VisionOCR   |
+| **Embedding**      | 7     | EmbeddingService, CoreMLSentenceEmbeddingProvider                   |
 | **Storage**        | 3     | FullTextStorageService, SQLiteFullTextService                       |
-| **VectorStore**    | 4     | VectorDatabase, BNNSVectorDatabase, VectorStoreRouter               |
-| **LLM**            | 7     | AppleFoundationLLMService, OnDeviceAnalysisService                  |
-| **Agentic**        | 3     | AgenticOrchestrator, ConversationMemoryService, WritingToolsService |
-| **Infrastructure** | 18    | ContainerService, GPUComputeService, HardwareTelemetryState         |
+| **VectorStore**    | 5     | VectorDatabase, BNNSVectorDatabase, VectorStoreRouter               |
+| **LLM**            | 8     | AppleFoundationLLMService, OnDeviceAnalysisService                  |
+| **Agentic**        | 7     | AgenticOrchestrator, ConversationMemoryService, WritingToolsService |
+| **Infrastructure** | 22    | ContainerService, GPUComputeService, HardwareTelemetryState         |
 | **Rendering**      | 1     | MarkdownRenderer (block-level parser + inline normalizer)           |
-| **Billing**        | 1     | StoreKitBillingService                                              |
+| **Billing**        | 2     | StoreKitBillingService, EntitlementStore                            |
 
-**Full inventory**: See [ARCHITECTURE.md](ARCHITECTURE.md) → "Complete Service Inventory (81 Services)"
+**Full inventory**: See [ARCHITECTURE.md](ARCHITECTURE.md) → "Complete Service Inventory (102 Services)"
 
 ### Data Flow
 
@@ -445,7 +472,7 @@ OpenIntelligence/
 │   └── Protocols/              # Service protocols
 ├── Features/
 │   ├── Billing/                # StoreKit subscription UI
-│   ├── Camera/                 # Vision camera overlay (v2.0)
+│   ├── Camera/                 # Vision camera overlay (v3.0)
 │   ├── Chat/                   # Chat interface, message bubbles
 │   ├── Database/               # Container management UI
 │   ├── Diagnostics/            # Debug dashboards
@@ -472,12 +499,50 @@ OpenIntelligence/
 
 ---
 
+## Roadmap — Apple Intelligence Gap Closure
+
+We've audited every Apple Intelligence framework from WWDC 2024 and 2025 against the codebase. **23 framework opportunities** identified — **14 shipped** in v2.0, **9 remaining**:
+
+### v2.1 — Next Release (6 items → 4 done)
+
+| Framework          | Status       | What It Adds                                                                       |
+| ------------------ | ------------ | ---------------------------------------------------------------------------------- |
+| **Guardrails API** | ✅ Shipped   | Content safety via `.permissiveContentTransformations` in `ImagePlaygroundService` |
+| **CoreSpotlight**  | ✅ Shipped   | Index documents for Spotlight/Siri semantic search via `SpotlightIndexService`     |
+| **SpeechAnalyzer** | ✅ Shipped   | Modern async actor-based speech transcription via `SpeechAnalyzerService`          |
+| **Translation**    | ✅ Shipped   | `TranslationService` implemented (not yet wired to UI)                             |
+| **Liquid Glass**   | ⬜ Remaining | iOS 26 design system — glass material for toolbars, navigation, and custom views   |
+| **UseCase/Locale** | ⬜ Partial   | `supportsLocale()` active in `LLMService`; `UseCase` not yet started               |
+
+### v2.2 — Following Release (8 items → 6 done)
+
+| Framework                 | Status       | What It Adds                                                         |
+| ------------------------- | ------------ | -------------------------------------------------------------------- |
+| **Visual Intelligence**   | ✅ Shipped   | App Intents for camera/screenshot search (system-discoverable)       |
+| **Adapter Training**      | ✅ Shipped   | `AdapterManager` with LoRA adapter lifecycle (not yet wired)         |
+| **Prompt Evaluation**     | ✅ Shipped   | `PromptEvaluationService` for prompt quality scoring (not yet wired) |
+| **Metal 4**               | ⬜ Remaining | New GPU API with ML inference passes and unified compute encoders    |
+| **BNNS Graph**            | ✅ Shipped   | `BNNSGraphService` for neural network operations (not yet wired)     |
+| **Image Playground**      | ✅ Shipped   | Programmatic image generation via `ImagePlaygroundService`           |
+| **NLGazetteer**           | ✅ Shipped   | Custom entity training via `GazetteerService`                        |
+| **Lens Smudge Detection** | ⬜ Remaining | Camera quality check before OCR capture                              |
+
+### v3.0 — Strategic (9 items → 4 done)
+
+✅ **Shipped**: BackgroundTasks (`BackgroundTaskService`), TipKit (`AppTips`), Smart Reply (`SmartReplyService`), NSUserActivity (Handoff in `DocumentLibraryView`/`ChatScreen`)
+
+⬜ **Remaining**: `@Observable` migration, WidgetKit, SwiftData, Genmoji, DataScannerViewController + more.
+
+> **Full details**: See [ROADMAP.md](ROADMAP.md) → "Phase 2.15 — Apple Intelligence Gap Closure"
+
+---
+
 ## Documentation
 
 | Document                                            | Description                                                     |
 | --------------------------------------------------- | --------------------------------------------------------------- |
 | **[HOW_IT_WORKS.md](HOW_IT_WORKS.md)**              | 🔥 Plain-English deep dive: 5 gears, token budget, orchestrator |
-| [ARCHITECTURE.md](ARCHITECTURE.md)                  | Complete technical architecture, 81-service inventory           |
+| [ARCHITECTURE.md](ARCHITECTURE.md)                  | Complete technical architecture, 102-service inventory          |
 | [RAG_TECHNICAL.md](Docs/reference/RAG_TECHNICAL.md) | Technical specs: HyDE, math, formulas, & algorithms             |
 | [APPLE_MODELS.md](Docs/reference/APPLE_MODELS.md)   | Apple Intelligence specs: Context limits & token economics      |
 | [ROADMAP.md](ROADMAP.md)                            | Feature roadmap and version history                             |
