@@ -1,796 +1,1325 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
 
-            gtag('config', 'G-YZ95J7YFJV');
-        </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        gtag("config", "G-YZ95J7YFJV");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gunnar Hostetler - Operations & AI Specialist</title>
-    <meta name="description" content="Healthcare Operations Specialist and AI Developer. Building the Open- series: OpenAssistant, OpenCone, OpenResponses, and OpenIntelligence.">
-    <meta name="keywords" content="Healthcare Operations, AI Developer, Swift, SwiftUI, AI Integration, OpenAI, Pinecone, RAG, Apple Intelligence, Local LLMs">
-    <meta name="author" content="Gunnar Hostetler">
+    <meta name="description"
+        content="Healthcare Operations Specialist and AI Developer. Building the Open- series: OpenAssistant, OpenCone, OpenResponses, OpenIntelligence, and LinkedOut. Plus PlaudBlender — a voice-to-knowledge-graph pipeline." />
+    <meta name="keywords"
+        content="Healthcare Operations, AI Developer, Swift, SwiftUI, AI Integration, OpenAI, Pinecone, RAG, Apple Intelligence, Local LLMs, Gemini, FastAPI, Python, MCP, Qdrant" />
+    <meta name="author" content="Gunnar Hostetler" />
 
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Gunnar Hostetler - Operations & AI Specialist">
-    <meta property="og:description" content="Healthcare Operations Specialist and AI Developer building the Open- series. Specializing in RAG, MCP, and on-device AI.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gunnarguy.github.io/Gunnarguy-Portfolio/">
-    <meta property="og:image" content="Private & Shared/Gunnar Hostetler Pro Portfolio 19449a74d54f802a9df5da10eb016ce1/IMG_7270.jpg">
+    <meta property="og:title" content="Gunnar Hostetler - Operations & AI Specialist" />
+    <meta property="og:description"
+        content="Healthcare Operations Specialist and AI Developer building the Open- series and PlaudBlender. Specializing in RAG, MCP, on-device AI, and LLM-powered workflows." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gunnarguy.github.io/Gunnarguy-Portfolio/" />
+    <meta property="og:image"
+        content="Private & Shared/Gunnar Hostetler Pro Portfolio 19449a74d54f802a9df5da10eb016ce1/IMG_7270.jpg" />
 
     <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Gunnar Hostetler - iOS Engineer & AI Specialist">
-    <meta name="twitter:description" content="iOS Engineer building the Open- suite: OpenAssistant, OpenCone, OpenResponses, and OpenIntelligence. Specializing in RAG, MCP, and on-device AI.">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gunnar Hostetler - iOS Engineer & AI Specialist" />
+    <meta name="twitter:description"
+        content="iOS Engineer building the Open- suite: OpenAssistant, OpenCone, OpenResponses, OpenIntelligence, and LinkedOut. Plus PlaudBlender. Specializing in RAG, MCP, and on-device AI." />
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    </head>
+
 <body>
     <!-- Navigation Header -->
     <header class="header">
-        <nav class="nav">
-            <div class="nav-brand">
-                <h1>Gunnar Hostetler</h1>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <!-- Mobile menu toggle -->
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
+    <nav class="nav">
+        <div class="nav-brand">
+            <h1>Gunnar Hostetler</h1>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <!-- Mobile menu toggle -->
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Gunnar Hostetler</h1>
-                <p>I have 4 iOS apps on the App Store because it's fun. My lastest app is an on-device Apple Intelligence RAG engine
-                    that runs completely offline.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-            </div>
+    <div class="container">
+        <div class="hero-content">
+            <h1>Gunnar Hostetler</h1>
+        <p>
+            I have 4 iOS apps on the App Store because it's fun. My latest app
+            is an on-device Apple Intelligence RAG engine that runs completely
+            offline. I also build Python tools and full-stack projects on the
+            side.
+        </p>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+        </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I wanted an iOS client for OpenAI's Assistants API. OpenAI never made one. So I figured it out and built
-                        <strong>OpenAssistant</strong>.</p>
-                    <p>Then I wanted to do RAG with Pinecone on my phone. So I built <strong>OpenCone</strong>.</p>
-                    <p>Then Assistants got deprecated and I needed the new Responses API with all the tools. So I built
-                        <strong>OpenResponses</strong>. It passed App Review on first submission.</p>
-                    <p>Then I thought "why not make my own RAG engine?" because I've found myself obsessed with how these systems work, and
-                        what AI can help me build (based off of my other 3 apps). Things have gotten much easier over time, especially with
-                        the agentic era. I decided to follow my curiosity, and
-                        <strong>OpenIntelligence</strong> was born - hybrid search, on-device embeddings, Apple Intelligence. It's the most
-                        complex thing I've built and I'm genuinely
-                        fascinated by it. <em>It runs IN AIRPLANE MODE!!</em>
-                    </p>
-                    <p>I work full-time as a medical device specialist at the VA in Palo Alto. I build at night and on weekends because this
-                        is what my brain wants to do. I've figured things out this far, and I trust I'll keep figuring them out as I go.</p>
-                </div>
-                <div class="about-image">
-                    <img src="Private & Shared/Gunnar Hostetler Pro Portfolio 19449a74d54f802a9df5da10eb016ce1/IMG_7270.jpg" alt="Gunnar Hostetler" />
-                </div>
+    <div class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+            <p>
+                I wanted an iOS client for OpenAI's Assistants API. OpenAI never
+                made one. So I figured it out and built
+                <strong>OpenAssistant</strong>.
+            </p>
+            <p>
+                Then I wanted to do RAG with Pinecone on my phone. So I built
+                <strong>OpenCone</strong>.
+            </p>
+            <p>
+                Then Assistants got deprecated and I needed the new Responses API
+                with all the tools. So I built <strong>OpenResponses</strong>. It
+                passed App Review on first submission.
+            </p>
+            <p>
+                Then I thought "why not make my own RAG engine?" because I've
+                found myself obsessed with how these systems work, and what AI can
+                help me build (based off of my other 3 apps). Things have gotten
+                much easier over time, especially with the agentic era. I decided
+                to follow my curiosity, and <strong>OpenIntelligence</strong> was
+                born - 102 services, 29-step pipeline, on-device embeddings, Apple
+                Intelligence. It's the most complex thing I've built and I'm
+                genuinely fascinated by it. <em>It runs IN AIRPLANE MODE!!</em>
+            </p>
+            <p>
+                Then I wanted to find my next job using AI. So I built
+                <strong>LinkedOut</strong> — Tinder for jobs. It pulls listings
+                from 5 remote job boards, scores them with LLMs, and lets you
+                swipe through the best matches on iOS.
+            </p>
+            <p>
+                On the Python side, I built <strong>PlaudBlender</strong> to turn
+                my daily Plaud voice recordings into a searchable knowledge graph
+                with Gemini AI, Qdrant vector search, and an 11-tool MCP server.
+            </p>
+            <p>
+                I work full-time as a medical device specialist at the VA in Palo
+                Alto. I build at night and on weekends because this is what my
+                brain wants to do. I've figured things out this far, and I trust
+                I'll keep figuring them out as I go.
+            </p>
             </div>
-        </div>
+            <div class="about-image">
+            <img src="Private & Shared/Gunnar Hostetler Pro Portfolio 19449a74d54f802a9df5da10eb016ce1/IMG_7270.jpg"
+                alt="Gunnar Hostetler" />
+            </div>
+            </div>
+            </div>
     </section>
 
     <!-- Skills Section -->
     <section id="skills" class="skills">
-        <div class="container">
-            <h2>How I Build</h2>
-            <p class="skills-intro">I see a problem, I figure out how it should work, and I don't stop until it's on the App Store.
-                The code comes from models and the vision is mine.</p>
+    <div class="container">
+        <h2>How I Build</h2>
+        <p class="skills-intro">
+            I see a problem, I figure out how it should work, and I don't stop
+            until it's on the App Store. The code comes from models and the vision
+            is mine.
+        </p>
 
-            <!-- Activity Heat Map -->
-            <div class="activity-heatmap-section">
-                <h3>Build Activity</h3>
-                <div class="heatmap-container">
-                    <div class="heatmap-months" id="heatmap-months"></div>
-                    <div class="heatmap-wrapper">
-                        <div class="heatmap-days">
-                            <span>Mon</span>
-                            <span>Wed</span>
-                            <span>Fri</span>
-                        </div>
-                        <div class="heatmap-grid" id="heatmap-grid"></div>
+        <!-- Activity Heat Map -->
+        <div class="activity-heatmap-section">
+            <h3>Build Activity</h3>
+            <div class="heatmap-container">
+                <div class="heatmap-months" id="heatmap-months"></div>
+                <div class="heatmap-wrapper">
+                    <div class="heatmap-days">
+                        <span>Mon</span>
+                        <span>Wed</span>
+                        <span>Fri</span>
                     </div>
-                    <div class="heatmap-legend">
-                        <span>Less</span>
-                        <div class="legend-squares">
-                            <div class="legend-square" data-level="0"></div>
-                            <div class="legend-square" data-level="1"></div>
-                            <div class="legend-square" data-level="2"></div>
-                            <div class="legend-square" data-level="3"></div>
-                            <div class="legend-square" data-level="4"></div>
-                        </div>
-                        <span>More</span>
+                    <div class="heatmap-grid" id="heatmap-grid"></div>
+                </div>
+                <div class="heatmap-legend">
+                    <span>Less</span>
+                    <div class="legend-squares">
+                        <div class="legend-square" data-level="0"></div>
+                        <div class="legend-square" data-level="1"></div>
+                        <div class="legend-square" data-level="2"></div>
+                        <div class="legend-square" data-level="3"></div>
+                        <div class="legend-square" data-level="4"></div>
                     </div>
-                </div>
-                <div class="heatmap-stats" id="heatmap-stats"></div>
-            </div>
-
-            <!-- Activity Stats Badges -->
-            <div class="activity-stats">
-                <div class="stat-card">
-                    <img src="https://img.shields.io/github/commit-activity/m/Gunnarguy/OpenResponses?style=for-the-badge&label=OpenResponses&color=00b8d4"
-                        alt="OpenResponses commits" />
-                </div>
-                <div class="stat-card">
-                    <img src="https://img.shields.io/github/commit-activity/m/Gunnarguy/OpenIntelligence?style=for-the-badge&label=OpenIntelligence&color=00b8d4"
-                        alt="OpenIntelligence commits" />
-                </div>
-                <div class="stat-card">
-                    <img src="https://img.shields.io/github/commit-activity/m/Gunnarguy/OpenCone?style=for-the-badge&label=OpenCone&color=00b8d4"
-                        alt="OpenCone commits" />
-                </div>
-                <div class="stat-card">
-                    <img src="https://img.shields.io/github/commit-activity/m/Gunnarguy/OpenAssistant?style=for-the-badge&label=OpenAssistant&color=00b8d4"
-                        alt="OpenAssistant commits" />
+                    <span>More</span>
                 </div>
             </div>
-<div class="skills-grid">
-    <!-- What I Own -->
-    <div class="skill-category skill-category-primary">
-        <h3>What I Own</h3>
+            <div class="heatmap-stats" id="heatmap-stats"></div>
+        </div>
+
+        <!-- Activity Stats Badges -->
+        <div class="activity-stats">
+            <div class="stat-card">
+            <img src="https://img.shields.io/github/commit-activity/m/Gunnarguy/LinkedOut?style=for-the-badge&label=LinkedOut&color=00b8d4"
+                alt="LinkedOut commits" />
+            </div>
+            <div class="stat-card">
+            <img src="https://img.shields.io/github/commit-activity/m/Gunnarguy/OpenResponses?style=for-the-badge&label=OpenResponses&color=00b8d4"
+                alt="OpenResponses commits" />
+            </div>
+            <div class="stat-card">
+            <img src="https://img.shields.io/github/commit-activity/m/Gunnarguy/OpenIntelligence?style=for-the-badge&label=OpenIntelligence&color=00b8d4"
+                alt="OpenIntelligence commits" />
+            </div>
+            <div class="stat-card">
+            <img src="https://img.shields.io/github/commit-activity/m/Gunnarguy/PlaudBlender?style=for-the-badge&label=PlaudBlender&color=00b8d4"
+                alt="PlaudBlender commits" />
+            </div>
+            <div class="stat-card">
+                <img src="https://img.shields.io/github/commit-activity/m/Gunnarguy/OpenCone?style=for-the-badge&label=OpenCone&color=00b8d4"
+                    alt="OpenCone commits" />
+            </div>
+            <div class="stat-card">
+                <img src="https://img.shields.io/github/commit-activity/m/Gunnarguy/OpenAssistant?style=for-the-badge&label=OpenAssistant&color=00b8d4"
+                    alt="OpenAssistant commits" />
+            </div>
+            </div>
+            <div class="skills-grid">
+                <!-- What I Own -->
+                <div class="skill-category skill-category-primary">
+                    <h3>What I Own</h3>
                     <div class="skill-items">
                         <span class="skill-tag skill-tag-primary">Product Vision</span>
-                        <span class="skill-tag skill-tag-primary">System Architecture</span>
-                        <span class="skill-tag skill-tag-primary">RAG Pipelines</span>
-                        <span class="skill-tag skill-tag-primary">API Integration</span>
-                        <span class="skill-tag skill-tag-primary">Privacy Design</span>
-                        <span class="skill-tag skill-tag-primary">Prompt Engineering</span>
-                    </div>
-                </div>
-<!-- The Stack -->
-                <div class="skill-category">
-                    <h3>The Stack</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Swift / SwiftUI</span>
-                        <span class="skill-tag">OpenAI APIs</span>
-                        <span class="skill-tag">Anthropic APIs</span>
-                        <span class="skill-tag">Pinecone</span>
-                        <span class="skill-tag">Xcode</span>
-                        <span class="skill-tag">Git / GitHub</span>
-                        <span class="skill-tag">VS Code + Copilot</span>
-                    </div>
-                </div>
-<!-- Healthcare -->
-                <div class="skill-category">
-                    <h3>Healthcare Ops</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Clinical Operations</span>
-                        <span class="skill-tag">HIPAA Compliance</span>
-                        <span class="skill-tag">Technical Support</span>
-                        <span class="skill-tag">Medical Devices</span>
-                        <span class="skill-tag">Surgical Workflows</span>
-                    </div>
+            <span class="skill-tag skill-tag-primary">System Architecture</span>
+            <span class="skill-tag skill-tag-primary">RAG Pipelines</span>
+            <span class="skill-tag skill-tag-primary">API Integration</span>
+            <span class="skill-tag skill-tag-primary">Privacy Design</span>
+            <span class="skill-tag skill-tag-primary">Prompt Engineering</span>
+            </div>
+            </div>
+            <!-- The Stack -->
+            <div class="skill-category">
+                <h3>The Stack</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Swift / SwiftUI</span>
+            <span class="skill-tag">Python / FastAPI</span>
+            <span class="skill-tag">OpenAI APIs</span>
+            <span class="skill-tag">Anthropic APIs</span>
+            <span class="skill-tag">Google Gemini</span>
+            <span class="skill-tag">Pinecone</span>
+            <span class="skill-tag">Qdrant</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Xcode</span>
+            <span class="skill-tag">Git / GitHub</span>
+            <span class="skill-tag">VS Code + Copilot</span>
+            <span class="skill-tag">MCP Servers</span>
+            </div>
+            </div>
+            <!-- Healthcare -->
+            <div class="skill-category">
+                <h3>Healthcare Ops</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Clinical Operations</span>
+                    <span class="skill-tag">HIPAA Compliance</span>
+                    <span class="skill-tag">Technical Support</span>
+                    <span class="skill-tag">Medical Devices</span>
+                    <span class="skill-tag">Surgical Workflows</span>
                 </div>
             </div>
-        </div>
-        </section>
+            </div>
+            </div>
+            </section>
 
     <!-- Git Stratigraphy - Project Timeline Rings -->
     <section id="app-showcase" class="stratigraphy-section">
-        <div class="container">
-            <h2>Project Stratigraphy</h2>
-            <p class="strat-intro">Each ring represents a week of development. Hover to explore the commit history.</p>
+    <div class="container">
+        <h2>Project Stratigraphy</h2>
+        <p class="strat-intro">
+            Each ring represents a commit. Hover to explore the commit history.
+        </p>
 
-            <!-- Legend -->
-            <div class="strat-legend">
-                <div class="legend-item"><span class="legend-color feat"></span> Features</div>
-                <div class="legend-item"><span class="legend-color fix"></span> Bug Fixes</div>
-                <div class="legend-item"><span class="legend-color refactor"></span> Refactors</div>
-                <div class="legend-item"><span class="legend-color docs"></span> Docs/Other</div>
+        <!-- Legend -->
+        <div class="strat-legend">
+        <div class="legend-item">
+            <span class="legend-color feat"></span> Features
+        </div>
+        <div class="legend-item">
+            <span class="legend-color fix"></span> Bug Fixes
+        </div>
+        <div class="legend-item">
+            <span class="legend-color refactor"></span> Refactors
+        </div>
+        <div class="legend-item">
+            <span class="legend-color docs"></span> Docs/Other
+        </div>
+        </div>
+
+        <div class="stratigraphy-grid">
+        <!-- LinkedOut Tree -->
+        <div class="tree-sample" data-repo="LinkedOut">
+            <div class="tree-header">
+                <img src="assets/linkedout-icon.png" alt="LinkedOut" class="tree-icon" />
+                <div class="tree-info">
+                    <h3>LinkedOut</h3>
+                    <span class="tree-age">Loading...</span>
+                </div>
             </div>
-
-            <div class="stratigraphy-grid">
-                <!-- OpenResponses Tree -->
-                <div class="tree-sample" data-repo="OpenResponses">
-                    <div class="tree-header">
-                        <img src="assets/openresponses-icon.png" alt="OpenResponses" class="tree-icon" />
-                        <div class="tree-info">
-                            <h3>OpenResponses</h3>
-                            <span class="tree-age">Loading...</span>
-                        </div>
-                    </div>
-                    <div class="tree-ring-container">
-                        <svg class="tree-rings" viewBox="0 0 300 300"></svg>
-                        <div class="tree-tooltip"></div>
-                    </div>
-                    <div class="tree-stats">
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Commits</span>
-                        </div>
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Weeks Active</span>
-                        </div>
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Contributors</span>
-                        </div>
-                    </div>
-                    <div class="tree-links">
-                        <a href="https://apps.apple.com/us/app/openresponses/id6757338355" target="_blank">App Store</a>
-                        <a href="https://github.com/Gunnarguy/OpenResponses" target="_blank">GitHub</a>
-                    </div>
+            <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+            </div>
+            <div class="tree-stats">
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Commits</span>
                 </div>
-
-                <!-- OpenIntelligence Tree -->
-                <div class="tree-sample" data-repo="OpenIntelligence">
-                    <div class="tree-header">
-                        <img src="assets/ragmlcore-icon.png" alt="OpenIntelligence" class="tree-icon" />
-                        <div class="tree-info">
-                            <h3>OpenIntelligence</h3>
-                            <span class="tree-age">Loading...</span>
-                        </div>
-                    </div>
-                    <div class="tree-ring-container">
-                        <svg class="tree-rings" viewBox="0 0 300 300"></svg>
-                        <div class="tree-tooltip"></div>
-                    </div>
-                    <div class="tree-stats">
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Commits</span>
-                        </div>
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Weeks Active</span>
-                        </div>
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Contributors</span>
-                        </div>
-                    </div>
-                    <div class="tree-links">
-                        <a href="https://apps.apple.com/us/app/openintelligence/id6756559175" target="_blank">App Store</a>
-                        <a href="https://github.com/Gunnarguy/OpenIntelligence" target="_blank">GitHub</a>
-                    </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Weeks Active</span>
                 </div>
-
-                <!-- OpenCone Tree -->
-                <div class="tree-sample" data-repo="OpenCone">
-                    <div class="tree-header">
-                        <img src="assets/opencone-icon.png" alt="OpenCone" class="tree-icon" />
-                        <div class="tree-info">
-                            <h3>OpenCone</h3>
-                            <span class="tree-age">Loading...</span>
-                        </div>
-                    </div>
-                    <div class="tree-ring-container">
-                        <svg class="tree-rings" viewBox="0 0 300 300"></svg>
-                        <div class="tree-tooltip"></div>
-                    </div>
-                    <div class="tree-stats">
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Commits</span>
-                        </div>
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Weeks Active</span>
-                        </div>
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Contributors</span>
-                        </div>
-                    </div>
-                    <div class="tree-links">
-                        <a href="https://apps.apple.com/us/app/opencone/id6744467668" target="_blank">App Store</a>
-                        <a href="https://github.com/Gunnarguy/OpenCone" target="_blank">GitHub</a>
-                    </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Contributors</span>
                 </div>
-
-                <!-- OpenAssistant Tree -->
-                <div class="tree-sample" data-repo="OpenAssistant">
-                    <div class="tree-header">
-                        <img src="assets/openassistant-icon.png" alt="OpenAssistant" class="tree-icon" />
-                        <div class="tree-info">
-                            <h3>OpenAssistant</h3>
-                            <span class="tree-age">Loading...</span>
-                        </div>
-                    </div>
-                    <div class="tree-ring-container">
-                        <svg class="tree-rings" viewBox="0 0 300 300"></svg>
-                        <div class="tree-tooltip"></div>
-                    </div>
-                    <div class="tree-stats">
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Commits</span>
-                        </div>
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Weeks Active</span>
-                        </div>
-                        <div class="tree-stat">
-                            <span class="stat-num">--</span>
-                            <span class="stat-label">Contributors</span>
-                        </div>
-                    </div>
-                    <div class="tree-links">
-                        <a href="https://apps.apple.com/us/app/openassistant/id6692613772" target="_blank">App Store</a>
-                        <a href="https://github.com/Gunnarguy/OpenAssistant" target="_blank">GitHub</a>
-                    </div>
-                </div>
+            </div>
+            <div class="tree-links">
+                <a href="https://github.com/Gunnarguy/LinkedOut" target="_blank">GitHub</a>
             </div>
         </div>
+
+        <!-- OpenResponses Tree -->
+        <div class="tree-sample" data-repo="OpenResponses">
+            <div class="tree-header">
+            <img src="assets/openresponses-icon.png" alt="OpenResponses" class="tree-icon" />
+            <div class="tree-info">
+                <h3>OpenResponses</h3>
+                <span class="tree-age">Loading...</span>
+            </div>
+            </div>
+            <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+            </div>
+            <div class="tree-stats">
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Commits</span>
+                </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Weeks Active</span>
+                </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Contributors</span>
+                </div>
+            </div>
+            <div class="tree-links">
+            <a href="https://apps.apple.com/us/app/openresponses/id6757338355" target="_blank">App Store</a>
+            <a href="https://github.com/Gunnarguy/OpenResponses" target="_blank">GitHub</a>
+            </div>
+            </div>
+
+        <!-- OpenIntelligence Tree -->
+        <div class="tree-sample" data-repo="OpenIntelligence">
+            <div class="tree-header">
+            <img src="assets/ragmlcore-icon.png" alt="OpenIntelligence" class="tree-icon" />
+            <div class="tree-info">
+                <h3>OpenIntelligence</h3>
+                <span class="tree-age">Loading...</span>
+            </div>
+            </div>
+            <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+            </div>
+            <div class="tree-stats">
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Commits</span>
+                </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Weeks Active</span>
+                </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Contributors</span>
+                </div>
+            </div>
+            <div class="tree-links">
+            <a href="https://apps.apple.com/us/app/openintelligence/id6756559175" target="_blank">App Store</a>
+            <a href="https://github.com/Gunnarguy/OpenIntelligence" target="_blank">GitHub</a>
+            </div>
+            </div>
+
+        <!-- OpenCone Tree -->
+        <div class="tree-sample" data-repo="OpenCone">
+            <div class="tree-header">
+            <img src="assets/opencone-icon.png" alt="OpenCone" class="tree-icon" />
+            <div class="tree-info">
+                <h3>OpenCone</h3>
+                <span class="tree-age">Loading...</span>
+            </div>
+            </div>
+            <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+            </div>
+            <div class="tree-stats">
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Commits</span>
+                </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Weeks Active</span>
+                </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Contributors</span>
+                </div>
+            </div>
+            <div class="tree-links">
+            <a href="https://apps.apple.com/us/app/opencone/id6744467668" target="_blank">App Store</a>
+            <a href="https://github.com/Gunnarguy/OpenCone" target="_blank">GitHub</a>
+            </div>
+            </div>
+
+        <!-- OpenAssistant Tree -->
+        <div class="tree-sample" data-repo="OpenAssistant">
+            <div class="tree-header">
+            <img src="assets/openassistant-icon.png" alt="OpenAssistant" class="tree-icon" />
+            <div class="tree-info">
+                <h3>OpenAssistant</h3>
+                <span class="tree-age">Loading...</span>
+            </div>
+            </div>
+            <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+            </div>
+            <div class="tree-stats">
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Commits</span>
+                </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Weeks Active</span>
+                </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Contributors</span>
+                </div>
+            </div>
+            <div class="tree-links">
+            <a href="https://apps.apple.com/us/app/openassistant/id6692613772" target="_blank">App Store</a>
+            <a href="https://github.com/Gunnarguy/OpenAssistant" target="_blank">GitHub</a>
+            </div>
+            </div>
+            
+            <!-- PlaudBlender Tree -->
+            <div class="tree-sample" data-repo="PlaudBlender">
+                <div class="tree-header">
+                    <img src="assets/plaudblender-icon.png" alt="PlaudBlender" class="tree-icon" />
+                    <div class="tree-info">
+                        <h3>PlaudBlender</h3>
+                        <span class="tree-age">Loading...</span>
+                    </div>
+                </div>
+                <div class="tree-ring-container">
+                    <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                    <div class="tree-tooltip"></div>
+                </div>
+                <div class="tree-stats">
+                    <div class="tree-stat">
+                        <span class="stat-num">--</span>
+                        <span class="stat-label">Commits</span>
+                    </div>
+                    <div class="tree-stat">
+                        <span class="stat-num">--</span>
+                        <span class="stat-label">Weeks Active</span>
+                    </div>
+                    <div class="tree-stat">
+                        <span class="stat-num">--</span>
+                        <span class="stat-label">Contributors</span>
+                    </div>
+                </div>
+                <div class="tree-links">
+                    <a href="https://github.com/Gunnarguy/PlaudBlender" target="_blank">GitHub</a>
+                </div>
+            </div>
+            </div>
+            </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-        <div class="container">
-            <h2>My Apps</h2>
-            <div class="projects-grid">
-                <!-- OpenResponses -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/openresponses-icon.png" alt="OpenResponses iOS App Icon" />
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>OpenResponses</h3>
-                            <div class="project-badges">
-                                <img src="https://img.shields.io/github/stars/Gunnarguy/OpenResponses?style=flat-square&color=00b8d4" alt="Stars" />
-                                <img src="https://img.shields.io/github/last-commit/Gunnarguy/OpenResponses?style=flat-square&color=00b8d4"
-                                    alt="Last Commit" />
-                            </div>
-                            </div>
-                        <p>OpenResponses is a native iOS client for OpenAI's Responses API. It runs on iPhone iOS 17+, iPad, and Mac.</p>
-                        <ul>
-                            <li><strong>Models:</strong> Supports 15+ models including GPT-5.2, GPT-5.1, GPT-4.1, and o3/o1 series. Reasoning models
-                                display thinking process; effort is configurable.</li>
-                            <li><strong>Tools:</strong> Code Interpreter (sandboxed Python), Web Search (with citations), File Search (vector
-                                stores), and Image Generation (gpt-image-1).</li>
-                            <li><strong>File Handling:</strong> DocumentPicker accepts 43+ formats including PDF, DOCX, XLSX, images, and code.
-                                Automatic conversion for unsupported formats.</li>
-                            <li><strong>MCP Integration:</strong> Connects to Notion, Dropbox, Gmail, etc. via Model Context Protocol. Supports
-                                custom remote servers.</li>
-                            <li><strong>Configuration:</strong> Granular control over parameters (temperature, top_p, reasoning effort). Prompt
-                                Library for saving configs. Request Inspector for raw payloads.</li>
-                            <li><strong>Privacy:</strong> API keys in Keychain. Local JSON conversation storage. No default analytics. No accounts.
-                            </li>
-                            <li><strong>Pricing:</strong> Free app. BYOK (Bring Your Own Key) model paying OpenAI directly.</li>
-                            <li><strong>Audience:</strong> Developers, researchers, and power users needing parameter-level control.</li>
-                        </ul>
-                        <div class="project-tech">
-                            <span>SwiftUI</span>
-                            <span>Combine</span>
-                            <span>OpenAI Responses API</span>
-                            <span>GPT-5.x</span>
-                            <span>Model Context Protocol</span>
-                            <span>Computer Use</span>
-                            <span>MCP</span>
-                            <span>Python Sandbox</span>
-                            <span>File Search</span>
-                            <span>Web Search</span>
-                            <span>Async/Await</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="projects/openresponses/index.html" class="btn-link">Docs</a>
-                            <a href="https://github.com/Gunnarguy/OpenResponses" class="btn-link" target="_blank">GitHub</a>
-                            <a href="https://apps.apple.com/us/app/openresponses/id6757338355" class="btn-link" target="_blank" rel="noopener">App
-                                Store</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- OpenIntelligence -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/ragmlcore-icon.png" alt="OpenIntelligence" />
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>OpenIntelligence</h3>
-                            <div class="project-badges">
-                                <img src="https://img.shields.io/github/stars/Gunnarguy/OpenIntelligence?style=flat-square&color=00b8d4"
-                                    alt="Stars" />
-                                <img src="https://img.shields.io/github/last-commit/Gunnarguy/OpenIntelligence?style=flat-square&color=00b8d4"
-                                    alt="Last Commit" />
-                            </div>
-                            </div>
-                        <p>OpenIntelligence builds an offline knowledge base on your iPhone. It imports PDFs, images, code, and more, extracting
-                            text via high-res OCR and native parsers.</p>
-                        <ul>
-                            <li><strong>Ingestion:</strong> Content is split into logical sections and indexed locally using both keyword and neural
-                                search indexes.</li>
-                            <li><strong>Retrieval Pipeline:</strong> 23-step process with query expansion, hybrid search (text + embeddings), and
-                                neural reranking. Best evidence is prioritized for on-device AI.</li>
-                            <li><strong>Verification Gates:</strong> Four checks per response validate confidence, citations, numbers, and
-                                contradictions. System abstains if checks fail.</li>
-                            <li><strong>Autonomous Tools:</strong> Eight built-in tools handle searching, summarizing, file comparison, pattern
-                                counting, and related content discovery.</li>
-                            <li><strong>Quality Modes:</strong> Standard, Deep Think, and Maximum using Self-RAG 2.0.</li>
-                            <li><strong>Supported Formats:</strong> PDF (native + scanned), Word, Excel, PowerPoint, Markdown, CSV, RTF, plain text,
-                                16 code languages, images, and A/V transcription.</li>
-                            <li><strong>Privacy:</strong> All 78 services run entirely on-device. No accounts, uploads, or tracking. Zero-retention.
-                            </li>
-                        </ul>
-                        <div class="project-tech">
-                            <span>On-Device RAG</span>
-                            <span>On-Device Analysis</span>
-                            <span>SwiftUI</span>
-                            <span>Swift 6</span>
-                            <span>RAG</span>
-                            <span>On-Device Embeddings</span>
-                            <span>LLM Integration</span>
-                            <span>Local Storage</span>
-                            <span>CloudKit</span>
-                            <span>Core ML</span>
-                            <span>Hybrid Search</span>
-                            <span>Async/Await</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="projects/openintelligence/index.html" class="btn-link">Docs</a>
-                            <a href="https://github.com/Gunnarguy/OpenIntelligence" class="btn-link" target="_blank">GitHub</a>
-                            <a href="https://apps.apple.com/us/app/openintelligence/id6756559175" class="btn-link" target="_blank">App Store</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- OpenCone -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/opencone-icon.png" alt="OpenCone iOS App" />
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>OpenCone</h3>
-                            <div class="project-badges">
-                                <img src="https://img.shields.io/github/stars/Gunnarguy/OpenCone?style=flat-square&color=00b8d4" alt="Stars" />
-                                <img src="https://img.shields.io/github/last-commit/Gunnarguy/OpenCone?style=flat-square&color=00b8d4"
-                                    alt="Last Commit" />
-                            </div>
-                            </div>
-                        <p>OpenCone is a retrieval-augmented generation (RAG) app for iOS that indexes your documents and answers questions
-                            using AI.</p>
-                        <ul>
-                            <li><strong>Processing pipeline:</strong> Documents import via the system file picker. The app copies files to local
-                                storage with bookmark persistence. Duplicate detection uses SHA256 hashing. Text extraction runs locally—PDFKit for
-                                PDFs, Vision OCR for images. A recursive text splitter creates chunks respecting document structure. Chunks embed
-                                via OpenAI (text-embedding-3-large, 3072 dimensions, batches of 50). Vectors store in your Pinecone index.</li>
-                            <li><strong>Search modes:</strong> Semantic search, Hybrid search (requires dotproduct index), and Reranking (BGE,
-                                Cohere, Pinecone).</li>
-                            <li><strong>Answer generation:</strong> Queries embed, retrieve top-k results, and pass to OpenAI's Responses API.
-                                Answers stream via SSE. Models include GPT-5.2 (400K context), GPT-4o, and o-series. Reasoning models support effort
-                                levels.</li>
-                            <li><strong>AI tools:</strong> Code Interpreter runs Python for charts, calculations, and data analysis. Web Search
-                                retrieves current information beyond your documents. Both are optional toggles.</li>
-                            <li><strong>Supported formats:</strong> PDF, DOCX, DOC, TXT, RTF, HTML, CSS, Markdown, JSON, XML, CSV, TSV, Python,
-                                JavaScript, PNG, JPEG, GIF, TIFF, BMP.</li>
-                            <li><strong>Data handling:</strong> On-device: file access, extraction, chunking, deduplication. Cloud: text chunks to
-                                OpenAI, vectors to Pinecone. No third-party analytics.</li>
-                            <li><strong>Resilience:</strong> Retry logic with exponential backoff. Circuit breaker opens after 2 consecutive
-                                failures. Rate limiting at 100ms. 30-second watchdog for stalled streams. 100MB file limit.</li>
-                            <li><strong>Pricing:</strong> BYOK - bring your own API keys. No subscription.</li>
-                            <li><strong>Audience:</strong> Researchers, legal professionals, developers, knowledge workers.</li>
-                        </ul>
-                        <div class="project-tech">
-                            <span>SwiftUI</span>
-                            <span>OpenAI Responses API</span>
-                            <span>Pinecone API</span>
-                            <span>PDFKit</span>
-                            <span>Vision OCR</span>
-                            <span>RAG</span>
-                            <span>Async/Await</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="projects/opencone/index.html" class="btn-link">Docs</a>
-                            <a href="https://apps.apple.com/us/app/opencone/id6744467668" class="btn-link" target="_blank">App Store</a>
-                            <a href="https://github.com/Gunnarguy/OpenCone" class="btn-link" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- OpenAssistant -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/openassistant-icon.png" alt="OpenAssistant iOS App" />
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>OpenAssistant</h3>
-                            <div class="project-badges">
-                                <img src="https://img.shields.io/github/stars/Gunnarguy/OpenAssistant?style=flat-square&color=00b8d4" alt="Stars" />
-                                <img src="https://img.shields.io/github/last-commit/Gunnarguy/OpenAssistant?style=flat-square&color=00b8d4"
-                                    alt="Last Commit" />
-                            </div>
-                            </div>
-                        <p>OpenAssistant is an iOS app that provides access to the OpenAI Assistants API. It allows you to create, configure,
-                            and interact with AI assistants from your iPhone or iPad.</p>
-                        <ul>
-                            <li><strong>Assistants & Models:</strong> Create assistants using GPT-4o, GPT-4.1, or O-series models. Configure
-                                parameters like temperature, top_p, and reasoning_effort.</li>
-                            <li><strong>Tools:</strong> Supports Code Interpreter for executing Python and File Search for retrieving information
-                                from uploaded documents.</li>
-                            <li><strong>File Handling:</strong> Create vector stores and upload files (PDF, DOCX, CSV, code, images). Configurable
-                                chunk size and overlap for retrieval.</li>
-                            <li><strong>Chat Experience:</strong> Thread-based sessions with 2s polling interval. Markdown rendering. History saves
-                                locally by thread ID.</li>
-                            <li><strong>Data Handling:</strong> API keys and history stored locally on-device. Direct connection to OpenAI—no
-                                third-party servers.</li>
-                            <li><strong>Reliability:</strong> Robust networking with automatic retries (up to 3 attempts) and increasing wait times.
-                            </li>
-                            <li><strong>Pricing:</strong> Free and open-source (MIT). BYOK - pay OpenAI directly.</li>
-                            <li><strong>Audience:</strong> Developers, researchers, and students managing OpenAI assistants on mobile.</li>
-                        </ul>
-                        <div class="project-tech">
-                            <span>SwiftUI</span>
-                            <span>OpenAI Assistants V2 API (now deprecated)</span>
-                            <span>Code Interpreter</span>
-                            <span>File Search</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="projects/openassistant/index.html" class="btn-link">Docs</a>
-                            <a href="https://apps.apple.com/us/app/openassistant/id6692613772" class="btn-link" target="_blank">App Store</a>
-                            <a href="https://github.com/Gunnarguy/OpenAssistant" class="btn-link" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
+        <h2>My Apps</h2>
+        <div class="projects-grid">
+            <!-- OpenResponses -->
+            <div class="project-card">
+                <div class="project-image">
+            <img src="assets/openresponses-icon.png" alt="OpenResponses iOS App Icon" />
             </div>
-        </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3>OpenResponses</h3>
+                    <div class="project-badges">
+                <img src="https://img.shields.io/github/stars/Gunnarguy/OpenResponses?style=flat-square&color=00b8d4" alt="Stars" />
+                <img src="https://img.shields.io/github/last-commit/Gunnarguy/OpenResponses?style=flat-square&color=00b8d4"
+                    alt="Last Commit" />
+                </div>
+                </div>
+            <p>
+                OpenResponses is a native iOS client for OpenAI's Responses API.
+                It runs on iPhone iOS 17+, iPad, and Mac.
+            </p>
+            <ul>
+                <li>
+                    <strong>Models:</strong> Supports 15+ models including
+                    GPT-5.2, GPT-5.1, GPT-4.1, and o3/o1 series. Reasoning models
+                    display thinking process; effort is configurable.
+                </li>
+                <li>
+                    <strong>Tools:</strong> Code Interpreter (sandboxed Python),
+                    Web Search (with citations), File Search (vector stores), and
+                    Image Generation (gpt-image-1).
+                </li>
+                <li>
+                    <strong>File Handling:</strong> DocumentPicker accepts 43+
+                    formats including PDF, DOCX, XLSX, images, and code. Automatic
+                    conversion for unsupported formats.
+                </li>
+                <li>
+                    <strong>MCP Integration:</strong> Connects to Notion, Dropbox,
+                    Gmail, etc. via Model Context Protocol. Supports custom remote
+                    servers.
+                </li>
+                <li>
+                    <strong>Configuration:</strong> Granular control over
+                    parameters (temperature, top_p, reasoning effort). Prompt
+                    Library for saving configs. Request Inspector for raw
+                    payloads.
+                </li>
+                <li>
+                    <strong>Privacy:</strong> API keys in Keychain. Local JSON
+                    conversation storage. No default analytics. No accounts.
+                </li>
+                <li>
+                    <strong>Pricing:</strong> Free app. BYOK (Bring Your Own Key)
+                    model paying OpenAI directly.
+                </li>
+                <li>
+                    <strong>Audience:</strong> Developers, researchers, and power
+                    users needing parameter-level control.
+                </li>
+            </ul>
+            <div class="project-tech">
+                <span>SwiftUI</span>
+                <span>Combine</span>
+                <span>OpenAI Responses API</span>
+                <span>GPT-5.x</span>
+                <span>Model Context Protocol</span>
+                <span>Computer Use</span>
+                <span>MCP</span>
+                <span>Python Sandbox</span>
+                <span>File Search</span>
+                <span>Web Search</span>
+                <span>Async/Await</span>
+            </div>
+            <div class="project-links">
+                <a href="projects/openresponses/index.html" class="btn-link">Docs</a>
+                <a href="https://github.com/Gunnarguy/OpenResponses" class="btn-link" target="_blank">GitHub</a>
+                <a href="https://apps.apple.com/us/app/openresponses/id6757338355" class="btn-link" target="_blank" rel="noopener">App
+                    Store</a>
+                </div>
+                </div>
+                </div>
+
+        <!-- OpenIntelligence -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="assets/ragmlcore-icon.png" alt="OpenIntelligence" />
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3>OpenIntelligence</h3>
+                    <div class="project-badges">
+                <img src="https://img.shields.io/github/stars/Gunnarguy/OpenIntelligence?style=flat-square&color=00b8d4" alt="Stars" />
+                <img src="https://img.shields.io/github/last-commit/Gunnarguy/OpenIntelligence?style=flat-square&color=00b8d4"
+                    alt="Last Commit" />
+                </div>
+                </div>
+            <p>
+                OpenIntelligence builds an offline knowledge base on your
+                iPhone. It imports PDFs, images, code, and more, extracting text
+                via high-res OCR and native parsers.
+            </p>
+            <ul>
+                <li>
+                    <strong>Ingestion:</strong> Content is split into logical
+                    sections and indexed locally using both keyword and neural
+                    search indexes.
+                </li>
+                <li>
+                    <strong>Retrieval Pipeline:</strong> 29-step process with
+                    query expansion, hybrid search (text + embeddings),
+                    cross-encoder reranking, and contextual compression. Best
+                    evidence is prioritized for on-device AI.
+                </li>
+                <li>
+                    <strong>Verification Gates:</strong> Seven gates (A-G) per
+                    response validate retrieval confidence, evidence coverage,
+                    numeric sanity, contradictions, semantic grounding, quote
+                    faithfulness, and generation quality. Critical gates trigger
+                    full abstention.
+                </li>
+                <li>
+                    <strong>Autonomous Tools:</strong> 8 agentic @Tool functions
+                    handle searching, summarizing, file comparison, pattern
+                    counting, corpus stats, and related content discovery.
+                </li>
+                <li>
+                    <strong>Quality Modes:</strong> Standard, Deep Think, and
+                    Maximum using Self-RAG 2.0.
+                </li>
+                <li>
+                    <strong>Supported Formats:</strong> PDF (native + scanned),
+                    Word, Excel, PowerPoint, Markdown, CSV, RTF, plain text, 16
+                    code languages, images, and A/V transcription.
+                </li>
+                <li>
+                    <strong>Privacy:</strong> All 102 services run entirely
+                    on-device. No accounts, uploads, or tracking. Zero-retention.
+                </li>
+                </ul>
+                <div class="project-tech">
+                <span>Apple Intelligence</span>
+                <span>FoundationModels</span>
+                <span>SwiftUI</span>
+                <span>Swift 6</span>
+                <span>On-Device RAG</span>
+                <span>CoreML</span>
+                <span>Metal GPU</span>
+                <span>On-Device Embeddings</span>
+                <span>Hybrid Search</span>
+                <span>CloudKit</span>
+                <span>Vision OCR</span>
+                <span>Async/Await</span>
+                </div>
+                <div class="project-links">
+                <a href="projects/openintelligence/index.html" class="btn-link">Docs</a>
+                <a href="https://github.com/Gunnarguy/OpenIntelligence" class="btn-link" target="_blank">GitHub</a>
+                <a href="https://apps.apple.com/us/app/openintelligence/id6756559175" class="btn-link" target="_blank">App Store</a>
+                </div>
+                </div>
+                </div>
+
+        <!-- OpenCone -->
+        <div class="project-card">
+            <div class="project-image">
+                <img src="assets/opencone-icon.png" alt="OpenCone iOS App" />
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3>OpenCone</h3>
+                    <div class="project-badges">
+                <img src="https://img.shields.io/github/stars/Gunnarguy/OpenCone?style=flat-square&color=00b8d4" alt="Stars" />
+                <img src="https://img.shields.io/github/last-commit/Gunnarguy/OpenCone?style=flat-square&color=00b8d4"
+                    alt="Last Commit" />
+                </div>
+                </div>
+            <p>
+                OpenCone is a retrieval-augmented generation (RAG) app for iOS
+                that indexes your documents and answers questions using AI.
+            </p>
+            <ul>
+                <li>
+                    <strong>Processing pipeline:</strong> Documents import via the
+                    system file picker. The app copies files to local storage with
+                    bookmark persistence. Duplicate detection uses SHA256 hashing.
+                    Text extraction runs locally—PDFKit for PDFs, Vision OCR for
+                    images. A recursive text splitter creates chunks respecting
+                    document structure. Chunks embed via OpenAI
+                    (text-embedding-3-large, 3072 dimensions, batches of 50).
+                    Vectors store in your Pinecone index.
+                </li>
+                <li>
+                    <strong>Search modes:</strong> Semantic search, Hybrid search
+                    (requires dotproduct index), and Reranking (BGE, Cohere,
+                    Pinecone).
+                </li>
+                <li>
+                    <strong>Answer generation:</strong> Queries embed, retrieve
+                    top-k results, and pass to OpenAI's Responses API. Answers
+                    stream via SSE. Models include GPT-5.2 (400K context), GPT-4o,
+                    and o-series. Reasoning models support effort levels.
+                </li>
+                <li>
+                    <strong>AI tools:</strong> Code Interpreter runs Python for
+                    charts, calculations, and data analysis. Web Search retrieves
+                    current information beyond your documents. Both are optional
+                    toggles.
+                </li>
+                <li>
+                    <strong>Supported formats:</strong> PDF, DOCX, DOC, TXT, RTF,
+                    HTML, CSS, Markdown, JSON, XML, CSV, TSV, Python, JavaScript,
+                    PNG, JPEG, GIF, TIFF, BMP.
+                </li>
+                <li>
+                    <strong>Data handling:</strong> On-device: file access,
+                    extraction, chunking, deduplication. Cloud: text chunks to
+                    OpenAI, vectors to Pinecone. No third-party analytics.
+                </li>
+                <li>
+                    <strong>Resilience:</strong> Retry logic with exponential
+                    backoff. Circuit breaker opens after 2 consecutive failures.
+                    Rate limiting at 100ms. 30-second watchdog for stalled
+                    streams. 100MB file limit.
+                </li>
+                <li>
+                    <strong>Pricing:</strong> BYOK - bring your own API keys. No
+                    subscription.
+                </li>
+                <li>
+                    <strong>Audience:</strong> Researchers, legal professionals,
+                    developers, knowledge workers.
+                </li>
+                </ul>
+                <div class="project-tech">
+                    <span>SwiftUI</span>
+                    <span>OpenAI Responses API</span>
+                    <span>Pinecone API</span>
+                    <span>PDFKit</span>
+                    <span>Vision OCR</span>
+                    <span>RAG</span>
+                    <span>Async/Await</span>
+                </div>
+                <div class="project-links">
+                    <a href="projects/opencone/index.html" class="btn-link">Docs</a>
+                <a href="https://apps.apple.com/us/app/opencone/id6744467668" class="btn-link" target="_blank">App Store</a>
+                <a href="https://github.com/Gunnarguy/OpenCone" class="btn-link" target="_blank">GitHub</a>
+                </div>
+                </div>
+                </div>
+
+        <!-- OpenAssistant -->
+        <div class="project-card">
+            <div class="project-image">
+            <img src="assets/openassistant-icon.png" alt="OpenAssistant iOS App" />
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3>OpenAssistant</h3>
+                    <div class="project-badges">
+                <img src="https://img.shields.io/github/stars/Gunnarguy/OpenAssistant?style=flat-square&color=00b8d4" alt="Stars" />
+                <img src="https://img.shields.io/github/last-commit/Gunnarguy/OpenAssistant?style=flat-square&color=00b8d4"
+                    alt="Last Commit" />
+                </div>
+                </div>
+            <p>
+                OpenAssistant is an iOS app that provides access to the OpenAI
+                Assistants API. It allows you to create, configure, and interact
+                with AI assistants from your iPhone or iPad.
+            </p>
+            <ul>
+                <li>
+                    <strong>Assistants & Models:</strong> Create assistants using
+                    GPT-4o, GPT-4.1, or O-series models. Configure parameters like
+                    temperature, top_p, and reasoning_effort.
+                </li>
+                <li>
+                    <strong>Tools:</strong> Supports Code Interpreter for
+                    executing Python and File Search for retrieving information
+                    from uploaded documents.
+                </li>
+                <li>
+                    <strong>File Handling:</strong> Create vector stores and
+                    upload files (PDF, DOCX, CSV, code, images). Configurable
+                    chunk size and overlap for retrieval.
+                </li>
+                <li>
+                    <strong>Chat Experience:</strong> Thread-based sessions with
+                    2s polling interval. Markdown rendering. History saves locally
+                    by thread ID.
+                </li>
+                <li>
+                    <strong>Data Handling:</strong> API keys and history stored
+                    locally on-device. Direct connection to OpenAI—no third-party
+                    servers.
+                </li>
+                <li>
+                    <strong>Reliability:</strong> Robust networking with automatic
+                    retries (up to 3 attempts) and increasing wait times.
+                </li>
+                <li>
+                    <strong>Pricing:</strong> Free and open-source (MIT). BYOK -
+                    pay OpenAI directly.
+                </li>
+                <li>
+                    <strong>Audience:</strong> Developers, researchers, and
+                    students managing OpenAI assistants on mobile.
+                </li>
+            </ul>
+            <div class="project-tech">
+                <span>SwiftUI</span>
+                <span>OpenAI Assistants V2 API (now deprecated)</span>
+                <span>Code Interpreter</span>
+                <span>File Search</span>
+            </div>
+            <div class="project-links">
+                <a href="projects/openassistant/index.html" class="btn-link">Docs</a>
+                <a href="https://apps.apple.com/us/app/openassistant/id6692613772" class="btn-link" target="_blank">App Store</a>
+                <a href="https://github.com/Gunnarguy/OpenAssistant" class="btn-link" target="_blank">GitHub</a>
+                </div>
+                </div>
+                </div>
+                </div>
+                
+                <!-- Other Projects -->
+                <h3 class="other-projects-heading">Other Projects</h3>
+                <div class="projects-grid projects-grid-small">
+                    <!-- LinkedOut -->
+                    <div class="project-card project-card-small">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>LinkedOut</h3>
+                                <div class="project-badges">
+                                    <img src="https://img.shields.io/github/stars/Gunnarguy/LinkedOut?style=flat-square&color=00b8d4"
+                                        alt="Stars" />
+                                    <img src="https://img.shields.io/github/last-commit/Gunnarguy/LinkedOut?style=flat-square&color=00b8d4"
+                                        alt="Last Commit" />
+                                </div>
+                            </div>
+                            <p>
+                                <strong>Tinder for jobs</strong> — AI-powered job discovery that
+                                fetches from 5 remote boards, scores with LLMs (Gemini + OpenAI
+                                fallback), and presents swipeable cards on iOS. Two-tier scoring
+                                pipeline with anti-sycophancy prompts, Why Matrix, and
+                                configurable weights. FastAPI backend on Docker/Render.
+                            </p>
+                            <div class="project-tech">
+                                <span>SwiftUI</span>
+                                <span>FastAPI</span>
+                                <span>Google Gemini</span>
+                                <span>OpenAI</span>
+                                <span>MapKit</span>
+                                <span>Docker</span>
+                                <span>LinkedIn OAuth</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Gunnarguy/LinkedOut" class="btn-link" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- PlaudBlender -->
+                    <div class="project-card project-card-small">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>PlaudBlender</h3>
+                                <div class="project-badges">
+                                    <img src="https://img.shields.io/github/stars/Gunnarguy/PlaudBlender?style=flat-square&color=00b8d4"
+                                        alt="Stars" />
+                                    <img src="https://img.shields.io/github/last-commit/Gunnarguy/PlaudBlender?style=flat-square&color=00b8d4"
+                                        alt="Last Commit" />
+                                </div>
+                            </div>
+                            <p>
+                                <strong>Voice recordings → knowledge graph.</strong> Ingests
+                                Plaud transcripts via OAuth, processes through Gemini AI
+                                (cleaning, event extraction, sentiment), indexes to Qdrant
+                                vector DB, and visualizes via interactive Dash UI with timeline,
+                                knowledge graph, semantic search, and stats. 11-tool MCP server
+                                for ChatGPT integration. 91 tests.
+                            </p>
+                            <div class="project-tech">
+                                <span>Python</span>
+                                <span>Gemini AI</span>
+                                <span>Qdrant</span>
+                                <span>Dash + Cytoscape</span>
+                                <span>FastMCP</span>
+                                <span>OpenAI GPT-5.4</span>
+                                <span>SQLAlchemy</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Gunnarguy/PlaudBlender" class="btn-link" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
     </section>
 
     <!-- Experience Section -->
     <section id="experience" class="experience">
-        <div class="container">
-            <h2>Professional Experience</h2>
-            <div class="timeline">
-
-                <!-- iOS Development - Most Recent -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Independent Builder</h3>
-                        <h4>Building the Open- Series</h4>
-                        <span class="timeline-date">Nov 2023 – Present</span>
-                        <p>Leveraging LLMs to build tools. Since my first commit in late 2023, I've used Foundation Models to generate, refine, and ship complex native iOS applications. Driven by a passion for exploration, I orchestrate systems involving RAG, Agents, and on-device intelligence to close the gaps I see in existing software.</p>
-                        <ul>
-                            <li><strong>OpenResponses:</strong> Production successor to my Assistants client with Responses API streaming, Computer Use, MCP connectors, and core tool coverage.</li>
-                            <li><strong>OpenIntelligence:</strong> Privacy-first RAGMLCore engine running on Apple silicon with on-device embeddings, hybrid search, and consent gating.</li>
-                            <li><strong>OpenCone:</strong> App Store RAG pipeline that pairs Pinecone serverless indexes with OpenAI Responses answers and detailed ingestion analytics.</li>
-                            <li><strong>OpenAssistant:</strong> Legacy SwiftUI client covering Assistants, Threads, Runs, and vector stores before the Responses API launched.</li>
-                        </ul>
-                    </div>
+    <div class="container">
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+        <!-- iOS Development - Most Recent -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Independent Builder</h3>
+            <h4>Building the Open- Series & Beyond</h4>
+            <span class="timeline-date">Nov 2023 – Present</span>
+            <p>
+                Leveraging LLMs to build tools. Since my first commit in late
+                2023, I've used Foundation Models to generate, refine, and ship
+                complex native iOS applications and Python backends. Driven by a
+                passion for exploration, I orchestrate systems involving RAG,
+                Agents, and on-device intelligence to close the gaps I see in
+                existing software.
+            </p>
+            <ul>
+                <li>
+                    <strong>LinkedOut:</strong> Full-stack job discovery platform
+                    — SwiftUI iOS app + FastAPI backend with LLM-powered scoring
+                    (Gemini + OpenAI), 5 job board integrations, and Tinder-style
+                    swipe UI.
+                </li>
+                <li>
+                    <strong>PlaudBlender:</strong> Python knowledge pipeline
+                    transforming Plaud voice recordings into a searchable
+                    knowledge graph with Gemini AI, Qdrant vector DB, and an
+                    11-tool MCP server.
+                </li>
+                <li>
+                    <strong>OpenResponses:</strong> Production successor to my
+                    Assistants client with Responses API streaming, Computer Use,
+                    MCP connectors, and core tool coverage.
+                </li>
+                <li>
+                    <strong>OpenIntelligence:</strong> 102-service on-device RAG
+                    engine running on Apple Intelligence with 29-step pipeline,
+                    Metal GPU vector search, and 7 verification gates.
+                </li>
+                <li>
+                    <strong>OpenCone:</strong> App Store RAG pipeline that pairs
+                    Pinecone serverless indexes with OpenAI Responses answers and
+                    detailed ingestion analytics.
+                </li>
+                <li>
+                    <strong>OpenAssistant:</strong> Legacy SwiftUI client covering
+                    Assistants, Threads, Runs, and vector stores before the
+                    Responses API launched.
+                </li>
+                </ul>
+                </div>
                 </div>
 
-                <!-- Stryker Experience -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>OnSite Specialist</h3>
-                        <h4>Stryker | VA Palo Alto Health Care System</h4>
-                        <span class="timeline-date">Aug 2022 – Present</span>
-                        <p>Sole technical specialist supporting Stanford surgical teams with complete autonomy. Bridging the gap between complex medical technology and clinical workflows in high-pressure surgical environments.</p>
-                        <ul>
-                            <li><strong>Intraoperative Support:</strong> Provide real-time technical support for General, Urology, ENT, and Thoracic surgeries, serving as the subject matter expert for advanced medical devices.</li>
-                            <li><strong>Operations & Procurement:</strong> Manage end-to-end procurement and inventory for surgical supplies, forecasting needs based on surgical schedules to prevent case delays.</li>
-                            <li><strong>Technical Liaison:</strong> Act as the primary bridge between surgeons, nursing staff, and biomedical engineering, translating technical constraints into clinical solutions.</li>
-                            <li><strong>Compliance & Safety:</strong> Maintain strict HIPAA compliance and government clearance (PIV) while managing sensitive case data and equipment protocols.</li>
-                        </ul>
-                    </div>
+        <!-- Stryker Experience -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>OnSite Specialist</h3>
+                <h4>Stryker | VA Palo Alto Health Care System</h4>
+                <span class="timeline-date">Aug 2022 – Present</span>
+            <p>
+                Sole technical specialist supporting Stanford surgical teams
+                with complete autonomy. Bridging the gap between complex medical
+                technology and clinical workflows in high-pressure surgical
+                environments.
+            </p>
+            <ul>
+                <li>
+                    <strong>Intraoperative Support:</strong> Provide real-time
+                    technical support for General, Urology, ENT, and Thoracic
+                    surgeries, serving as the subject matter expert for advanced
+                    medical devices.
+                </li>
+                <li>
+                    <strong>Operations & Procurement:</strong> Manage end-to-end
+                    procurement and inventory for surgical supplies, forecasting
+                    needs based on surgical schedules to prevent case delays.
+                </li>
+                <li>
+                    <strong>Technical Liaison:</strong> Act as the primary bridge
+                    between surgeons, nursing staff, and biomedical engineering,
+                    translating technical constraints into clinical solutions.
+                </li>
+                <li>
+                    <strong>Compliance & Safety:</strong> Maintain strict HIPAA
+                    compliance and government clearance (PIV) while managing
+                    sensitive case data and equipment protocols.
+                </li>
+                </ul>
                 </div>
+                </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Data Analyst</h3>
+                <h4>Above and Beyond Family Recovery Center</h4>
+                <span class="timeline-date">Jan 2020 – Jan 2021</span>
+                <p>
+                    Managed and validated patient-facing operational data in a
+                    clinical environment where accuracy, confidentiality, and
+                    process reliability mattered.
+                </p>
+                <ul>
+                    <li>
+                        <strong>Data Quality:</strong> Managed and validated data
+                        files for roughly 100 patients per week, ensuring accuracy and
+                        compliance.
+                    </li>
+                    <li>
+                        <strong>Process Improvement:</strong> Streamlined data
+                        handling workflows to improve operational efficiency and
+                        reliability.
+                    </li>
+                    <li>
+                        <strong>Confidentiality:</strong> Maintained strict care while
+                        handling sensitive diagnoses, insurance data, and internal
+                        records.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Utilities Locator</h3>
+                <h4>Utility Resource Group, LLC</h4>
+                <span class="timeline-date">Dec 2016 – Dec 2020</span>
+                <p>
+                    Field operations role built around precision, safety, route
+                    planning, and independent execution in a high-accountability
+                    environment.
+                </p>
+                <ul>
+                    <li>
+                        <strong>Safety & Precision:</strong> Located natural gas lines
+                        with specialized equipment while maintaining safety
+                        compliance.
+                    </li>
+                    <li>
+                        <strong>Operational Throughput:</strong> Navigated mapping
+                        systems and company tools to manage daily work, averaging 24
+                        tickets closed per day.
+                    </li>
+                    <li>
+                        <strong>Training:</strong> Mentored and trained 25 new
+                        technicians on safety protocols and field best practices.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Physical Therapy Aide</h3>
+                <h4>Athletico</h4>
+                <span class="timeline-date">Sep 2015 – Oct 2016</span>
+                <p>
+                    Supported patient care workflows while handling scheduling,
+                    insurance administration, and front-line clinic operations.
+                </p>
+                <ul>
+                    <li>
+                        <strong>Patient Support:</strong> Assisted physical therapists
+                        with patient care and rehabilitation exercises.
+                    </li>
+                    <li>
+                        <strong>Scheduling:</strong> Managed appointment changes,
+                        cancellations, and day-to-day clinic coordination.
+                    </li>
+                    <li>
+                        <strong>Insurance Workflow:</strong> Verified, scanned, and
+                        processed insurance information across Medicare, worker's
+                        compensation, and private insurers.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>District Manager</h3>
+                <h4>Aqua-Guard Management Inc</h4>
+                <span class="timeline-date">Mar 2010 – Sep 2015</span>
+                <p>
+                    Early leadership role managing distributed operations, staffing
+                    coverage, and on-call execution across multiple sites.
+                </p>
+                <ul>
+                    <li>
+                        <strong>People Management:</strong> Supervised seven managers
+                        and 31 lifeguards across nine pools.
+                    </li>
+                    <li>
+                        <strong>Coverage & Reliability:</strong> Ensured all shifts
+                        were covered, stepping in directly when required.
+                    </li>
+                    <li>
+                        <strong>Operations:</strong> Built daily routes and managed
+                        pool maintenance through chemical administration and
+                        round-the-clock support.
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <h3>Education</h3>
+                <h4>Western Illinois University</h4>
+                <span class="timeline-date">Aug 2010 – Dec 2014</span>
+                <p>Bachelor's Degree in Kinesiology and Exercise Science.</p>
+            </div>
+        </div>
+        </div>
+        </div>
+        </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always interested in new opportunities and collaborations, especially in iOS development and AI integration.
-                    Feel free to reach out if you'd like to discuss a project, explore potential partnerships, or just say hello!</p>
+    <div class="container">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Let's Connect</h3>
+            <p>
+                I'm always interested in new opportunities and collaborations,
+                especially in iOS development and AI integration. Feel free to
+                reach out if you'd like to discuss a project, explore potential
+                partnerships, or just say hello!
+            </p>
 
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>Gunnarguy@me.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>iOS Engineer | AI Specialist</span>
-                        </div>
-                    </div>
-
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/gunnar-hostetler/" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/Gunnarguy" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="mailto:Gunnarguy@me.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Gunnarguy@me.com</span>
+                </div>
+                <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+14088280552">408-828-0552</a>
+                </div>
+                <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Campbell, CA</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/gunnar-hostetler/" target="_blank"
+                        rel="noopener">linkedin.com/in/gunnar-hostetler</a>
+                </div>
                 </div>
 
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
+            <div class="social-links">
+            <a href="https://www.linkedin.com/in/gunnar-hostetler/" aria-label="LinkedIn" target="_blank"><i
+                    class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Gunnarguy" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:Gunnarguy@me.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
-        </div>
+            </div>
+
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Name" required />
+                </div>
+                <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Your Email" required />
+                </div>
+                <div class="form-group">
+                <input type="text" id="subject" name="subject" placeholder="Subject" required />
+                </div>
+                <div class="form-group">
+                <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+            <button type="submit" class="btn btn-primary">
+                Send Message
+            </button>
+            </form>
+            </div>
+            </div>
+            </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Gunnar Hostetler. All rights reserved.</p>
+    <div class="container">
+        <p>&copy; 2026 Gunnar Hostetler. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- JavaScript for mobile navigation and smooth scrolling -->
     <script>
         // Mobile navigation toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
 
         if (navToggle && navMenu) {
-            navToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('nav-menu-active');
-                navToggle.classList.toggle('nav-toggle-active');
-            });
-        }
+          navToggle.addEventListener("click", () => {
+              navMenu.classList.toggle("nav-menu-active");
+              navToggle.classList.toggle("nav-toggle-active");
+          });
+      }
 
         // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    if (navMenu) navMenu.classList.remove('nav-menu-active');
-                    if (navToggle) navToggle.classList.remove('nav-toggle-active');
-                }
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
             });
+              // Close mobile menu if open
+                if (navMenu) navMenu.classList.remove("nav-menu-active");
+                if (navToggle) navToggle.classList.remove("nav-toggle-active");
+            }
         });
+      });
 
         // Enhanced form submission handler
-        const contactForm = document.querySelector('form');
+        const contactForm = document.querySelector("form");
         if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
+          contactForm.addEventListener("submit", function (e) {
+              e.preventDefault();
 
-                // Get form data
-                const formData = new FormData(this);
-                const name = formData.get('name');
-                const email = formData.get('email');
-                const subject = formData.get('subject');
-                const message = formData.get('message');
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get("name");
+            const email = formData.get("email");
+            const subject = formData.get("subject");
+            const message = formData.get("message");
 
-                // Basic validation
-                if (!name || !email || !subject || !message) {
-                    alert('Please fill in all fields.');
-                    return;
-                }
+            // Basic validation
+            if (!name || !email || !subject || !message) {
+              alert("Please fill in all fields.");
+              return;
+          }
 
-                // Email validation
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    alert('Please enter a valid email address.');
-                    return;
-                }
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+              alert("Please enter a valid email address.");
+              return;
+          }
 
-                // Show success message
-                alert(`Thank you, ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
+            // Show success message
+            alert(
+                `Thank you, ${name}! Your message has been received. I'll get back to you soon at ${email}.`,
+            );
 
-                // Reset form
-                this.reset();
+            // Reset form
+            this.reset();
 
-                // In a real implementation, you would send the data to a server
-                // For now, this creates a mailto link as fallback
-                const mailtoLink = `mailto:Gunnarguy@me.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
-                window.location.href = mailtoLink;
-            });
-        }
+            // In a real implementation, you would send the data to a server
+            // For now, this creates a mailto link as fallback
+            const mailtoLink = `mailto:Gunnarguy@me.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+            window.location.href = mailtoLink;
+        });
+      }
 
         // Scroll-based navigation highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
+        window.addEventListener("scroll", () => {
+            const sections = document.querySelectorAll("section[id]");
             const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
 
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
+          let current = "";
+          sections.forEach((section) => {
+              const sectionTop = section.offsetTop;
+              const sectionHeight = section.clientHeight;
+              if (window.pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute("id");
+            }
         });
+
+          navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${current}`) {
+                  link.classList.add("active");
+              }
+          });
+      });
 
         // Add loading animation for project images
-        document.querySelectorAll('.project-image img').forEach(img => {
-            img.addEventListener('load', function() {
-                this.style.opacity = '1';
+        document.querySelectorAll(".project-image img").forEach((img) => {
+            img.addEventListener("load", function () {
+                this.style.opacity = "1";
             });
-            img.addEventListener('error', function() {
-                this.src = 'https://via.placeholder.com/400x250?text=Project+Image';
-            });
-        });
+          img.addEventListener("error", function () {
+              this.src = "https://via.placeholder.com/400x250?text=Project+Image";
+          });
+      });
 
         // Add animation on scroll for elements
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+          rootMargin: "0px 0px -50px 0px",
+      };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
+          entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("animate-in");
+            }
+        });
+      }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.project-card, .strength-item, .timeline-item').forEach(el => {
-            observer.observe(el);
+        document
+            .querySelectorAll(".project-card, .strength-item, .timeline-item")
+            .forEach((el) => {
+                observer.observe(el);
         });
 
-    // ========================================
-    // Activity Heat Map - Real GitHub Data
-    // ========================================
-    const GITHUB_USERNAME = 'Gunnarguy';
-    const REPOS = ['OpenResponses', 'OpenIntelligence', 'OpenCone', 'OpenAssistant'];
+        // ========================================
+        // Activity Heat Map - Real GitHub Data
+        // ========================================
+        const GITHUB_USERNAME = "Gunnarguy";
+        const REPOS = [
+            "LinkedOut",
+            "OpenResponses",
+            "OpenIntelligence",
+            "PlaudBlender",
+            "OpenCone",
+            "OpenAssistant",
+        ];
 
-    async function fetchGitHubActivity() {
+        async function fetchGitHubActivity() {
         const activityMap = new Map();
         const today = new Date();
         const oneYearAgo = new Date(today);
@@ -800,7 +1329,7 @@
         for (let i = 364; i >= 0; i--) {
             const date = new Date(today);
             date.setDate(date.getDate() - i);
-            const dateKey = date.toISOString().split('T')[0];
+            const dateKey = date.toISOString().split("T")[0];
             activityMap.set(dateKey, { date: new Date(date), count: 0 });
         }
 
@@ -809,30 +1338,30 @@
             try {
                 const response = await fetch(
                     `https://api.github.com/repos/${GITHUB_USERNAME}/${repo}/commits?per_page=100&since=${oneYearAgo.toISOString()}`,
-                    { headers: { 'Accept': 'application/vnd.github.v3+json' } }
-                );
+                { headers: { Accept: "application/vnd.github.v3+json" } },
+            );
 
-                if (response.ok) {
-                    const commits = await response.json();
-                    commits.forEach(commit => {
-                        const commitDate = new Date(commit.commit.author.date);
-                        const dateKey = commitDate.toISOString().split('T')[0];
-                        if (activityMap.has(dateKey)) {
-                            activityMap.get(dateKey).count++;
-                        }
-                    });
-                }
-            } catch (error) {
-                console.log(`Could not fetch ${repo}:`, error);
-            }
+              if (response.ok) {
+                  const commits = await response.json();
+                commits.forEach((commit) => {
+                    const commitDate = new Date(commit.commit.author.date);
+                  const dateKey = commitDate.toISOString().split("T")[0];
+                  if (activityMap.has(dateKey)) {
+                      activityMap.get(dateKey).count++;
+                  }
+              });
+              }
+          } catch (error) {
+              console.log(`Could not fetch ${repo}:`, error);
+          }
         }
 
         // Convert map to array sorted by date
         return Array.from(activityMap.values()).sort((a, b) => a.date - b.date);
-    }
+      }
 
-    // Fallback data generator if API fails
-    function generateFallbackData() {
+        // Fallback data generator if API fails
+        function generateFallbackData() {
         const data = [];
         const today = new Date();
 
@@ -856,44 +1385,48 @@
             data.push({ date, count });
         }
         return data;
-    }
+      }
 
-    function getActivityLevel(count) {
+        function getActivityLevel(count) {
         if (count === 0) return 0;
         if (count <= 2) return 1;
         if (count <= 5) return 2;
         if (count <= 10) return 3;
         return 4;
-    }
+      }
 
-    async function renderHeatMap() {
-        const grid = document.getElementById('heatmap-grid');
-        const monthsContainer = document.getElementById('heatmap-months');
-        const statsContainer = document.getElementById('heatmap-stats');
+        async function renderHeatMap() {
+          const grid = document.getElementById("heatmap-grid");
+          const monthsContainer = document.getElementById("heatmap-months");
+          const statsContainer = document.getElementById("heatmap-stats");
 
         if (!grid) return;
 
         // Show loading state
-        statsContainer.innerHTML = '<div class="heatmap-loading">Loading GitHub activity...</div>';
+          statsContainer.innerHTML =
+              '<div class="heatmap-loading">Loading GitHub activity...</div>';
 
         // Try to fetch real data, fallback to generated
         let activityData;
         try {
             activityData = await fetchGitHubActivity();
             // Check if we got any real data
-            const totalCommits = activityData.reduce((sum, d) => sum + d.count, 0);
+            const totalCommits = activityData.reduce(
+                (sum, d) => sum + d.count,
+                0,
+            );
             if (totalCommits === 0) {
-                console.log('No commits found, using demo data');
-                activityData = generateFallbackData();
-            }
+              console.log("No commits found, using demo data");
+              activityData = generateFallbackData();
+          }
         } catch (error) {
-            console.log('GitHub API failed, using demo data:', error);
+            console.log("GitHub API failed, using demo data:", error);
             activityData = generateFallbackData();
         }
 
         // Clear existing content
-        grid.innerHTML = '';
-        monthsContainer.innerHTML = '';
+          grid.innerHTML = "";
+          monthsContainer.innerHTML = "";
 
         // Calculate starting position (find first Sunday)
         const firstDate = activityData[0].date;
@@ -923,60 +1456,82 @@
 
         // Render grid
         weeks.forEach((week, weekIndex) => {
-            const weekColumn = document.createElement('div');
-            weekColumn.className = 'heatmap-week';
+            const weekColumn = document.createElement("div");
+            weekColumn.className = "heatmap-week";
 
             week.forEach((day, dayIndex) => {
-                const cell = document.createElement('div');
-                cell.className = 'heatmap-cell';
+              const cell = document.createElement("div");
+              cell.className = "heatmap-cell";
 
-                if (day) {
-                    const level = getActivityLevel(day.count);
-                    cell.setAttribute('data-level', level);
-                    cell.setAttribute('data-date', day.date.toLocaleDateString('en-US', {
-                        weekday: 'short',
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric'
-                    }));
-                    cell.setAttribute('data-count', day.count);
+              if (day) {
+                  const level = getActivityLevel(day.count);
+                cell.setAttribute("data-level", level);
+                cell.setAttribute(
+                    "data-date",
+                    day.date.toLocaleDateString("en-US", {
+                        weekday: "short",
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                    }),
+                );
+                cell.setAttribute("data-count", day.count);
 
-                    // Tooltip on hover
-                    cell.title = `${day.count} commits on ${day.date.toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric'
-                    })}`;
-                } else {
-                    cell.style.visibility = 'hidden';
-                }
+                // Tooltip on hover
+                cell.title = `${day.count} commits on ${day.date.toLocaleDateString(
+                    "en-US",
+                    {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                    },
+                )}`;
+            } else {
+                cell.style.visibility = "hidden";
+            }
 
-                weekColumn.appendChild(cell);
-            });
+              weekColumn.appendChild(cell);
+          });
 
             grid.appendChild(weekColumn);
         });
 
         // Render month labels
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+          const months = [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+          ];
         let lastMonth = -1;
 
         weeks.forEach((week, weekIndex) => {
-            const firstValidDay = week.find(d => d !== null);
+            const firstValidDay = week.find((d) => d !== null);
             if (firstValidDay) {
                 const month = firstValidDay.date.getMonth();
                 if (month !== lastMonth) {
-                    const monthLabel = document.createElement('span');
-                    monthLabel.textContent = months[month];
-                    monthLabel.style.left = `${weekIndex * 14 + 28}px`;
-                    monthsContainer.appendChild(monthLabel);
-                    lastMonth = month;
-                }
-            }
+                  const monthLabel = document.createElement("span");
+                  monthLabel.textContent = months[month];
+                  monthLabel.style.left = `${weekIndex * 14 + 28}px`;
+                  monthsContainer.appendChild(monthLabel);
+                  lastMonth = month;
+              }
+          }
         });
 
         // Calculate stats
-        const totalContributions = activityData.reduce((sum, d) => sum + d.count, 0);
+          const totalContributions = activityData.reduce(
+              (sum, d) => sum + d.count,
+              0,
+          );
 
         // Current streak
         let currentStreak = 0;
@@ -991,13 +1546,13 @@
         // Longest streak
         let longestStreak = 0;
         let tempStreak = 0;
-        activityData.forEach(d => {
-            if (d.count > 0) {
-                tempStreak++;
-                longestStreak = Math.max(longestStreak, tempStreak);
-            } else {
-                tempStreak = 0;
-            }
+          activityData.forEach((d) => {
+              if (d.count > 0) {
+                  tempStreak++;
+                  longestStreak = Math.max(longestStreak, tempStreak);
+              } else {
+                  tempStreak = 0;
+              }
         });
 
         statsContainer.innerHTML = `
@@ -1018,77 +1573,104 @@
                     <span class="stat-label">average per day</span>
                 </div>
             `;
-    }
+      }
 
-    // Initialize heat map
-    renderHeatMap();
+        // Initialize heat map
+        renderHeatMap();
 
-    // ========================================
-    // Git Stratigraphy - Tree Ring Visualization
-    // ========================================
-    // Note: REPOS and GITHUB_USERNAME are already defined in heatmap section
+        // ========================================
+        // Git Stratigraphy - Tree Ring Visualization
+        // ========================================
+        // Note: REPOS and GITHUB_USERNAME are already defined in heatmap section
 
-    // Known repo data (verified by user)
-    const KNOWN_REPO_DATA = {
-        'OpenAssistant': {
-            created: '2024-09-16',
-            startYear: 2024,
-            totalCommits: 214,
-            weeksActive: 72
+        // Known repo data (verified by user)
+        const KNOWN_REPO_DATA = {
+          LinkedOut: {
+              created: "2026-03-10",
+              startYear: 2026,
+              totalCommits: 30,
+              weeksActive: 1,
+          },
+          OpenAssistant: {
+              created: "2024-09-16",
+              startYear: 2024,
+              totalCommits: 214,
+            weeksActive: 72,
         },
-        'OpenCone': {
-            created: '2025-04-01',
-            startYear: 2025,
-            totalCommits: 122,
-            weeksActive: 44
+          OpenCone: {
+              created: "2025-04-01",
+              startYear: 2025,
+              totalCommits: 122,
+            weeksActive: 44,
         },
-        'OpenIntelligence': {
-            created: '2025-10-09',
-            startYear: 2025,
-            totalCommits: 171,
-            weeksActive: 17
+          OpenIntelligence: {
+              created: "2025-10-09",
+              startYear: 2025,
+              totalCommits: 171,
+            weeksActive: 17,
         },
-        'OpenResponses': {
-            created: '2025-06-27',
-            startYear: 2025,
-            totalCommits: 88,
-            weeksActive: 32
-        }
-    };
+          OpenResponses: {
+              created: "2025-06-27",
+              startYear: 2025,
+              totalCommits: 88,
+              weeksActive: 32,
+          },
+          PlaudBlender: {
+              created: "2025-12-04",
+              startYear: 2025,
+              totalCommits: 150,
+              weeksActive: 14,
+          },
+      };
 
-    // Categorize commit by message
-    function categorizeCommit(message) {
+        // Categorize commit by message
+        function categorizeCommit(message) {
         const msg = message.toLowerCase();
-        if (msg.includes('feat') || msg.includes('add') || msg.includes('new') || msg.includes('implement')) {
-            return 'feat';
-        } else if (msg.includes('fix') || msg.includes('bug') || msg.includes('patch') || msg.includes('hotfix')) {
-            return 'fix';
-        } else if (msg.includes('refactor') || msg.includes('clean') || msg.includes('restructure') || msg.includes('optimize')) {
-            return 'refactor';
+          if (
+              msg.includes("feat") ||
+              msg.includes("add") ||
+              msg.includes("new") ||
+              msg.includes("implement")
+          ) {
+              return "feat";
+          } else if (
+              msg.includes("fix") ||
+              msg.includes("bug") ||
+              msg.includes("patch") ||
+              msg.includes("hotfix")
+          ) {
+              return "fix";
+          } else if (
+              msg.includes("refactor") ||
+              msg.includes("clean") ||
+              msg.includes("restructure") ||
+              msg.includes("optimize")
+          ) {
+              return "refactor";
         } else {
-            return 'docs';
+            return "docs";
         }
-    }
+      }
 
-    // Group commits by week
-    function groupByWeek(commits) {
+        // Group commits by week so the final rings stay in chronological order
+        function groupByWeek(commits) {
         const weeks = new Map();
 
-        commits.forEach(commit => {
-            const date = new Date(commit.date);
-            // Get Monday of that week
-            const day = date.getDay();
-            const diff = date.getDate() - day + (day === 0 ? -6 : 1);
-            const monday = new Date(date.setDate(diff));
-            const weekKey = monday.toISOString().split('T')[0];
+          commits.forEach((commit) => {
+              const date = new Date(commit.date);
+              // Get Monday of that week
+              const day = date.getDay();
+              const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+              const monday = new Date(date.setDate(diff));
+            const weekKey = monday.toISOString().split("T")[0];
 
             if (!weeks.has(weekKey)) {
                 weeks.set(weekKey, {
                     weekStart: weekKey,
                     commits: [],
-                    types: { feat: 0, fix: 0, refactor: 0, docs: 0 }
-                });
-            }
+                types: { feat: 0, fix: 0, refactor: 0, docs: 0 },
+            });
+          }
 
             const week = weeks.get(weekKey);
             week.commits.push(commit);
@@ -1096,15 +1678,15 @@
         });
 
         // Sort by date ascending (oldest first = center of tree)
-        return Array.from(weeks.values()).sort((a, b) =>
-            new Date(a.weekStart) - new Date(b.weekStart)
+          return Array.from(weeks.values()).sort(
+              (a, b) => new Date(a.weekStart) - new Date(b.weekStart),
         );
-    }
+      }
 
-    // Dominant type for a week (determines ring color)
-    function getDominantType(types) {
+        // Fallback type if a commit is missing its own classification
+        function getDominantType(types) {
         let max = 0;
-        let dominant = 'docs';
+          let dominant = "docs";
         for (const [type, count] of Object.entries(types)) {
             if (count > max) {
                 max = count;
@@ -1112,25 +1694,31 @@
             }
         }
         return dominant;
-    }
+      }
 
-    // Generate SVG tree rings
-    function generateTreeRings(svg, weeklyData, repoName, startYear, totalCommits) {
+        // Generate SVG tree rings
+        function generateTreeRings(
+            svg,
+            weeklyData,
+            repoName,
+            startYear,
+            totalCommits,
+        ) {
         const size = 300;
         const center = size / 2;
         const coreRadius = 12;
         const maxRadius = 138;
 
-        // Flatten all commits from weekly data into one array with types
+          // Flatten weekly buckets back into a chronological per-commit list
         const allCommits = [];
-        weeklyData.forEach(week => {
-            week.commits.forEach(commit => {
-                allCommits.push({
-                    type: commit.type || getDominantType(week.types),
-                    message: commit.message,
-                    weekStart: week.weekStart
-                });
+          weeklyData.forEach((week) => {
+              week.commits.forEach((commit) => {
+                  allCommits.push({
+                      type: commit.type || getDominantType(week.types),
+                      message: commit.message,
+                weekStart: week.weekStart,
             });
+          });
         });
 
         // 1 COMMIT = 1 RING - use actual commit count from data
@@ -1144,10 +1732,13 @@
         const strokeWidth = RING_SPACING;
 
         // Clear existing
-        svg.innerHTML = '';
+          svg.innerHTML = "";
 
         // Add wood grain texture definition
-        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+          const defs = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "defs",
+          );
         defs.innerHTML = `
             <filter id="grain-${repoName}">
                 <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
@@ -1159,77 +1750,94 @@
         svg.appendChild(defs);
 
         // Background circle - always full size
-        const bg = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        bg.setAttribute('cx', center);
-        bg.setAttribute('cy', center);
-        bg.setAttribute('r', maxRadius);
-        bg.setAttribute('fill', '#1a0f0a');
+          const bg = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "circle",
+          );
+          bg.setAttribute("cx", center);
+          bg.setAttribute("cy", center);
+          bg.setAttribute("r", maxRadius);
+          bg.setAttribute("fill", "#1a0f0a");
         svg.appendChild(bg);
 
         // Create 1 ring per commit - fills entire circle
         allCommits.forEach((commit, i) => {
             // Position ring so they fill from core to edge
             const radius = coreRadius + (i + 0.5) * RING_SPACING;
-            const type = commit.type || 'docs';
+            const type = commit.type || "docs";
 
-            const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            ring.setAttribute('cx', center);
-            ring.setAttribute('cy', center);
-            ring.setAttribute('r', radius);
-            ring.setAttribute('class', `ring ${type}`);
-            ring.setAttribute('stroke-width', strokeWidth);
-            ring.setAttribute('stroke-opacity', '1');
-            ring.setAttribute('data-commits', '1');
-            ring.setAttribute('data-type', type);
-            ring.setAttribute('data-messages', commit.message || '');
+            const ring = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                "circle",
+            );
+            ring.setAttribute("cx", center);
+            ring.setAttribute("cy", center);
+            ring.setAttribute("r", radius);
+            ring.setAttribute("class", `ring ${type}`);
+            ring.setAttribute("stroke-width", strokeWidth);
+            ring.setAttribute("stroke-opacity", "1");
+            ring.setAttribute("data-commits", "1");
+            ring.setAttribute("data-type", type);
+            ring.setAttribute("data-messages", commit.message || "");
 
             svg.appendChild(ring);
         });
 
         // Core (center of tree)
-        const core = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        core.setAttribute('cx', center);
-        core.setAttribute('cy', center);
-        core.setAttribute('r', coreRadius);
-        core.setAttribute('class', 'core');
+          const core = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "circle",
+          );
+          core.setAttribute("cx", center);
+          core.setAttribute("cy", center);
+          core.setAttribute("r", coreRadius);
+          core.setAttribute("class", "core");
         svg.appendChild(core);
 
         // Core label - show start year
-        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        text.setAttribute('x', center);
-        text.setAttribute('y', center);
-        text.setAttribute('class', 'core-text');
-        text.textContent = startYear || '?';
+          const text = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "text",
+          );
+          text.setAttribute("x", center);
+          text.setAttribute("y", center);
+          text.setAttribute("class", "core-text");
+          text.textContent = startYear || "?";
         svg.appendChild(text);
-    }
+      }
 
-    // Setup tooltip interactions
-    function setupTooltip(container) {
-        const svg = container.querySelector('.tree-rings');
-        const tooltip = container.querySelector('.tree-tooltip');
+        // Setup tooltip interactions
+        function setupTooltip(container) {
+          const svg = container.querySelector(".tree-rings");
+          const tooltip = container.querySelector(".tree-tooltip");
 
-        svg.addEventListener('mousemove', (e) => {
-            const ring = e.target.closest('.ring');
-            if (!ring) {
-                tooltip.classList.remove('visible');
-                return;
-            }
+          svg.addEventListener("mousemove", (e) => {
+              const ring = e.target.closest(".ring");
+              if (!ring) {
+              tooltip.classList.remove("visible");
+              return;
+          }
 
-            const commits = ring.getAttribute('data-commits');
-            const type = ring.getAttribute('data-type');
-            const messages = ring.getAttribute('data-messages')?.split('|').filter(m => m) || [];
+            const commits = ring.getAttribute("data-commits");
+            const type = ring.getAttribute("data-type");
+            const messages =
+                ring
+                    .getAttribute("data-messages")
+                    ?.split("|")
+                    .filter((m) => m) || [];
 
-            const typeLabel = {
-                feat: 'Features',
-                fix: 'Bug Fixes',
-                refactor: 'Refactors',
-                docs: 'Docs/Other'
+            const typeLabel =
+                {
+                    feat: "Features",
+                    fix: "Bug Fixes",
+                    refactor: "Refactors",
+                    docs: "Docs/Other",
             }[type] || type;
 
             tooltip.innerHTML = `
-                <div class="tooltip-commits">${commits} commit${commits !== '1' ? 's' : ''}</div>
+                <div class="tooltip-commits">${commits} commit${commits !== "1" ? "s" : ""}</div>
                 <div class="tooltip-type" style="color: var(--${type}-color, #fff)">${typeLabel}</div>
-                ${messages.length > 0 ? `<div class="tooltip-message">${messages[0].substring(0, 50)}${messages[0].length > 50 ? '...' : ''}</div>` : ''}
+                ${messages.length > 0 ? `<div class="tooltip-message">${messages[0].substring(0, 50)}${messages[0].length > 50 ? "..." : ""}</div>` : ""}
             `;
 
             const rect = container.getBoundingClientRect();
@@ -1238,31 +1846,33 @@
 
             tooltip.style.left = `${x + 15}px`;
             tooltip.style.top = `${y - 10}px`;
-            tooltip.classList.add('visible');
+            tooltip.classList.add("visible");
         });
 
-        svg.addEventListener('mouseleave', () => {
-            tooltip.classList.remove('visible');
+          svg.addEventListener("mouseleave", () => {
+              tooltip.classList.remove("visible");
         });
-    }
+      }
 
-    // Fetch and render tree for a repo
-    async function renderTreeRings(repoName) {
-        const container = document.querySelector(`.tree-sample[data-repo="${repoName}"]`);
+        // Fetch and render tree for a repo
+        async function renderTreeRings(repoName) {
+          const container = document.querySelector(
+              `.tree-sample[data-repo="${repoName}"]`,
+          );
         if (!container) return;
 
-        container.classList.add('loading');
+          container.classList.add("loading");
 
-        const svg = container.querySelector('.tree-rings');
-        const ageLabel = container.querySelector('.tree-age');
-        const stats = container.querySelectorAll('.tree-stat .stat-num');
+          const svg = container.querySelector(".tree-rings");
+          const ageLabel = container.querySelector(".tree-age");
+          const stats = container.querySelectorAll(".tree-stat .stat-num");
 
         try {
             // First, fetch repo info to get accurate creation date
             const repoResponse = await fetch(
                 `https://api.github.com/repos/${GITHUB_USERNAME}/${repoName}`,
-                { headers: { 'Accept': 'application/vnd.github.v3+json' } }
-            );
+              { headers: { Accept: "application/vnd.github.v3+json" } },
+          );
 
             let repoCreatedAt = null;
             if (repoResponse.ok) {
@@ -1275,51 +1885,57 @@
             let page = 1;
             let hasMore = true;
 
-            while (hasMore && page <= 10) { // Max 10 pages (1000 commits)
+            while (hasMore && page <= 10) {
+                // Max 10 pages (1000 commits)
                 const response = await fetch(
                     `https://api.github.com/repos/${GITHUB_USERNAME}/${repoName}/commits?per_page=100&page=${page}`,
-                    { headers: { 'Accept': 'application/vnd.github.v3+json' } }
-                );
+                { headers: { Accept: "application/vnd.github.v3+json" } },
+            );
 
-                if (!response.ok) {
-                    // If rate limited, break out but continue with what we have
-                    console.log(`Rate limited at page ${page} for ${repoName}`);
-                    break;
-                }
+              if (!response.ok) {
+                  // If rate limited, break out but continue with what we have
+                  console.log(`Rate limited at page ${page} for ${repoName}`);
+                  break;
+              }
 
-                const commits = await response.json();
+              const commits = await response.json();
 
-                if (commits.length === 0) {
-                    hasMore = false;
-                } else {
-                    allCommits = allCommits.concat(commits);
-                    page++;
-                    // If we got less than 100, we've reached the end
-                    if (commits.length < 100) hasMore = false;
-                }
-            }
+              if (commits.length === 0) {
+                  hasMore = false;
+              } else {
+                  allCommits = allCommits.concat(commits);
+                  page++;
+                  // If we got less than 100, we've reached the end
+                  if (commits.length < 100) hasMore = false;
+              }
+          }
 
-            if (allCommits.length === 0) throw new Error('No commits found');
+            if (allCommits.length === 0) throw new Error("No commits found");
 
             // Process commits
-            const processedCommits = allCommits.map(c => ({
+            const processedCommits = allCommits.map((c) => ({
                 sha: c.sha,
-                message: c.commit.message.split('\n')[0],
-                date: c.commit.author.date,
-                author: c.commit.author.name,
-                type: categorizeCommit(c.commit.message)
-            }));
+              message: c.commit.message.split("\n")[0],
+              date: c.commit.author.date,
+              author: c.commit.author.name,
+              type: categorizeCommit(c.commit.message),
+          }));
 
             // Group by week
             const weeklyData = groupByWeek(processedCommits);
 
             // Use repo creation date if available, otherwise oldest commit
-            const projectStartDate = repoCreatedAt ||
-                (processedCommits.length > 0 ? new Date(processedCommits[processedCommits.length - 1].date) : new Date());
+            const projectStartDate =
+                repoCreatedAt ||
+                (processedCommits.length > 0
+                    ? new Date(processedCommits[processedCommits.length - 1].date)
+                    : new Date());
 
             // Calculate project age from creation date to now
             const now = new Date();
-            const ageMonths = Math.floor((now - projectStartDate) / (1000 * 60 * 60 * 24 * 30));
+            const ageMonths = Math.floor(
+                (now - projectStartDate) / (1000 * 60 * 60 * 24 * 30),
+            );
 
             if (ageMonths >= 12) {
                 const years = Math.floor(ageMonths / 12);
@@ -1330,7 +1946,8 @@
             }
 
             // Update stats
-            const uniqueAuthors = new Set(processedCommits.map(c => c.author)).size;
+            const uniqueAuthors = new Set(processedCommits.map((c) => c.author))
+                .size;
             const totalCommits = processedCommits.length;
             stats[0].textContent = totalCommits;
             stats[1].textContent = weeklyData.length;
@@ -1340,43 +1957,53 @@
             const startYear = projectStartDate.getFullYear();
             generateTreeRings(svg, weeklyData, repoName, startYear, totalCommits);
             setupTooltip(container);
-
         } catch (error) {
-            console.log(`Tree rings failed for ${repoName}, using known data:`, error);
+            console.log(
+                `Tree rings failed for ${repoName}, using known data:`,
+                error,
+            );
 
             // Use hardcoded known data for this repo
             const knownData = KNOWN_REPO_DATA[repoName];
-            const types = ['feat', 'fix', 'refactor', 'docs'];
-            const createdDate = knownData ? new Date(knownData.created) : new Date('2024-01-01');
+            const types = ["feat", "fix", "refactor", "docs"];
+            const createdDate = knownData
+                ? new Date(knownData.created)
+                : new Date("2024-01-01");
             const totalCommits = knownData ? knownData.totalCommits : 100;
 
             // Simple hash function for deterministic "random" based on repo name
             const hash = (str, seed) => {
                 let h = seed;
                 for (let i = 0; i < str.length; i++) {
-                    h = ((h << 5) - h) + str.charCodeAt(i);
-                    h = h & h;
-                }
-                return Math.abs(h);
-            };
+                  h = (h << 5) - h + str.charCodeAt(i);
+                  h = h & h;
+              }
+              return Math.abs(h);
+          };
 
             // Generate deterministic commits - same every time for this repo
-            const demoWeeks = [{
-                weekStart: createdDate.toISOString().split('T')[0],
-                commits: Array(totalCommits).fill(null).map((_, i) => {
-                    // Deterministic type based on repo name + commit index
-                    const typeIndex = hash(repoName, i) % 4;
-                    return {
-                        message: `Commit ${i + 1}`,
-                        type: types[typeIndex]
-                    };
+            const demoWeeks = [
+                {
+                    weekStart: createdDate.toISOString().split("T")[0],
+                    commits: Array(totalCommits)
+                        .fill(null)
+                        .map((_, i) => {
+                            // Deterministic type based on repo name + commit index
+                            const typeIndex = hash(repoName, i) % 4;
+                            return {
+                                message: `Commit ${i + 1}`,
+                      type: types[typeIndex],
+                  };
                 }),
-                types: { feat: 0, fix: 0, refactor: 0, docs: 0 }
-            }];
+                  types: { feat: 0, fix: 0, refactor: 0, docs: 0 },
+              },
+          ];
 
             // Calculate accurate age from known creation date
             const now = new Date();
-            const ageMonths = Math.floor((now - createdDate) / (1000 * 60 * 60 * 24 * 30));
+            const ageMonths = Math.floor(
+                (now - createdDate) / (1000 * 60 * 60 * 24 * 30),
+            );
             if (ageMonths >= 12) {
                 const years = Math.floor(ageMonths / 12);
                 const months = ageMonths % 12;
@@ -1387,7 +2014,7 @@
 
             stats[0].textContent = totalCommits;
             stats[1].textContent = knownData ? knownData.weeksActive : 50;
-            stats[2].textContent = '1';
+            stats[2].textContent = "1";
 
             // Use known start year
             const startYear = knownData ? knownData.startYear : 2024;
@@ -1395,11 +2022,11 @@
             setupTooltip(container);
         }
 
-        container.classList.remove('loading');
-    }
+          container.classList.remove("loading");
+      }
 
-    // Initialize all trees
-    REPOS.forEach(repo => renderTreeRings(repo));
+        // Initialize all trees
+        REPOS.forEach((repo) => renderTreeRings(repo));
     </script>
 </body>
 </html>

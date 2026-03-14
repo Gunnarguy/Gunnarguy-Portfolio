@@ -563,6 +563,47 @@ font-weight: 600;
 text-decoration: underline;
 }
 
+/* Other Projects - Smaller Cards */
+.other-projects-heading {
+    font-size: 1.4rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.projects-grid-small {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card-small {
+    border: 1px solid #e5e5ea;
+    box-shadow: none;
+}
+
+.project-card-small .project-content {
+    padding: 1.5rem;
+}
+
+.project-card-small .project-content p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.project-card-small .project-header h3 {
+    font-size: 1.2rem;
+}
+
+.project-card-small .project-tech span {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+}
+
+.project-card-small:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
 /* Experience Section */
 .experience {
 background: white;
@@ -661,6 +702,14 @@ display: flex;
 color: var(--accent-color);
 }
 
+.contact-item a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: var(--accent-color);
+}
 .social-links {
 display: flex;
     gap: 1rem;
@@ -730,7 +779,7 @@ from {
 
   to {
     opacity: 1;
-        transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -754,7 +803,7 @@ animation: fadeUp 0.8s ease-out forwards;
   .nav-menu {
     position: fixed;
     top: var(--header-height);
-        left: 0;
+    left: 0;
         right: 0;
         background: white;
         flex-direction: column;
@@ -763,29 +812,29 @@ animation: fadeUp 0.8s ease-out forwards;
     border-bottom: 1px solid #e5e5ea;
     transform: translateY(-150%);
     transition: transform 0.3s ease;
-        z-index: 999;
+    z-index: 999;
     }
 
   .nav-menu.nav-menu-active {
-      transform: translateY(0);
-      box-shadow: var(--shadow-lg);
+    transform: translateY(0);
+        box-shadow: var(--shadow-lg);
   }
 
   .nav-toggle {
-      display: block;
-      width: 24px;
-      height: 24px;
-      position: relative;
-      cursor: pointer;
+    display: block;
+        width: 24px;
+        height: 24px;
+        position: relative;
+        cursor: pointer;
   }
 
   .nav-toggle span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--text-primary);
-      margin-bottom: 6px;
-      transition: 0.3s;
+    display: block;
+        width: 100%;
+        height: 2px;
+        background: var(--text-primary);
+        margin-bottom: 6px;
+        transition: 0.3s;
   }
   .nav-toggle-active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 6px);
@@ -1130,7 +1179,7 @@ background: #f5f5f7;
    Activity Heat Map
    ======================================== */
 .activity-heatmap-section {
-    background: var(--card-bg);
+background: var(--card-bg);
     border-radius: var(--border-radius-lg);
     padding: 2rem;
     margin-bottom: 2.5rem;
@@ -1138,38 +1187,38 @@ background: #f5f5f7;
 }
 
 .activity-heatmap-section h3 {
-    text-align: center;
+text-align: center;
     margin-bottom: 1.5rem;
     font-size: 1.25rem;
     color: var(--text-primary);
 }
 
 .heatmap-container {
-    overflow-x: auto;
+overflow-x: auto;
     padding-bottom: 0.5rem;
 }
 
 .heatmap-months {
-    position: relative;
+position: relative;
     height: 20px;
     margin-left: 28px;
     margin-bottom: 4px;
 }
 
 .heatmap-months span {
-    position: absolute;
+position: absolute;
     font-size: 0.75rem;
     color: var(--text-secondary);
     font-weight: 500;
 }
 
 .heatmap-wrapper {
-    display: flex;
+display: flex;
     gap: 4px;
 }
 
 .heatmap-days {
-    display: flex;
+display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 2px 0;
@@ -1177,24 +1226,24 @@ background: #f5f5f7;
 }
 
 .heatmap-days span {
-    font-size: 0.7rem;
+font-size: 0.7rem;
     color: var(--text-secondary);
     line-height: 12px;
 }
 
 .heatmap-grid {
-    display: flex;
+display: flex;
     gap: 3px;
 }
 
 .heatmap-week {
-    display: flex;
+display: flex;
     flex-direction: column;
     gap: 3px;
 }
 
 .heatmap-cell {
-    width: 11px;
+width: 11px;
     height: 11px;
     border-radius: 2px;
     background: #ebedf0;
@@ -1203,31 +1252,31 @@ background: #f5f5f7;
 }
 
 .heatmap-cell:hover {
-    transform: scale(1.3);
+transform: scale(1.3);
 }
 
 .heatmap-cell[data-level="0"] {
-    background: #ebedf0;
+background: #ebedf0;
 }
 
 .heatmap-cell[data-level="1"] {
-    background: #9be9a8;
+background: #9be9a8;
 }
 
 .heatmap-cell[data-level="2"] {
-    background: #40c463;
+background: #40c463;
 }
 
 .heatmap-cell[data-level="3"] {
-    background: #30a14e;
+background: #30a14e;
 }
 
 .heatmap-cell[data-level="4"] {
-    background: #216e39;
+background: #216e39;
 }
 
 .heatmap-legend {
-    display: flex;
+display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 4px;
@@ -1237,38 +1286,38 @@ background: #f5f5f7;
 }
 
 .legend-squares {
-    display: flex;
+display: flex;
     gap: 2px;
 }
 
 .legend-square {
-    width: 11px;
+width: 11px;
     height: 11px;
     border-radius: 2px;
 }
 
 .legend-square[data-level="0"] {
-    background: #ebedf0;
+background: #ebedf0;
 }
 
 .legend-square[data-level="1"] {
-    background: #9be9a8;
+background: #9be9a8;
 }
 
 .legend-square[data-level="2"] {
-    background: #40c463;
+background: #40c463;
 }
 
 .legend-square[data-level="3"] {
-    background: #30a14e;
+background: #30a14e;
 }
 
 .legend-square[data-level="4"] {
-    background: #216e39;
+background: #216e39;
 }
 
 .heatmap-stats {
-    display: flex;
+display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
@@ -1278,23 +1327,23 @@ background: #f5f5f7;
 }
 
 .heatmap-stat {
-    text-align: center;
+text-align: center;
 }
 
 .heatmap-stat .stat-value {
-    display: block;
+display: block;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
 }
 
 .heatmap-stat .stat-label {
-    font-size: 0.85rem;
+font-size: 0.85rem;
     color: var(--text-secondary);
 }
 
 .heatmap-loading {
-    text-align: center;
+text-align: center;
     color: var(--text-secondary);
     font-size: 0.9rem;
     padding: 1rem;
@@ -1304,18 +1353,18 @@ background: #f5f5f7;
    Git Stratigraphy (Tree Ring Visualization)
    ======================================== */
 .stratigraphy-section {
-    background: linear-gradient(180deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+background: linear-gradient(180deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
     padding: 80px 0;
     overflow: hidden;
 }
 
 .stratigraphy-section h2 {
-    color: white;
+color: white;
     text-align: center;
 }
 
 .strat-intro {
-    text-align: center;
+text-align: center;
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
@@ -1323,7 +1372,7 @@ background: #f5f5f7;
 
 /* Legend */
 .strat-legend {
-    display: flex;
+display: flex;
     justify-content: center;
     gap: 2rem;
     margin-bottom: 3rem;
@@ -1331,7 +1380,7 @@ background: #f5f5f7;
 }
 
 .legend-item {
-    display: flex;
+display: flex;
     align-items: center;
     gap: 0.5rem;
     color: rgba(255, 255, 255, 0.7);
@@ -1339,34 +1388,34 @@ background: #f5f5f7;
 }
 
 .legend-color {
-    width: 16px;
+width: 16px;
     height: 16px;
     border-radius: 3px;
 }
 
 .legend-color.feat {
-    background: #22ff66;
+background: #22ff66;
     /* Neon green */
 }
 
 .legend-color.fix {
-    background: #ff4757;
+background: #ff4757;
     /* Neon red */
 }
 
 .legend-color.refactor {
-    background: #bf5af2;
+background: #bf5af2;
     /* Neon purple */
 }
 
 .legend-color.docs {
-    background: #0af;
+background: #0af;
     /* Neon cyan */
 }
 
 /* Grid layout */
 .stratigraphy-grid {
-    display: grid;
+display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 2.5rem;
     max-width: 1600px;
@@ -1376,7 +1425,7 @@ background: #f5f5f7;
 
 /* Individual tree sample */
 .tree-sample {
-    background: linear-gradient(145deg, #21262d 0%, #161b22 100%);
+background: linear-gradient(145deg, #21262d 0%, #161b22 100%);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: 1.5rem;
@@ -1386,52 +1435,52 @@ background: #f5f5f7;
 }
 
 .tree-sample:hover {
-    transform: translateY(-4px);
+transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* Tree header */
 .tree-header {
-    display: flex;
+display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
 .tree-icon {
-    width: 48px;
+width: 48px;
     height: 48px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .tree-info h3 {
-    color: white;
+color: white;
     font-size: 1.2rem;
     margin-bottom: 2px;
 }
 
 .tree-age {
-    color: rgba(255, 255, 255, 0.5);
+color: rgba(255, 255, 255, 0.5);
     font-size: 0.8rem;
 }
 
 /* Tree ring container */
 .tree-ring-container {
-    position: relative;
+position: relative;
     aspect-ratio: 1;
     margin: 1rem 0;
 }
 
 .tree-rings {
-    width: 100%;
+width: 100%;
     height: 100%;
     display: block;
 }
 
 /* SVG ring styling */
 .tree-rings .ring {
-    fill: none;
+fill: none;
     stroke-width: 3;
     transition:
         stroke-width 0.2s ease,
@@ -1443,41 +1492,41 @@ background: #f5f5f7;
 }
 
 .tree-rings .ring:hover {
-    stroke-width: 6;
+stroke-width: 6;
     filter: brightness(1.4) drop-shadow(0 0 3px currentColor);
 }
 
 .tree-rings .ring.feat {
-    stroke: #22ff66;
+stroke: #22ff66;
     /* Neon green */
 }
 
 .tree-rings .ring.fix {
-    stroke: #ff4757;
+stroke: #ff4757;
     /* Neon red */
 }
 
 .tree-rings .ring.refactor {
-    stroke: #bf5af2;
+stroke: #bf5af2;
     /* Neon purple */
 }
 
 .tree-rings .ring.docs {
-    stroke: #0af;
+stroke: #0af;
     /* Neon cyan */
 }
 
 .tree-rings .ring.inactive {
-    stroke: #30363d;
+stroke: #30363d;
 }
 
 /* Center core */
 .tree-rings .core {
-    fill: #8b5e34;
+fill: #8b5e34;
 }
 
 .tree-rings .core-text {
-    fill: white;
+fill: white;
     font-size: 10px;
     font-weight: 600;
     text-anchor: middle;
@@ -1486,7 +1535,7 @@ background: #f5f5f7;
 
 /* Tooltip */
 .tree-tooltip {
-    position: absolute;
+position: absolute;
     background: rgba(0, 0, 0, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
@@ -1502,22 +1551,22 @@ background: #f5f5f7;
 }
 
 .tree-tooltip.visible {
-    opacity: 1;
+opacity: 1;
 }
 
 .tree-tooltip .tooltip-week {
-    color: rgba(255, 255, 255, 0.5);
+color: rgba(255, 255, 255, 0.5);
     font-size: 0.7rem;
     margin-bottom: 4px;
 }
 
 .tree-tooltip .tooltip-commits {
-    font-weight: 600;
+font-weight: 600;
     margin-bottom: 4px;
 }
 
 .tree-tooltip .tooltip-message {
-    color: rgba(255, 255, 255, 0.8);
+color: rgba(255, 255, 255, 0.8);
     font-size: 0.75rem;
     white-space: normal;
     word-break: break-word;
@@ -1525,7 +1574,7 @@ background: #f5f5f7;
 
 /* Tree stats */
 .tree-stats {
-    display: flex;
+display: flex;
     justify-content: space-around;
     padding: 1rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -1534,18 +1583,18 @@ background: #f5f5f7;
 }
 
 .tree-stat {
-    text-align: center;
+text-align: center;
 }
 
 .tree-stat .stat-num {
-    display: block;
+display: block;
     color: white;
     font-size: 1.5rem;
     font-weight: 700;
 }
 
 .tree-stat .stat-label {
-    color: rgba(255, 255, 255, 0.5);
+color: rgba(255, 255, 255, 0.5);
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -1553,12 +1602,12 @@ background: #f5f5f7;
 
 /* Tree links */
 .tree-links {
-    display: flex;
+display: flex;
     gap: 0.75rem;
 }
 
 .tree-links a {
-    flex: 1;
+flex: 1;
     padding: 10px 16px;
     text-align: center;
     font-size: 0.85rem;
@@ -1568,90 +1617,89 @@ background: #f5f5f7;
 }
 
 .tree-links a:first-child {
-    background: var(--accent-color);
+background: var(--accent-color);
     color: white;
 }
 
 .tree-links a:last-child {
-    background: #30363d;
+background: #30363d;
     color: white;
 }
 
 .tree-links a:hover {
-    transform: translateY(-2px);
+transform: translateY(-2px);
     filter: brightness(1.1);
 }
 
 /* Loading state */
 .tree-sample.loading .tree-rings {
-    animation: treePulse 1.5s ease-in-out infinite;
+animation: treePulse 1.5s ease-in-out infinite;
 }
 
 @keyframes treePulse {
-
-    0%,
+0%,
     100% {
         opacity: 0.5;
     }
 
-    50% {
-        opacity: 0.8;
-    }
+  50% {
+      opacity: 0.8;
+  }
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .heatmap-stats {
+.heatmap-stats {
         gap: 1rem;
     }
 
-    .heatmap-stat .stat-value {
-        font-size: 1.25rem;
-    }
+  .heatmap-stat .stat-value {
+      font-size: 1.25rem;
+  }
 
-    .heatmap-stat .stat-label {
-        font-size: 0.75rem;
-    }
+  .heatmap-stat .stat-label {
+      font-size: 0.75rem;
+  }
 
-    .stratigraphy-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-    }
+  .stratigraphy-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+  }
 
-    .strat-legend {
-        gap: 1rem;
-    }
+  .strat-legend {
+      gap: 1rem;
+  }
 
-    .legend-item {
-        font-size: 0.75rem;
-    }
+  .legend-item {
+      font-size: 0.75rem;
+  }
 
-    .tree-sample {
-        padding: 1rem;
-    }
+  .tree-sample {
+      padding: 1rem;
+  }
 
-    .tree-icon {
-        width: 40px;
-        height: 40px;
-    }
+  .tree-icon {
+      width: 40px;
+      height: 40px;
+  }
 
-    .tree-info h3 {
-        font-size: 1rem;
-    }
+  .tree-info h3 {
+      font-size: 1rem;
+  }
 
-    .tree-stat .stat-num {
-        font-size: 1.25rem;
-    }
+  .tree-stat .stat-num {
+      font-size: 1.25rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .stratigraphy-grid {
+.stratigraphy-grid {
         grid-template-columns: 1fr;
         max-width: 350px;
         margin: 0 auto;
     }
 
-    .strat-legend {
-        gap: 0.75rem;
-    }
+  .strat-legend {
+      gap: 0.75rem;
+  }
 }
