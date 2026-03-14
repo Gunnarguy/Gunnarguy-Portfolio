@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gunnarguy.github.io/Gunnarguy-Portfolio/sitemap.xml

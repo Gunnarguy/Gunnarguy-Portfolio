@@ -31,6 +31,37 @@
     --glass-border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Skip Link (a11y) */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 10000;
+    padding: 8px 16px;
+    background: var(--accent-color);
+    color: #fff;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 8px;
+}
+
+/* Screen-reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
 /* Reset & Base */
 * {
 margin: 0;
@@ -121,10 +152,11 @@ display: flex;
     padding: 0 24px;
 }
 
-.nav-brand h1 {
+.nav-brand a {
 font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-primary);
+    text-decoration: none;
 }
 
 .nav-menu {
@@ -1201,20 +1233,20 @@ text-align: center;
         mask-image: linear-gradient(to right, transparent 0px, #000 24px, #000 calc(100% - 0px), #000 100%);
         -webkit-mask-image: linear-gradient(to right, transparent 0px, #000 24px, #000 calc(100% - 0px), #000 100%);
     }
-    
+
     .heatmap-container::-webkit-scrollbar {
         height: 6px;
     }
-    
+
     .heatmap-container::-webkit-scrollbar-track {
         background: transparent;
     }
-    
+
     .heatmap-container::-webkit-scrollbar-thumb {
         background: rgba(0, 0, 0, 0.15);
         border-radius: 3px;
     }
-    
+
     .heatmap-container::-webkit-scrollbar-thumb:hover {
         background: rgba(0, 0, 0, 0.3);
 }
