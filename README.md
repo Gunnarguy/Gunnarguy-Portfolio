@@ -19,9 +19,11 @@ This portfolio presents my journey from Medical Device Specialist to iOS Develop
 - **[OpenCone](https://apps.apple.com/us/app/opencone/id6744467668)** - Semantic search and RAG workflow app with Pinecone integration
 - **[OpenResponses](https://github.com/Gunnarguy/OpenResponses)** - OpenAI Responses API client with multi-model streaming, computer-use automation, and MCP connectors (Notion, Google, remote compute)
 - **[OpenIntelligence (RAGMLCore)](https://github.com/Gunnarguy/RAGMLCore)** - On-device RAG stack for iOS 18 with Vision OCR ingestion, Apple Intelligence routing, and telemetry-backed pipeline visualizations
+- **[LinkedOut](https://github.com/Gunnarguy/LinkedOut)** - AI-powered matching platform with SwiftUI iOS app + FastAPI backend, LLM scoring (Gemini + OpenAI), 5 data source integrations, and swipe-based UI
 
 ### Technical Projects
 
+- **[PlaudBlender](https://github.com/Gunnarguy/PlaudBlender)** - Voice-to-knowledge-graph pipeline transforming Plaud recordings into searchable data with Gemini AI, Qdrant vector DB, and an 11-tool MCP server
 - **Python Automations** - Comprehensive automation suite with computer vision and AI integration
 - **PiAutomation Platform** - Raspberry Pi-based automation and monitoring system
 
@@ -58,8 +60,8 @@ This portfolio is built with vanilla HTML, CSS, and JavaScript for optimal perfo
 
 ### Deployment
 
-The site is deployed using GitHub Pages and is accessible at: `https://gunnarguy.github.io/Gunnarguy-Portfolio/`
+The site is deployed using GitHub Pages with a custom domain and is accessible at: `https://gunnarguy.me/`
 
 ## License
 
-© 2025 Gunnar Hostetler. All rights reserved.
+© 2026 Gunnar Hostetler. All rights reserved.
