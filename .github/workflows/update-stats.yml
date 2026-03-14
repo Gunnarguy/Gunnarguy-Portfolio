@@ -1,0 +1,79 @@
+name: Update GitHub Stats
+
+on:
+  schedule:
+    - cron: "0 */6 * * *" # Every 6 hours
+  workflow_dispatch: # Manual trigger from Actions tab
+  push:
+    branches: [main]
+    paths-ignore:
+      - "data/**" # Don't re-trigger on our own commits
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch GitHub Stats
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const repos = ['LinkedOut', 'OpenResponses', 'OpenIntelligence', 'PlaudBlender', 'OpenCone', 'OpenAssistant'];
+            const owner = 'Gunnarguy';
+            const result = { generated: new Date().toISOString(), repos: {} };
+
+            for (const repo of repos) {
+              console.log(`Fetching ${repo}...`);
+              try {
+                // Repo info
+                const { data: repoInfo } = await github.rest.repos.get({ owner, repo });
+
+                // ALL commits with pagination
+                let allCommits = [];
+                let page = 1;
+                let hasMore = true;
+                while (hasMore) {
+                  const { data: commits } = await github.rest.repos.listCommits({
+                    owner, repo, per_page: 100, page
+                  });
+                  if (commits.length === 0) break;
+                  allCommits = allCommits.concat(commits.map(c => ({
+                    sha: c.sha,
+                    message: c.commit.message.split('\n')[0],
+                    date: c.commit.author.date,
+                    author: c.commit.author.name
+                  })));
+                  if (commits.length < 100) hasMore = false;
+                  page++;
+                }
+
+                result.repos[repo] = {
+                  created_at: repoInfo.created_at,
+                  description: repoInfo.description,
+                  stars: repoInfo.stargazers_count,
+                  commits: allCommits
+                };
+                console.log(`  ${repo}: ${allCommits.length} commits`);
+              } catch (error) {
+                console.log(`  ${repo}: FAILED - ${error.message}`);
+              }
+            }
+
+            // Ensure data directory exists
+            if (!fs.existsSync('data')) fs.mkdirSync('data');
+            fs.writeFileSync('data/github-stats.json', JSON.stringify(result));
+            console.log(`\nWrote data/github-stats.json (${Object.keys(result.repos).length} repos)`);
+
+      - name: Commit stats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/github-stats.json
+          git diff --quiet --cached || git commit -m "chore: update github stats [skip ci]"
+          git push
