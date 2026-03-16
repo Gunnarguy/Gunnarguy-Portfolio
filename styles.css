@@ -33,7 +33,7 @@
 
 /* Skip Link (a11y) */
 .skip-link {
-    position: absolute;
+position: absolute;
     top: -100%;
     left: 16px;
     z-index: 10000;
@@ -47,12 +47,12 @@
 }
 
 .skip-link:focus {
-    top: 8px;
+top: 8px;
 }
 
 /* Screen-reader only */
 .sr-only {
-    position: absolute;
+position: absolute;
     width: 1px;
     height: 1px;
     padding: 0;
@@ -837,7 +837,7 @@ animation: fadeUp 0.8s ease-out forwards;
     top: var(--header-height);
     left: 0;
     right: 0;
-        background: white;
+    background: white;
         flex-direction: column;
         padding: 2rem;
         gap: 1.5rem;
@@ -855,7 +855,7 @@ animation: fadeUp 0.8s ease-out forwards;
   .nav-toggle {
     display: block;
     width: 24px;
-        height: 24px;
+    height: 24px;
         position: relative;
         cursor: pointer;
   }
@@ -863,7 +863,7 @@ animation: fadeUp 0.8s ease-out forwards;
   .nav-toggle span {
     display: block;
     width: 100%;
-        height: 2px;
+    height: 2px;
         background: var(--text-primary);
         margin-bottom: 6px;
         transition: 0.3s;
@@ -1226,29 +1226,37 @@ text-align: center;
 }
 
 .heatmap-container {
-    overflow-x: auto;
+overflow-x: auto;
     padding-bottom: 0.5rem;
     scroll-behavior: smooth;
-        /* Fade hint on the left edge when scrolled */
-        mask-image: linear-gradient(to right, transparent 0px, #000 24px, #000 calc(100% - 0px), #000 100%);
-        -webkit-mask-image: linear-gradient(to right, transparent 0px, #000 24px, #000 calc(100% - 0px), #000 100%);
-    }
+    /* Fade hint on the left edge when scrolled */
+mask-image: linear-gradient(to right,
+            transparent 0px,
+            #000 24px,
+            #000 calc(100% - 0px),
+            #000 100%);
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0px,
+            #000 24px,
+            #000 calc(100% - 0px),
+            #000 100%);
+}
 
-    .heatmap-container::-webkit-scrollbar {
-        height: 6px;
-    }
+.heatmap-container::-webkit-scrollbar {
+    height: 6px;
+}
 
-    .heatmap-container::-webkit-scrollbar-track {
-        background: transparent;
-    }
+.heatmap-container::-webkit-scrollbar-track {
+    background: transparent;
+}
 
-    .heatmap-container::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.15);
-        border-radius: 3px;
-    }
+.heatmap-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+}
 
-    .heatmap-container::-webkit-scrollbar-thumb:hover {
-        background: rgba(0, 0, 0, 0.3);
+.heatmap-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .heatmap-months {
@@ -1259,14 +1267,14 @@ position: relative;
 }
 
 .heatmap-months span {
-    position: absolute;
+position: absolute;
     font-size: 0.75rem;
     color: var(--text-secondary);
     font-weight: 500;
 }
 
 .heatmap-months span.year-start {
-    font-weight: 700;
+font-weight: 700;
     color: var(--text-primary);
 }
 .heatmap-wrapper {
@@ -1410,7 +1418,7 @@ text-align: center;
    Live Data Status Bar
    ======================================== */
 .heatmap-header {
-    display: flex;
+display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -1419,11 +1427,11 @@ text-align: center;
 }
 
 .heatmap-header h3 {
-    margin: 0;
+margin: 0;
 }
 
 .data-status {
-    display: flex;
+display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 0.8rem;
@@ -1431,7 +1439,7 @@ text-align: center;
 }
 
 .status-dot {
-    width: 8px;
+width: 8px;
     height: 8px;
     border-radius: 50%;
     background: #555;
@@ -1440,39 +1448,38 @@ text-align: center;
 }
 
 .status-dot.live {
-    background: #39d353;
+background: #39d353;
     box-shadow: 0 0 6px #39d353;
     animation: pulse-live 2s ease-in-out infinite;
 }
 
 .status-dot.fallback {
-    background: #d29922;
+background: #d29922;
     box-shadow: 0 0 4px #d29922;
 }
 
 .status-dot.loading {
-    background: #58a6ff;
+background: #58a6ff;
     animation: pulse-live 0.8s ease-in-out infinite;
 }
 
 @keyframes pulse-live {
-
-    0%,
+0%,
     100% {
         opacity: 1;
     }
 
-    50% {
-        opacity: 0.4;
-    }
+  50% {
+      opacity: 0.4;
+  }
 }
 
 .status-text {
-    white-space: nowrap;
+white-space: nowrap;
 }
 
 .refresh-btn {
-    background: none;
+background: none;
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-secondary);
     cursor: pointer;
@@ -1486,23 +1493,23 @@ text-align: center;
 }
 
 .refresh-btn:hover {
-    border-color: var(--accent);
+border-color: var(--accent);
     color: var(--accent);
     background: rgba(0, 184, 212, 0.08);
 }
 
 .refresh-btn.spinning i {
-    animation: spin-refresh 1s linear infinite;
+animation: spin-refresh 1s linear infinite;
 }
 
 @keyframes spin-refresh {
-    from {
+from {
         transform: rotate(0deg);
     }
 
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+      transform: rotate(360deg);
+  }
 }
 /* ========================================
    Git Stratigraphy (Tree Ring Visualization)
@@ -1818,7 +1825,7 @@ animation: treePulse 1.5s ease-in-out infinite;
 
   .stratigraphy-grid {
     grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
+    gap: 1.5rem;
   }
 
   .strat-legend {
@@ -1835,7 +1842,7 @@ animation: treePulse 1.5s ease-in-out infinite;
 
   .tree-icon {
     width: 40px;
-        height: 40px;
+    height: 40px;
   }
 
   .tree-info h3 {
