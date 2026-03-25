@@ -190,6 +190,8 @@ display: none;
     text-align: center;
     padding-top: var(--header-height);
     background: transparent;
+    overflow-x: clip;
+    overflow-y: visible;
 }
 
 /* Floating gradient orbs — extend past hero into about */
