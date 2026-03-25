@@ -182,7 +182,7 @@ display: none;
 
 /* Hero Section */
 .hero {
-    position: relative;
+position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -196,7 +196,7 @@ display: none;
 
 /* Floating gradient orbs — extend past hero into about */
 .hero-bg {
-    position: absolute;
+position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -206,7 +206,7 @@ display: none;
 }
 
 .hero-orb {
-    position: absolute;
+position: absolute;
     border-radius: 50%;
     filter: blur(80px);
     opacity: 0.35;
@@ -214,7 +214,7 @@ display: none;
 }
 
 .hero-orb-1 {
-    width: 500px;
+width: 500px;
     height: 500px;
     background: var(--accent-color);
     top: -10%;
@@ -223,7 +223,7 @@ display: none;
 }
 
 .hero-orb-2 {
-    width: 400px;
+width: 400px;
     height: 400px;
     background: #4dd0e1;
     bottom: -8%;
@@ -232,7 +232,7 @@ display: none;
 }
 
 .hero-orb-3 {
-    width: 300px;
+width: 300px;
     height: 300px;
     background: var(--accent-secondary);
     top: 40%;
@@ -241,32 +241,50 @@ display: none;
 }
 
 @keyframes orbFloat1 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-40px, 30px) scale(1.08); }
+0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-40px, 30px) scale(1.08);
+    }
 }
 @keyframes orbFloat2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(30px, -40px) scale(1.05); }
+0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(30px, -40px) scale(1.05);
+    }
 }
 @keyframes orbFloat3 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-20px, -30px) scale(1.12); }
+0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-20px, -30px) scale(1.12);
+    }
 }
 
 .hero .container {
-    position: relative;
+position: relative;
     z-index: 1;
 }
 
 .hero-content {
-    max-width: 800px;
+max-width: 800px;
     margin: 0 auto;
     animation: fadeUp 0.8s ease-out;
 }
 
 /* Kicker line */
 .hero-kicker {
-    display: inline-block;
+display: inline-block;
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -279,12 +297,15 @@ display: none;
 }
 
 .hero-content h1 {
-    font-size: 4.5rem;
+font-size: 4.5rem;
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1.05;
     margin-bottom: 1.25rem;
-    background: linear-gradient(135deg, #1d1d1f 0%, var(--accent-secondary) 60%, var(--accent-color) 100%);
+background: linear-gradient(135deg,
+            #1d1d1f 0%,
+            var(--accent-secondary) 60%,
+            var(--accent-color) 100%);
     background-size: 200% 200%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -293,19 +314,25 @@ display: none;
 }
 
 @keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .hero-content h2 {
-    font-size: 2rem;
+font-size: 2rem;
     color: var(--accent-color);
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
 
 .hero-description {
-    max-width: 620px;
+max-width: 620px;
     margin: 0 auto 2rem;
     font-size: 1.2rem;
     line-height: 1.7;
@@ -314,7 +341,7 @@ display: none;
 
 /* Stat counters */
 .hero-stats {
-    display: flex;
+display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem;
@@ -322,13 +349,13 @@ display: none;
 }
 
 .hero-stat {
-    display: flex;
+display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .hero-stat-number {
-    font-size: 2.2rem;
+font-size: 2.2rem;
     font-weight: 800;
     letter-spacing: -0.03em;
     color: var(--text-primary);
@@ -336,7 +363,7 @@ display: none;
 }
 
 .hero-stat-label {
-    font-size: 0.8rem;
+font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -345,13 +372,13 @@ display: none;
 }
 
 .hero-stat-divider {
-    width: 1px;
+width: 1px;
     height: 36px;
     background: rgba(0, 0, 0, 0.1);
 }
 
 .hero-buttons {
-    display: flex;
+display: flex;
     gap: 1rem;
     justify-content: center;
 }
@@ -402,12 +429,12 @@ text-align: center;
 
 /* About Section */
 .about {
-    position: relative;
+position: relative;
 }
 
 /* -- Intro: photo + bio side-by-side -- */
 .about-intro {
-    display: flex;
+display: flex;
     align-items: center;
     gap: 3.5rem;
     margin-bottom: 4rem;
@@ -415,21 +442,19 @@ text-align: center;
 
 /* Photo with animated glow */
 .about-photo {
-    position: relative;
+position: relative;
     flex-shrink: 0;
 }
 
 .photo-glow {
-    position: absolute;
+position: absolute;
     inset: -12px;
     border-radius: 50%;
-    background: conic-gradient(
-        from 0deg,
-        var(--accent-color),
-        #4dd0e1,
-        var(--accent-secondary),
-        var(--accent-color)
-    );
+    background: conic-gradient(from 0deg,
+            var(--accent-color),
+            #4dd0e1,
+            var(--accent-secondary),
+            var(--accent-color));
     opacity: 0.5;
     filter: blur(18px);
     animation: glowSpin 8s linear infinite;
@@ -437,11 +462,13 @@ text-align: center;
 }
 
 @keyframes glowSpin {
-    to { transform: rotate(360deg); }
+to {
+        transform: rotate(360deg);
+    }
 }
 
 .about-photo img {
-    position: relative;
+position: relative;
     z-index: 1;
     width: 220px;
     height: 220px;
@@ -453,12 +480,12 @@ text-align: center;
 
 /* Bio text */
 .about-bio {
-    flex: 1;
+flex: 1;
     min-width: 0;
 }
 
 .bio-lead {
-    font-size: 1.6rem;
+font-size: 1.6rem;
     font-weight: 700;
     color: var(--text-primary);
     line-height: 1.35;
@@ -466,7 +493,7 @@ text-align: center;
 }
 
 .about-bio > p:not(.bio-lead) {
-    font-size: 1.1rem;
+font-size: 1.1rem;
     line-height: 1.7;
     color: var(--text-secondary);
     margin-bottom: 1.25rem;
@@ -474,13 +501,13 @@ text-align: center;
 
 /* Tag pills */
 .about-tags {
-    display: flex;
+display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
 }
 
 .about-tag {
-    display: inline-flex;
+display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     padding: 6px 14px;
@@ -493,12 +520,12 @@ text-align: center;
 }
 
 .about-tag i {
-    font-size: 0.8rem;
+font-size: 0.8rem;
 }
 
 /* -- Journey timeline -- */
 .journey-heading {
-    text-align: center;
+text-align: center;
     font-size: 1.35rem;
     font-weight: 700;
     letter-spacing: -0.01em;
@@ -507,7 +534,7 @@ text-align: center;
 }
 
 .journey-timeline {
-    position: relative;
+position: relative;
     max-width: 680px;
     margin: 0 auto;
     padding-left: 2.5rem;
@@ -515,44 +542,58 @@ text-align: center;
 
 /* vertical line */
 .journey-timeline::before {
-    content: "";
+content: "";
     position: absolute;
     left: 7px;
     top: 8px;
     bottom: 8px;
     width: 2px;
-    background: linear-gradient(
-        to bottom,
-        var(--accent-color),
-        #4dd0e1 50%,
-        var(--accent-secondary)
-    );
+    background: linear-gradient(to bottom,
+            var(--accent-color),
+            #4dd0e1 50%,
+            var(--accent-secondary));
     border-radius: 1px;
 }
 
 .journey-item {
-    position: relative;
+position: relative;
     padding-bottom: 1.75rem;
     opacity: 0;
     transform: translateY(18px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
 }
 
 .journey-item.visible {
-    opacity: 1;
+opacity: 1;
     transform: translateY(0);
 }
 
 /* stagger children */
-.journey-item:nth-child(2) { transition-delay: 0.07s; }
-.journey-item:nth-child(3) { transition-delay: 0.14s; }
-.journey-item:nth-child(4) { transition-delay: 0.21s; }
-.journey-item:nth-child(5) { transition-delay: 0.28s; }
-.journey-item:nth-child(6) { transition-delay: 0.35s; }
+.journey-item:nth-child(2) {
+    transition-delay: 0.07s;
+}
+
+.journey-item:nth-child(3) {
+    transition-delay: 0.14s;
+}
+
+.journey-item:nth-child(4) {
+    transition-delay: 0.21s;
+}
+
+.journey-item:nth-child(5) {
+    transition-delay: 0.28s;
+}
+
+.journey-item:nth-child(6) {
+    transition-delay: 0.35s;
+}
 
 /* dot */
 .journey-marker {
-    position: absolute;
+position: absolute;
     left: -2.5rem;
     top: 0.35rem;
     width: 16px;
@@ -566,13 +607,13 @@ text-align: center;
 }
 
 .journey-item:hover .journey-marker {
-    background: var(--accent-color);
+background: var(--accent-color);
     box-shadow: 0 0 0 6px rgba(0, 184, 212, 0.2);
 }
 
 /* card */
 .journey-card {
-    background: var(--card-bg);
+background: var(--card-bg);
     border: 1px solid rgba(0, 0, 0, 0.04);
     border-radius: var(--border-radius-md);
     padding: 1.25rem 1.5rem;
@@ -581,12 +622,12 @@ text-align: center;
 }
 
 .journey-card:hover {
-    box-shadow: var(--shadow-md);
+box-shadow: var(--shadow-md);
     transform: translateX(4px);
 }
 
 .journey-label {
-    display: inline-block;
+display: inline-block;
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -596,21 +637,21 @@ text-align: center;
 }
 
 .journey-card p {
-    font-size: 1rem;
+font-size: 1rem;
     line-height: 1.55;
     color: var(--text-secondary);
     margin: 0;
 }
 
 .journey-card em {
-    color: var(--text-primary);
+color: var(--text-primary);
     font-style: italic;
     font-weight: 600;
 }
 
 /* closing line */
 .journey-coda {
-    text-align: center;
+text-align: center;
     margin-top: 2.5rem;
     font-size: 1.1rem;
     font-style: italic;
@@ -1167,7 +1208,7 @@ animation: fadeUp 0.8s ease-out forwards;
     left: 0;
     right: 0;
     background: white;
-        flex-direction: column;
+    flex-direction: column;
         padding: 2rem;
         gap: 1.5rem;
     border-bottom: 1px solid #e5e5ea;
@@ -1185,7 +1226,7 @@ animation: fadeUp 0.8s ease-out forwards;
     display: block;
     width: 24px;
     height: 24px;
-        position: relative;
+    position: relative;
         cursor: pointer;
   }
 
@@ -1193,7 +1234,7 @@ animation: fadeUp 0.8s ease-out forwards;
     display: block;
     width: 100%;
     height: 2px;
-        background: var(--text-primary);
+    background: var(--text-primary);
         margin-bottom: 6px;
         transition: 0.3s;
   }
@@ -1579,34 +1620,24 @@ overflow-x: auto;
     scroll-behavior: smooth;
     max-width: 100%;
     min-width: 0;
-    /* Fade hint on the left edge when scrolled */
-mask-image: linear-gradient(to right,
-            transparent 0px,
-            #000 24px,
-            #000 calc(100% - 0px),
-            #000 100%);
-    -webkit-mask-image: linear-gradient(to right,
-            transparent 0px,
-            #000 24px,
-            #000 calc(100% - 0px),
-            #000 100%);
+    -webkit-overflow-scrolling: touch;
 }
 
 .heatmap-container::-webkit-scrollbar {
-    height: 6px;
+height: 6px;
 }
 
 .heatmap-container::-webkit-scrollbar-track {
-    background: transparent;
+background: transparent;
 }
 
 .heatmap-container::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15);
+background: rgba(0, 0, 0, 0.15);
     border-radius: 3px;
 }
 
 .heatmap-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
+background: rgba(0, 0, 0, 0.3);
 }
 
 .heatmap-months {
@@ -1614,6 +1645,8 @@ position: relative;
     height: 20px;
     margin-left: 28px;
     margin-bottom: 4px;
+    width: max-content;
+    min-width: calc(100% - 28px);
 }
 
 .heatmap-months span {
@@ -1630,6 +1663,9 @@ font-weight: 700;
 .heatmap-wrapper {
 display: flex;
     gap: 4px;
+    width: max-content;
+    min-width: 100%;
+    align-items: flex-start;
 }
 
 .heatmap-days {
@@ -1649,12 +1685,15 @@ font-size: 0.7rem;
 .heatmap-grid {
 display: flex;
     gap: 3px;
+    flex: 0 0 auto;
+    width: max-content;
 }
 
 .heatmap-week {
 display: flex;
     flex-direction: column;
     gap: 3px;
+    flex: 0 0 auto;
 }
 
 .heatmap-cell {
@@ -1820,7 +1859,7 @@ background: #58a6ff;
     }
 
   50% {
-      opacity: 0.4;
+    opacity: 0.4;
   }
 }
 
@@ -1858,7 +1897,7 @@ from {
     }
 
   to {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 /* ========================================
