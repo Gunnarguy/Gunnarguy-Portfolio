@@ -83,7 +83,7 @@ font-family:
     color: var(--text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 .container {
@@ -1174,7 +1174,7 @@ animation: fadeUp 0.8s ease-out forwards;
     transform: translateY(-150%);
     transition: transform 0.3s ease;
     z-index: 999;
-
+  }
 
   .nav-menu.nav-menu-active {
     transform: translateY(0);
@@ -1563,6 +1563,7 @@ background: var(--card-bg);
     padding: 2rem;
     margin-bottom: 2.5rem;
     box-shadow: var(--shadow-sm);
+    overflow: hidden;
 }
 
 .activity-heatmap-section h3 {
@@ -1576,6 +1577,8 @@ text-align: center;
 overflow-x: auto;
     padding-bottom: 0.5rem;
     scroll-behavior: smooth;
+    max-width: 100%;
+    min-width: 0;
     /* Fade hint on the left edge when scrolled */
 mask-image: linear-gradient(to right,
             transparent 0px,
