@@ -269,65 +269,218 @@ text-align: center;
 }
 
 /* About Section */
-.about-content {
-display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
+
+/* -- Intro: photo + bio side-by-side -- */
+.about-intro {
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+    margin-bottom: 4rem;
 }
 
-.about-text p {
-margin-bottom: 1.5rem;
-}
-
-.about-image {
-    position: sticky;
-    top: calc(var(--header-height) + 2rem);
-}
-
-.philosophy {
-margin-top: 2rem;
-    background: white;
-    padding: 2rem;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-sm);
-}
-
-.philosophy h3 {
-font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-.philosophy ul {
-list-style: none;
-}
-
-.philosophy li {
-margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
+/* Photo with animated glow */
+.about-photo {
     position: relative;
-    color: var(--text-secondary);
+    flex-shrink: 0;
 }
 
-.philosophy li::before {
-content: "•";
-    color: var(--accent-color);
+.photo-glow {
     position: absolute;
-    left: 0;
-    font-weight: bold;
+    inset: -12px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        var(--accent-color),
+        #4dd0e1,
+        var(--accent-secondary),
+        var(--accent-color)
+    );
+    opacity: 0.5;
+    filter: blur(18px);
+    animation: glowSpin 8s linear infinite;
+    z-index: 0;
 }
 
-.about-image img {
-width: 100%;
-    aspect-ratio: 3 / 4;
+@keyframes glowSpin {
+    to { transform: rotate(360deg); }
+}
+
+.about-photo img {
+    position: relative;
+    z-index: 1;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
     object-fit: cover;
-    border-radius: var(--border-radius-lg);
+    border: 4px solid var(--card-bg);
     box-shadow: var(--shadow-lg);
+}
+
+/* Bio text */
+.about-bio {
+    flex: 1;
+    min-width: 0;
+}
+
+.bio-lead {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+}
+
+.about-bio > p:not(.bio-lead) {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+/* Tag pills */
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.about-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: rgba(0, 184, 212, 0.08);
+    color: var(--accent-secondary);
+    backdrop-filter: blur(4px);
+}
+
+.about-tag i {
+    font-size: 0.8rem;
+}
+
+/* -- Journey timeline -- */
+.journey-heading {
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+}
+
+.journey-timeline {
+    position: relative;
+    max-width: 680px;
+    margin: 0 auto;
+    padding-left: 2.5rem;
+}
+
+/* vertical line */
+.journey-timeline::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        var(--accent-color),
+        #4dd0e1 50%,
+        var(--accent-secondary)
+    );
+    border-radius: 1px;
+}
+
+.journey-item {
+    position: relative;
+    padding-bottom: 1.75rem;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.journey-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* stagger children */
+.journey-item:nth-child(2) { transition-delay: 0.07s; }
+.journey-item:nth-child(3) { transition-delay: 0.14s; }
+.journey-item:nth-child(4) { transition-delay: 0.21s; }
+.journey-item:nth-child(5) { transition-delay: 0.28s; }
+.journey-item:nth-child(6) { transition-delay: 0.35s; }
+
+/* dot */
+.journey-marker {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.35rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(0, 184, 212, 0.15);
+    z-index: 1;
     transition: var(--transition);
 }
 
-.about-image img:hover {
-transform: scale(1.02);
+.journey-item:hover .journey-marker {
+    background: var(--accent-color);
+    box-shadow: 0 0 0 6px rgba(0, 184, 212, 0.2);
+}
+
+/* card */
+.journey-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: var(--border-radius-md);
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.journey-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateX(4px);
+}
+
+.journey-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 0.35rem;
+}
+
+.journey-card p {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.journey-card em {
+    color: var(--text-primary);
+    font-style: italic;
+    font-weight: 600;
+}
+
+/* closing line */
+.journey-coda {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    opacity: 0.85;
 }
 
 /* Skills Section */
@@ -887,14 +1040,32 @@ animation: fadeUp 0.8s ease-out forwards;
     transform: rotate(-45deg) translate(5px, -6px);
   }
 
-  .about-content,
+  .about-intro {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .about-photo img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .about-tags {
+    justify-content: center;
+  }
+
+  .bio-lead {
+    font-size: 1.3rem;
+  }
+
+  .journey-heading {
+    font-size: 1.15rem;
+  }
+
   .contact-content {
     grid-template-columns: 1fr;
     gap: 2rem;
-  }
-
-  .about-image {
-    order: -1;
   }
 
   .projects-grid {
