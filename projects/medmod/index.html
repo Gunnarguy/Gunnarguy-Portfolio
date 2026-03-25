@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenAssistant - Project Deep Dive | Gunnar Hostetler</title>
-    <meta name="description" content="Native iOS app for OpenAI Assistants API interaction.">
+    <title>MedMod - Project Deep Dive | Gunnar Hostetler</title>
+    <meta name="description" content="Local-first clinical software prototype combining on-device intelligence, anatomy-aware workflows, and an iOS-native EHR shell.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,7 +12,7 @@
 :root {
     --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
     --text-primary: #fff; --text-secondary: #a0a0b0;
-    --accent: #8b5cf6; --accent-light: #8b5cf699;
+    --accent: #ef4444; --accent-light: #ef444499;
     --border-color: #2a2a3a;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -60,42 +60,77 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
         <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
         <div class="nav-links">
             <a href="#features">Features</a>
-            <a href="https://github.com/Gunnarguy/OpenAssistant" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/Gunnarguy/MedMod" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </nav>
 
     <header class="project-hero">
         <div class="container">
-            <h1>OpenAssistant</h1>
-            <p class="hero-subtitle">Native iOS app for OpenAI Assistants API interaction.</p>
+            <h1>MedMod</h1>
+            <p class="hero-subtitle">Local-first clinical software prototype combining on-device intelligence, anatomy-aware workflows, and an iOS-native EHR shell.</p>
             <div class="hero-actions">
-                <a href="https://github.com/Gunnarguy/OpenAssistant" class="btn btn-primary" target="_blank">
+                <a href="https://github.com/Gunnarguy/MedMod" class="btn btn-primary" target="_blank">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
-                <a href="https://apps.apple.com/us/app/openassistant/id6692613772" class="btn btn-appstore" target="_blank">
-            <i class="fab fa-app-store-ios"></i> App Store
-        </a>
+                
             </div>
-            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">Combine</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">Code Interpreter</span><span class="tech-tag">MVVM</span></div>
+            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">SwiftData</span><span class="tech-tag">Apple Intelligence</span><span class="tech-tag">Foundation Models</span><span class="tech-tag">HealthKit</span><span class="tech-tag">RealityKit</span><span class="tech-tag">Liquid Glass</span><span class="tech-tag">On-device AI</span></div>
         </div>
     </header>
 
     <section id="features" class="section">
         <div class="container">
             <h2>Features</h2>
-            <div class="features-grid"><p style="text-align:center;color:var(--text-secondary);">See the README for full feature list.</p></div>
+            <div class="features-grid">
+        <div class="feature-card">
+            <h3>Local-first chart system</h3>
+            <p>Seeds and manages patient charts, medications, appointments, clinical photos, and longitudinal encounter history directly on device with SwiftData.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Clinical intelligence workspace</h3>
+            <p>Uses Apple Foundation Models for structured note generation, chart-grounded question answering, and patient-specific clinical assistance.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Agenda + patient shell</h3>
+            <p>Ships an iOS-native EHR layout with agenda, patient dashboard, inbox, intelligence tab, chart notes, prescriptions, and supporting workflows.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Anatomy-aware workflow</h3>
+            <p>Maps diagnoses, photos, and affected regions onto an interactive anatomical view so documentation and visual exam context stay connected.</p>
+        </div>
+        <div class="feature-card">
+            <h3>HealthKit FHIR bridge</h3>
+            <p>Includes service-layer scaffolding for pulling clinical records from HealthKit and normalizing them into the local chart model.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Clinical prototype for real workflows</h3>
+            <p>Explores what dermatology and medical-device-adjacent software could look like if modern iOS capabilities replaced brittle legacy portals.</p>
+        </div></div>
         </div>
     </section>
 
     
+    <section id="overview" class="section section-alt">
+        <div class="container">
+            <h2>Overview</h2>
+            <div class="story-grid">
+        <div class="story-card">
+            <h3>Why It Exists</h3>
+            <p>MedMod comes directly from my day job perspective. I spend my professional life around medical workflows, fragmented systems, and tools that rarely feel designed for the people actually using them. This project is my attempt to reimagine that stack as something local-first, fluid, and actually intelligent on the device in your hand.</p>
+        </div>
+        <div class="story-card">
+            <h3>What I Built</h3>
+            <p>The current implementation includes a tabbed EHR shell, seeded patient records, appointment and medication models, clinical history, chart-note scaffolding, an intelligence workspace, and anatomy-aware visualization. It is not just a visual mockup; it already models real patient objects and real encounter flows inside a functioning SwiftUI app.</p>
+        </div>
+        <div class="story-card">
+            <h3>Why It Matters In My Portfolio</h3>
+            <p>MedMod bridges my clinical domain knowledge with my software work. Where LinkedOut proves full-stack AI product thinking and PlaudBlender proves Python systems architecture, MedMod shows I can translate healthcare reality into product architecture, interface design, and local AI workflows that feel native to Apple platforms.</p>
+        </div>
+            </div>
+        </div>
+    </section>
 
     
-        <section id="docs" class="section section-alt">
-            <div class="container">
-                <h2>Documentation</h2>
-                <p>Explore the full documentation in the <a href="docs/">docs folder</a>.</p>
-            </div>
-        </section>
 
     <footer class="project-footer">
         <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>

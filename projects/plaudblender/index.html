@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenAssistant - Project Deep Dive | Gunnar Hostetler</title>
-    <meta name="description" content="Native iOS app for OpenAI Assistants API interaction.">
+    <title>PlaudBlender - Project Deep Dive | Gunnar Hostetler</title>
+    <meta name="description" content="Plaud voice recordings transformed into a searchable knowledge timeline with Gemini processing, Qdrant vector search, Dash visualization, and MCP access.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,7 +12,7 @@
 :root {
     --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
     --text-primary: #fff; --text-secondary: #a0a0b0;
-    --accent: #8b5cf6; --accent-light: #8b5cf699;
+    --accent: #00b8d4; --accent-light: #00b8d499;
     --border-color: #2a2a3a;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -60,34 +60,75 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
         <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
         <div class="nav-links">
             <a href="#features">Features</a>
-            <a href="https://github.com/Gunnarguy/OpenAssistant" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/Gunnarguy/PlaudBlender" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </nav>
 
     <header class="project-hero">
         <div class="container">
-            <h1>OpenAssistant</h1>
-            <p class="hero-subtitle">Native iOS app for OpenAI Assistants API interaction.</p>
+            <h1>PlaudBlender</h1>
+            <p class="hero-subtitle">Plaud voice recordings transformed into a searchable knowledge timeline with Gemini processing, Qdrant vector search, Dash visualization, and MCP access.</p>
             <div class="hero-actions">
-                <a href="https://github.com/Gunnarguy/OpenAssistant" class="btn btn-primary" target="_blank">
+                <a href="https://github.com/Gunnarguy/PlaudBlender" class="btn btn-primary" target="_blank">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
-                <a href="https://apps.apple.com/us/app/openassistant/id6692613772" class="btn btn-appstore" target="_blank">
-            <i class="fab fa-app-store-ios"></i> App Store
-        </a>
+                
             </div>
-            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">Combine</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">Code Interpreter</span><span class="tech-tag">MVVM</span></div>
+            <div class="tech-stack"><span class="tech-tag">Python</span><span class="tech-tag">Gemini</span><span class="tech-tag">Qdrant</span><span class="tech-tag">Dash + Cytoscape</span><span class="tech-tag">FastMCP</span><span class="tech-tag">OpenAI GPT-5.4</span><span class="tech-tag">SQLAlchemy</span><span class="tech-tag">Notion API</span><span class="tech-tag">Plaud API</span></div>
         </div>
     </header>
 
     <section id="features" class="section">
         <div class="container">
             <h2>Features</h2>
-            <div class="features-grid"><p style="text-align:center;color:var(--text-secondary);">See the README for full feature list.</p></div>
+            <div class="features-grid">
+        <div class="feature-card">
+            <h3>Transcript-first ingestion</h3>
+            <p>Pulls Plaud recordings through OAuth, stores local metadata in SQLite, and runs a full ingest-process-index pipeline without relying on brittle manual exports.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Chronos AI processing</h3>
+            <p>Uses Gemini models to clean transcripts, extract discrete events, score sentiment, categorize moments, and prepare structured knowledge artifacts.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Temporal vector search</h3>
+            <p>Indexes events into Qdrant with temporal metadata so semantic search can filter by date, category, and activity context instead of plain keyword matching.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Interactive knowledge UI</h3>
+            <p>Ships a multi-view Dash app with timeline, topics, graph, stats, sync, Notion, and settings surfaces for exploring recordings as a living system.</p>
+        </div>
+        <div class="feature-card">
+            <h3>MCP tool surface</h3>
+            <p>Exposes 11 FastMCP tools so external AI clients can search events, inspect recordings, pull stats, and trigger Chronos workflows programmatically.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Operational observability</h3>
+            <p>Includes pipeline progress tracking, cost telemetry, X-ray activity monitoring, and Notion uplink tooling so the system is inspectable, not magical.</p>
+        </div></div>
         </div>
     </section>
 
     
+    <section id="overview" class="section section-alt">
+        <div class="container">
+            <h2>Overview</h2>
+            <div class="story-grid">
+        <div class="story-card">
+            <h3>Why It Exists</h3>
+            <p>PlaudBlender started because I wanted my daily voice recordings to become durable, searchable memory instead of a pile of disconnected transcripts. The project treats personal context like a real data system, not a dumping ground.</p>
+        </div>
+        <div class="story-card">
+            <h3>What I Built</h3>
+            <p>The current system spans transcript ingestion, Gemini-based event extraction, Qdrant indexing, GraphRAG-style relationships, a Dash application with multiple operational views, a Notion bridge, and an MCP server for AI clients.</p>
+        </div>
+        <div class="story-card">
+            <h3>Why It Matters In My Portfolio</h3>
+            <p>PlaudBlender shows my Python and systems side in full. It proves I can design long-running pipelines, data models, vector search, observability layers, and AI tooling that work together as a coherent product instead of isolated experiments.</p>
+        </div>
+            </div>
+        </div>
+    </section>
 
     
         <section id="docs" class="section section-alt">

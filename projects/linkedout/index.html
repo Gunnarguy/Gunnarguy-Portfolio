@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenAssistant - Project Deep Dive | Gunnar Hostetler</title>
-    <meta name="description" content="Native iOS app for OpenAI Assistants API interaction.">
+    <title>LinkedOut - Project Deep Dive | Gunnar Hostetler</title>
+    <meta name="description" content="Tinder for jobs — an AI-powered job discovery app that fetches listings from 5 remote job boards, scores them with LLMs against your profile.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,7 +12,7 @@
 :root {
     --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
     --text-primary: #fff; --text-secondary: #a0a0b0;
-    --accent: #8b5cf6; --accent-light: #8b5cf699;
+    --accent: #0ea5e9; --accent-light: #0ea5e999;
     --border-color: #2a2a3a;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -60,34 +60,83 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
         <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
         <div class="nav-links">
             <a href="#features">Features</a>
-            <a href="https://github.com/Gunnarguy/OpenAssistant" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/Gunnarguy/LinkedOut" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </nav>
 
     <header class="project-hero">
         <div class="container">
-            <h1>OpenAssistant</h1>
-            <p class="hero-subtitle">Native iOS app for OpenAI Assistants API interaction.</p>
+            <h1>LinkedOut</h1>
+            <p class="hero-subtitle">Tinder for jobs — an AI-powered job discovery app that fetches listings from 5 remote job boards, scores them with LLMs against your profile.</p>
             <div class="hero-actions">
-                <a href="https://github.com/Gunnarguy/OpenAssistant" class="btn btn-primary" target="_blank">
+                <a href="https://github.com/Gunnarguy/LinkedOut" class="btn btn-primary" target="_blank">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
-                <a href="https://apps.apple.com/us/app/openassistant/id6692613772" class="btn btn-appstore" target="_blank">
-            <i class="fab fa-app-store-ios"></i> App Store
-        </a>
+                
             </div>
-            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">Combine</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">Code Interpreter</span><span class="tech-tag">MVVM</span></div>
+            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Gemini</span><span class="tech-tag">OpenAI</span><span class="tech-tag">Docker</span><span class="tech-tag">MapKit</span><span class="tech-tag">LinkedIn OAuth</span><span class="tech-tag">Notion</span><span class="tech-tag">FastMCP</span></div>
         </div>
     </header>
 
     <section id="features" class="section">
         <div class="container">
             <h2>Features</h2>
-            <div class="features-grid"><p style="text-align:center;color:var(--text-secondary);">See the README for full feature list.</p></div>
+            <div class="features-grid">
+        <div class="feature-card">
+            <h3>5 job sources</h3>
+            <p>aggregated and deduplicated (Remotive, Himalayas, HN Who&#x27;s Hiring, Jobicy, RemoteOK)</p>
+        </div>
+        <div class="feature-card">
+            <h3>LLM-powered scoring</h3>
+            <p>with Gemini Flash triage + Gemini Pro full analysis, OpenAI fallback</p>
+        </div>
+        <div class="feature-card">
+            <h3>Dynamic AI Candidate Persona</h3>
+            <p>— edit your professional profile in the iOS app to reshape the AI evaluation prompt and re-score all pending jobs instantly</p>
+        </div>
+        <div class="feature-card">
+            <h3>Session persistence</h3>
+            <p>— OAuth sessions survive Docker rebuilds; iOS auto-restores cached profile to the backend seamlessly</p>
+        </div>
+        <div class="feature-card">
+            <h3>Embedded MCP Server</h3>
+            <p>— includes an internal FastMCP server connecting your LinkedIn profile and Job Pipeline state directly to Claude Desktop</p>
+        </div>
+        <div class="feature-card">
+            <h3>Notion sync</h3>
+            <p>— bidirectional sync with a Notion database (push jobs, pull status changes, runtime config from iOS)</p>
+        </div>
+        <div class="feature-card">
+            <h3>Why Matrix</h3>
+            <p>— structured `logic_fit`, `domain_leverage`, `risk_reward` assessment for every job</p>
+        </div>
+        <div class="feature-card">
+            <h3>Tinder-style swipe UI</h3>
+            <p>— swipe right (apply), left (reject), up (save), with undo</p>
+        </div></div>
         </div>
     </section>
 
     
+    <section id="overview" class="section section-alt">
+        <div class="container">
+            <h2>Overview</h2>
+            <div class="story-grid">
+        <div class="story-card">
+            <h3>Why It Exists</h3>
+            <p>LinkedOut came from frustration with job boards that bury signal under noise. I wanted an app that did the triage for me, understood my actual profile, and let me move through opportunities with the same speed and clarity as consumer apps.</p>
+        </div>
+        <div class="story-card">
+            <h3>What I Built</h3>
+            <p>The product combines a SwiftUI client, a FastAPI backend, multi-source job ingestion, a configurable two-stage LLM scoring engine, LinkedIn OAuth, Notion sync, telemetry, and a swipe-first workflow tuned around fast decision making.</p>
+        </div>
+        <div class="story-card">
+            <h3>Why It Matters In My Portfolio</h3>
+            <p>LinkedOut is one of the clearest examples of my full-stack product thinking. It connects mobile UX, backend orchestration, model prompting, deployment, and personal workflow design into one system that solves a real problem I actively live with.</p>
+        </div>
+            </div>
+        </div>
+    </section>
 
     
         <section id="docs" class="section section-alt">
