@@ -24,7 +24,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const repos = ['LinkedOut', 'OpenResponses', 'OpenIntelligence', 'PlaudBlender', 'OpenCone', 'OpenAssistant'];
+            const repos = ['LinkedOut', 'MedMod', 'OpenResponses', 'OpenIntelligence', 'PlaudBlender', 'OpenCone', 'OpenAssistant'];
             const owner = 'Gunnarguy';
             const result = { generated: new Date().toISOString(), repos: {} };
 
