@@ -2,12 +2,18 @@ name: Update GitHub Stats
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # Every 6 hours
+    - cron: "0 */2 * * *" # Every 2 hours
   workflow_dispatch: # Manual trigger from Actions tab
+  repository_dispatch:
+    types: [sync-stats, source-repo-updated]
   push:
     branches: [main]
     paths-ignore:
       - "data/**" # Don't re-trigger on our own commits
+
+concurrency:
+  group: update-github-stats
+  cancel-in-progress: true
 
 jobs:
   update-stats:
