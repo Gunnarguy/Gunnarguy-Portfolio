@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlaudBlender - Project Deep Dive | Gunnar Hostetler</title>
-    <meta name="description" content="Plaud voice recordings transformed into a searchable knowledge timeline with Gemini processing, Qdrant vector search, Dash visualization, and MCP access.">
+    <meta name="description" content="Plaud voice recordings into a searchable knowledge graph with Gemini AI, Qdrant, Dash UI, and MCP tools.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,7 +12,7 @@
 :root {
     --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
     --text-primary: #fff; --text-secondary: #a0a0b0;
-    --accent: #00b8d4; --accent-light: #00b8d499;
+    --accent: #14b8a6; --accent-light: #14b8a699;
     --border-color: #2a2a3a;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,10 +43,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
 .feature-card:hover { border-color: var(--accent); }
 .feature-card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
 .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
-.story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.story-card { background: var(--bg-card); padding: 1.75rem; border-radius: 12px; border: 1px solid var(--border-color); }
-.story-card h3 { color: var(--accent); margin-bottom: 0.75rem; font-size: 1.1rem; }
-.story-card p { color: var(--text-secondary); font-size: 0.98rem; }
 .tech-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
 .tech-tag { background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--border-color); }
 .project-footer { padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color); }
@@ -67,80 +63,27 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
     <header class="project-hero">
         <div class="container">
             <h1>PlaudBlender</h1>
-            <p class="hero-subtitle">Plaud voice recordings transformed into a searchable knowledge timeline with Gemini processing, Qdrant vector search, Dash visualization, and MCP access.</p>
+            <p class="hero-subtitle">Plaud voice recordings into a searchable knowledge graph with Gemini AI, Qdrant, Dash UI, and MCP tools.</p>
             <div class="hero-actions">
                 <a href="https://github.com/Gunnarguy/PlaudBlender" class="btn btn-primary" target="_blank">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
                 
             </div>
-            <div class="tech-stack"><span class="tech-tag">Python</span><span class="tech-tag">Gemini</span><span class="tech-tag">Qdrant</span><span class="tech-tag">Dash + Cytoscape</span><span class="tech-tag">FastMCP</span><span class="tech-tag">OpenAI GPT-5.4</span><span class="tech-tag">SQLAlchemy</span><span class="tech-tag">Notion API</span><span class="tech-tag">Plaud API</span></div>
+            <div class="tech-stack"><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">MCP</span><span class="tech-tag">Python</span><span class="tech-tag">Gemini</span><span class="tech-tag">Qdrant</span><span class="tech-tag">Dash</span><span class="tech-tag">Cytoscape</span><span class="tech-tag">Docker</span><span class="tech-tag">Notion</span></div>
         </div>
     </header>
 
     <section id="features" class="section">
         <div class="container">
             <h2>Features</h2>
-            <div class="features-grid">
-        <div class="feature-card">
-            <h3>Transcript-first ingestion</h3>
-            <p>Pulls Plaud recordings through OAuth, stores local metadata in SQLite, and runs a full ingest-process-index pipeline without relying on brittle manual exports.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Chronos AI processing</h3>
-            <p>Uses Gemini models to clean transcripts, extract discrete events, score sentiment, categorize moments, and prepare structured knowledge artifacts.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Temporal vector search</h3>
-            <p>Indexes events into Qdrant with temporal metadata so semantic search can filter by date, category, and activity context instead of plain keyword matching.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Interactive knowledge UI</h3>
-            <p>Ships a multi-view Dash app with timeline, topics, graph, stats, sync, Notion, and settings surfaces for exploring recordings as a living system.</p>
-        </div>
-        <div class="feature-card">
-            <h3>MCP tool surface</h3>
-            <p>Exposes 11 FastMCP tools so external AI clients can search events, inspect recordings, pull stats, and trigger Chronos workflows programmatically.</p>
-        </div>
-        <div class="feature-card">
-            <h3>Operational observability</h3>
-            <p>Includes pipeline progress tracking, cost telemetry, X-ray activity monitoring, and Notion uplink tooling so the system is inspectable, not magical.</p>
-        </div></div>
+            <div class="features-grid"><p style="text-align:center;color:var(--text-secondary);">See the README for full feature list.</p></div>
         </div>
     </section>
-
-    
-    <section id="overview" class="section section-alt">
-        <div class="container">
-            <h2>Overview</h2>
-            <div class="story-grid">
-        <div class="story-card">
-            <h3>Why It Exists</h3>
-            <p>PlaudBlender started because I wanted my daily voice recordings to become durable, searchable memory instead of a pile of disconnected transcripts. The project treats personal context like a real data system, not a dumping ground.</p>
-        </div>
-        <div class="story-card">
-            <h3>What I Built</h3>
-            <p>The current system spans transcript ingestion, Gemini-based event extraction, Qdrant indexing, GraphRAG-style relationships, a Dash application with multiple operational views, a Notion bridge, and an MCP server for AI clients.</p>
-        </div>
-        <div class="story-card">
-            <h3>Why It Matters In My Portfolio</h3>
-            <p>PlaudBlender shows my Python and systems side in full. It proves I can design long-running pipelines, data models, vector search, observability layers, and AI tooling that work together as a coherent product instead of isolated experiments.</p>
-        </div>
-            </div>
-        </div>
-    </section>
-
-    
-        <section id="docs" class="section section-alt">
-            <div class="container">
-                <h2>Documentation</h2>
-                <p>Explore the full documentation in the <a href="docs/">docs folder</a>.</p>
-            </div>
-        </section>
 
     <footer class="project-footer">
         <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
-        <p class="sync-time">Generated: 2026-03-24 20:57</p>
+        <p class="sync-time">Generated: 2026-03-25 19:45 UTC</p>
     </footer>
 </body>
 </html>

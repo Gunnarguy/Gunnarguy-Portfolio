@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LinkedOut - Project Deep Dive | Gunnar Hostetler</title>
-    <meta name="description" content="Tinder for jobs — an AI-powered job discovery app that fetches listings from 5 remote job boards, scores them with LLMs against your profile.">
+    <meta name="description" content="AI-powered job discovery app with LLM scoring, swipe UI, LinkedIn OAuth, and FastAPI backend orchestration.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -43,10 +43,6 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
 .feature-card:hover { border-color: var(--accent); }
 .feature-card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
 .feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
-.story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.story-card { background: var(--bg-card); padding: 1.75rem; border-radius: 12px; border: 1px solid var(--border-color); }
-.story-card h3 { color: var(--accent); margin-bottom: 0.75rem; font-size: 1.1rem; }
-.story-card p { color: var(--text-secondary); font-size: 0.98rem; }
 .tech-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
 .tech-tag { background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--border-color); }
 .project-footer { padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color); }
@@ -67,14 +63,14 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
     <header class="project-hero">
         <div class="container">
             <h1>LinkedOut</h1>
-            <p class="hero-subtitle">Tinder for jobs — an AI-powered job discovery app that fetches listings from 5 remote job boards, scores them with LLMs against your profile.</p>
+            <p class="hero-subtitle">AI-powered job discovery app with LLM scoring, swipe UI, LinkedIn OAuth, and FastAPI backend orchestration.</p>
             <div class="hero-actions">
                 <a href="https://github.com/Gunnarguy/LinkedOut" class="btn btn-primary" target="_blank">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
                 
             </div>
-            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Gemini</span><span class="tech-tag">OpenAI</span><span class="tech-tag">Docker</span><span class="tech-tag">MapKit</span><span class="tech-tag">LinkedIn OAuth</span><span class="tech-tag">Notion</span><span class="tech-tag">FastMCP</span></div>
+            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">Combine</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">MCP</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Python</span><span class="tech-tag">Gemini</span><span class="tech-tag">Dash</span></div>
         </div>
     </header>
 
@@ -117,38 +113,9 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
         </div>
     </section>
 
-    
-    <section id="overview" class="section section-alt">
-        <div class="container">
-            <h2>Overview</h2>
-            <div class="story-grid">
-        <div class="story-card">
-            <h3>Why It Exists</h3>
-            <p>LinkedOut came from frustration with job boards that bury signal under noise. I wanted an app that did the triage for me, understood my actual profile, and let me move through opportunities with the same speed and clarity as consumer apps.</p>
-        </div>
-        <div class="story-card">
-            <h3>What I Built</h3>
-            <p>The product combines a SwiftUI client, a FastAPI backend, multi-source job ingestion, a configurable two-stage LLM scoring engine, LinkedIn OAuth, Notion sync, telemetry, and a swipe-first workflow tuned around fast decision making.</p>
-        </div>
-        <div class="story-card">
-            <h3>Why It Matters In My Portfolio</h3>
-            <p>LinkedOut is one of the clearest examples of my full-stack product thinking. It connects mobile UX, backend orchestration, model prompting, deployment, and personal workflow design into one system that solves a real problem I actively live with.</p>
-        </div>
-            </div>
-        </div>
-    </section>
-
-    
-        <section id="docs" class="section section-alt">
-            <div class="container">
-                <h2>Documentation</h2>
-                <p>Explore the full documentation in the <a href="docs/">docs folder</a>.</p>
-            </div>
-        </section>
-
     <footer class="project-footer">
         <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
-        <p class="sync-time">Generated: 2026-03-24 20:57</p>
+        <p class="sync-time">Generated: 2026-03-25 19:45 UTC</p>
     </footer>
 </body>
 </html>
