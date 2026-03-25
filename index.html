@@ -107,14 +107,39 @@
     <main id="main-content">
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-orb hero-orb-3"></div>
+        </div>
         <div class="container">
         <div class="hero-content">
-            <h1>Gunnar Hostetler</h1>
-            <p>
-            I have 4 iOS apps on the App Store because it's fun. My latest app
-            is an on-device Apple Intelligence RAG engine that runs completely
-            offline.  Solving problems is my passion, and I build the solutions I wish existed.
+            <p class="hero-kicker">
+                Healthcare Ops &nbsp;·&nbsp; AI Developer &nbsp;·&nbsp; Builder
             </p>
+            <h1>Gunnar Hostetler</h1>
+            <p class="hero-description">
+                I have 4 iOS apps on the App Store because it's fun. My latest app
+                is an on-device Apple Intelligence RAG engine that runs completely
+            offline. Solving problems is my passion, and I build the solutions
+            I wish existed.
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">4</span>
+                    <span class="hero-stat-label">App Store Apps</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">102</span>
+                    <span class="hero-stat-label">Services in OI</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">6</span>
+                    <span class="hero-stat-label">Projects Shipped</span>
+                </div>
+            </div>
             <div class="hero-buttons">
             <a href="#projects" class="btn btn-primary">View My Work</a>
             <a href="#contact" class="btn btn-secondary">Get In Touch</a>
@@ -136,72 +161,111 @@
                 alt="Gunnar Hostetler" loading="lazy" />
             </div>
             <div class="about-bio">
-            <p class="bio-lead">Healthcare operations by day.<br>AI developer by obsession.</p>
-            <p>I work full-time as a medical device specialist at the VA in Palo Alto. I build at night and on weekends because this is what my brain wants to do.</p>
+            <p class="bio-lead">
+                Healthcare operations by day.<br />AI developer by obsession.
+            </p>
+            <p>
+                I work full-time as a medical device specialist at the VA in
+                Palo Alto. I build at night and on weekends because this is what
+                my brain wants to do.
+            </p>
             <div class="about-tags">
                 <span class="about-tag"><i class="fas fa-map-marker-alt"></i> Campbell, CA</span>
                 <span class="about-tag"><i class="fas fa-hospital"></i> VA Palo Alto</span>
                 <span class="about-tag"><i class="fab fa-app-store-ios"></i> 4 Apps Published</span>
-            </div>
+                </div>
             </div>
         </div>
 
         <!-- Journey Timeline -->
         <h3 class="journey-heading">The Build Journey</h3>
         <div class="journey-timeline">
-
             <div class="journey-item" data-reveal>
             <div class="journey-marker"></div>
             <div class="journey-card">
                 <span class="journey-label">OpenAssistant</span>
-                <p>I wanted an iOS client for OpenAI's Assistants API. OpenAI never made one. So I figured it out and built <strong>OpenAssistant</strong>.</p>
-            </div>
+                <p>
+                    I wanted an iOS client for OpenAI's Assistants API. OpenAI
+                    never made one. So I figured it out and built
+                    <strong>OpenAssistant</strong>.
+                </p>
+                </div>
             </div>
 
             <div class="journey-item" data-reveal>
             <div class="journey-marker"></div>
             <div class="journey-card">
                 <span class="journey-label">OpenCone</span>
-                <p>Then I wanted to do RAG with Pinecone on my phone. So I built <strong>OpenCone</strong>.</p>
-            </div>
+                <p>
+                    Then I wanted to do RAG with Pinecone on my phone. So I built
+                    <strong>OpenCone</strong>.
+                </p>
+                </div>
             </div>
 
             <div class="journey-item" data-reveal>
             <div class="journey-marker"></div>
             <div class="journey-card">
                 <span class="journey-label">OpenResponses</span>
-                <p>Then Assistants got deprecated and I needed the new Responses API with all the tools. So I built <strong>OpenResponses</strong>. It passed App Review on first submission.</p>
-            </div>
+                <p>
+                    Then Assistants got deprecated and I needed the new Responses
+                    API with all the tools. So I built
+                    <strong>OpenResponses</strong>. It passed App Review on first
+                    submission.
+                </p>
+                </div>
             </div>
 
             <div class="journey-item" data-reveal>
             <div class="journey-marker"></div>
             <div class="journey-card">
                 <span class="journey-label">OpenIntelligence</span>
-                <p>Then I thought "why not make my own RAG engine?" because I've found myself obsessed with how these systems work, and what AI can help me build (based off of my other 3 apps). Things have gotten much easier over time, especially with the agentic era. I decided to follow my curiosity, and <strong>OpenIntelligence</strong> was born — 102 services, 29-step pipeline, on-device embeddings, Apple Intelligence. It's the most complex thing I've built and I'm genuinely fascinated by it. <em>It runs IN AIRPLANE MODE!!</em></p>
-            </div>
+                <p>
+                    Then I thought "why not make my own RAG engine?" because I've
+                    found myself obsessed with how these systems work, and what AI
+                    can help me build (based off of my other 3 apps). Things have
+                    gotten much easier over time, especially with the agentic era.
+                    I decided to follow my curiosity, and
+                    <strong>OpenIntelligence</strong> was born — 102 services,
+                    29-step pipeline, on-device embeddings, Apple Intelligence.
+                    It's the most complex thing I've built and I'm genuinely
+                    fascinated by it. <em>It runs IN AIRPLANE MODE!!</em>
+                </p>
+                </div>
             </div>
 
             <div class="journey-item" data-reveal>
             <div class="journey-marker"></div>
             <div class="journey-card">
                 <span class="journey-label">LinkedOut</span>
-                <p>Then I wanted to see if AI could reinvent how people discover opportunities. So I built <strong>LinkedOut</strong> — a full-stack matching platform. It aggregates from 5 sources, scores with LLMs, and lets you swipe through the best matches on iOS.</p>
-            </div>
+                <p>
+                    Then I wanted to see if AI could reinvent how people discover
+                    opportunities. So I built <strong>LinkedOut</strong> — a
+                    full-stack matching platform. It aggregates from 5 sources,
+                    scores with LLMs, and lets you swipe through the best matches
+                    on iOS.
+                </p>
+                </div>
             </div>
 
             <div class="journey-item" data-reveal>
             <div class="journey-marker"></div>
             <div class="journey-card">
                 <span class="journey-label">PlaudBlender</span>
-                <p>On the Python side, I built <strong>PlaudBlender</strong> to turn my daily Plaud voice recordings into a searchable knowledge graph with Gemini AI, Qdrant vector search, and an 11-tool MCP server.</p>
+                <p>
+                    On the Python side, I built <strong>PlaudBlender</strong> to
+                    turn my daily Plaud voice recordings into a searchable
+                    knowledge graph with Gemini AI, Qdrant vector search, and an
+                    11-tool MCP server.
+                </p>
+                </div>
             </div>
-            </div>
-
         </div>
 
-        <p class="journey-coda">I've figured things out this far, and I trust I'll keep figuring them out as I go.</p>
-
+        <p class="journey-coda">
+            I've figured things out this far, and I trust I'll keep figuring
+            them out as I go.
+        </p>
         </div>
     </section>
 
@@ -526,9 +590,9 @@
                 </div>
                 </div>
 
-                <!-- PlaudBlender Tree -->
-                <div class="tree-sample" data-repo="PlaudBlender">
-                    <div class="tree-header">
+            <!-- PlaudBlender Tree -->
+            <div class="tree-sample" data-repo="PlaudBlender">
+                <div class="tree-header">
                 <img loading="lazy" src="assets/plaudblender-icon.png" alt="PlaudBlender" class="tree-icon" />
                 <div class="tree-info">
                 <h3>PlaudBlender</h3>
@@ -560,33 +624,33 @@
 
             <!-- MedMod Tree -->
             <div class="tree-sample" data-repo="MedMod">
-                <div class="tree-header">
+            <div class="tree-header">
                 <img loading="lazy" src="assets/ragmlcore-icon.png" alt="MedMod" class="tree-icon" />
                 <div class="tree-info">
-                    <h3>MedMod</h3>
-                    <span class="tree-age">Loading...</span>
+                <h3>MedMod</h3>
+                <span class="tree-age">Loading...</span>
                 </div>
+            </div>
+            <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+            </div>
+            <div class="tree-stats">
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Commits</span>
                 </div>
-                <div class="tree-ring-container">
-                    <svg class="tree-rings" viewBox="0 0 300 300"></svg>
-                    <div class="tree-tooltip"></div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Weeks Active</span>
                 </div>
-                <div class="tree-stats">
-                    <div class="tree-stat">
-                        <span class="stat-num">--</span>
-                        <span class="stat-label">Commits</span>
-                    </div>
-                    <div class="tree-stat">
-                        <span class="stat-num">--</span>
-                        <span class="stat-label">Weeks Active</span>
-                    </div>
-                    <div class="tree-stat">
-                        <span class="stat-num">--</span>
-                        <span class="stat-label">Contributors</span>
-                    </div>
+                <div class="tree-stat">
+                    <span class="stat-num">--</span>
+                    <span class="stat-label">Contributors</span>
                 </div>
-                <div class="tree-links">
-                    <a href="projects/medmod/" rel="noopener">Project Page</a>
+            </div>
+            <div class="tree-links">
+                <a href="projects/medmod/" rel="noopener">Project Page</a>
                 <a href="https://github.com/Gunnarguy/MedMod" target="_blank" rel="noopener">GitHub</a>
                 </div>
                 </div>
@@ -1147,12 +1211,12 @@
                 <h4>Utility Resource Group, LLC</h4>
                 <span class="timeline-date">Dec 2016 – Dec 2020</span>
                 <p>
-                    Field operations role built around precision, safety, route
-                    planning, and independent execution in a high-accountability
-                    environment.
+                Field operations role built around precision, safety, route
+                planning, and independent execution in a high-accountability
+                environment.
                 </p>
                 <ul>
-                    <li>
+                <li>
                     <strong>Safety & Precision:</strong> Located natural gas
                     lines with specialized equipment while maintaining safety
                     compliance.
@@ -1177,11 +1241,11 @@
                 <h4>Athletico</h4>
                 <span class="timeline-date">Sep 2015 – Oct 2016</span>
                 <p>
-                    Supported patient care workflows while handling scheduling,
-                    insurance administration, and front-line clinic operations.
+                Supported patient care workflows while handling scheduling,
+                insurance administration, and front-line clinic operations.
                 </p>
                 <ul>
-                    <li>
+                <li>
                     <strong>Patient Support:</strong> Assisted physical
                     therapists with patient care and rehabilitation exercises.
                 </li>
@@ -1205,9 +1269,9 @@
                 <h4>Aqua-Guard Management Inc</h4>
                 <span class="timeline-date">Mar 2010 – Sep 2015</span>
                 <p>
-                    Early leadership role managing distributed operations,
-                    staffing coverage, and on-call execution across multiple
-                    sites.
+                Early leadership role managing distributed operations,
+                staffing coverage, and on-call execution across multiple
+                sites.
                 </p>
                 <ul>
                 <li>
@@ -1238,7 +1302,7 @@
             </div>
         </div>
         </div>
-        </section>
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -1441,14 +1505,17 @@
         });
 
         // Journey timeline scroll reveal
-        const journeyObs = new IntersectionObserver((entries, obs) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+        const journeyObs = new IntersectionObserver(
+            (entries, obs) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        obs.unobserve(entry.target);
+                    }
+                });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+      );
 
         document.querySelectorAll(".journey-item[data-reveal]").forEach((el) => {
             journeyObs.observe(el);
