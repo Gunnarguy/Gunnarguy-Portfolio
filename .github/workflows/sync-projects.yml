@@ -27,27 +27,45 @@ jobs:
 
       - name: Checkout OpenResponses
         uses: actions/checkout@v4
+        continue-on-error: true
         with:
           repository: Gunnarguy/OpenResponses
           path: _repos/OpenResponses
 
       - name: Checkout OpenIntelligence
         uses: actions/checkout@v4
+        continue-on-error: true
         with:
           repository: Gunnarguy/OpenIntelligence
           path: _repos/OpenIntelligence
 
       - name: Checkout OpenCone
         uses: actions/checkout@v4
+        continue-on-error: true
         with:
           repository: Gunnarguy/OpenCone
           path: _repos/OpenCone
 
       - name: Checkout OpenAssistant
         uses: actions/checkout@v4
+        continue-on-error: true
         with:
           repository: Gunnarguy/OpenAssistant
           path: _repos/OpenAssistant
+
+      - name: Checkout LinkedOut
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: Gunnarguy/LinkedOut
+          path: _repos/LinkedOut
+
+      - name: Checkout PlaudBlender
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: Gunnarguy/PlaudBlender
+          path: _repos/PlaudBlender
 
       - name: Set up Python
         uses: actions/setup-python@v5

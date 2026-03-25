@@ -19,13 +19,29 @@ OUTPUT_DIR = os.path.join(WORKSPACE, "projects")
 
 # Project configurations
 PROJECTS = {
+    "linkedout": {
+        "repo_name": "LinkedOut",
+        "title": "LinkedOut",
+        "tagline": "AI-powered job discovery app with LLM scoring, swipe UI, LinkedIn OAuth, and FastAPI backend orchestration.",
+        "app_store_url": None,
+        "github_url": "https://github.com/Gunnarguy/LinkedOut",
+        "accent_color": "#0ea5e9",
+    },
+    "plaudblender": {
+        "repo_name": "PlaudBlender",
+        "title": "PlaudBlender",
+        "tagline": "Plaud voice recordings into a searchable knowledge graph with Gemini AI, Qdrant, Dash UI, and MCP tools.",
+        "app_store_url": None,
+        "github_url": "https://github.com/Gunnarguy/PlaudBlender",
+        "accent_color": "#14b8a6",
+    },
     "openresponses": {
         "repo_name": "OpenResponses",
         "title": "OpenResponses",
         "tagline": "SwiftUI-powered AI assistant for OpenAI Responses API with computer use, code interpreter, and MCP integrations.",
         "app_store_url": None,
         "github_url": "https://github.com/Gunnarguy/OpenResponses",
-        "accent_color": "#6366f1"
+        "accent_color": "#6366f1",
     },
     "openintelligence": {
         "repo_name": "OpenIntelligence",
@@ -33,7 +49,7 @@ PROJECTS = {
         "tagline": "On-device RAG engine for iOS with Vision OCR, Apple Intelligence routing, and privacy-first telemetry.",
         "app_store_url": None,
         "github_url": "https://github.com/Gunnarguy/RAGMLCore",
-        "accent_color": "#10b981"
+        "accent_color": "#10b981",
     },
     "opencone": {
         "repo_name": "OpenCone",
@@ -41,7 +57,7 @@ PROJECTS = {
         "tagline": "Semantic search and RAG workflow app with Pinecone integration for iOS.",
         "app_store_url": "https://apps.apple.com/us/app/opencone/id6744467668",
         "github_url": "https://github.com/Gunnarguy/OpenCone",
-        "accent_color": "#f59e0b"
+        "accent_color": "#f59e0b",
     },
     "openassistant": {
         "repo_name": "OpenAssistant",
@@ -49,8 +65,8 @@ PROJECTS = {
         "tagline": "Native iOS app for OpenAI Assistants API interaction.",
         "app_store_url": "https://apps.apple.com/us/app/openassistant/id6692613772",
         "github_url": "https://github.com/Gunnarguy/OpenAssistant",
-        "accent_color": "#8b5cf6"
-    }
+        "accent_color": "#8b5cf6",
+    },
 }
 
 
@@ -82,12 +98,54 @@ def extract_features(content):
 def extract_tech_stack(content):
     """Extract tech/tools mentioned."""
     tech = []
-    keywords = ["SwiftUI", "Swift", "Combine", "OpenAI", "Pinecone", "RAG", "Vision", "CoreML",
-                "Apple Intelligence", "MCP", "Computer Use", "Code Interpreter", "MVVM", "EventKit"]
+    keywords = [
+        "SwiftUI",
+        "Swift",
+        "Combine",
+        "OpenAI",
+        "Pinecone",
+        "RAG",
+        "Vision",
+        "CoreML",
+        "Apple Intelligence",
+        "MCP",
+        "Computer Use",
+        "Code Interpreter",
+        "MVVM",
+        "EventKit",
+        "FastAPI",
+        "Python",
+        "Gemini",
+        "Qdrant",
+        "Dash",
+        "Cytoscape",
+        "Docker",
+        "MapKit",
+        "LinkedIn OAuth",
+        "Notion",
+        "SQLite",
+        "SQLAlchemy",
+        "Render",
+    ]
     for kw in keywords:
         if kw.lower() in content.lower():
             tech.append(kw)
     return tech[:10]
+
+
+def resolve_readme(repo_path):
+    """Return the best available README content for a repo."""
+    candidates = [
+        os.path.join(repo_path, "README.md"),
+        os.path.join(repo_path, "readme.md"),
+        os.path.join(repo_path, "docs", "README.md"),
+        os.path.join(repo_path, "docs", "readme.md"),
+    ]
+    for candidate in candidates:
+        content = read_file_safe(candidate)
+        if content:
+            return content, candidate
+    return "", None
 
 
 def generate_page(project_id, config, readme_content):
@@ -238,11 +296,15 @@ def main():
         output_dir = os.path.join(OUTPUT_DIR, project_id)
         os.makedirs(output_dir, exist_ok=True)
 
-        # Read README
-        readme = read_file_safe(os.path.join(repo_path, "README.md"))
+        # Read README with fallbacks
+        readme, readme_path = resolve_readme(repo_path)
         if not readme:
-            print(f"   ⚠️  No README.md found")
+            print(f"   ⚠️  No README found (checked root + docs)")
             continue
+        readme_label = (
+            os.path.relpath(readme_path, repo_path) if readme_path else "README"
+        )
+        print(f"   ✓ README: {readme_label}")
 
         # Generate index.html
         page_html = generate_page(project_id, config, readme)
