@@ -17,8 +17,8 @@ By night, he builds software the same way he solves problems at work: learn the 
 - First app was rejected around 30 times before shipping
 - Second app was rejected around 10 times before shipping
 - Third app passed App Review on first submission
-- Government PIV access secured
-- 1,500+ surgical instruments integrated into Censitrac
+- Works autonomously on-site without a local management layer
+- Direct exposure to surgical workflows, stakeholders, and hospital operations under real constraints
 
 ## Project Tiering
 
