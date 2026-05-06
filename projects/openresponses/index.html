@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenResponses - Project Deep Dive | Gunnar Hostetler</title>
-    <meta name="description" content="SwiftUI-powered AI assistant for OpenAI Responses API with computer use, code interpreter, and MCP integrations.">
+    <meta name="description" content="Third app. Rebuilt on Responses after it became obvious OpenAssistant would age out on older endpoints.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,7 +16,7 @@
     --border-color: #2a2a3a;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+                "description": "This is still the foundation for everything after it, even if the old Assistants path is no longer the future.",
 .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 .project-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-color); }
 .back-link { color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
@@ -38,6 +38,10 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
 .section { padding: 5rem 0; }
 .section-alt { background: var(--bg-secondary); }
 .section h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
+.story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.story-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); }
+.story-card h3 { color: var(--accent); margin-bottom: 0.6rem; font-size: 1.05rem; }
+.story-card p { color: var(--text-secondary); font-size: 0.96rem; }
 .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
 .feature-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); transition: border-color 0.2s; }
 .feature-card:hover { border-color: var(--accent); }
@@ -55,6 +59,7 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
     <nav class="project-nav">
         <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
         <div class="nav-links">
+            <a href="#story">Story</a>
             <a href="#features">Features</a>
             <a href="https://github.com/Gunnarguy/OpenResponses" target="_blank"><i class="fab fa-github"></i></a>
         </div>
@@ -63,16 +68,39 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
     <header class="project-hero">
         <div class="container">
             <h1>OpenResponses</h1>
-            <p class="hero-subtitle">SwiftUI-powered AI assistant for OpenAI Responses API with computer use, code interpreter, and MCP integrations.</p>
+            <p class="hero-subtitle">Third app. Rebuilt on Responses after it became obvious OpenAssistant would age out on older endpoints.</p>
             <div class="hero-actions">
                 <a href="https://github.com/Gunnarguy/OpenResponses" class="btn btn-primary" target="_blank">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
-                
+                <a href="https://apps.apple.com/us/app/openresponses/id6757338355" class="btn btn-appstore" target="_blank">
+            <i class="fab fa-app-store-ios"></i> App Store
+        </a>
             </div>
-            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">Apple Intelligence</span><span class="tech-tag">Computer Use</span><span class="tech-tag">Code Interpreter</span><span class="tech-tag">MVVM</span><span class="tech-tag">Python</span><span class="tech-tag">Notion</span></div>
+            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">Apple Intelligence</span><span class="tech-tag">Computer Use</span><span class="tech-tag">Code Interpreter</span><span class="tech-tag">MVVM</span></div>
         </div>
     </header>
+
+    
+    <section id="story" class="section section-alt">
+        <div class="container">
+            <h2>How It Happened</h2>
+            <div class="story-grid">
+        <div class="story-card">
+            <h3>Why it exists</h3>
+            <p>I did not want the first app stranded on older endpoints.</p>
+        </div>
+        <div class="story-card">
+            <h3>How I built it</h3>
+            <p>I kept the old app open in one window, the new one in another, and rebuilt the core flow on the Responses stack.</p>
+        </div>
+        <div class="story-card">
+            <h3>What changed</h3>
+            <p>This one passed App Review on the first submission.</p>
+        </div>
+            </div>
+        </div>
+    </section>
 
     <section id="features" class="section">
         <div class="container">
@@ -100,6 +128,14 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
         </div></div>
         </div>
     </section>
+
+    
+        <section id="docs" class="section section-alt">
+            <div class="container">
+                <h2>Documentation</h2>
+                <p>Explore the full documentation in the <a href="docs/">docs folder</a>.</p>
+            </div>
+        </section>
 
     <footer class="project-footer">
         <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>

@@ -17,39 +17,95 @@ PROJECTS = {
     "openresponses": {
         "repo_path": "/Users/gunnarhostetler/Documents/GitHub/OpenResponses",
         "title": "OpenResponses",
-        "tagline": "SwiftUI-powered AI assistant for OpenAI Responses API with computer use, code interpreter, and MCP integrations.",
-        "app_store_url": None,  # Not yet on App Store
+        "tagline": "Third app. Rebuilt on Responses after it became obvious OpenAssistant would age out on older endpoints.",
+        "app_store_url": "https://apps.apple.com/us/app/openresponses/id6757338355",
         "github_url": "https://github.com/Gunnarguy/OpenResponses",
         "accent_color": "#6366f1",
-        "icon": "openresponses-icon.png"
+        "icon": "openresponses-icon.png",
+        "story_cards": [
+            {
+                "title": "Why it exists",
+                "description": "I did not want the first app stranded on older endpoints.",
+            },
+            {
+                "title": "How I built it",
+                "description": "I kept the old app open in one window, the new one in another, and rebuilt the core flow on the Responses stack.",
+            },
+            {
+                "title": "What changed",
+                "description": "This one passed App Review on the first submission.",
+            },
+        ],
     },
     "openintelligence": {
         "repo_path": "/Users/gunnarhostetler/Documents/GitHub/OpenIntelligence",
         "title": "OpenIntelligence",
-        "tagline": "On-device RAG engine for iOS with Vision OCR, Apple Intelligence routing, and privacy-first telemetry.",
-        "app_store_url": None,
-        "github_url": "https://github.com/Gunnarguy/RAGMLCore",
+        "tagline": "Fourth app. Built because I wanted an offline version of the same document workflow on Apple's Foundation Models path.",
+        "app_store_url": "https://apps.apple.com/us/app/openintelligence/id6756559175",
+        "github_url": "https://github.com/Gunnarguy/OpenIntelligence",
         "accent_color": "#10b981",
-        "icon": "ragmlcore-icon.png"
+        "icon": "ragmlcore-icon.png",
+        "story_cards": [
+            {
+                "title": "What kicked it off",
+                "description": "WWDC25 made Foundation Models real for third-party apps, so I wanted to try an offline version of the same document workflow on Apple's on-device model path.",
+            },
+            {
+                "title": "What got hard",
+                "description": "Apple's public on-device sessions are capped at 4096 tokens, and that same budget has to cover instructions, retrieved evidence, tool and schema overhead, and the answer itself. That is what pushed me into a recursive multi-session reasoning loop.",
+            },
+            {
+                "title": "Why it matters",
+                "description": "It is the same document problem again, just in an offline, on-device form.",
+            },
+        ],
     },
     "opencone": {
         "repo_path": "/Users/gunnarhostetler/Documents/GitHub/OpenCone",
         "title": "OpenCone",
-        "tagline": "Semantic search and RAG workflow app with Pinecone integration for iOS.",
+        "tagline": "Second app. Built when bigger document sets started stressing the earlier workflow and I wanted more retrieval control.",
         "app_store_url": "https://apps.apple.com/us/app/opencone/id6744467668",
         "github_url": "https://github.com/Gunnarguy/OpenCone",
         "accent_color": "#f59e0b",
-        "icon": "opencone-icon.png"
+        "icon": "opencone-icon.png",
+        "story_cards": [
+            {
+                "title": "Why it exists",
+                "description": "I wanted to work with larger document sets without the earlier flow falling apart.",
+            },
+            {
+                "title": "How I built it",
+                "description": "Same basic process as OpenAssistant, now with Pinecone docs, indexes, namespaces, and embeddings layered on top.",
+            },
+            {
+                "title": "Why it mattered",
+                "description": "It was the point where retrieval stopped being theoretical and turned into a real app.",
+            },
+        ],
     },
     "openassistant": {
         "repo_path": "/Users/gunnarhostetler/Documents/GitHub/OpenAssistant",
         "title": "OpenAssistant",
-        "tagline": "Native iOS app for OpenAI Assistants API interaction.",
+        "tagline": "First app. Built because I wanted a better way to work through docs on iPhone.",
         "app_store_url": "https://apps.apple.com/us/app/openassistant/id6692613772",
         "github_url": "https://github.com/Gunnarguy/OpenAssistant",
         "accent_color": "#8b5cf6",
-        "icon": "openassistant-icon.png"
-    }
+        "icon": "openassistant-icon.png",
+        "story_cards": [
+            {
+                "title": "Why it exists",
+                "description": "I wanted a better document workflow on iPhone than the official app gave me.",
+            },
+            {
+                "title": "How I built it",
+                "description": "Copied docs, Playground threads, red Xcode errors, rebuilds.",
+            },
+            {
+                "title": "Why it matters",
+                "description": "It is still the foundation for everything that followed.",
+            },
+        ],
+    },
 }
 
 PORTFOLIO_PATH = "/Users/gunnarhostetler/Documents/GitHub/Gunnarguy-Portfolio"
@@ -64,7 +120,6 @@ def read_file_safe(path):
 
 
 def extract_features(content):
-    """Extract features from README."""
     features = []
     # Look for ## Features or ## Core Features section
     match = re.search(r'##\s*(Core\s+)?Features?\s*\n(.*?)(?=\n##|\Z)', content, re.DOTALL | re.IGNORECASE)
@@ -110,6 +165,7 @@ def generate_page(project_id, config):
     readme = read_file_safe(os.path.join(config["repo_path"], "README.md"))
     features = extract_features(readme)
     tech = extract_tech_stack(readme)
+    story_cards = config.get("story_cards", [])
 
     # Check for docs folder
     docs_path = os.path.join(config["repo_path"], "docs")
@@ -131,6 +187,26 @@ def generate_page(project_id, config):
             <i class="fab fa-app-store-ios"></i> App Store
         </a>'''
 
+    story_section = ""
+    story_nav_link = ""
+    if story_cards:
+        story_nav_link = '<a href="#story">Story</a>'
+        story_html = ""
+        for card in story_cards:
+            story_html += f"""
+        <div class="story-card">
+            <h3>{html.escape(card["title"])}</h3>
+            <p>{html.escape(card["description"])}</p>
+        </div>"""
+        story_section = f"""
+    <section id="story" class="section section-alt">
+        <div class="container">
+            <h2>How It Happened</h2>
+            <div class="story-grid">{story_html}
+            </div>
+        </div>
+    </section>"""
+
     docs_section = ""
     if has_docs:
         docs_section = '''
@@ -141,7 +217,7 @@ def generate_page(project_id, config):
             </div>
         </section>'''
 
-    return f'''<!DOCTYPE html>
+    return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -159,7 +235,7 @@ def generate_page(project_id, config):
     --border-color: #2a2a3a;
 }}
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-body {{ font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }}
+                "description": "This is still the foundation for everything after it, even if the old Assistants path is no longer the future.",
 .container {{ max-width: 1200px; margin: 0 auto; padding: 0 2rem; }}
 .project-nav {{ position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-color); }}
 .back-link {{ color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }}
@@ -181,6 +257,10 @@ body {{ font-family: 'Inter', sans-serif; background: var(--bg-primary); color: 
 .section {{ padding: 5rem 0; }}
 .section-alt {{ background: var(--bg-secondary); }}
 .section h2 {{ font-size: 2rem; margin-bottom: 2rem; text-align: center; }}
+.story-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }}
+.story-card {{ background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); }}
+.story-card h3 {{ color: var(--accent); margin-bottom: 0.6rem; font-size: 1.05rem; }}
+.story-card p {{ color: var(--text-secondary); font-size: 0.96rem; }}
 .features-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }}
 .feature-card {{ background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); transition: border-color 0.2s; }}
 .feature-card:hover {{ border-color: var(--accent); }}
@@ -198,6 +278,7 @@ body {{ font-family: 'Inter', sans-serif; background: var(--bg-primary); color: 
     <nav class="project-nav">
         <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
         <div class="nav-links">
+            {story_nav_link}
             <a href="#features">Features</a>
             <a href="{config["github_url"]}" target="_blank"><i class="fab fa-github"></i></a>
         </div>
@@ -217,6 +298,8 @@ body {{ font-family: 'Inter', sans-serif; background: var(--bg-primary); color: 
         </div>
     </header>
 
+    {story_section}
+
     <section id="features" class="section">
         <div class="container">
             <h2>Features</h2>
@@ -231,7 +314,7 @@ body {{ font-family: 'Inter', sans-serif; background: var(--bg-primary); color: 
         <p class="sync-time">Generated: {datetime.now().strftime("%Y-%m-%d %H:%M")}</p>
     </footer>
 </body>
-</html>'''
+</html>"""
 
 
 def copy_docs(project_id, config, output_dir):
