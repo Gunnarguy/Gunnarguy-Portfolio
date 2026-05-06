@@ -5,11 +5,9 @@
 [![Swift](https://img.shields.io/badge/Swift-6.0-orange.svg)](https://swift.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-OpenIntelligence is private document Q&A for Apple Intelligence-capable iPhone, iPad, and Mac.
+OpenIntelligence is an Apple-native document intelligence app for turning private files into a searchable, cited, inspectable knowledge layer.
 
-Today, the public App Store target in this repository ships on iPhone and iPad. The broader Apple-native engine and product direction are being shaped for Mac as well.
-
-Import documents, ask natural-language questions, inspect the evidence behind each answer, and see when the app cannot support a claim strongly enough to answer cleanly. The goal is not generic chat. The goal is grounded answers over the material you actually gave it, with local-first handling for the parts that matter most.
+Import documents, ask natural-language questions, inspect the evidence behind each answer, and see when the app cannot support a claim strongly enough to answer cleanly. The goal is not generic chat. The goal is grounded answers over the material you actually gave it.
 
 This repository is intentionally product-facing. It shows the app, the native client architecture, and the user-visible trust model without publishing the full private SDK packaging, internal evaluation playbook, or commercial transfer materials.
 
@@ -22,8 +20,6 @@ This repository is intentionally product-facing. It shows the app, the native cl
 ## Product Snapshot
 
 OpenIntelligence is built for people who need answers from their own material, not another free-form model summary. The app ingests documents locally, organizes them into private libraries, retrieves supporting evidence, and returns answers that are designed to stay tied to source material instead of drifting into confident filler.
-
-The market shift is away from AI novelty and toward trustworthy answers over private material. That is why the product centers local-first handling, source review, and visible uncertainty instead of generic chatbot performance.
 
 It is especially useful when the cost of a wrong answer is not abstract:
 
@@ -49,18 +45,12 @@ It is especially useful when the cost of a wrong answer is not abstract:
 
 ## Platform Scope
 
-Broader product positioning:
-
-- Apple Intelligence-capable iPhone
-- Apple Intelligence-capable iPad
-- Apple Intelligence-capable Mac
-
-Current public shipping target in this repository:
+The current app target is built for:
 
 - iPhone
 - iPad
 
-This matters for messaging. Broader product positioning can talk about iPhone, iPad, and Mac. The current App Store binary and target configuration in this repository are still iPhone and iPad rather than a native macOS app.
+The codebase is also being shaped for broader Apple-native engine packaging, but this public app target is currently an iPhone and iPad product rather than a native macOS app.
 
 ## Privacy Posture
 
@@ -82,12 +72,12 @@ This does not make the product magic or infallible. It means the app is intentio
 
 ## Supported Content
 
-| Category      | Examples                                             |
-| ------------- | ---------------------------------------------------- |
-| Documents     | PDF, TXT, MD, RTF                                    |
-| Office        | DOCX, XLSX, PPTX                                     |
+| Category | Examples |
+| --- | --- |
+| Documents | PDF, TXT, MD, RTF |
+| Office | DOCX, XLSX, PPTX |
 | Code and data | Swift, Python, JavaScript, JSON, CSV, XML, YAML, SQL |
-| Media         | PNG, JPEG, HEIC, TIFF, MP3, WAV, MP4, MOV            |
+| Media | PNG, JPEG, HEIC, TIFF, MP3, WAV, MP4, MOV |
 
 ## Public vs Private Scope
 
