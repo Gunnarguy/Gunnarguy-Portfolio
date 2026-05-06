@@ -9,8 +9,6 @@ import os
 import re
 import json
 import html
-from datetime import datetime
-from pathlib import Path
 
 # Project configurations
 PROJECTS = {
@@ -110,6 +108,36 @@ PROJECTS = {
 
 PORTFOLIO_PATH = "/Users/gunnarhostetler/Documents/GitHub/Gunnarguy-Portfolio"
 
+TECH_KEYWORDS = [
+    "SwiftUI",
+    "Swift",
+    "Combine",
+    "OpenAI",
+    "Pinecone",
+    "RAG",
+    "Vision",
+    "CoreML",
+    "Apple Intelligence",
+    "MCP",
+    "Computer Use",
+    "Code Interpreter",
+    "MVVM",
+    "EventKit",
+    "FastAPI",
+    "Python",
+    "Gemini",
+    "Qdrant",
+    "Dash",
+    "Cytoscape",
+    "Docker",
+    "MapKit",
+    "LinkedIn OAuth",
+    "Notion",
+    "SQLite",
+    "SQLAlchemy",
+    "Render",
+]
+
 
 def read_file_safe(path):
     try:
@@ -139,9 +167,7 @@ def extract_features(content):
 def extract_tech_stack(content):
     """Extract tech/tools mentioned."""
     tech = []
-    keywords = ["SwiftUI", "Swift", "Combine", "OpenAI", "Pinecone", "RAG", "Vision", "CoreML",
-                "Apple Intelligence", "MCP", "Computer Use", "Code Interpreter", "MVVM", "EventKit"]
-    for kw in keywords:
+    for kw in TECH_KEYWORDS:
         if kw.lower() in content.lower():
             tech.append(kw)
     return tech[:10]
@@ -166,10 +192,6 @@ def generate_page(project_id, config):
     features = extract_features(readme)
     tech = extract_tech_stack(readme)
     story_cards = config.get("story_cards", [])
-
-    # Check for docs folder
-    docs_path = os.path.join(config["repo_path"], "docs")
-    has_docs = os.path.isdir(docs_path)
 
     feature_cards = ""
     for f in features:
@@ -207,16 +229,6 @@ def generate_page(project_id, config):
         </div>
     </section>"""
 
-    docs_section = ""
-    if has_docs:
-        docs_section = '''
-        <section id="docs" class="section section-alt">
-            <div class="container">
-                <h2>Documentation</h2>
-                <p>Explore the full documentation in the <a href="docs/">docs folder</a>.</p>
-            </div>
-        </section>'''
-
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -235,7 +247,7 @@ def generate_page(project_id, config):
     --border-color: #2a2a3a;
 }}
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-                "description": "This is still the foundation for everything after it, even if the old Assistants path is no longer the future.",
+body {{ font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }}
 .container {{ max-width: 1200px; margin: 0 auto; padding: 0 2rem; }}
 .project-nav {{ position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-color); }}
 .back-link {{ color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }}
@@ -270,7 +282,6 @@ def generate_page(project_id, config):
 .tech-tag {{ background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--border-color); }}
 .project-footer {{ padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color); }}
 .project-footer a {{ color: var(--accent); text-decoration: none; }}
-.sync-time {{ font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }}
 @media (max-width: 768px) {{ .project-hero h1 {{ font-size: 2.5rem; }} .nav-links {{ display: none; }} .hero-actions {{ flex-direction: column; align-items: center; }} }}
     </style>
 </head>
@@ -307,11 +318,8 @@ def generate_page(project_id, config):
         </div>
     </section>
 
-    {docs_section}
-
     <footer class="project-footer">
         <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
-        <p class="sync-time">Generated: {datetime.now().strftime("%Y-%m-%d %H:%M")}</p>
     </footer>
 </body>
 </html>"""
@@ -370,7 +378,6 @@ def main():
         manifest = {
             "project": project_id,
             "title": config["title"],
-            "generated_at": datetime.now().isoformat(),
             "source_repo": config["github_url"]
         }
         with open(os.path.join(output_dir, "manifest.json"), 'w') as f:

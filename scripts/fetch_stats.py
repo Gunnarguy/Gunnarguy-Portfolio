@@ -36,10 +36,7 @@ def gh_get(url):
         return json.loads(resp.read())
 
 
-result = {
-    "generated": datetime.datetime.now(datetime.UTC).isoformat().replace("+00:00", "Z"),
-    "repos": {},
-}
+result = {"repos": {}}
 
 for repo in REPOS:
     print(f"Fetching {repo}...", end=" ")
@@ -75,6 +72,22 @@ for repo in REPOS:
     except Exception as e:
         print(f"FAILED: {e}")
 
+existing = None
+try:
+    with open("data/github-stats.json", "r") as f:
+        existing = json.load(f)
+except FileNotFoundError:
+    existing = None
+
+if existing and existing.get("repos") == result["repos"]:
+    print("\nNo repo stat changes detected; leaving data/github-stats.json untouched")
+    sys.exit(0)
+
+output = {
+    "generated": datetime.datetime.now(datetime.UTC).isoformat().replace("+00:00", "Z"),
+    "repos": result["repos"],
+}
+
 with open("data/github-stats.json", "w") as f:
-    json.dump(result, f)
-print(f"\nWrote data/github-stats.json ({len(result['repos'])} repos)")
+    json.dump(output, f)
+print(f"\nWrote data/github-stats.json ({len(output['repos'])} repos)")

@@ -9,8 +9,6 @@ import os
 import re
 import json
 import html
-from datetime import datetime
-from pathlib import Path
 
 # Base paths for CI environment
 WORKSPACE = os.environ.get("GITHUB_WORKSPACE", os.getcwd())
@@ -299,7 +297,6 @@ body {{ font-family: 'Inter', sans-serif; background: var(--bg-primary); color: 
 .tech-tag {{ background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--border-color); }}
 .project-footer {{ padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color); }}
 .project-footer a {{ color: var(--accent); text-decoration: none; }}
-.sync-time {{ font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }}
 @media (max-width: 768px) {{ .project-hero h1 {{ font-size: 2.5rem; }} .nav-links {{ display: none; }} .hero-actions {{ flex-direction: column; align-items: center; }} }}
     </style>
 </head>
@@ -338,7 +335,6 @@ body {{ font-family: 'Inter', sans-serif; background: var(--bg-primary); color: 
 
     <footer class="project-footer">
         <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
-        <p class="sync-time">Generated: {datetime.now().strftime("%Y-%m-%d %H:%M")} UTC</p>
     </footer>
 </body>
 </html>"""
@@ -410,7 +406,6 @@ def main():
         manifest = {
             "project": project_id,
             "title": config["title"],
-            "generated_at": datetime.now().isoformat(),
             "source_repo": config["github_url"]
         }
         with open(os.path.join(output_dir, "manifest.json"), 'w', encoding='utf-8') as f:

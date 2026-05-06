@@ -32,7 +32,7 @@ jobs:
             const fs = require('fs');
             const repos = ['LinkedOut', 'MedMod', 'OpenResponses', 'OpenIntelligence', 'PlaudBlender', 'OpenCone', 'OpenAssistant'];
             const owner = 'Gunnarguy';
-            const result = { generated: new Date().toISOString(), repos: {} };
+            const result = { repos: {} };
 
             for (const repo of repos) {
               console.log(`Fetching ${repo}...`);
@@ -71,16 +71,42 @@ jobs:
               }
             }
 
-            // Ensure data directory exists
-            if (!fs.existsSync('data')) fs.mkdirSync('data');
-            fs.writeFileSync('data/github-stats.json', JSON.stringify(result));
-            console.log(`\nWrote data/github-stats.json (${Object.keys(result.repos).length} repos)`);
+            const outputPath = 'data/github-stats.json';
+            let existing = null;
+
+            if (fs.existsSync(outputPath)) {
+              try {
+                existing = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+              } catch (error) {
+                console.log(`Failed to parse existing stats file: ${error.message}`);
+              }
+            }
+
+            const existingRepos = existing?.repos ? JSON.stringify(existing.repos) : null;
+            const nextRepos = JSON.stringify(result.repos);
+
+            if (existingRepos === nextRepos) {
+              console.log('\nNo repo stat changes detected; leaving data/github-stats.json untouched.');
+            } else {
+              const output = {
+                generated: new Date().toISOString(),
+                repos: result.repos,
+              };
+
+              if (!fs.existsSync('data')) fs.mkdirSync('data');
+              fs.writeFileSync(outputPath, JSON.stringify(output));
+              console.log(`\nWrote ${outputPath} (${Object.keys(output.repos).length} repos)`);
+            }
 
       - name: Commit stats
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/github-stats.json
-          git diff --quiet --cached || git commit -m "chore: update github stats [skip ci]"
-          git pull --rebase
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update github stats [skip ci]"
+            git pull --rebase
+            git push
+          fi
