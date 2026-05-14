@@ -136,6 +136,62 @@ Configure in your MCP client:
 }
 ```
 
+If you also want direct access to your Plaud account from the same MCP client,
+Plaud's official MCP server can run alongside Chronos. This gives you two layers:
+
+- `plaud` for raw Plaud account access: recent recordings, notes, transcripts, and account auth
+- `chronos` for PlaudBlender's local timeline, semantic search, graph, and pipeline tools
+
+Prerequisites for the official Plaud MCP:
+
+- Node.js 20+
+- A Plaud account
+
+Recommended setup:
+
+```bash
+npx -y @plaud-ai/mcp@latest install
+```
+
+Repository helper commands:
+
+```bash
+./venv/bin/python scripts/plaud_mcp_doctor.py --status
+./venv/bin/python scripts/plaud_mcp_doctor.py --login
+```
+
+If your MCP client is using this repository's `mcp.json`, the file now includes
+both servers:
+
+```json
+{
+  "mcpServers": {
+    "chronos": {
+      "command": "python",
+      "args": ["-m", "scripts.mcp_server"],
+      "cwd": "/path/to/PlaudBlender",
+      "env": {
+        "GEMINI_API_KEY": "${GEMINI_API_KEY}"
+      }
+    },
+    "plaud": {
+      "command": "npx",
+      "args": ["-y", "@plaud-ai/mcp@latest"]
+    }
+  }
+}
+```
+
+The official Plaud MCP uses OAuth in the client and stores its own local auth
+state, so you do not need to inject a Plaud access token into `mcp.json`.
+
+Typical workflow:
+
+- Use `plaud` to browse or fetch a source transcript from Plaud
+- Use `chronos` after PlaudBlender has ingested and indexed recordings locally
+- Keep `python plaud_setup.py` for PlaudBlender's own ingest pipeline, because the
+  app still talks to the Plaud API directly when syncing data into Chronos
+
 ## Key Technologies
 
 - **Gemini AI** — `gemini-3-flash-preview` (processing), `gemini-3.1-pro-preview` (deep analysis), `gemini-embedding-2-preview` (multimodal embeddings)
@@ -176,6 +232,9 @@ python scripts/chronos_pipeline.py --process
 python scripts/chronos_pipeline.py --index
 python scripts/chronos_pipeline.py --graph
 
+# Backfill your entire Plaud account history into Chronos
+python scripts/chronos_pipeline.py --ingest --all-history
+
 # Re-embed all events (after changing embedding model/dim)
 python scripts/chronos_pipeline.py --reindex
 
@@ -193,6 +252,32 @@ python -m pytest tests/
 
 # Diagnostics
 python scripts/verify_status.py
+```
+
+## Pi Auto-Deploy
+
+If Chronos is running on your Raspberry Pi, you can let the Pi poll GitHub and
+apply new commits on its own without inbound webhooks or manual SSH deploys.
+
+Enable the timer once on the Pi:
+
+```bash
+sudo systemctl enable --now chronos-auto-update.timer
+```
+
+What it does:
+
+- Polls the checked-out Git branch on `origin` every minute
+- Skips deploys if the Pi has local tracked changes or a diverged branch
+- Runs `deploy/update-pi.sh` when GitHub has new commits
+- Reuses the hardened update flow that reloads units, restarts services, waits for health, and verifies the stack
+
+Useful checks:
+
+```bash
+systemctl status chronos-auto-update.timer
+journalctl -u chronos-auto-update.service -f
+tail -f logs/auto_update.log
 ```
 
 ## More Documentation

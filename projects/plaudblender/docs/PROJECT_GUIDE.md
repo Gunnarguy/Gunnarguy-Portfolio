@@ -74,6 +74,9 @@ python plaud_setup.py
 ```bash
 # Full pipeline: download from Plaud → process through Gemini → index to Qdrant → build graph
 python scripts/chronos_pipeline.py --full
+
+# One-time deep backfill: ingest your full Plaud account history
+python scripts/chronos_pipeline.py --ingest --all-history
 ```
 
 ### 6. Launch the UI
