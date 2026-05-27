@@ -172,11 +172,11 @@
                                 </div>
                             </div>
                             <p class="project-tagline">
-                                Architectural prototype applying OpenIntelligence's offline retrieval engine to medical charting schemas.
+                                Offline-first medical charting proof-of-concept applying the OpenIntelligence engine to patient records.
                             </p>
                             <div class="project-bullets">
-                                <p><strong>Why I built it:</strong> Created as a secure charting prototype to demonstrate how the local vector search and RAG engine from OpenIntelligence can be applied to patient data structures without cloud dependency.</p>
-                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Adapted the exact Core ML embedding search and SQLite FTS5 lexical indexing pipeline from OpenIntelligence. Structured the app in SwiftUI around a local SwiftData store, integrating SMART on FHIR discovery and OAuth (<code>ASWebAuthenticationSession</code>) to pull Patient, Condition, and MedicationRequest resources directly from EHR sandboxes into the local intelligence engine.</p>
+                                <p><strong>Why I built it:</strong> I was seeing a lot of discussions about the potential for local, on-device EHRs and patient privacy. I wanted to see if I could build a proof-of-concept myself, testing if the offline RAG engine I built for OpenIntelligence could be adapted to run over medical charting schemas and patient data structures locally.</p>
+                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Adapted the Core ML vector search and SQLite FTS5 lexical indexing pipeline from OpenIntelligence. Structured the interface in SwiftUI around a local SwiftData store, integrating SMART on FHIR discovery and OAuth (<code>ASWebAuthenticationSession</code>) to pull demo Patient, Condition, and MedicationRequest resources directly from EHR sandboxes into the local offline model.</p>
                             </div>
                             <div class="project-tech">
                                 <span>SwiftUI</span>
@@ -213,6 +213,7 @@
                             <div class="project-bullets">
                                 <p><strong>Why I built it:</strong> Created to bypass the 4,096-token context window budget of Apple's local 3B model (unlocked at WWDC25), bringing accurate, cited document queries fully offline on mobile.</p>
                                 <p style="margin-top: 8px;"><strong>How I built it:</strong> Engineered custom layout-aware text extraction and Vision OCR pipelines. Constructed a local-first search system combining SQLite FTS5 with BNNS-accelerated dense embeddings (384 dimensions). Programmed a multi-session recursive reasoning loop that runs intent-based query re-writing (HyDE), self-critique, and context packing to snipe relevant facts.</p>
+                                <p style="margin-top: 8px;"><strong>Engineering Trade-Offs:</strong> Chose a fully local 3B model over cloud APIs to guarantee zero-latency offline document queries. Accepted severe local memory and context-window limitations (4,096 tokens), resolving it via a custom state-saving recursive reasoning loop that runs local context packing.</p>
                             </div>
                             <div class="project-tech">
                                 <span>Apple Intelligence</span>
@@ -251,6 +252,7 @@
                             <div class="project-bullets">
                                 <p><strong>Why I built it:</strong> Built to migrate off completion-era OpenAI endpoints (following deprecation announcements) to the modern Responses API, adding advanced multi-modal tool support.</p>
                                 <p style="margin-top: 8px;"><strong>How I built it:</strong> Programmed a SwiftUI app following the MVVM pattern with <code>AppContainer</code> dependency injection. Created Combine streaming handlers to parse 40+ event types, integrated built-in tools (web search, file search, code interpreter), and implemented security-scoped consent sheets to gate higher-risk actions.</p>
+                                <p style="margin-top: 8px;"><strong>Engineering Trade-Offs:</strong> Chose raw SwiftUI MVVM + Combine over heavy third-party state frameworks to minimize binary size. Implemented custom decoders for OpenAI's raw event streams to handle interrupted network state cleanly.</p>
                             </div>
                             <div class="project-tech">
                                 <span>SwiftUI</span>
@@ -288,6 +290,7 @@
                             <div class="project-bullets">
                                 <p><strong>Why I built it:</strong> Created because OpenAI's Assistants playground limited assistants to a single vector store, preventing me from chatting with multiple large document databases at once.</p>
                                 <p style="margin-top: 8px;"><strong>How I built it:</strong> Created in SwiftUI using async/await. Implemented local PDFKit extraction, Vision OCR document parsing, and metadata chunking. Connected Pinecone's index/namespace endpoints and OpenAI's embeddings, securing sandboxed documents via security-scoped bookmarks and Keychain storage.</p>
+                                <p style="margin-top: 8px;"><strong>Engineering Trade-Offs:</strong> Opted for a direct Pinecone REST integration instead of heavy SDKs to preserve memory. Implemented security-scoped bookmarking for local sandboxed files, accepting iOS file-system restrictions while preserving data isolation.</p>
                             </div>
                             <div class="project-tech">
                                 <span>SwiftUI</span>
@@ -325,6 +328,7 @@
                             <div class="project-bullets">
                                 <p><strong>Why I built it:</strong> Created to query and digest dense medical device documentation (IFUs) on my iPhone, and to serve as my introduction to Swift development and Apple App Store submission.</p>
                                 <p style="margin-top: 8px;"><strong>How I built it:</strong> Programmed in SwiftUI and Combine, mapping assistant endpoints, threads, and runs. Persistent message storage was constructed using local JSON serialization, and the project shipped after resolving ~30 Connect App Review rejections.</p>
+                                <p style="margin-top: 8px;"><strong>Debugging Deep-Dive:</strong> App Store rejected initial builds 30+ times due to sandboxing violations when querying local PDF documents. Solved by implementing security-scoped bookmarks (using <code>startAccessingSecurityScopedResource()</code>) and moving document processing to an isolated background thread to prevent UI hangs.</p>
                             </div>
                             <div class="project-tech">
                                 <span>SwiftUI</span>
