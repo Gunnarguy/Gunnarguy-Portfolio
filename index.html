@@ -113,14 +113,14 @@
             <div class="container">
                 <div class="hero-content">
                     <p class="hero-kicker">
-                        Clinical Operations &amp; On-Device AI Systems
+                        Clinical Operations &amp; iOS Systems Engineering
                     </p>
                     <h1>Gunnar Hostetler</h1>
                     <p class="hero-statement">
-                        I design and build clinical-grade mobile interfaces and on-device AI systems.
+                        Production-ready Swift/iOS architectures, local-first databases, and on-device RAG engines.
                     </p>
                     <p class="hero-description">
-                        By day: Autonomously managing high-stakes surgical video systems and device logistics for Stryker at VA Palo Alto (Stanford Surgery affiliate). By night: Engineering high-performance Swift iOS apps, local-first database architectures, and local RAG pipelines.
+                        Autonomously managing endoscopy camera towers, video routing, and device logistics for Stryker's high-stakes surgical contract at VA Palo Alto (Stanford Surgery). Creator of clinical-grade mobile workspaces, on-device Core ML/BNNS retrieval systems, and SMART on FHIR telemetry integrations.
                     </p>
                     
                     <!-- Top-level metrics badges -->
@@ -172,19 +172,12 @@
                                 </div>
                             </div>
                             <p class="project-tagline">
-                                Local-first clinician chart store and on-device AI workspace integrating patient charting, SMART on FHIR telemetry, and Vision-based clinical photo tracking.
+                                Local-first clinical chart store and on-device AI assistant for Apple platforms.
                             </p>
-                            <ul class="project-bullets">
-                                <li>
-                                    <strong>Workflow Translation:</strong> Connects directly to healthcare endpoints via OAuth (ASWebAuthenticationSession), importing Condition, Patient, MedicationRequest, and Appointment resources securely to a local SwiftData store.
-                                </li>
-                                <li>
-                                    <strong>On-Device RAG:</strong> Runs a hybrid semantic/keyword search pipeline utilizing Core ML Embeddings, SQLite FTS5, and Reciprocal Rank Fusion (RRF) with a 7-stage verification engine to guarantee clinical grounding.
-                                </li>
-                                <li>
-                                    <strong>Specialized UX:</strong> Implemented native anatomical body mapping and lesion progression timelines for dermatology workflows.
-                                </li>
-                            </ul>
+                            <div class="project-bullets">
+                                <p><strong>Why I built it:</strong> To bridge complex clinical workflows with native Apple software, enabling clinicians to manage charting, medical imaging, and on-device intelligence without cloud dependency.</p>
+                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Built in Swift and SwiftUI around a local SwiftData chart store. Integrated SMART on FHIR server discovery and OAuth authorization using <code>ASWebAuthenticationSession</code> to import Patient, Condition, MedicationRequest, and Appointment resources. Developed an on-device hybrid RAG pipeline using Core ML Embeddings, SQLite FTS5 lexical indexing, and Reciprocal Rank Fusion (RRF), verifying all output through a 7-stage clinical grounding check.</p>
+                            </div>
                             <div class="project-tech">
                                 <span>SwiftUI</span>
                                 <span>SwiftData</span>
@@ -215,27 +208,21 @@
                                 </div>
                             </div>
                             <p class="project-tagline">
-                                Offline iOS app for local document retrieval and source-backed answers running Apple's on-device foundation models.
+                                Local-first document query and RAG engine running Apple's local foundation models.
                             </p>
-                            <ul class="project-bullets">
-                                <li>
-                                    <strong>Constraint Isolation:</strong> Overcame Apple's public on-device session budget (4,096 token ceiling) by developing a recursive multi-session reasoning loop that structures lengthy, citation-backed answers.
-                                </li>
-                                <li>
-                                    <strong>System Capability:</strong> Supports PDF, image, and text ingestion with locally run Vision OCR, processing files fully in airplane mode.
-                                </li>
-                                <li>
-                                    <strong>Metrics &amp; Traction:</strong> Shipped to the App Store, generating over 1,000 downloads and $190 in early revenue since Feb 2026.
-                                </li>
-                            </ul>
+                            <div class="project-bullets">
+                                <p><strong>Why I built it:</strong> Created to bypass the 4,096-token context window budget of Apple's local 3B model (unlocked at WWDC25), bringing accurate, cited document queries fully offline on mobile.</p>
+                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Engineered custom layout-aware text extraction and Vision OCR pipelines. Constructed a local-first search system combining SQLite FTS5 with BNNS-accelerated dense embeddings (384 dimensions). Programmed a multi-session recursive reasoning loop that runs intent-based query re-writing (HyDE), self-critique, and context packing to snipe relevant facts.</p>
+                            </div>
                             <div class="project-tech">
                                 <span>Apple Intelligence</span>
                                 <span>FoundationModels</span>
                                 <span>SwiftUI</span>
                                 <span>Swift 6</span>
                                 <span>On-Device RAG</span>
+                                <span>BNNS Vectors</span>
                                 <span>Vision OCR</span>
-                                <span>Async/Await</span>
+                                <span>SQLite FTS5</span>
                             </div>
                             <div class="project-links">
                                 <a href="projects/openintelligence/index.html" class="btn-link">Docs</a>
@@ -259,19 +246,12 @@
                                 </div>
                             </div>
                             <p class="project-tagline">
-                                SwiftUI client rebuilt around OpenAI's modern Responses API, migrating off completion-era architecture.
+                                SwiftUI client built around OpenAI's modern Responses API with full tool support.
                             </p>
-                            <ul class="project-bullets">
-                                <li>
-                                    <strong>Tool Orchestration:</strong> Integrated web search, file search, and code interpreter directly into chat threads with real-time streaming handlers.
-                                </li>
-                                <li>
-                                    <strong>Defensive UI/UX:</strong> Designed strict request payload inspection and user-consent sheets for data egress, resulting in first-pass App Review approval (0 rejections).
-                                </li>
-                                <li>
-                                    <strong>Architecture:</strong> Engineered using MVVM pattern combined with an AppContainer DI pattern to isolate credentials and network layers.
-                                </li>
-                            </ul>
+                            <div class="project-bullets">
+                                <p><strong>Why I built it:</strong> Built to migrate off completion-era OpenAI endpoints (following deprecation announcements) to the modern Responses API, adding advanced multi-modal tool support.</p>
+                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Programmed a SwiftUI app following the MVVM pattern with <code>AppContainer</code> dependency injection. Created Combine streaming handlers to parse 40+ event types, integrated built-in tools (web search, file search, code interpreter), and implemented security-scoped consent sheets to gate higher-risk actions.</p>
+                            </div>
                             <div class="project-tech">
                                 <span>SwiftUI</span>
                                 <span>OpenAI Responses API</span>
@@ -303,19 +283,12 @@
                                 </div>
                             </div>
                             <p class="project-tagline">
-                                Semantic search and multi-index document retrieval iOS client built on Pinecone vector databases.
+                                Semantic search and multi-index document retrieval iOS client built on Pinecone.
                             </p>
-                            <ul class="project-bullets">
-                                <li>
-                                    <strong>Schema Isolation:</strong> Allows users to manage and target queries to multiple Pinecone indexes and namespaces through a single chat completions thread.
-                                </li>
-                                <li>
-                                    <strong>Local Extraction:</strong> Implemented local document parsing, token tracking, and Vision OCR extraction, executing vector embeddings locally.
-                                </li>
-                                <li>
-                                    <strong>Security Constraints:</strong> Handled sandboxed file references via security-scoped bookmarks and stored API credentials in the iOS Keychain.
-                                </li>
-                            </ul>
+                            <div class="project-bullets">
+                                <p><strong>Why I built it:</strong> Created because OpenAI's Assistants playground limited assistants to a single vector store, preventing me from chatting with multiple large document databases at once.</p>
+                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Created in SwiftUI using async/await. Implemented local PDFKit extraction, Vision OCR document parsing, and metadata chunking. Connected Pinecone's index/namespace endpoints and OpenAI's embeddings, securing sandboxed documents via security-scoped bookmarks and Keychain storage.</p>
+                            </div>
                             <div class="project-tech">
                                 <span>SwiftUI</span>
                                 <span>OpenAI Embeddings</span>
@@ -347,19 +320,12 @@
                                 </div>
                             </div>
                             <p class="project-tagline">
-                                Foundational iOS client for OpenAI's Assistants API, supporting custom vector store attachments.
+                                Foundational iOS client for OpenAI's Assistants V2 API.
                             </p>
-                            <ul class="project-bullets">
-                                <li>
-                                    <strong>Release Discipline:</strong> Gunnar's first iOS project; passed through App Store review Connect after navigating ~30 iterative rejections to harden layouts.
-                                </li>
-                                <li>
-                                    <strong>Control Interface:</strong> Native, threaded chat client exposing assistant lifecycle configurations directly on mobile.
-                                </li>
-                                <li>
-                                    <strong>Archived Status:</strong> Retained as an architectural baseline; now deprecated following OpenAI's completions endpoint phase-out schedules.
-                                </li>
-                            </ul>
+                            <div class="project-bullets">
+                                <p><strong>Why I built it:</strong> Created to query and digest dense medical device documentation (IFUs) on my iPhone, and to serve as my introduction to Swift development and Apple App Store submission.</p>
+                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Programmed in SwiftUI and Combine, mapping assistant endpoints, threads, and runs. Persistent message storage was constructed using local JSON serialization, and the project shipped after resolving ~30 Connect App Review rejections.</p>
+                            </div>
                             <div class="project-tech">
                                 <span>SwiftUI</span>
                                 <span>OpenAI Assistants API</span>
@@ -768,9 +734,9 @@
                 <h2>Get In Touch</h2>
                 <div class="contact-content">
                     <div class="contact-info">
-                        <h3>Build where clinical context multiplies technical output</h3>
+                        <h3>Contact &amp; System Access</h3>
                         <p>
-                            I design clinical interfaces and mobile-first AI architectures. If you are building modern clinical workspaces, on-device RAG systems, or FHIR integrations, let's connect.
+                            For engineering inquiries, project references, or technical collaboration, reach out via the contact form or connect directly through the details below.
                         </p>
 
                         <div class="contact-details">
