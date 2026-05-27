@@ -1,33 +1,4 @@
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Gunnar Hostetler",
-        "url": "https://gunnarguy.me/",
-        "jobTitle": "Healthcare Operations Specialist & AI Developer",
-        "email": "Gunnarguy@me.com",
-        "telephone": "+14088280552",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Campbell",
-          "addressRegion": "CA"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/gunnar-hostetler/",
-          "https://github.com/Gunnarguy"
-        ]
-      }
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
-        gtag("config", "G-YZ95J7YFJV");
-    </script>
-    <script>
+
         // Mobile navigation toggle
         const navToggle = document.querySelector(".nav-toggle");
         const navMenu = document.querySelector(".nav-menu");
@@ -180,7 +151,8 @@
                 if (!resp.ok) return false;
                 const data = await resp.json();
 
-            for (const [repo, info] of Object.entries(data.repos)) {
+            for (let [repo, info] of Object.entries(data.repos)) {
+                if (repo === "MedMod") repo = "OpenClinic";
                 repoDataCache[repo] = {
                     repoInfo: { created_at: info.created_at },
                     commits: info.commits.map((c) => ({
@@ -1057,4 +1029,4 @@
 
         // Initialize everything — single shared fetch
         initAllData();
-    </script>
+

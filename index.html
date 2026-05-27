@@ -131,7 +131,7 @@
                         </div>
                         <div class="hero-stat-divider"></div>
                         <div class="hero-stat">
-                            <span class="hero-stat-number">5</span>
+                            <span class="hero-stat-number">4</span>
                             <span class="hero-stat-label">SwiftUI Apps Shipped</span>
                         </div>
                         <div class="hero-stat-divider"></div>
@@ -154,7 +154,7 @@
             <div class="container">
                 <h2>Selected Work</h2>
                 <p class="skills-intro">
-                    Five shipped iOS and clinical AI projects, detailing local retrieval strategies, systems integration, and release metrics.
+                    Four shipped App Store apps and one clinical integration prototype, detailing local retrieval strategies, systems integration, and release metrics.
                 </p>
 
                 <div class="projects-grid">
@@ -172,11 +172,11 @@
                                 </div>
                             </div>
                             <p class="project-tagline">
-                                Local-first clinical chart store and on-device AI assistant for Apple platforms.
+                                Architectural prototype applying OpenIntelligence's offline retrieval engine to clinical environments.
                             </p>
                             <div class="project-bullets">
-                                <p><strong>Why I built it:</strong> To bridge complex clinical workflows with native Apple software, enabling clinicians to manage charting, medical imaging, and on-device intelligence without cloud dependency.</p>
-                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Built in Swift and SwiftUI around a local SwiftData chart store. Integrated SMART on FHIR server discovery and OAuth authorization using <code>ASWebAuthenticationSession</code> to import Patient, Condition, MedicationRequest, and Appointment resources. Developed an on-device hybrid RAG pipeline using Core ML Embeddings, SQLite FTS5 lexical indexing, and Reciprocal Rank Fusion (RRF), verifying all output through a 7-stage clinical grounding check.</p>
+                                <p><strong>Why I built it:</strong> Created as a secure clinical charting prototype to demonstrate how the local vector search and RAG engine from OpenIntelligence can be applied to HIPAA-sensitive EHR workflows without cloud dependency.</p>
+                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Adapted the exact Core ML embedding search and SQLite FTS5 lexical indexing pipeline from OpenIntelligence. Structured the app in SwiftUI around a local SwiftData store, integrating SMART on FHIR discovery and OAuth (<code>ASWebAuthenticationSession</code>) to pull Patient, Condition, and MedicationRequest resources directly from EHR sandboxes into the local intelligence engine.</p>
                             </div>
                             <div class="project-tech">
                                 <span>SwiftUI</span>

@@ -6,7 +6,7 @@ import json, urllib.request, datetime, sys, subprocess
 OWNER = "Gunnarguy"
 REPOS = [
     "LinkedOut",
-    "MedMod",
+    "OpenClinic",
     "OpenResponses",
     "OpenIntelligence",
     "PlaudBlender",
@@ -84,7 +84,7 @@ if existing and existing.get("repos") == result["repos"]:
     sys.exit(0)
 
 output = {
-    "generated": datetime.datetime.now(datetime.UTC).isoformat().replace("+00:00", "Z"),
+    "generated": datetime.datetime.now(datetime.timezone.utc).isoformat().replace("+00:00", "Z"),
     "repos": result["repos"],
 }
 
