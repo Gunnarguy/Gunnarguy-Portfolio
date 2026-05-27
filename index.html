@@ -118,12 +118,12 @@
                     </p>
                     <h1>Gunnar Hostetler</h1>
                     <p class="hero-statement">
-                        I went from locating underground utilities to supporting Stryker endoscopy workflows across 8 active operating rooms.
+                        From locating underground utilities in Chicago to providing intraoperative technical support for Stanford surgeons at the VA in Palo Alto, primarily supporting Stryker endoscopy systems across 8 operating rooms.
                     </p>
                     <p class="hero-description">
-                        Along the way, I started building native iOS applications out of sheer curiosity—designing tools to solve my own daily challenges that end up helping others.
+                        Outside of my professional work, I started building iOS applications out of sheer curiosity - creating solutions to my own problems and finding great joy if they help others out as well. I am fueled by a relentless drive to learn new things and develop new skills.
                     </p>
-                    
+
                     <!-- Top-level metrics badges -->
                     <div class="hero-stats">
                         <div class="hero-stat">
@@ -168,12 +168,12 @@
                                 </div>
                             </div>
                             <p class="project-tagline">
-                                Local-first document query and RAG engine running Apple's local foundation models.
+                                Offline document intelligence engine built to push Apple Intelligence-capable devices toward cloud-style RAG, OCR,
+                                retrieval, and cited reasoning.
                             </p>
                             <div class="project-bullets">
-                                <p><strong>Why I built it:</strong> Created to bypass the 4,096-token context window budget of Apple's local 3B model (unlocked at WWDC25), bringing accurate, cited document queries fully offline on mobile.</p>
-                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Engineered custom layout-aware text extraction and Vision OCR pipelines. Constructed a local-first search system combining SQLite FTS5 with BNNS-accelerated dense embeddings (384 dimensions). Programmed a multi-session recursive reasoning loop that runs intent-based query re-writing (HyDE), self-critique, and context packing to snipe relevant facts.</p>
-                                <p style="margin-top: 8px;"><strong>Engineering Trade-Offs:</strong> Chose a fully local 3B model over cloud APIs to guarantee zero-latency offline document queries. Accepted severe local memory and context-window limitations (4,096 tokens), resolving it via a custom state-saving recursive reasoning loop that runs local context packing.</p>
+                                <p><strong>Why I built it:</strong> I built OpenIntelligence to test how close an Apple device could get to cloud-style document agents while staying fully local. It started as a challenge to push Apple Silicon and Apple Intelligence-capable devices as far as possible, then grew into a full RAG engine for private documents: large PDFs, dense text, tables, OCR, citations, and local retrieval without a cloud backend.</p>
+                                <p style="margin-top: 8px;"><strong>How I built it:</strong> I engineered a local-first iOS document engine with layout-aware text extraction, Vision OCR, SQLite FTS5, and 384-dimensional dense embeddings accelerated with BNNS. The app combines semantic retrieval, keyword search, HyDE-style query rewriting, self-critique, and context packing to pull relevant evidence from complex documents before generating cited answers.</p>
                             </div>
                             <div class="project-tech">
                                 <span>Apple Intelligence</span>
@@ -354,7 +354,7 @@
                             </button>
                         </div>
                     </div>
-                    
+
                     <div class="heatmap-container">
                         <div class="heatmap-months" id="heatmap-months"></div>
                         <div class="heatmap-wrapper">
@@ -367,7 +367,7 @@
                                 <div class="heatmap-loading">Loading activity telemetry...</div>
                             </div>
                         </div>
-                        
+
                         <div class="heatmap-legend">
                             <span>Less</span>
                             <div class="legend-squares">
@@ -380,7 +380,7 @@
                             <span>More</span>
                         </div>
                     </div>
-                    
+
                     <div class="heatmap-stats" id="heatmap-stats">
                         <!-- Populated by JS -->
                     </div>
@@ -393,7 +393,7 @@
             <div class="container">
                 <h2>Git Stratigraphy</h2>
                 <p class="strat-intro">Visualizing codebase evolution and commit categories over time as concentric tree rings (from center outward).</p>
-                
+
                 <div class="strat-legend">
                     <div class="legend-item">
                         <span class="legend-color feat"></span>
