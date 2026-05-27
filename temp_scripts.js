@@ -153,6 +153,7 @@
         // ========================================
         const GITHUB_USERNAME = "Gunnarguy";
         const REPOS = [
+            "OpenClinic",
             "LinkedOut",
             "OpenResponses",
             "OpenIntelligence",
@@ -652,6 +653,12 @@
 
         // Known repo data (verified by user)
         const KNOWN_REPO_DATA = {
+            OpenClinic: {
+                created: "2026-05-10",
+                startYear: 2026,
+                totalCommits: 21,
+                weeksActive: 3,
+            },
             LinkedOut: {
                 created: "2026-03-10",
                 startYear: 2026,
