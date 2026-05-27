@@ -125,7 +125,6 @@
         const GITHUB_USERNAME = "Gunnarguy";
         const REPOS = [
             "OpenClinic",
-            "LinkedOut",
             "OpenResponses",
             "OpenIntelligence",
             "PlaudBlender",
@@ -631,12 +630,7 @@
                 totalCommits: 21,
                 weeksActive: 3,
             },
-            LinkedOut: {
-                created: "2026-03-10",
-                startYear: 2026,
-                totalCommits: 47,
-                weeksActive: 1,
-            },
+
             OpenAssistant: {
                 created: "2024-09-20",
                 startYear: 2024,

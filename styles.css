@@ -380,7 +380,9 @@ display: flex;
 
 /* Buttons */
 .btn {
-padding: 14px 32px;
+    display: inline-block;
+    text-align: center;
+    padding: 14px 32px;
     border-radius: 50px;
     font-weight: 600;
     font-size: 1rem;
@@ -2372,7 +2374,22 @@ body {
     letter-spacing: 0.05em;
 }
 
+.btn-primary {
+    background: var(--accent-gradient) !important;
+    color: #080b11 !important;
+    border: none !important;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.15) !important;
+}
+
+.btn-primary:hover {
+    background: var(--accent-gradient) !important;
+    filter: brightness(1.15) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.35) !important;
+}
+
 .btn-secondary {
+    background: transparent !important;
     color: var(--text-primary) !important;
     border: 2px solid rgba(255, 255, 255, 0.15) !important;
 }
@@ -2381,6 +2398,7 @@ body {
     border-color: var(--accent-color) !important;
     background: rgba(0, 242, 254, 0.05) !important;
     color: var(--accent-color) !important;
+    transform: translateY(-2px) !important;
 }
 
 .projects {
@@ -2392,6 +2410,10 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+}
+
+.project-header {
+    align-items: center !important;
 }
 
 .project-image {
@@ -2430,7 +2452,11 @@ body {
     padding: 4px 10px;
     border-radius: 8px;
     margin-left: 10px;
-    vertical-align: middle;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+    position: relative !important;
+    top: -1px !important;
     font-weight: 700;
     border: 1px solid rgba(0, 184, 212, 0.25) !important;
     text-transform: uppercase;
@@ -2476,10 +2502,22 @@ body {
     color: #000 !important;
 }
 
+.experience {
+    background: #080b11 !important;
+}
+
 .timeline-item {
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+}
+
+.timeline-content {
     background: var(--card-bg) !important;
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    box-shadow: var(--shadow-md) !important;
 }
 
 .timeline-meta h3 {
@@ -2492,6 +2530,7 @@ body {
 
 .timeline-date {
     color: var(--accent-secondary) !important;
+    background: rgba(0, 184, 212, 0.08) !important;
     font-weight: 700;
 }
 
@@ -2519,6 +2558,28 @@ body {
     color: var(--text-primary);
 }
 
+.contact {
+    background: #080b11 !important;
+}
+
+.contact-content {
+    background: var(--card-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.social-links a {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: var(--text-primary) !important;
+}
+
+.social-links a:hover {
+    background: var(--accent-color) !important;
+    color: #080b11 !important;
+    border-color: var(--accent-color) !important;
+}
+
 .contact-form input,
 .contact-form textarea {
     background: rgba(17, 22, 34, 0.6) !important;
@@ -2528,8 +2589,10 @@ body {
 
 .contact-form input:focus,
 .contact-form textarea:focus {
+    background: rgba(17, 22, 34, 0.85) !important;
     border-color: var(--accent-color) !important;
-    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 242, 254, 0.15) !important;
+    outline: none !important;
 }
 
 .footer {

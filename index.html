@@ -158,50 +158,14 @@
                 </p>
 
                 <div class="projects-grid">
-                    <!-- OpenClinic (Flagship) -->
+                    <!-- OpenIntelligence (Flagship) -->
                     <div class="project-card featured-project">
-                        <div class="project-image">
-                            <img loading="lazy" src="assets/openclinic-icon.png?v=3" alt="OpenClinic iOS App Icon" />
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <h3>OpenClinic <span class="badge-flagship">Flagship Project</span></h3>
-                                <div class="project-badges">
-                                    <img loading="lazy" src="https://img.shields.io/github/stars/Gunnarguy/OpenClinic?style=flat-square&color=00b8d4" alt="Stars" />
-                                    <img loading="lazy" src="https://img.shields.io/github/last-commit/Gunnarguy/OpenClinic?style=flat-square&color=00b8d4" alt="Last Commit" />
-                                </div>
-                            </div>
-                            <p class="project-tagline">
-                                Offline-first medical charting proof-of-concept applying the OpenIntelligence engine to patient records.
-                            </p>
-                            <div class="project-bullets">
-                                <p><strong>Why I built it:</strong> I was seeing a lot of discussions about the potential for local, on-device EHRs and patient privacy. I wanted to see if I could build a proof-of-concept myself, testing if the offline RAG engine I built for OpenIntelligence could be adapted to run over medical charting schemas and patient data structures locally.</p>
-                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Adapted the Core ML vector search and SQLite FTS5 lexical indexing pipeline from OpenIntelligence. Structured the interface in SwiftUI around a local SwiftData store, integrating SMART on FHIR discovery and OAuth (<code>ASWebAuthenticationSession</code>) to pull demo Patient, Condition, and MedicationRequest resources directly from EHR sandboxes into the local offline model.</p>
-                            </div>
-                            <div class="project-tech">
-                                <span>SwiftUI</span>
-                                <span>SwiftData</span>
-                                <span>SMART on FHIR</span>
-                                <span>Core ML</span>
-                                <span>SQLite FTS5</span>
-                                <span>RRF</span>
-                                <span>OAuth</span>
-                                <span>Vision OCR</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/Gunnarguy/OpenClinic" class="btn-link" target="_blank" rel="noopener">GitHub Repo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- OpenIntelligence -->
-                    <div class="project-card">
                         <div class="project-image">
                             <img loading="lazy" src="assets/ragmlcore-icon.png" alt="OpenIntelligence iOS App Icon" />
                         </div>
                         <div class="project-content">
                             <div class="project-header">
-                                <h3>OpenIntelligence</h3>
+                                <h3>OpenIntelligence <span class="badge-flagship">Flagship Project</span></h3>
                                 <div class="project-badges">
                                     <img loading="lazy" src="https://img.shields.io/github/stars/Gunnarguy/OpenIntelligence?style=flat-square&color=00b8d4" alt="Stars" />
                                     <img loading="lazy" src="https://img.shields.io/github/last-commit/Gunnarguy/OpenIntelligence?style=flat-square&color=00b8d4" alt="Last Commit" />
@@ -229,6 +193,42 @@
                                 <a href="projects/openintelligence/index.html" class="btn-link">Docs</a>
                                 <a href="https://github.com/Gunnarguy/OpenIntelligence" class="btn-link" target="_blank" rel="noopener">GitHub</a>
                                 <a href="https://apps.apple.com/us/app/openintelligence/id6756559175" class="btn-link" target="_blank" rel="noopener">App Store</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OpenClinic -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img loading="lazy" src="assets/openclinic-icon.png?v=3" alt="OpenClinic iOS App Icon" />
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>OpenClinic</h3>
+                                <div class="project-badges">
+                                    <img loading="lazy" src="https://img.shields.io/github/stars/Gunnarguy/OpenClinic?style=flat-square&color=00b8d4" alt="Stars" />
+                                    <img loading="lazy" src="https://img.shields.io/github/last-commit/Gunnarguy/OpenClinic?style=flat-square&color=00b8d4" alt="Last Commit" />
+                                </div>
+                            </div>
+                            <p class="project-tagline">
+                                Offline-first medical charting proof-of-concept applying the OpenIntelligence engine to patient records.
+                            </p>
+                            <div class="project-bullets">
+                                <p><strong>Why I built it:</strong> I was seeing a lot of discussions about the potential for local, on-device EHRs and patient privacy. I wanted to see if I could build a proof-of-concept myself, testing if the offline RAG engine I built for OpenIntelligence could be adapted to run over medical charting schemas and patient data structures locally.</p>
+                                <p style="margin-top: 8px;"><strong>How I built it:</strong> Adapted the Core ML vector search and SQLite FTS5 lexical indexing pipeline from OpenIntelligence. Structured the interface in SwiftUI around a local SwiftData store, integrating SMART on FHIR discovery and OAuth (<code>ASWebAuthenticationSession</code>) to pull demo Patient, Condition, and MedicationRequest resources directly from EHR sandboxes into the local offline model.</p>
+                            </div>
+                            <div class="project-tech">
+                                <span>SwiftUI</span>
+                                <span>SwiftData</span>
+                                <span>SMART on FHIR</span>
+                                <span>Core ML</span>
+                                <span>SQLite FTS5</span>
+                                <span>RRF</span>
+                                <span>OAuth</span>
+                                <span>Vision OCR</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Gunnarguy/OpenClinic" class="btn-link" target="_blank" rel="noopener">GitHub Repo</a>
                             </div>
                         </div>
                     </div>
@@ -610,37 +610,7 @@
                         </div>
                     </div>
 
-                    <!-- LinkedOut -->
-                    <div class="tree-sample" data-repo="LinkedOut">
-                        <div class="tree-header">
-                            <img class="tree-icon" src="assets/linkedout-icon.png" alt="LinkedOut Icon" />
-                            <div class="tree-info">
-                                <h3>LinkedOut</h3>
-                                <span class="tree-age">Calculating...</span>
-                            </div>
-                        </div>
-                        <div class="tree-ring-container">
-                            <svg class="tree-rings" viewBox="0 0 300 300"></svg>
-                            <div class="tree-tooltip"></div>
-                        </div>
-                        <div class="tree-stats">
-                            <div class="tree-stat">
-                                <span class="stat-num">-</span>
-                                <span class="stat-label">commits</span>
-                            </div>
-                            <div class="tree-stat">
-                                <span class="stat-num">-</span>
-                                <span class="stat-label">weeks active</span>
-                            </div>
-                            <div class="tree-stat">
-                                <span class="stat-num">-</span>
-                                <span class="stat-label">contributors</span>
-                            </div>
-                        </div>
-                        <div class="tree-links">
-                            <a href="https://github.com/Gunnarguy/LinkedOut" target="_blank" rel="noopener">GitHub</a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
@@ -717,14 +687,17 @@
                                 <span class="timeline-date">Aug 2022 – Present</span>
                             </div>
                             <div class="timeline-impact-intro">
-                                Operate with 100% autonomy as the sole on-site technical and logistics lead for Stryker’s endoscopy and video infrastructure contract across 8 active operating rooms.
+                                OnSite Specialist embedded with Stanford surgical teams at the VA Palo Alto Health Care System, supporting a full-service Stryker account with no local Stryker management on-site.
                             </div>
                             <ul class="experience-bullets">
-                                <li><strong>100% Uptime Management:</strong> Live troubleshooting and maintenance of multi-million dollar camera setups, endoscopy towers, and video routing protocols. Handled all daily case readiness with zero outages.</li>
-                                <li><strong>Workflow Optimization:</strong> Digitized and cataloged over 1,500 surgical instruments into the Censitrac tracking database, improving turn times and logistics transparency.</li>
-                                <li><strong>Government Clearance:</strong> Independently obtained federal PIV security credentials to navigate VA facility networks and physical access points.</li>
-                                <li><strong>Stakeholder Collaboration:</strong> Act as the primary liaison between Stanford surgeons, residents, OR nursing managers, Chief of Sterile Processing (SPS), and BioMed staff to ensure par levels and repair lifecycles are maintained without friction.</li>
-                                <li><strong>Autonomous Procurement:</strong> Manage repairs, replacements, and device par level maintenance with zero local supervision or oversight.</li>
+                                <li>Provide real-time intraoperative technical support across surgical specialties, including Stryker endoscopy systems, equipment setup, multi-system configurations, troubleshooting, and device functionality.</li>
+                                <li>Serve as the first on-site technical and operational resource when equipment is missing, malfunctioning, delayed, incorrectly configured, or needs to be escalated to the right stakeholder.</li>
+                                <li>Support case readiness by ensuring surgical equipment, instruments, supplies, documentation, and account-specific needs are organized and available before procedures.</li>
+                                <li>Manage account-level operations across procurement, vendor coordination, inventory, par levels, schedule-based forecasting, repairs, replacements, and equipment availability.</li>
+                                <li>Coordinate daily with surgeons, nurses, scrub techs, anesthesiologists, sterile processing, biomedical engineering, vendors, and hospital staff.</li>
+                                <li>Train staff on newly procured equipment, explain device functionality, support workflow integration, and write clear protocols when new systems or process changes are introduced.</li>
+                                <li>Hold Government Contractor PIV clearance with VA intranet access for secure workflows, system changes, documentation, and account-related operational needs.</li>
+                                <li>Work independently in a high-pressure surgical environment where priorities shift constantly and problems require fast, practical judgment.</li>
                             </ul>
                         </div>
                     </article>

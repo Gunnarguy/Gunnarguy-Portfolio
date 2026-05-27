@@ -5,7 +5,6 @@ import json, urllib.request, datetime, sys, subprocess
 
 OWNER = "Gunnarguy"
 REPOS = [
-    "LinkedOut",
     "OpenClinic",
     "OpenResponses",
     "OpenIntelligence",
