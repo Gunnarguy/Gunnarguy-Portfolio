@@ -20,7 +20,7 @@ python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
 # 2. Configure
-cp .env.example .env  # Add GEMINI_API_KEY, PLAUD_CLIENT_ID, PLAUD_CLIENT_SECRET, etc.
+cp .env.example .env  # Add CHRONOS_GEMINI_API_KEY, PLAUD_CLIENT_ID, PLAUD_CLIENT_SECRET, etc.
 
 # 3. Start Qdrant (Docker)
 docker compose up -d
@@ -171,7 +171,7 @@ both servers:
       "args": ["-m", "scripts.mcp_server"],
       "cwd": "/path/to/PlaudBlender",
       "env": {
-        "GEMINI_API_KEY": "${GEMINI_API_KEY}"
+        "CHRONOS_GEMINI_API_KEY": "${CHRONOS_GEMINI_API_KEY}"
       }
     },
     "plaud": {
@@ -194,8 +194,8 @@ Typical workflow:
 
 ## Key Technologies
 
-- **Gemini AI** — `gemini-3-flash-preview` (processing), `gemini-3.1-pro-preview` (deep analysis), `gemini-embedding-2-preview` (multimodal embeddings)
-- **Gemini Embedding 2** — Multimodal (text + audio + image + video + PDF), MRL dims 128–3072, L2-normalized at 768-dim
+- **Gemini AI** — `gemini-2.5-flash` (default processing + analysis), `gemini-3.1-pro-preview` (deeper paid fallback), `gemini-embedding-2` (multimodal embeddings)
+- **Gemini Embedding 2** — Multimodal (text + audio + image + video + PDF), MRL dims 128–3072, L2-normalized below native dim
 - **OpenAI GPT-5.4** — Flagship model for RAG responses (Responses API), 1.05M context, 128K output, reasoning levels
 - **Qdrant** — Vector database with temporal metadata indexes
 - **Dash + Cytoscape** — Interactive web UI with knowledge graph visualization
@@ -206,15 +206,21 @@ Typical workflow:
 
 | Variable                  | Required | Description                                                                          |
 | ------------------------- | -------- | ------------------------------------------------------------------------------------ |
-| `GEMINI_API_KEY`          | Yes      | Google Gemini API key                                                                |
+| `CHRONOS_GEMINI_API_KEY`  | Yes      | Dedicated Google Gemini API key for PlaudBlender                                     |
+| `CHRONOS_ALLOW_SHARED_GEMINI_KEY` | No | Set to `1` only if you intentionally want Chronos to reuse `GEMINI_API_KEY`         |
+| `GEMINI_API_KEY`          | No       | Shared Gemini key used only when `CHRONOS_ALLOW_SHARED_GEMINI_KEY=1`                 |
 | `PLAUD_CLIENT_ID`         | Yes      | Plaud OAuth client ID                                                                |
 | `PLAUD_CLIENT_SECRET`     | Yes      | Plaud OAuth client secret                                                            |
 | `PLAUD_REDIRECT_URI`      | No       | OAuth callback (default: `http://localhost:8050/auth/plaud/callback`)                |
 | `QDRANT_URL`              | No       | Qdrant URL (default: `http://localhost:6333`)                                        |
 | `QDRANT_COLLECTION_NAME`  | No       | Collection name (default: `chronos_events`)                                          |
-| `CHRONOS_EMBEDDING_MODEL` | No       | Embedding model (default: `gemini-embedding-2-preview`)                              |
+| `CHRONOS_PROCESSING_PROVIDER` | No   | Transcript extraction provider (default: `gemini`)                                   |
+| `CHRONOS_CLEANING_MODEL`  | No       | Extraction model (default: `gemini-2.5-flash`)                                       |
+| `CHRONOS_ANALYST_MODEL`   | No       | Ask Chronos / analysis model (default: `gemini-2.5-flash`)                           |
+| `CHRONOS_EMBEDDING_MODEL` | No       | Embedding model (default: `gemini-embedding-2`)                                      |
 | `CHRONOS_EMBEDDING_DIM`   | No       | Embedding dim (default: 768, range 128–3072)                                         |
-| `OPENAI_API_KEY`          | No       | OpenAI API key for RAG responses (Responses API)                                     |
+| `GEMINI_BILLING_TIER`     | No       | Gemini pricing mode used for cost estimates (default: `free`)                        |
+| `OPENAI_API_KEY`          | No       | OpenAI API key for paid fallback / Responses API RAG                                 |
 | `OPENAI_MODEL`            | No       | OpenAI model (default: `gpt-5.4`)                                                    |
 | `NOTION_CLIENT_ID`        | No       | Notion OAuth client ID (for Notion uplink)                                           |
 | `NOTION_CLIENT_SECRET`    | No       | Notion OAuth client secret                                                           |
