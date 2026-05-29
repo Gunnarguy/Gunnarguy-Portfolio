@@ -220,8 +220,13 @@ Typical workflow:
 | `CHRONOS_EMBEDDING_MODEL` | No       | Embedding model (default: `gemini-embedding-2`)                                      |
 | `CHRONOS_EMBEDDING_DIM`   | No       | Embedding dim (default: 768, range 128–3072)                                         |
 | `GEMINI_BILLING_TIER`     | No       | Gemini pricing mode used for cost estimates (default: `free`)                        |
+| `CHRONOS_OPENAI_ENABLED`  | No       | Hard opt-in for OpenAI usage; leave `0` to prevent quota spend even if a key exists   |
 | `OPENAI_API_KEY`          | No       | OpenAI API key for paid fallback / Responses API RAG                                 |
 | `OPENAI_MODEL`            | No       | OpenAI model (default: `gpt-5.4`)                                                    |
+| `CHRONOS_LOCAL_LLM_ENABLED` | No      | Enable local Ollama/llama.cpp degraded helper tasks (default: `0`)                   |
+| `CHRONOS_LOCAL_LLM_BASE_URL` | No     | Local sidecar URL, keep bound to localhost (default: `http://127.0.0.1:11434`)       |
+| `CHRONOS_LOCAL_LLM_MODEL` | No       | Local model for short fallback tasks (default: `qwen2.5:0.5b`)                       |
+| `CHRONOS_LOCAL_LLM_ALLOWED_TASKS` | No | Local task allowlist (default: `json_repair,entity_extract,classify,ask`)           |
 | `NOTION_CLIENT_ID`        | No       | Notion OAuth client ID (for Notion uplink)                                           |
 | `NOTION_CLIENT_SECRET`    | No       | Notion OAuth client secret                                                           |
 | `NOTION_REDIRECT_URI`     | No       | Notion OAuth callback (default: `http://localhost:8000/api/v1/auth/notion/callback`) |
