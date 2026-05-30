@@ -17,14 +17,6 @@ OUTPUT_DIR = os.path.join(WORKSPACE, "projects")
 
 # Project configurations
 PROJECTS = {
-    "linkedout": {
-        "repo_name": "LinkedOut",
-        "title": "LinkedOut",
-        "tagline": "AI-powered job discovery app with LLM scoring, swipe UI, LinkedIn OAuth, and FastAPI backend orchestration.",
-        "app_store_url": None,
-        "github_url": "https://github.com/Gunnarguy/LinkedOut",
-        "accent_color": "#0ea5e9",
-    },
     "plaudblender": {
         "repo_name": "PlaudBlender",
         "title": "PlaudBlender",

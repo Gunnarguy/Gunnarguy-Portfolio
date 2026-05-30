@@ -36,7 +36,6 @@ By night, he builds software the same way he solves problems at work: learn the 
 
 ### Keep Off The Homepage
 
-- LinkedOut
 - Small Swift experiments
 - Old HTML or game-related projects
 - One-off prototypes that do not strengthen the healthcare plus iOS narrative

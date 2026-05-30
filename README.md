@@ -19,7 +19,6 @@ This portfolio presents my journey from Medical Device Specialist to iOS Develop
 - **[OpenCone](https://apps.apple.com/us/app/opencone/id6744467668)** - Semantic search and RAG workflow app with Pinecone integration
 - **[OpenResponses](https://github.com/Gunnarguy/OpenResponses)** - OpenAI Responses API client with multi-model streaming, computer-use automation, and MCP connectors (Notion, Google, remote compute)
 - **[OpenIntelligence (RAGMLCore)](https://github.com/Gunnarguy/RAGMLCore)** - On-device RAG stack for iOS 18 with Vision OCR ingestion, Apple Intelligence routing, and telemetry-backed pipeline visualizations
-- **[LinkedOut](https://github.com/Gunnarguy/LinkedOut)** - AI-powered matching platform with SwiftUI iOS app + FastAPI backend, LLM scoring (Gemini + OpenAI), 5 data source integrations, and swipe-based UI
 
 ### Technical Projects
 
