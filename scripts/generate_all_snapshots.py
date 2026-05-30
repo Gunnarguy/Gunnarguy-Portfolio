@@ -36,7 +36,7 @@ PROJECTS = {
         ],
     },
     "openintelligence": {
-        "repo_path": "/Users/gunnarhostetler/Documents/GitHub/OpenIntelligence",
+        "repo_path": "/Users/gunnarhostetler/Documents/GitHub/OpenIntelligence-Public",
         "title": "OpenIntelligence",
         "tagline": "Fourth app. Built because I wanted an offline version of the same document workflow on Apple's Foundation Models path.",
         "app_store_url": "https://apps.apple.com/us/app/openintelligence/id6756559175",
@@ -239,6 +239,18 @@ def generate_page(project_id, config):
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Analytics (non-blocking) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {{
+            dataLayer.push(arguments);
+        }}
+        gtag("js", new Date());
+        gtag("config", "G-YZ95J7YFJV");
+    </script>
+
     <style>
 :root {{
     --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
