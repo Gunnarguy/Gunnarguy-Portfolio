@@ -107,7 +107,7 @@ PROJECTS = {
 }
 
 PORTFOLIO_PATH = "/Users/gunnarhostetler/Documents/GitHub/Gunnarguy-Portfolio"
-SNAPSHOT_FILENAME = "snapshot.html"
+OUTPUT_FILENAME = "index.html"
 
 TECH_KEYWORDS = [
     "SwiftUI",
@@ -240,7 +240,7 @@ def generate_page(project_id, config):
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <!-- ====================================================================== -->
     <!-- ====================================================================== -->
     <!-- UNIFIED GLOBAL TELEMETRY ENGINE & CUSTOM DATA INTERCEPTOR            -->
@@ -282,8 +282,8 @@ def generate_page(project_id, config):
     <!-- ====================================================================== -->
 
 
-    
-    
+
+
 
     <style>
 :root {{
@@ -402,11 +402,11 @@ def main():
         output_dir = os.path.join(PORTFOLIO_PATH, "projects", project_id)
         os.makedirs(output_dir, exist_ok=True)
 
-        # Generate snapshot.html without touching the live case-study page.
+        # Generate the live docs page.
         page_html = generate_page(project_id, config)
-        with open(os.path.join(output_dir, SNAPSHOT_FILENAME), 'w') as f:
+        with open(os.path.join(output_dir, OUTPUT_FILENAME), 'w') as f:
             f.write(page_html)
-        print(f"  ✓ Generated {SNAPSHOT_FILENAME}")
+        print(f"  ✓ Generated {OUTPUT_FILENAME}")
 
         # Copy docs
         if copy_docs(project_id, config, output_dir):

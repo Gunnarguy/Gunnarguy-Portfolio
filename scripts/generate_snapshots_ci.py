@@ -14,7 +14,7 @@ import html
 WORKSPACE = os.environ.get("GITHUB_WORKSPACE", os.getcwd())
 REPOS_DIR = os.path.join(WORKSPACE, "_repos")
 OUTPUT_DIR = os.path.join(WORKSPACE, "projects")
-SNAPSHOT_FILENAME = "snapshot.html"
+OUTPUT_FILENAME = "index.html"
 
 # Project configurations
 PROJECTS = {
@@ -247,7 +247,7 @@ def generate_page(project_id, config, readme_content):
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <!-- ====================================================================== -->
     <!-- ====================================================================== -->
     <!-- UNIFIED GLOBAL TELEMETRY ENGINE & CUSTOM DATA INTERCEPTOR            -->
@@ -289,8 +289,8 @@ def generate_page(project_id, config, readme_content):
     <!-- ====================================================================== -->
 
 
-    
-    
+
+
 
     <style>
 :root {{
@@ -424,11 +424,11 @@ def main():
         )
         print(f"   ✓ README: {readme_label}")
 
-        # Generate snapshot.html without touching the live case-study page.
+        # Generate the live docs page.
         page_html = generate_page(project_id, config, readme)
-        with open(os.path.join(output_dir, SNAPSHOT_FILENAME), 'w', encoding='utf-8') as f:
+        with open(os.path.join(output_dir, OUTPUT_FILENAME), 'w', encoding='utf-8') as f:
             f.write(page_html)
-        print(f"   ✓ {SNAPSHOT_FILENAME}")
+        print(f"   ✓ {OUTPUT_FILENAME}")
 
         # Copy docs
         docs_count = copy_docs(repo_path, output_dir)
