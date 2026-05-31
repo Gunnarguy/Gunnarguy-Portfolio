@@ -3,7 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page Not Found - Gunnar Hostetler</title>
+    <title>Page Not Found | Gunnar Hostetler</title>
+    <meta
+      name="description"
+      content="404 page for Gunnar Hostetler's software engineer portfolio."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta property="og:title" content="Page Not Found | Gunnar Hostetler" />
+    <meta
+      property="og:description"
+      content="404 page for Gunnar Hostetler's software engineer portfolio."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://gunnarguy.me/assets/og-image.jpg"
+    />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,6 +26,15 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Page Not Found | Gunnar Hostetler",
+        "description": "404 page for Gunnar Hostetler's software engineer portfolio.",
+        "url": "https://gunnarguy.me/404.html"
+      }
+    </script>
     <style>
       * {
         margin: 0;
@@ -69,49 +93,58 @@
         box-shadow: 0 8px 24px rgba(0, 184, 212, 0.3);
       }
     </style>
-      
-    
-
 
     <!-- ====================================================================== -->
-<!-- UNIFIED GLOBAL TELEMETRY ENGINE & CUSTOM DATA INTERCEPTOR            -->
-<!-- ====================================================================== -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  // Configured to ensure compatibility with Ads Account 450-937-9845
-  gtag('config', 'G-YZ95J7YFJV', {
-    'send_page_view': true,
-    'enhanced_measurement': true
-  });
-</script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.body.addEventListener('click', function(event) {
-      var interactiveTarget = event.target.closest('[data-track]');
-      if (interactiveTarget) {
-        var actionLabel = interactiveTarget.getAttribute('data-track');
-        var actionGroup = interactiveTarget.getAttribute('data-track-group') || 'general_interaction';
-        var actionValue = interactiveTarget.getAttribute('data-track-value') || '';
-
-        if (typeof gtag === 'function') {
-          gtag('event', 'ui_interaction_event', {
-            'interaction_label': actionLabel,
-            'interaction_group': actionGroup,
-            'interaction_value': actionValue,
-            'page_location_path': window.location.pathname
-          });
-        }
+    <!-- UNIFIED GLOBAL TELEMETRY ENGINE & CUSTOM DATA INTERCEPTOR            -->
+    <!-- ====================================================================== -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
       }
-    }, true);
-  });
-</script>
-<!-- ====================================================================== -->
-</head>
+      gtag("js", new Date());
+
+      // Configured to ensure compatibility with Ads Account 450-937-9845
+      gtag("config", "G-YZ95J7YFJV", {
+        send_page_view: true,
+        enhanced_measurement: true,
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.addEventListener(
+          "click",
+          function (event) {
+            var interactiveTarget = event.target.closest("[data-track]");
+            if (interactiveTarget) {
+              var actionLabel = interactiveTarget.getAttribute("data-track");
+              var actionGroup =
+                interactiveTarget.getAttribute("data-track-group") ||
+                "general_interaction";
+              var actionValue =
+                interactiveTarget.getAttribute("data-track-value") || "";
+
+              if (typeof gtag === "function") {
+                gtag("event", "ui_interaction_event", {
+                  interaction_label: actionLabel,
+                  interaction_group: actionGroup,
+                  interaction_value: actionValue,
+                  page_location_path: window.location.pathname,
+                });
+              }
+            }
+          },
+          true,
+        );
+      });
+    </script>
+    <!-- ====================================================================== -->
+  </head>
   <body>
     <div class="container">
       <h1>404</h1>
