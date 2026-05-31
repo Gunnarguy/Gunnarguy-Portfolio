@@ -11,72 +11,46 @@
     <meta name="author" content="Gunnar Hostetler" />
     <link rel="canonical" href="https://gunnarguy.me/" />
 
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Gunnar Hostetler — Surgical Technology Support &amp; iOS Developer" />
-    <meta property="og:description"
-        content="I support surgical technology by day and build iOS apps by night. Looking for software-side roles where real-world workflows become better digital tools." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://gunnarguy.me/" />
-    <meta property="og:image" content="https://gunnarguy.me/assets/og-image.jpg" />
-    <meta property="og:site_name" content="Gunnar Hostetler Portfolio" />
-    <meta property="og:locale" content="en_US" />
+    
 
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Gunnar Hostetler — Surgical Technology Support &amp; iOS Developer" />
-    <meta name="twitter:description"
-        content="I support surgical technology by day and build iOS apps by night. Looking for software-side roles where real-world workflows become better digital tools." />
-    <meta name="twitter:image" content="https://gunnarguy.me/assets/og-image.jpg" />
+        <!-- ====================================================================== -->
+<!-- UNIFIED GLOBAL TELEMETRY ENGINE & CUSTOM DATA INTERCEPTOR            -->
+<!-- ====================================================================== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Gunnar Hostetler",
-        "url": "https://gunnarguy.me/",
-        "jobTitle": "OnSite Specialist & iOS Developer",
-        "email": "Gunnarguy@me.com",
-        "telephone": "+14088280552",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Campbell",
-          "addressRegion": "CA"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/gunnar-hostetler/",
-          "https://github.com/Gunnarguy"
-        ]
-      }
-    </script>
+  // Configured to ensure compatibility with Ads Account 450-937-9845
+  gtag('config', 'G-YZ95J7YFJV', {
+    'send_page_view': true,
+    'enhanced_measurement': true
+  });
+</script>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.addEventListener('click', function(event) {
+      var interactiveTarget = event.target.closest('[data-track]');
+      if (interactiveTarget) {
+        var actionLabel = interactiveTarget.getAttribute('data-track');
+        var actionGroup = interactiveTarget.getAttribute('data-track-group') || 'general_interaction';
+        var actionValue = interactiveTarget.getAttribute('data-track-value') || '';
 
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Font Awesome for icons (with SRI) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2" />
-    <!-- Google Analytics (non-blocking) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
+        if (typeof gtag === 'function') {
+          gtag('event', 'ui_interaction_event', {
+            'interaction_label': actionLabel,
+            'interaction_group': actionGroup,
+            'interaction_value': actionValue,
+            'page_location_path': window.location.pathname
+          });
         }
-        gtag("js", new Date());
-        gtag("config", "G-YZ95J7YFJV");
-    </script>
+      }
+    }, true);
+  });
+</script>
+<!-- ====================================================================== -->
 </head>
 
 <body>
