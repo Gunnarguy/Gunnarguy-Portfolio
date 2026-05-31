@@ -14,6 +14,7 @@ import html
 WORKSPACE = os.environ.get("GITHUB_WORKSPACE", os.getcwd())
 REPOS_DIR = os.path.join(WORKSPACE, "_repos")
 OUTPUT_DIR = os.path.join(WORKSPACE, "projects")
+SNAPSHOT_FILENAME = "snapshot.html"
 
 # Project configurations
 PROJECTS = {
@@ -247,39 +248,6 @@ def generate_page(project_id, config, readme_content):
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {{{{dataLayer.push(arguments);}}}}
-      gtag('js', new Date());
-
-      gtag('config', 'G-YZ95J7YFJV', {{{{
-        'send_page_view': true,
-        'enhanced_measurement': true
-      }}}});
-    </script>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {{{{
-        document.body.addEventListener('click', function(event) {{{{
-          var interactiveTarget = event.target.closest('[data-track]');
-          if (interactiveTarget) {{{{
-            var actionLabel = interactiveTarget.getAttribute('data-track');
-            var actionGroup = interactiveTarget.getAttribute('data-track-group') || 'general_interaction';
-            var actionValue = interactiveTarget.getAttribute('data-track-value') || '';
-
-            if (typeof gtag === 'function') {{{{
-              gtag('event', 'ui_interaction_event', {{{{
-                'interaction_label': actionLabel,
-                'interaction_group': actionGroup,
-                'interaction_value': actionValue,
-                'page_location_path': window.location.pathname
-              }}}});
-            }}}}
-          }}}}
-        }}}}, true);
-      }}}});
-    </script>
     <!-- ====================================================================== -->
     <!-- ====================================================================== -->
     <!-- UNIFIED GLOBAL TELEMETRY ENGINE & CUSTOM DATA INTERCEPTOR            -->
@@ -287,36 +255,36 @@ def generate_page(project_id, config, readme_content):
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {{{{dataLayer.push(arguments);}}}}
+            function gtag() {{dataLayer.push(arguments);}}
       gtag('js', new Date());
 
       // Configured to ensure compatibility with Ads Account 450-937-9845
-      gtag('config', 'G-YZ95J7YFJV', {{{{
+            gtag('config', 'G-YZ95J7YFJV', {{
         'send_page_view': true,
         'enhanced_measurement': true
-      }}}});
+            }});
     </script>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {{{{
-        document.body.addEventListener('click', function(event) {{{{
+            document.addEventListener('DOMContentLoaded', function() {{
+                document.body.addEventListener('click', function(event) {{
           var interactiveTarget = event.target.closest('[data-track]');
-          if (interactiveTarget) {{{{
+                    if (interactiveTarget) {{
             var actionLabel = interactiveTarget.getAttribute('data-track');
             var actionGroup = interactiveTarget.getAttribute('data-track-group') || 'general_interaction';
             var actionValue = interactiveTarget.getAttribute('data-track-value') || '';
 
-            if (typeof gtag === 'function') {{{{
-              gtag('event', 'ui_interaction_event', {{{{
+                        if (typeof gtag === 'function') {{
+                            gtag('event', 'ui_interaction_event', {{
                 'interaction_label': actionLabel,
                 'interaction_group': actionGroup,
                 'interaction_value': actionValue,
                 'page_location_path': window.location.pathname
-              }}}});
-            }}}}
-          }}}}
-        }}}}, true);
-      }}}});
+                            }});
+                        }}
+                    }}
+                }}, true);
+            }});
     </script>
     <!-- ====================================================================== -->
 
@@ -456,11 +424,11 @@ def main():
         )
         print(f"   ✓ README: {readme_label}")
 
-        # Generate index.html
+        # Generate snapshot.html without touching the live case-study page.
         page_html = generate_page(project_id, config, readme)
-        with open(os.path.join(output_dir, "index.html"), 'w', encoding='utf-8') as f:
+        with open(os.path.join(output_dir, SNAPSHOT_FILENAME), 'w', encoding='utf-8') as f:
             f.write(page_html)
-        print(f"   ✓ index.html")
+        print(f"   ✓ {SNAPSHOT_FILENAME}")
 
         # Copy docs
         docs_count = copy_docs(repo_path, output_dir)

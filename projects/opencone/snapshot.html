@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlaudBlender - Project Deep Dive | Gunnar Hostetler</title>
-    <meta name="description" content="Plaud voice recordings into a searchable knowledge graph with Gemini AI, Qdrant, Dash UI, and MCP tools.">
+    <title>OpenCone - Project Deep Dive | Gunnar Hostetler</title>
+    <meta name="description" content="Second app. Built when bigger document sets started stressing the earlier workflow and I wanted more retrieval control.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,36 +16,36 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {dataLayer.push(arguments);}
+            function gtag() {dataLayer.push(arguments);}
       gtag('js', new Date());
 
       // Configured to ensure compatibility with Ads Account 450-937-9845
-      gtag('config', 'G-YZ95J7YFJV', {
+            gtag('config', 'G-YZ95J7YFJV', {
         'send_page_view': true,
         'enhanced_measurement': true
-      });
+            });
     </script>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        document.body.addEventListener('click', function(event) {
+            document.addEventListener('DOMContentLoaded', function() {
+                document.body.addEventListener('click', function(event) {
           var interactiveTarget = event.target.closest('[data-track]');
-          if (interactiveTarget) {
+                    if (interactiveTarget) {
             var actionLabel = interactiveTarget.getAttribute('data-track');
             var actionGroup = interactiveTarget.getAttribute('data-track-group') || 'general_interaction';
             var actionValue = interactiveTarget.getAttribute('data-track-value') || '';
 
-            if (typeof gtag === 'function') {
-              gtag('event', 'ui_interaction_event', {
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'ui_interaction_event', {
                 'interaction_label': actionLabel,
                 'interaction_group': actionGroup,
                 'interaction_value': actionValue,
                 'page_location_path': window.location.pathname
-              });
-            }
-          }
-        }, true);
-      });
+                            });
+                        }
+                    }
+                }, true);
+            });
     </script>
     <!-- ====================================================================== -->
 
@@ -57,7 +57,7 @@
 :root {
     --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
     --text-primary: #fff; --text-secondary: #a0a0b0;
-    --accent: #14b8a6; --accent-light: #14b8a699;
+    --accent: #f59e0b; --accent-light: #f59e0b99;
     --border-color: #2a2a3a;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -103,27 +103,48 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: v
     <nav class="project-nav">
         <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
         <div class="nav-links">
-            
+            <a href="#story">Story</a>
             <a href="#features">Features</a>
-            <a href="https://github.com/Gunnarguy/PlaudBlender" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://github.com/Gunnarguy/OpenCone" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </nav>
 
     <header class="project-hero">
         <div class="container">
-            <h1>PlaudBlender</h1>
-            <p class="hero-subtitle">Plaud voice recordings into a searchable knowledge graph with Gemini AI, Qdrant, Dash UI, and MCP tools.</p>
+            <h1>OpenCone</h1>
+            <p class="hero-subtitle">Second app. Built when bigger document sets started stressing the earlier workflow and I wanted more retrieval control.</p>
             <div class="hero-actions">
-                <a href="https://github.com/Gunnarguy/PlaudBlender" class="btn btn-primary" target="_blank">
+                <a href="https://github.com/Gunnarguy/OpenCone" class="btn btn-primary" target="_blank">
                     <i class="fab fa-github"></i> View on GitHub
                 </a>
-                
+                <a href="https://apps.apple.com/us/app/opencone/id6744467668" class="btn btn-appstore" target="_blank">
+            <i class="fab fa-app-store-ios"></i> App Store
+        </a>
             </div>
-            <div class="tech-stack"><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">MCP</span><span class="tech-tag">Python</span><span class="tech-tag">Gemini</span><span class="tech-tag">Qdrant</span><span class="tech-tag">Dash</span><span class="tech-tag">Cytoscape</span><span class="tech-tag">Docker</span><span class="tech-tag">Notion</span></div>
+            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">Combine</span><span class="tech-tag">OpenAI</span><span class="tech-tag">Pinecone</span><span class="tech-tag">RAG</span><span class="tech-tag">Vision</span><span class="tech-tag">MVVM</span><span class="tech-tag">Python</span><span class="tech-tag">Dash</span></div>
         </div>
     </header>
 
     
+    <section id="story" class="section section-alt">
+        <div class="container">
+            <h2>How It Happened</h2>
+            <div class="story-grid">
+        <div class="story-card">
+            <h3>Why it exists</h3>
+            <p>I wanted to work with larger document sets without the earlier flow falling apart.</p>
+        </div>
+        <div class="story-card">
+            <h3>How I built it</h3>
+            <p>Same basic process as OpenAssistant, now with Pinecone docs, indexes, namespaces, and embeddings layered on top.</p>
+        </div>
+        <div class="story-card">
+            <h3>Why it mattered</h3>
+            <p>It was the point where retrieval stopped being theoretical and turned into a real app.</p>
+        </div>
+            </div>
+        </div>
+    </section>
 
     <section id="features" class="section">
         <div class="container">
