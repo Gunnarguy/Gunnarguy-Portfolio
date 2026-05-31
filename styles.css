@@ -2687,3 +2687,85 @@ body {
         display: none;
     }
 }
+
+/* ========================================
+   How I Build Section Styles
+   ======================================== */
+.how-i-build {
+    background: #080b11 !important;
+}
+
+.build-card {
+    background: var(--card-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-lg);
+    padding: 3rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.build-lead {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.build-lead strong {
+    color: var(--accent-color);
+}
+
+.build-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+}
+
+.build-column h3 {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.build-column p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.build-callout {
+    background: rgba(0, 242, 254, 0.04);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem 2rem;
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+    text-align: center;
+}
+
+.build-quote {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary) !important;
+    margin: 0;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .build-card {
+        padding: 2rem 1.5rem;
+    }
+    .build-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .build-lead {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+}
+
