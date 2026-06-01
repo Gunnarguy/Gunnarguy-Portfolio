@@ -1,0 +1,101 @@
+name: Site Verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  source:
+    name: Source Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Enforce asset version bumps
+        env:
+          VERIFY_DIFF_BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          set -euo pipefail
+
+          base="$VERIFY_DIFF_BASE"
+          if [[ -z "$base" || "$base" == "0000000000000000000000000000000000000000" ]] || ! git rev-parse --verify "$base^{commit}" >/dev/null 2>&1; then
+            echo "No valid diff base for asset version enforcement."
+            exit 0
+          fi
+
+          extract_current() {
+            grep -Eo "$2" "$1" | head -n 1
+          }
+
+          extract_base() {
+            git show "$base:$1" 2>/dev/null | grep -Eo "$2" | head -n 1 || true
+          }
+
+          enforce_bump() {
+            local asset="$1"
+            local file="$2"
+            local regex="$3"
+            local label="$4"
+            local current_ref
+            local base_ref
+
+            if git diff --name-only "$base" HEAD -- "$asset" | grep -q .; then
+              current_ref="$(extract_current "$file" "$regex")"
+              base_ref="$(extract_base "$file" "$regex")"
+
+              if [[ -n "$base_ref" && "$current_ref" == "$base_ref" ]]; then
+                echo "::error::$label changed without a cache-bust token bump in $file"
+                exit 1
+              fi
+
+              echo "$label token: ${base_ref:-<none>} -> $current_ref"
+            fi
+          }
+
+          enforce_bump "styles.css" "index.html" 'styles\.css\?v=[^"]+' "styles.css"
+          enforce_bump "scripts.js" "index.html" 'scripts\.js\?v=[^"]+' "scripts.js"
+
+      - name: Verify source
+        run: ./scripts/verify-site.sh source
+
+  live:
+    name: Live Pages Checks
+    if: ${{ github.event_name != 'pull_request' }}
+    needs: source
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      pages: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify deployed site
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAGES_BUILD_ATTEMPTS: 60
+          PAGES_BUILD_SLEEP_SECONDS: 10
+        run: ./scripts/verify-site.sh ci-live
