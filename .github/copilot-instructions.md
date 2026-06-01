@@ -5,7 +5,7 @@
 Gunnarguy.me is **The Creator** in Gunnar Hostetler's web ecosystem.
 
 - **Gunnarguy.me** = The Creator: personal software engineer portfolio, case studies, career story, technical proof.
-- **Gunzino.me** = The Publisher: iOS app storefront, support, privacy/legal endpoints, App Store user surfaces.
+- **Gunzino.me** = The Publisher: publisher site for product landing pages, support, privacy/legal endpoints, and App Store review/user surfaces.
 - **Fascinaiting.me** = The Platform: AI orchestration brand for local AI engines, automated pipelines, native utilities, and product initiatives.
 
 Do not collapse these roles into each other. Gunnarguy.me must remain the professional anchor, not an App Store catalog and not the Fascinaiting platform site.
