@@ -413,7 +413,7 @@
                     <strong>Why:</strong> I wanted to see what Apple's 3B model was capable of. It became an obsessive engineering challenge to make it agentic and bypass the 4,096-token context window Apple's foundation model has, so I built a loop capable of ingesting and querying documents of any size or complexity. Honestly, it seemed impossible for a 3B parameter model to run a full reasoning and retrieval pipeline offline, but I wanted to prove it was possible.
                   </p>
                   <p style="margin-top: 8px">
-                    <strong>Neural Retrieval & Local Embeddings:</strong> To keep files fully secure, I built a zero-dependency retrieval engine using SQLite FTS5 and Apple's Accelerate framework. It compares text and matches keywords across the CPU, GPU, and Apple Neural Engine (ANE), ensuring your documents never leave the app.
+                    <strong>Neural Retrieval & Local Embeddings:</strong> To keep files fully secure, I built a zero-dependency retrieval engine using SQLite FTS5 and Apple's Accelerate framework. It compares text and matches keywords across the CPU, GPU, and Apple Neural Engine (ANE), ensuring documents never leave the app.
                   </p>
                   <p style="margin-top: 8px">
                     <strong>Smart Context:</strong>I built a filter that re-orders the retrieved document pieces so the most important info is placed at the very beginning or end where the model pays the most attention, preventing it from getting 'lost in the middle' of long documents.
