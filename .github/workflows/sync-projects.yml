@@ -1,0 +1,89 @@
+name: Sync Project Documentation
+
+on:
+  schedule:
+    - cron: "30 */3 * * *" # Every 3 hours
+  workflow_dispatch: # Manual trigger
+  repository_dispatch:
+    types: [sync-projects, source-repo-updated]
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+
+concurrency:
+  group: sync-project-documentation
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Portfolio
+        uses: actions/checkout@v4
+
+      - name: Checkout OpenResponses
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: Gunnarguy/OpenResponses
+          path: _repos/OpenResponses
+
+      - name: Checkout OpenIntelligence
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: Gunnarguy/OpenIntelligence
+          path: _repos/OpenIntelligence
+
+      - name: Checkout OpenCone
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: Gunnarguy/OpenCone
+          path: _repos/OpenCone
+
+      - name: Checkout OpenAssistant
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: Gunnarguy/OpenAssistant
+          path: _repos/OpenAssistant
+
+      - name: Checkout LinkedOut
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: Gunnarguy/LinkedOut
+          path: _repos/LinkedOut
+
+      - name: Checkout PlaudBlender
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: Gunnarguy/PlaudBlender
+          path: _repos/PlaudBlender
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate Snapshots
+        run: python3 scripts/generate_snapshots_ci.py
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add projects/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-sync project documentation [skip ci]"
+            git pull --rebase
+            git push
+          fi

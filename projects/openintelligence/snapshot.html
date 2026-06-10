@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenIntelligence - Research Notes | Gunnar Hostetler</title>
+    <meta name="description" content="Papers and references Gunnar had open while working through OpenIntelligence.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Global Telemetry -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {dataLayer.push(arguments);}
+      const GA_MEASUREMENT_ID = 'G-YZ95J7YFJV';
+      const GA_DEBUG_MODE = new URLSearchParams(window.location.search).has('ga_debug');
+      let gaPageViewSent = false;
+      function sendGaPageView() {
+          if (gaPageViewSent) return;
+          gaPageViewSent = true;
+          gtag('event', 'page_view', {
+              'page_title': document.title,
+              'page_location': window.location.href,
+              'page_path': window.location.pathname + window.location.search,
+              'debug_mode': GA_DEBUG_MODE
+          });
+      }
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID, { 'send_page_view': false, 'transport_type': 'beacon', 'debug_mode': GA_DEBUG_MODE });
+      if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', sendGaPageView, { once: true });
+      } else {
+          sendGaPageView();
+      }
+    </script>
+
+    <style>
+:root {
+    --bg-primary: #020617;
+    --bg-secondary: #0b0f19;
+    --bg-card: #0f172a;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #10b981;
+    --accent-glow: #00f2fe;
+    --border-color: #1e293b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 32rem);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.project-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(2, 6, 23, 0.88);
+    backdrop-filter: blur(12px);
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.back-link,
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-link:hover,
+.nav-links a:hover {
+    color: var(--accent-glow);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+}
+
+.project-hero {
+    padding: 9rem 0 4rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.project-kicker {
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.project-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+}
+
+.hero-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.18rem;
+    max-width: 760px;
+}
+
+.section {
+    padding: 4rem 0 5rem;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.reference-list {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.reference-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 1.1rem;
+    background: rgba(15, 23, 42, 0.72);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+
+.reference-item h2 {
+    font-size: 1rem;
+    line-height: 1.35;
+    margin-bottom: 0.25rem;
+}
+
+.reference-item h2 a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.reference-item h2 a:hover {
+    color: var(--accent-glow);
+}
+
+.reference-item p {
+    color: var(--text-secondary);
+    font-size: 0.93rem;
+}
+
+.reference-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.7rem;
+}
+
+.reference-actions a {
+    color: var(--accent-glow);
+    border: 1px solid rgba(0, 242, 254, 0.24);
+    border-radius: 999px;
+    padding: 0.26rem 0.58rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.reference-actions a:hover {
+    background: rgba(0, 242, 254, 0.1);
+}
+
+.reference-type {
+    justify-self: end;
+    white-space: nowrap;
+    color: var(--accent-glow);
+    border: 1px solid rgba(0, 242, 254, 0.24);
+    border-radius: 999px;
+    padding: 0.28rem 0.62rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.quiet-note {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 1.5rem;
+}
+
+.project-footer {
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.project-footer a {
+    color: var(--accent-glow);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.project-footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .project-nav {
+        padding: 1rem 1.25rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .project-hero {
+        padding-top: 7rem;
+    }
+
+    .reference-item {
+        grid-template-columns: 1fr;
+    }
+
+    .reference-type {
+        justify-self: start;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav class="project-nav">
+        <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
+        <div class="nav-links">
+            <a href="#research">References</a>
+            <a href="https://github.com/Gunnarguy/OpenIntelligence" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container">
+            <p class="project-kicker">OpenIntelligence</p>
+            <h1>Research Notes</h1>
+            <p class="hero-subtitle">
+                Papers and references I had found while working through OpenIntelligence.
+                Most of this started as curiosity around how far an Apple Intelligence-capable
+                device could go as a local document intelligence system. These are most of the papers
+                that shaped the RAG engine.
+            </p>
+        </div>
+    </header>
+
+    <section id="research" class="section">
+        <div class="container">
+            <h2 class="section-title">RAG Engine Papers</h2>
+
+            <div class="reference-list">
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2005.11401" target="_blank" rel="noopener">Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</a></h2>
+                        <p>The original RAG paper I used as the baseline idea: retrieve evidence, then generate against it.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2312.10997" target="_blank" rel="noopener">Retrieval-Augmented Generation for Large Language Models: A Survey</a></h2>
+                        <p>The map for the main RAG pieces: retrieval, generation, augmentation, routing, and evaluation.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2312.10997" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2402.19473" target="_blank" rel="noopener">Retrieval-Augmented Generation for AI-Generated Content: A Survey</a></h2>
+                        <p>General background on how retrieval changes answer generation and grounding.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2402.19473" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf" target="_blank" rel="noopener">Reciprocal Rank Fusion Outperforms Condorcet and Individual Rank Learning Methods</a></h2>
+                        <p>The ranking paper behind fusing keyword and vector results without pretending one signal always wins.</p>
+                        <div class="reference-actions">
+                            <a href="https://research.google/pubs/reciprocal-rank-fusion-outperforms-condorcet-and-individual-rank-learning-methods/" target="_blank" rel="noopener">Google Research</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2604.15484" target="_blank" rel="noopener">vstash: Local-First Hybrid Retrieval with Adaptive Fusion for LLM Agents</a></h2>
+                        <p>A useful reference for local-first hybrid retrieval, FTS/vector fusion, and ranking diagnostics.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2604.15484" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2602.22217" target="_blank" rel="noopener">RAGdb: A Zero-Dependency, Embeddable Architecture for Multimodal RAG on the Edge</a></h2>
+                        <p>A reference point for keeping retrieval local, embeddable, and small enough for edge-style constraints.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2602.22217" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2307.03172" target="_blank" rel="noopener">Lost in the Middle: How Language Models Use Long Contexts</a></h2>
+                        <p>The paper that pushed me to care about where retrieved chunks land inside a tight context window.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2307.03172" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2212.10496" target="_blank" rel="noopener">Precise Zero-Shot Dense Retrieval without Relevance Labels</a></h2>
+                        <p>The HyDE paper behind generating a better search target before retrieving against the real corpus.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2212.10496" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2310.11511" target="_blank" rel="noopener">Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection</a></h2>
+                        <p>Useful for the retrieval-needed and self-checking ideas around grounded answers.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2310.11511" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2407.08223" target="_blank" rel="noopener">Speculative RAG: Enhancing Retrieval Augmented Generation through Drafting</a></h2>
+                        <p>Background for trying multiple retrieved evidence paths and then verifying the better answer.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2407.08223" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2501.09136" target="_blank" rel="noopener">Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG</a></h2>
+                        <p>Background reading for recursive retrieval, planning, and agent-style query execution.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2501.09136" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2504.14891" target="_blank" rel="noopener">Retrieval Augmented Generation Evaluation in the Era of Large Language Models: A Comprehensive Survey</a></h2>
+                        <p>A checklist source for relevance, source quality, confidence, and weak-retrieval warnings.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2504.14891" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+
+                <article class="reference-item">
+                    <div>
+                        <h2><a href="https://arxiv.org/pdf/2506.00054" target="_blank" rel="noopener">Retrieval-Augmented Generation: A Comprehensive Survey of Architectures, Enhancements, and Robustness Frontiers</a></h2>
+                        <p>Helpful for sanity-checking tradeoffs around retrieval quality, grounding, efficiency, and robustness.</p>
+                        <div class="reference-actions">
+                            <a href="https://arxiv.org/abs/2506.00054" target="_blank" rel="noopener">arXiv</a>
+                        </div>
+                    </div>
+                    <span class="reference-type">PDF</span>
+                </article>
+            </div>
+
+            <p class="quiet-note">
+                Title links open the paper PDFs directly. The smaller links go to the source/abstract pages.
+            </p>
+        </div>
+    </section>
+
+    <footer class="project-footer">
+        <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
+    </footer>
+</body>
+</html>

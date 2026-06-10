@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+
+.venv/
+venv/
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+
+deep-research-report.md
+lastsalientversionmyvoicedictated.txt
+messagetodanielkane.txt
+messagetodavid.txt
+storytodrew.txt
+DanielCaneDM.txt

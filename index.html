@@ -1,0 +1,1350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gunnar Hostetler | Surgical Tech + Shipped iOS Apps</title>
+
+    <!-- DNS Preconnect and Prefetch for Page Load Speed (Core Web Vitals) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <meta
+      name="description"
+      content="I support surgical technology at the VA in Palo Alto and build SwiftUI apps around AI, retrieval, files, and App Store release work."
+    />
+    <meta
+      name="keywords"
+      content="Surgical Technology Support, Surgical Workflows, Stryker, Stryker Endoscopy, Swift, SwiftUI, SwiftData, SMART on FHIR, iOS, iOS App Developer, Apple Intelligence, RAG, OpenAI, Pinecone, On-device AI Agent, healthcare API, VA Palo Alto, Xcode, App Store Release"
+    />
+    <meta name="author" content="Gunnar Hostetler" />
+    <link rel="canonical" href="https://gunnarguy.me/" />
+
+    <!-- Open Graph (Facebook, LinkedIn, Slack) -->
+    <meta property="og:title" content="Gunnar Hostetler | Surgical Tech + Shipped iOS Apps" />
+    <meta
+      property="og:description"
+      content="I support surgical technology at the VA in Palo Alto and build SwiftUI apps around AI, retrieval, files, and App Store release work."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gunnarguy.me/" />
+    <meta property="og:site_name" content="Gunnar Hostetler Portfolio" />
+    <meta
+      property="og:image"
+      content="https://gunnarguy.me/assets/og-image.jpg"
+    />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gunnar Hostetler | Surgical Tech + Shipped iOS Apps" />
+    <meta name="twitter:description" content="I support surgical technology at the VA in Palo Alto and build SwiftUI apps around AI, retrieval, files, and App Store release work." />
+    <meta name="twitter:image" content="https://gunnarguy.me/assets/og-image.jpg" />
+
+    <link rel="icon" href="/favicon.ico?v=20260603b" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico?v=20260603b" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon-32x32.png?v=20260603b"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon-16x16.png?v=20260603b"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon.png?v=20260603b"
+    />
+    <link rel="manifest" href="/site.webmanifest?v=20260603b" />
+    <meta name="msapplication-TileColor" content="#00b8d4" />
+    <meta
+      name="msapplication-config"
+      content="/browserconfig.xml?v=20260603b"
+    />
+    <meta
+      name="msapplication-TileImage"
+      content="/mstile-150x150.png?v=20260603b"
+    />
+    <meta name="theme-color" content="#00b8d4" />
+    <link rel="stylesheet" href="styles.css?v=20260608a" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ProfilePage",
+            "@id": "https://gunnarguy.me/#profilepage",
+            "url": "https://gunnarguy.me/",
+            "name": "Gunnar Hostetler | Surgical Tech + Shipped Apps",
+            "description": "I support surgical technology at the VA in Palo Alto, and I build software to learn how systems behave under the hood and create useful tools.",
+            "mainEntity": {
+              "@id": "https://gunnarguy.me/#person"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://gunnarguy.me/#person",
+            "name": "Gunnar Hostetler",
+            "jobTitle": "Surgical Technology Support | Software Developer",
+            "description": "I support surgical workflows at the VA in Palo Alto, and I build software out of a high curiosity to understand systems and share useful tools with others.",
+            "url": "https://gunnarguy.me/",
+            "image": "https://gunnarguy.me/assets/og-image.jpg",
+            "email": "mailto:Gunnarguy@me.com",
+            "sameAs": [
+              "https://github.com/Gunnarguy",
+              "https://www.linkedin.com/in/gunnar-hostetler/"
+            ],
+            "knowsAbout": [
+              "Swift",
+              "SwiftUI",
+              "iOS Development",
+              "On-device AI",
+              "RAG",
+              "SMART on FHIR",
+              "Apple Intelligence"
+            ]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://gunnarguy.me/#openintelligence",
+            "name": "OpenIntelligence",
+            "description": "An iOS/iPadOS/MacOS App with an agentic reasoning loop built around Apple's 3B-parameter foundation model.",
+            "operatingSystem": "iOS, iPadOS, macOS",
+            "applicationCategory": "BusinessApplication",
+            "downloadUrl": "https://apps.apple.com/us/app/openintelligence/id6756559175",
+            "author": {
+              "@id": "https://gunnarguy.me/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0.00",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://gunnarguy.me/#openclinic",
+            "name": "OpenClinic",
+            "description": "An EHR prototype iOS/iPadOS App for exploring local-first retrieval around chart-shaped patient data.",
+            "operatingSystem": "iOS, iPadOS",
+            "applicationCategory": "MedicalApplication",
+            "downloadUrl": "https://github.com/Gunnarguy/OpenClinic",
+            "author": {
+              "@id": "https://gunnarguy.me/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0.00",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://gunnarguy.me/#openresponses",
+            "name": "OpenResponses",
+            "description": "An iOS/iPadOS App built around the OpenAI Responses API, with computer use and MCP tools.",
+            "operatingSystem": "iOS, iPadOS",
+            "applicationCategory": "BusinessApplication",
+            "downloadUrl": "https://apps.apple.com/us/app/openresponses/id6757338355",
+            "author": {
+              "@id": "https://gunnarguy.me/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0.00",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://gunnarguy.me/#opencone",
+            "name": "OpenCone",
+            "description": "An iOS App that integrates the OpenAI Completions/Responses API and the Pinecone API together to form a RAG client.",
+            "operatingSystem": "iOS",
+            "applicationCategory": "BusinessApplication",
+            "downloadUrl": "https://apps.apple.com/us/app/opencone/id6744467668",
+            "author": {
+              "@id": "https://gunnarguy.me/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0.00",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://gunnarguy.me/#openassistant",
+            "name": "OpenAssistant",
+            "description": "An iOS/iPadOS App built around the OpenAI Assistants v2 API, handling vector stores and document uploads.",
+            "operatingSystem": "iOS, iPadOS",
+            "applicationCategory": "BusinessApplication",
+            "downloadUrl": "https://apps.apple.com/us/app/openassistant/id6692613772",
+            "author": {
+              "@id": "https://gunnarguy.me/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0.00",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://gunnarguy.me/#plaudblender",
+            "name": "PlaudBlender",
+            "description": "Plaud voice recordings into a searchable knowledge graph with Gemini AI, Qdrant, Dash UI, and MCP tools.",
+            "operatingSystem": "macOS, Linux, Windows",
+            "applicationCategory": "DeveloperApplication",
+            "downloadUrl": "https://github.com/Gunnarguy/PlaudBlender",
+            "author": {
+              "@id": "https://gunnarguy.me/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0.00",
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- ====================================================================== -->
+    <!-- UNIFIED GLOBAL TELEMETRY ENGINE & CUSTOM DATA INTERCEPTOR            -->
+    <!-- ====================================================================== -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      const GA_MEASUREMENT_ID = "G-YZ95J7YFJV";
+      const GA_DEBUG_MODE = new URLSearchParams(window.location.search).has(
+        "ga_debug",
+      );
+      let gaPageViewSent = false;
+
+      function sendGaPageView() {
+        if (gaPageViewSent) {
+          return;
+        }
+
+        gaPageViewSent = true;
+        gtag("event", "page_view", {
+          page_title: document.title,
+          page_location: window.location.href,
+          page_path: window.location.pathname + window.location.search,
+          debug_mode: GA_DEBUG_MODE,
+        });
+      }
+
+      gtag("js", new Date());
+
+      gtag("config", GA_MEASUREMENT_ID, {
+        send_page_view: false,
+        transport_type: "beacon",
+        debug_mode: GA_DEBUG_MODE,
+      });
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", sendGaPageView, {
+          once: true,
+        });
+      } else {
+        sendGaPageView();
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.addEventListener(
+          "click",
+          function (event) {
+            var interactiveTarget = event.target.closest("[data-track]");
+            if (interactiveTarget) {
+              var actionLabel = interactiveTarget.getAttribute("data-track");
+              var actionGroup =
+                interactiveTarget.getAttribute("data-track-group") ||
+                "general_interaction";
+              var actionValue =
+                interactiveTarget.getAttribute("data-track-value") || "";
+
+              if (typeof gtag === "function") {
+                gtag("event", "ui_interaction_event", {
+                  interaction_label: actionLabel,
+                  interaction_group: actionGroup,
+                  interaction_value: actionValue,
+                  page_location_path: window.location.pathname,
+                });
+              }
+            }
+          },
+          true,
+        );
+      });
+    </script>
+    <!-- ====================================================================== -->
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Navigation Header -->
+    <header class="header">
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="nav-brand">
+          <a href="#home">Gunnar Hostetler</a>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#projects">Selected Work</a></li>
+          <li><a href="#how-i-build">How I Build</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button
+          class="nav-toggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section id="home" class="hero">
+        <div class="hero-bg">
+          <div class="hero-orb hero-orb-1"></div>
+          <div class="hero-orb hero-orb-2"></div>
+          <div class="hero-orb hero-orb-3"></div>
+        </div>
+        <div class="container">
+          <div class="hero-content">
+            <p class="hero-kicker">
+              Surgical Technology Support + iOS Development
+            </p>
+            <h1>Gunnar Hostetler</h1>
+            <p class="hero-statement">
+              I work as a Stryker OnSite Specialist at the VA in Palo Alto, providing intraoperative technical support on Endoscopy systems for Stanford surgical teams.
+            </p>
+            <h2>In my free time, I build iOS apps</h2>
+            <div class="hero-description">
+              <p>
+                Every app I've built started as an idea, which led to a question, which led to a doc or two, which led to a prototype, which led to more questions, and so on until it finally worked.
+              </p>
+            </div>
+
+            <!-- Top-level metrics badges -->
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <span class="hero-stat-number">3.5+ Years</span>
+                <span class="hero-stat-label">Operating Room experience</span>
+              </div>
+              <div class="hero-stat">
+                <span class="hero-stat-number">2.5+ Years</span>
+                <span class="hero-stat-label">iOS App Development</span>
+              </div>
+
+
+              <div class="hero-stat">
+                <span class="hero-stat-number">4 iOS Apps</span>
+                <span class="hero-stat-label">On the App Store</span>
+              </div>
+            </div>
+
+
+            <div class="hero-buttons">
+              <a href="#projects" class="btn btn-primary">View Selected Work</a>
+              <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="projects">
+        <div class="container">
+          <h2>Selected Work</h2>
+
+          <div class="projects-grid">
+            <!-- OpenIntelligence (Flagship) -->
+            <div class="project-card featured-project">
+              <div class="project-image">
+                <img
+                  loading="lazy"
+                  src="assets/ragmlcore-icon.png"
+                  alt="OpenIntelligence iOS App Icon"
+                />
+              </div>
+              <div class="project-content">
+                <div class="project-header">
+                  <h3>
+                    OpenIntelligence
+                    <span class="badge-flagship">Flagship Project</span>
+                  </h3>
+                </div>
+                <p class="project-tagline">
+                  An iOS/iPadOS/MacOS App with an agentic reasoning loop built around Apple's 3B-parameter foundation model.
+                  <span style="display: block; margin-top: 6px; color: #00b8d4; font-weight: 600;">
+                    Shipped globally with StoreKit, generating $450+ in in-app purchases
+                  </span>
+                </p>
+                <div class="project-bullets">
+                  <p>
+                    <strong>Why:</strong> I wanted to see what Apple's 3B model was capable of. It became an obsessive engineering challenge to make it agentic and bypass the 4,096-token context window Apple's foundation model has, so I built a loop capable of ingesting and querying documents of any size or complexity. Honestly, it seemed impossible for a 3B parameter model to run a full reasoning and retrieval pipeline offline, but I wanted to prove it was possible.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>Neural Retrieval & Local Embeddings:</strong> To keep files fully secure, I built a zero-dependency retrieval engine using SQLite FTS5 and Apple's Accelerate framework. It compares text and matches keywords across the CPU, GPU, and Apple Neural Engine (ANE), ensuring your documents never leave the app.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>Smart Context:</strong>I built a filter that re-orders the retrieved document pieces so the most important info is placed at the very beginning or end where the model pays the most attention, preventing it from getting 'lost in the middle' of long documents.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>What I learned:</strong> Small, on-device models can do incredible work.
+                    The hard part was OCR, chunking, SQLite FTS5, vector search, context packing,
+                    citation checks, quality modes, and an agentic recursive
+                    reasoning loop that stitches together multiple sessions to overcome the 4,096-token limit and answer exhaustively.
+                  </p>
+                </div>
+                <div class="project-api-refs">
+                  <span class="api-refs-label"><i class="fas fa-book-open" style="font-size: 0.7rem; opacity: 0.7;"></i> Specs & Papers:</span>
+                  <div class="api-refs-list">
+                    <a href="https://developer.apple.com/documentation/" class="api-ref-tag" target="_blank" rel="noopener">Apple Foundation Models <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://www.sqlite.org/fts5.html" class="api-ref-tag" target="_blank" rel="noopener">SQLite FTS5 <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://arxiv.org/abs/2312.10997" class="api-ref-tag" target="_blank" rel="noopener">RAG Survey <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://arxiv.org/abs/2402.19473" class="api-ref-tag" target="_blank" rel="noopener">AIGC RAG <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://arxiv.org/abs/2501.09136" class="api-ref-tag" target="_blank" rel="noopener">Agentic RAG <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://arxiv.org/abs/2504.14891" class="api-ref-tag" target="_blank" rel="noopener">RAG Evaluation <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://arxiv.org/abs/2506.00054" class="api-ref-tag" target="_blank" rel="noopener">RAG Architectures <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://arxiv.org/abs/2604.15484" class="api-ref-tag" target="_blank" rel="noopener">vstash Hybrid <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://arxiv.org/abs/2602.22217" class="api-ref-tag" target="_blank" rel="noopener">RAGdb Edge <i class="fas fa-external-link-alt"></i></a>
+                    <a href="projects/openintelligence/snapshot.html#research" class="api-ref-tag api-ref-tag-featured">RAG Engine Research <i class="fas fa-arrow-right"></i></a>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span>Apple Intelligence</span>
+                  <span>Foundation Models</span>
+                  <span>SwiftUI</span>
+                  <span>Swift 6</span>
+                  <span>On-Device RAG</span>
+                  <span>Agentic Reasoning Loop</span>
+                  <span>BNNS Vectors</span>
+                  <span>Vision OCR</span>
+                  <span>SQLite FTS5</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/Gunnarguy/OpenIntelligence"
+                    class="btn-link"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                  <a
+                    href="https://apps.apple.com/us/app/openintelligence/id6756559175"
+                    class="btn-link"
+                    target="_blank"
+                    rel="noopener"
+                    >App Store</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- OpenClinic -->
+            <div class="project-card">
+              <div class="project-image">
+                <img
+                  loading="lazy"
+                  src="assets/openclinic-icon.png?v=4"
+                  alt="OpenClinic iOS App Icon"
+                />
+              </div>
+              <div class="project-content">
+                <div class="project-header">
+                  <h3>OpenClinic</h3>
+                </div>
+                <p class="project-tagline">
+                  An EHR prototype iOS/iPadOS App for exploring local-first retrieval around
+                  chart-shaped patient data
+                </p>
+                <div class="project-bullets">
+                  <p>
+                    <strong>Why:</strong> I wanted to see what would happen if I applied the same OpenIntelligence engine to clinical information.
+                    OpenClinic is the prototype where I tested it against
+                    chart-shaped data (not production medical software).
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>Clinical Data Sync:</strong> I integrated the SMART on FHIR standard using secure OAuth flows (<code>ASWebAuthenticationSession</code>). This lets the app connect directly to hospital sandbox endpoints and securely download structured Patient, Condition, and Medication resources.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>Local Storage:</strong> Instead of sending patient histories to a cloud database, the app parses and maps the incoming FHIR clinical resources directly into local <code>SwiftData</code> schemas, keeping health records private and offline.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>Current State:</strong> I reused the same agentic reasoning loop from OpenIntelligence, wired up SMART on FHIR discovery and OAuth (<code>ASWebAuthenticationSession</code>) to pull demo Patient, Condition, and MedicationRequest resources into a local model. It's surprisingly good at finding relevant information in the chart and answering questions with citations, but the current data is too limited to be more than a demo of the retrieval and reasoning patterns. The next step would be to connect it to real FHIR endpoints and see how it handles the messiness of real clinical data, which comes with a multitude of complexities.
+                  </p>
+                </div>
+                <div class="project-api-refs">
+                  <span class="api-refs-label"><i class="fas fa-code" style="font-size: 0.7rem; opacity: 0.7;"></i> API Specs:</span>
+                  <div class="api-refs-list">
+                    <a href="https://hl7.org/fhir/smart-app-launch/" class="api-ref-tag" target="_blank" rel="noopener">SMART on FHIR <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://hl7.org/fhir/" class="api-ref-tag" target="_blank" rel="noopener">HL7 FHIR Core <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://developer.apple.com/documentation/swiftdata" class="api-ref-tag" target="_blank" rel="noopener">SwiftData <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://developer.apple.com/documentation/coreml" class="api-ref-tag" target="_blank" rel="noopener">Core ML <i class="fas fa-external-link-alt"></i></a>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span>SwiftUI</span>
+                  <span>SwiftData</span>
+                  <span>SMART on FHIR</span>
+                  <span>Core ML</span>
+                  <span>SQLite FTS5</span>
+                  <span>RRF</span>
+                  <span>OAuth</span>
+                  <span>Vision OCR</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/Gunnarguy/OpenClinic"
+                    class="btn-link"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- OpenResponses -->
+            <div class="project-card">
+              <div class="project-image">
+                <img
+                  loading="lazy"
+                  src="assets/openresponses-icon.png"
+                  alt="OpenResponses iOS App Icon"
+                />
+              </div>
+              <div class="project-content">
+                <div class="project-header">
+                  <h3>OpenResponses</h3>
+                </div>
+                <p class="project-tagline">
+                  An iOS/iPadOS App built around the OpenAI Responses API.
+                </p>
+                <div class="project-bullets">
+                  <p>
+                    <strong>Why:</strong> OpenAI announced they were deprecating the Completions API, and my immediate thought was "they're killing my first app!" - OpenAssistant - so I opened VSCode with OpenAssistant in one window and OpenResponses in another, using LLMs to help swap out all the endpoints and rebuild the flow on the new Responses endpoints.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>Computer Use:</strong> I built a custom streaming interface that translates browser tool-calls (clicking, typing, scrolling, screenshots) into a native Swift environment, letting the model navigate web pages in real time.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>Connected Tools:</strong> To give the model access to the real world, I integrated Model Context Protocol (MCP) connectors and Apple EventKit, allowing it to securely read and update Gmail, Google Calendar, Dropbox, Notion, and Apple reminders.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>What I learned:</strong> Because of all the App Store Connect rejections on my first two apps, I learned exactly what reviewers looked for. I got this one passed through review without a single rejection on the first pass.
+                  </p>
+                </div>
+                <div class="project-api-refs">
+                  <span class="api-refs-label"><i class="fas fa-code" style="font-size: 0.7rem; opacity: 0.7;"></i> API Specs:</span>
+                  <div class="api-refs-list">
+                    <a href="https://platform.openai.com/docs/api-reference/responses" class="api-ref-tag" target="_blank" rel="noopener">OpenAI Responses <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://modelcontextprotocol.io/" class="api-ref-tag" target="_blank" rel="noopener">Model Context Protocol <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://platform.openai.com/docs/api-reference/files" class="api-ref-tag" target="_blank" rel="noopener">OpenAI Files <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://developer.apple.com/documentation/eventkit" class="api-ref-tag" target="_blank" rel="noopener">Apple EventKit <i class="fas fa-external-link-alt"></i></a>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span>SwiftUI</span>
+                  <span>Responses API</span>
+                  <span>MCP Connectors</span>
+                  <span>Computer Use</span>
+                  <span>Request Inspector</span>
+                  <span>EventKit Tools</span>
+                  <span>File Search</span>
+                  <span>SSE Streaming</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/Gunnarguy/OpenResponses"
+                    class="btn-link"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                  <a
+                    href="https://apps.apple.com/us/app/openresponses/id6757338355"
+                    class="btn-link"
+                    target="_blank"
+                    rel="noopener"
+                    >App Store</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- OpenCone -->
+            <div class="project-card">
+              <div class="project-image">
+                <img
+                  loading="lazy"
+                  src="assets/opencone-icon.png?v=20260603a"
+                  alt="OpenCone iOS App Icon"
+                />
+              </div>
+              <div class="project-content">
+                <div class="project-header">
+                  <h3>OpenCone</h3>
+                </div>
+                <p class="project-tagline">
+                  An iOS App that meshes the OpenAI Completions API and the Pinecone API together to form a RAG client for testing multi-index document
+                  search - later updated to use the Responses API.
+                </p>
+                <div class="project-bullets">
+                  <p>
+                    <strong>Why:</strong> When I started getting into deeper development with OpenAssistant, the app would start losing context during large document queries. I looked up vector databases, found Pinecone was the standard, and realized they didn't have an iOS app, so I decided to build one. I wanted to query multiple indexes and namespaces in a single chat thread, which was something the OpenAI Assistants playground was limited in doing.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>On-Device File Reader:</strong> To feed documents into Pinecone, I built a local parser using Apple's PDFKit and Vision OCR. It extracts text from PDFs, DOCX files, and raw photos, automatically chunking and converting them into embeddings on the fly.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>Network Safety:</strong> To prevent the app from lagging or getting stuck when a server fails, I built a network circuit breaker. If Pinecone fails twice in a row, the app automatically pauses requests and lets the user know immediately.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>What I learned:</strong> I took the backend from OpenAssistant and swapped out the storage layer for Pinecone. Honestly, in retrospect, the initial interface looked awful, but I later rebuilt it with the Responses API and clean embeddings. Getting this on the App Store was a personal milestone.
+                  </p>
+                </div>
+                <div class="project-api-refs">
+                  <span class="api-refs-label"><i class="fas fa-code" style="font-size: 0.7rem; opacity: 0.7;"></i> API Specs:</span>
+                  <div class="api-refs-list">
+                    <a href="https://platform.openai.com/docs/api-reference/responses" class="api-ref-tag" target="_blank" rel="noopener">OpenAI Responses <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://docs.pinecone.io/reference/api/introduction" class="api-ref-tag" target="_blank" rel="noopener">Pinecone REST API <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://platform.openai.com/docs/api-reference/embeddings" class="api-ref-tag" target="_blank" rel="noopener">OpenAI Embeddings <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://developer.apple.com/documentation/pdfkit" class="api-ref-tag" target="_blank" rel="noopener">Apple PDFKit <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://developer.apple.com/documentation/vision/recognizing_text_in_images" class="api-ref-tag" target="_blank" rel="noopener">Apple Vision OCR <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://developer.apple.com/documentation/speech" class="api-ref-tag" target="_blank" rel="noopener">Apple Speech <i class="fas fa-external-link-alt"></i></a>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span>SwiftUI</span>
+                  <span>Responses API</span>
+                  <span>Pinecone REST API</span>
+                  <span>PDFKit</span>
+                  <span>Vision OCR</span>
+                  <span>Circuit Breaker</span>
+                  <span>Speech Recognition</span>
+                  <span>SSE Streaming</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/Gunnarguy/OpenCone"
+                    class="btn-link"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                  <a
+                    href="https://apps.apple.com/us/app/opencone/id6744467668"
+                    class="btn-link"
+                    target="_blank"
+                    rel="noopener"
+                    >App Store</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- OpenAssistant -->
+            <div class="project-card">
+              <div class="project-image">
+                <img
+                  loading="lazy"
+                  src="assets/openassistant-icon.png"
+                  alt="OpenAssistant iOS App Icon"
+                />
+              </div>
+              <div class="project-content">
+                <div class="project-header">
+                  <h3>OpenAssistant</h3>
+                </div>
+                <p class="project-tagline">
+                  My first shipped iOS App, built around the OpenAI Assistants=v2 API. Engineered to handle vector stores, document uploads, active run polling, and strategy-driven local file preprocessing.
+                </p>
+                <div class="project-bullets">
+                  <p>
+                    <strong>Why:</strong> When ChatGPT-4 first came out, it BLEW my mind. I was working with tons of medical documentation at Stryker and using it to learn fast, but their official app was slow, crashed, and limited me to 5 files at a time. I got curious about their API, saw people making wrappers, and thought, why would I pay for someone else's app when I can just build my own?
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>File Formatting:</strong> OpenAI, at the time, would reject standard iPhone files (like live HEIC photos or RTF documents) when uploaded. To fix this, I set up a local conversion system that automatically turns these files into standard JPEGs and plain text on the device before sending them off.
+                  </p>
+                  <p style="margin-top: 8px">
+                  <strong>"Is it done yet?":</strong> Since OpenAI's Assistants API didn't respond instantly, I built a timer system
+                  that checks in with OpenAI every 2 seconds to see if the assistant is done thinking, so the app can display the answer
+                  the second it's ready.
+                  </p>
+                  <p style="margin-top: 8px">
+                    <strong>What I learned:</strong> Making an iOS app isn't easy. I built it by copying OpenAI API references into text files, uploading them to a playground vector store for context, and copying and pasting the red errors back in to get corrected code. I repeated this until it worked, spent $99 on a developer account, and finally got it on the store after being rejected upwards of 30 times because they kept telling me everything that was wrong with my app.
+                  </p>
+                </div>
+                <div class="project-api-refs">
+                  <span class="api-refs-label"><i class="fas fa-code" style="font-size: 0.7rem; opacity: 0.7;"></i> API Specs:</span>
+                  <div class="api-refs-list">
+                    <a href="https://platform.openai.com/docs/api-reference/assistants" class="api-ref-tag" target="_blank" rel="noopener">OpenAI Assistants <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://platform.openai.com/docs/api-reference/vector-stores" class="api-ref-tag" target="_blank" rel="noopener">OpenAI Vector Stores <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://platform.openai.com/docs/assistants/tools/code-interpreter" class="api-ref-tag" target="_blank" rel="noopener">Code Interpreter <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://platform.openai.com/docs/assistants/tools/file-search" class="api-ref-tag" target="_blank" rel="noopener">File Search <i class="fas fa-external-link-alt"></i></a>
+                    <a href="https://platform.openai.com/docs/api-reference/files" class="api-ref-tag" target="_blank" rel="noopener">OpenAI Files <i class="fas fa-external-link-alt"></i></a>
+                  </div>
+                </div>
+                <div class="project-tech">
+                  <span>SwiftUI</span>
+                  <span>Assistants API (v2)</span>
+                  <span>Vector Stores</span>
+                  <span>Run Polling</span>
+                  <span>Strategy Pattern</span>
+                  <span>NotificationCenter</span>
+                  <span>Firebase SDK</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/Gunnarguy/OpenAssistant"
+                    class="btn-link"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                  <a
+                    href="https://apps.apple.com/us/app/openassistant/id6692613772"
+                    class="btn-link"
+                    target="_blank"
+                    rel="noopener"
+                    >App Store</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="github-activity" class="projects">
+        <div class="container">
+          <div class="activity-heatmap-section">
+            <div class="heatmap-header">
+              <h3>What the Work Looks Like Over Time</h3>
+              <div class="data-status">
+                <span id="status-dot" class="status-dot"></span>
+                <span id="status-text">Syncing commit history...</span>
+                <button
+                  id="refresh-btn"
+                  class="refresh-btn"
+                  aria-label="Refresh commit history"
+                >
+                  <i class="fas fa-sync-alt"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="heatmap-container">
+              <div class="heatmap-months" id="heatmap-months"></div>
+              <div class="heatmap-wrapper">
+                <div class="heatmap-days">
+                  <span>Mon</span>
+                  <span>Wed</span>
+                  <span>Fri</span>
+                </div>
+                <div class="heatmap-grid" id="heatmap-grid">
+                  <div class="heatmap-loading">Syncing commit activity...</div>
+                </div>
+              </div>
+
+              <div class="heatmap-legend">
+                <span>Less</span>
+                <div class="legend-squares">
+                  <div class="legend-square" data-level="0"></div>
+                  <div class="legend-square" data-level="1"></div>
+                  <div class="legend-square" data-level="2"></div>
+                  <div class="legend-square" data-level="3"></div>
+                  <div class="legend-square" data-level="4"></div>
+                </div>
+                <span>More</span>
+              </div>
+            </div>
+
+            <div class="heatmap-stats" id="heatmap-stats"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="stratigraphy" class="stratigraphy-section">
+        <div class="container">
+          <h2>Repo History</h2>
+          <p class="strat-intro">
+            A quick visual of how the repos changed over time. Each ring comes
+            from commits, grouped by the kind of work: features, fixes,
+            refactors, and docs or config.
+          </p>
+
+          <div class="strat-legend">
+            <div class="legend-item">
+              <span class="legend-color feat"></span>
+              <span>Features</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color fix"></span>
+              <span>Fixes</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color refactor"></span>
+              <span>Refactorings</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color docs"></span>
+              <span>Docs / Config</span>
+            </div>
+          </div>
+
+          <div class="stratigraphy-grid">
+            <div class="tree-sample" data-repo="OpenClinic">
+              <div class="tree-header">
+                <img
+                  class="tree-icon"
+                  src="assets/openclinic-icon.png?v=4"
+                  alt="OpenClinic Icon"
+                />
+                <div class="tree-info">
+                  <h3>OpenClinic</h3>
+                  <span class="tree-age">Syncing...</span>
+                </div>
+              </div>
+              <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+              </div>
+              <div class="tree-stats">
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">commits</span>
+                </div>
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">weeks active</span>
+                </div>
+              </div>
+              <div class="tree-links">
+                <a
+                  href="https://github.com/Gunnarguy/OpenClinic"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+
+            <div class="tree-sample" data-repo="OpenIntelligence">
+              <div class="tree-header">
+                <img
+                  class="tree-icon"
+                  src="assets/ragmlcore-icon.png"
+                  alt="OpenIntelligence Icon"
+                />
+                <div class="tree-info">
+                  <h3>OpenIntelligence</h3>
+                  <span class="tree-age">Syncing...</span>
+                </div>
+              </div>
+              <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+              </div>
+              <div class="tree-stats">
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">commits</span>
+                </div>
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">weeks active</span>
+                </div>
+              </div>
+              <div class="tree-links">
+                <a
+                  href="https://github.com/Gunnarguy/OpenIntelligence"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+
+            <div class="tree-sample" data-repo="OpenResponses">
+              <div class="tree-header">
+                <img
+                  class="tree-icon"
+                  src="assets/openresponses-icon.png"
+                  alt="OpenResponses Icon"
+                />
+                <div class="tree-info">
+                  <h3>OpenResponses</h3>
+                  <span class="tree-age">Syncing...</span>
+                </div>
+              </div>
+              <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+              </div>
+              <div class="tree-stats">
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">commits</span>
+                </div>
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">weeks active</span>
+                </div>
+              </div>
+              <div class="tree-links">
+                <a
+                  href="https://github.com/Gunnarguy/OpenResponses"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+
+            <div class="tree-sample" data-repo="OpenCone">
+              <div class="tree-header">
+                <img
+                  class="tree-icon"
+                  src="assets/opencone-icon.png?v=20260603a"
+                  alt="OpenCone Icon"
+                />
+                <div class="tree-info">
+                  <h3>OpenCone</h3>
+                  <span class="tree-age">Syncing...</span>
+                </div>
+              </div>
+              <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+              </div>
+              <div class="tree-stats">
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">commits</span>
+                </div>
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">weeks active</span>
+                </div>
+              </div>
+              <div class="tree-links">
+                <a
+                  href="https://github.com/Gunnarguy/OpenCone"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+
+            <div class="tree-sample" data-repo="OpenAssistant">
+              <div class="tree-header">
+                <img
+                  class="tree-icon"
+                  src="assets/openassistant-icon.png"
+                  alt="OpenAssistant Icon"
+                />
+                <div class="tree-info">
+                  <h3>OpenAssistant</h3>
+                  <span class="tree-age">Syncing...</span>
+                </div>
+              </div>
+              <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+              </div>
+              <div class="tree-stats">
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">commits</span>
+                </div>
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">weeks active</span>
+                </div>
+              </div>
+              <div class="tree-links">
+                <a
+                  href="https://github.com/Gunnarguy/OpenAssistant"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+
+            <div class="tree-sample" data-repo="PlaudBlender">
+              <div class="tree-header">
+                <img
+                  class="tree-icon"
+                  src="assets/plaudblender-icon.png"
+                  alt="PlaudBlender Icon"
+                />
+                <div class="tree-info">
+                  <h3>PlaudBlender</h3>
+                  <span class="tree-age">Syncing...</span>
+                </div>
+              </div>
+              <div class="tree-ring-container">
+                <svg class="tree-rings" viewBox="0 0 300 300"></svg>
+                <div class="tree-tooltip"></div>
+              </div>
+              <div class="tree-stats">
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">commits</span>
+                </div>
+                <div class="tree-stat">
+                  <span class="stat-num">-</span>
+                  <span class="stat-label">weeks active</span>
+                </div>
+              </div>
+              <div class="tree-links">
+                <a
+                  href="https://github.com/Gunnarguy/PlaudBlender"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-i-build" class="how-i-build">
+        <div class="container">
+          <h2>How I Build</h2>
+          <div class="build-card">
+            <p class="build-lead">
+              I operate with a childlike curiosity and high energy. I look for solutions to inefficiencies even when I don't consciously want to, and build tools to understand things that go beyond what I already know.
+            </p>
+            <div class="build-grid">
+              <div class="build-column">
+                <p>
+                  I've wanted to build software for a long time, but I didn't have a way to get from “I wonder if this could exist” to actually making it exist.
+                </p>
+                <p style="margin-top: 1rem">
+                  LLMs changed that for me. I leverage AI and RAG architectures to build the working foundations of my apps through the literal ingestion of complex API documentation. Once the core foundation is set, I build the real structure around it and just go nuts filling in the gaps.
+                </p>
+              </div>
+              <div class="build-column">
+                <p>
+                  My process is built on relentless, iteration-driven execution.
+                </p>
+                <p style="margin-top: 1rem">
+                  I use AI as an implementation partner to move through code, documentation, errors, and debugging fast enough to stay with the idea. I still decide what the thing should do, how it should feel, and whether it's actually useful.
+                </p>
+                <p style="margin-top: 1rem">
+                  I've learned to just roll with the chaos of building, and because of that, I have created things I never thought I'd be able to.
+                </p>
+              </div>
+            </div>
+            <div class="build-callout">
+              <p
+                style="
+                  margin: 0;
+                  font-size: 1.05rem;
+                  line-height: 1.8;
+                  color: var(--text-primary);
+                "
+              >
+                At the end of the day, the things I make still have to work. They have to run, handle real inputs, survive weird edge cases, and function well for the reasons they were built in the first place.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="skills">
+        <div class="container">
+          <h2>What I Use</h2>
+          <div class="skills-grid">
+            <!-- Clinical Operations -->
+            <div class="skill-category skill-category-primary">
+              <h3>Surgical Operations &amp; Logistics</h3>
+              <p class="skill-category-desc">
+                Working inside ORs where equipment, timing, sterile process,
+                documentation, and relationships all matter.
+              </p>
+              <div class="skill-items">
+                <span class="skill-tag skill-tag-primary"
+                  >Intraoperative Support</span
+                >
+                <span class="skill-tag skill-tag-primary"
+                  >HIPAA Compliance</span
+                >
+                <span class="skill-tag skill-tag-primary"
+                  >PIV Security Clearance</span
+                >
+                <span class="skill-tag skill-tag-primary"
+                  >Censitrac Instrument Tracking</span
+                >
+                <span class="skill-tag skill-tag-primary"
+                  >Surgical Workflow Support</span
+                >
+                <span class="skill-tag skill-tag-primary"
+                  >Endoscopy Video Setup</span
+                >
+                <span class="skill-tag skill-tag-primary"
+                  >Account-Level Operations</span
+                >
+              </div>
+            </div>
+
+            <!-- iOS Development -->
+            <div class="skill-category">
+              <h3>iOS Mobile Systems</h3>
+              <p class="skill-category-desc">
+                Building native Apple apps around files, data, auth, state,
+                local storage, and release details.
+              </p>
+              <div class="skill-items">
+                <span class="skill-tag">Swift / SwiftUI</span>
+                <span class="skill-tag">SwiftData / CoreData</span>
+                <span class="skill-tag">AppContainer DI</span>
+                <span class="skill-tag">Keychain Credentials Store</span>
+                <span class="skill-tag"
+                  >OAuth / ASWebAuthenticationSession</span
+                >
+                <span class="skill-tag">Security-Scoped Bookmarks</span>
+                <span class="skill-tag">Xcode Build Errors</span>
+                <span class="skill-tag">App Store Release Flow</span>
+              </div>
+            </div>
+
+            <!-- Model APIs / Tools / Retrieval -->
+            <div class="skill-category">
+              <h3>Model APIs, Tools &amp; Retrieval</h3>
+              <p class="skill-category-desc">
+                Working across model APIs, local models, vector stores, tool
+                calls, OCR, and source-backed answers.
+              </p>
+              <div class="skill-items">
+                <span class="skill-tag"
+                  >OpenAI Responses / Assistants APIs</span
+                >
+                <span class="skill-tag">Gemini API</span>
+                <span class="skill-tag">Apple Foundation Models</span>
+                <span class="skill-tag">Core ML / BNNS Vectors</span>
+                <span class="skill-tag">Pinecone / Qdrant Vector Stores</span>
+                <span class="skill-tag">SQLite FTS5 / RRF</span>
+                <span class="skill-tag">MCP Tool Servers</span>
+                <span class="skill-tag">Tool Calls / Function Calling</span>
+                <span class="skill-tag">Code Interpreter / File Search</span>
+                <span class="skill-tag">Vision OCR / PDFKit Parsing</span>
+                <span class="skill-tag">Streaming Event Payloads</span>
+                <span class="skill-tag">Source &amp; Citation Checks</span>
+                <span class="skill-tag">Recursive Reasoning Loops</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience" class="experience">
+        <div class="container">
+          <h2>Work Context</h2>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-meta">
+                  <div>
+                    <h3>OnSite Specialist</h3>
+                    <h4>Stryker | VA Palo Alto Health Care System</h4>
+                  </div>
+                  <span class="timeline-date">Aug 2022 – Present</span>
+                </div>
+                <div></div>
+                <div></div>
+                <ul class="experience-bullets">
+                  <li>
+                    Provide intraoperative technical support across 8 operating
+                    rooms, including Stryker endoscopy towers, cameras,
+                    instruments, video setup, troubleshooting, and equipment
+                    functionality.
+                  </li>
+                  <li>
+                    Serve as the first on-site Stryker resource when a room
+                    needs fast troubleshooting, configuration help, escalation,
+                    or readiness support.
+                  </li>
+                  <li>
+                    Support case readiness by making sure equipment,
+                    instruments, supplies, documentation, and account-specific
+                    needs are ready before procedures start.
+                  </li>
+                  <li>
+                    Help keep the account healthy across procurement, vendor
+                    coordination, inventory, par levels, schedule-based
+                    forecasting, repairs, replacements, and equipment
+                    availability.
+                  </li>
+                  <li>
+                    Integrated 1,500+ surgical instruments into the Censitrac
+                    instrument tracking system.
+                  </li>
+                  <li>
+                    Coordinate daily with surgeons, nurses, scrub techs,
+                    anesthesiologists, sterile processing, biomedical
+                    engineering, vendors, and hospital staff.
+                  </li>
+                  <li>
+                    Hold Government Contractor PIV clearance with VA intranet
+                    access for secure workflows, system changes, documentation,
+                    and account-related operational needs.
+                  </li>
+                  <li>
+                    Work independently in a high-pressure surgical environment
+                    where priorities shift constantly and problems require fast,
+                    practical judgment.
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact">
+        <div class="container">
+          <h2>Get In Touch</h2>
+          <div class="contact-content">
+            <div class="contact-info">
+              <h3>Contact</h3>
+              <p>
+                I'm always open to connecting! Whether it's about my apps, what I used to build them, or just to chat about similar curiosities, reach out here or through the links below.
+              </p>
+
+              <div class="contact-details">
+                <div class="contact-item">
+                  <i class="fab fa-linkedin" aria-hidden="true"></i>
+                  <a
+                    href="https://www.linkedin.com/in/gunnar-hostetler/"
+                    target="_blank"
+                    rel="noopener"
+                    >linkedin.com/in/gunnar-hostetler</a
+                  >
+                </div>
+              </div>
+
+              <div class="social-links">
+                <a
+                  href="https://www.linkedin.com/in/gunnar-hostetler/"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="fab fa-linkedin" aria-hidden="true"></i
+                ></a>
+                <a
+                  href="https://github.com/Gunnarguy"
+                  aria-label="GitHub"
+                  target="_blank"
+                  rel="noopener"
+                  ><i class="fab fa-github" aria-hidden="true"></i
+                ></a>
+                <a href="mailto:Gunnarguy@me.com" aria-label="Email"
+                  ><i class="fas fa-envelope" aria-hidden="true"></i
+                ></a>
+              </div>
+            </div>
+
+            <div class="contact-form">
+              <form aria-label="Contact form">
+                <div class="form-group">
+                  <label for="name" class="sr-only">Your Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your Name"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="email" class="sr-only">Your Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Your Email"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="subject" class="sr-only">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="Subject"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="message" class="sr-only">Your Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Your Message"
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Gunnar Hostetler. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Load scripts.js containing all dynamic UI logic -->
+    <script src="scripts.js?v=20260608b"></script>
+  </body>
+</html>

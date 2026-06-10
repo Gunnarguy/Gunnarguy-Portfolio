@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAssistant - Project Deep Dive | Gunnar Hostetler</title>
+    <meta name="description" content="First app. Built because I wanted a better way to work through docs on iPhone.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- ====================================================================== -->
+    <!-- ====================================================================== -->
+    <!-- UNIFIED GLOBAL TELEMETRY ENGINE & CUSTOM DATA INTERCEPTOR            -->
+    <!-- ====================================================================== -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZ95J7YFJV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+            function gtag() {dataLayer.push(arguments);}
+            const GA_MEASUREMENT_ID = 'G-YZ95J7YFJV';
+            const GA_DEBUG_MODE = new URLSearchParams(window.location.search).has('ga_debug');
+            let gaPageViewSent = false;
+
+            function sendGaPageView() {
+                if (gaPageViewSent) {
+                    return;
+                }
+
+                gaPageViewSent = true;
+                gtag('event', 'page_view', {
+                    'page_title': document.title,
+                    'page_location': window.location.href,
+                    'page_path': window.location.pathname + window.location.search,
+                    'debug_mode': GA_DEBUG_MODE
+                });
+            }
+
+      gtag('js', new Date());
+
+            gtag('config', GA_MEASUREMENT_ID, {
+                'send_page_view': false,
+                'transport_type': 'beacon',
+                'debug_mode': GA_DEBUG_MODE
+            });
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', sendGaPageView, { once: true });
+            } else {
+                sendGaPageView();
+            }
+    </script>
+
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.body.addEventListener('click', function(event) {
+          var interactiveTarget = event.target.closest('[data-track]');
+                    if (interactiveTarget) {
+            var actionLabel = interactiveTarget.getAttribute('data-track');
+            var actionGroup = interactiveTarget.getAttribute('data-track-group') || 'general_interaction';
+            var actionValue = interactiveTarget.getAttribute('data-track-value') || '';
+
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'ui_interaction_event', {
+                'interaction_label': actionLabel,
+                'interaction_group': actionGroup,
+                'interaction_value': actionValue,
+                'page_location_path': window.location.pathname
+                            });
+                        }
+                    }
+                }, true);
+            });
+    </script>
+    <!-- ====================================================================== -->
+
+
+
+
+
+    <style>
+:root {
+    --bg-primary: #0a0a0f; --bg-secondary: #12121a; --bg-card: #1a1a24;
+    --text-primary: #fff; --text-secondary: #a0a0b0;
+    --accent: #8b5cf6; --accent-light: #8b5cf699;
+    --border-color: #2a2a3a;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.project-nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid var(--border-color); }
+.back-link { color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+.back-link:hover { color: var(--accent); }
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+.nav-links a:hover { color: var(--accent); }
+.project-hero { padding: 8rem 0 4rem; background: linear-gradient(180deg, var(--bg-secondary), var(--bg-primary)); text-align: center; }
+.project-hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; }
+.hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 500; transition: all 0.2s; }
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+.btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); }
+.btn-secondary:hover { border-color: var(--accent); }
+.btn-appstore { background: #000; color: white; border: 1px solid #333; }
+.btn-appstore:hover { background: #1a1a1a; }
+.section { padding: 5rem 0; }
+.section-alt { background: var(--bg-secondary); }
+.section h2 { font-size: 2rem; margin-bottom: 2rem; text-align: center; }
+.story-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.story-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); }
+.story-card h3 { color: var(--accent); margin-bottom: 0.6rem; font-size: 1.05rem; }
+.story-card p { color: var(--text-secondary); font-size: 0.96rem; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.feature-card { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); transition: border-color 0.2s; }
+.feature-card:hover { border-color: var(--accent); }
+.feature-card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
+.feature-card p { color: var(--text-secondary); font-size: 0.95rem; }
+.tech-stack { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
+.tech-tag { background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--border-color); }
+.project-footer { padding: 2rem 0; text-align: center; border-top: 1px solid var(--border-color); }
+.project-footer a { color: var(--accent); text-decoration: none; }
+@media (max-width: 768px) { .project-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hero-actions { flex-direction: column; align-items: center; } }
+    </style>
+</head>
+<body>
+    <nav class="project-nav">
+        <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
+        <div class="nav-links">
+            <a href="#story">Story</a>
+            <a href="#features">Features</a>
+            <a href="https://github.com/Gunnarguy/OpenAssistant" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container">
+            <h1>OpenAssistant</h1>
+            <p class="hero-subtitle">First app. Built because I wanted a better way to work through docs on iPhone.</p>
+            <div class="hero-actions">
+                <a href="https://github.com/Gunnarguy/OpenAssistant" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="https://apps.apple.com/us/app/openassistant/id6692613772" class="btn btn-appstore" target="_blank">
+            <i class="fab fa-app-store-ios"></i> App Store
+        </a>
+            </div>
+            <div class="tech-stack"><span class="tech-tag">SwiftUI</span><span class="tech-tag">Swift</span><span class="tech-tag">Combine</span><span class="tech-tag">OpenAI</span><span class="tech-tag">RAG</span><span class="tech-tag">MVVM</span><span class="tech-tag">Dash</span><span class="tech-tag">Render</span></div>
+        </div>
+    </header>
+
+    
+    <section id="story" class="section section-alt">
+        <div class="container">
+            <h2>How It Happened</h2>
+            <div class="story-grid">
+        <div class="story-card">
+            <h3>Why it exists</h3>
+            <p>I wanted a better document workflow on iPhone than the official app gave me.</p>
+        </div>
+        <div class="story-card">
+            <h3>How I built it</h3>
+            <p>Copied docs, Playground threads, red Xcode errors, rebuilds.</p>
+        </div>
+        <div class="story-card">
+            <h3>Why it matters</h3>
+            <p>It is still the foundation for everything that followed.</p>
+        </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="features-grid"><p style="text-align:center;color:var(--text-secondary);">See the README for full feature list.</p></div>
+        </div>
+    </section>
+
+    <footer class="project-footer">
+        <p>Part of the <a href="../../index.html#projects">Open- Series</a> by Gunnar Hostetler</p>
+    </footer>
+</body>
+</html>
