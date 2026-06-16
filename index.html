@@ -403,25 +403,29 @@
                   </h3>
                 </div>
                 <p class="project-tagline">
-                  An iOS/iPadOS/MacOS App with an agentic reasoning loop built around Apple's 3B-parameter foundation model.
+                  An open-source iOS/iPadOS/MacOS App with an agentic reasoning loop built around Apple's 3B-parameter foundation model.
                   <span style="display: block; margin-top: 6px; color: #00b8d4; font-weight: 600;">
                     Shipped globally with StoreKit, generating $450+ in in-app purchases
                   </span>
                 </p>
                 <div class="project-bullets">
                   <p>
-                    <strong>Why:</strong> I wanted to see what Apple's 3B model was capable of. It became an obsessive engineering challenge to make it agentic and bypass the 4,096-token context window Apple's foundation model has, so I built a loop capable of ingesting and querying documents of any size or complexity. Honestly, it seemed impossible for a 3B parameter model to run a full reasoning and retrieval pipeline offline, but I wanted to prove it was possible.
+                    <strong>Why:</strong> I wanted to see what Apple's 3B model was capable of. It became an obsessive engineering challenge to make it agentic and bypass the 4,096-token context window Apple's foundation model has, so I built a loop capable of ingesting and querying documents of any size or complexity. Honestly, it seemed impossible for a 3B parameter model to run a full reasoning and retrieval pipeline in airplane mode, but I wanted to prove it was possible, and I did. <strong>Since the WWDC26 FoundationModels announcements, I've re-architected the app to dynamically route to Private Cloud Compute—giving it a 32K token window for massive documents while keeping everyday queries local.</strong>
                   </p>
                   <p style="margin-top: 8px">
-                    <strong>Neural Retrieval & Local Embeddings:</strong> To keep files fully secure, I built a zero-dependency retrieval engine using SQLite FTS5 and Apple's Accelerate framework. It compares text and matches keywords across the CPU, GPU, and Apple Neural Engine (ANE), ensuring documents never leave the app.
+                    <strong>Neural Retrieval & Local Embeddings:</strong> To keep files fully secure, I built a zero-dependency retrieval engine using SQLite FTS5 and Apple's Accelerate framework. To push performance further, I recently integrated SIMD4 and threadgroup-level Metal pipelines, driving a 4x speedup in local vector math across the CPU, GPU, and Apple Neural Engine (ANE) to ensure massive document matching feels instant and never leaves the app.
                   </p>
                   <p style="margin-top: 8px">
                     <strong>Smart Context:</strong>I built a filter that re-orders the retrieved document pieces so the most important info is placed at the very beginning or end where the model pays the most attention, preventing it from getting 'lost in the middle' of long documents.
                   </p>
+
+                  <p style="margin-top: 8px">
+                    <strong>Building in the Open:</strong> Since releasing it, I've opened up the project to the public. To manage the workflow, I set up a single-source-of-truth Notion roadmap and built custom agentic skills—meaning AI assistants can now log bugs and add features to the roadmap directly from the terminal as I build.
+                  </p>
                   <p style="margin-top: 8px">
                     <strong>What I learned:</strong> Small, on-device models can do incredible work.
                     The hard part was OCR, chunking, SQLite FTS5, vector search, context packing,
-                    citation checks, quality modes, and an agentic recursive
+                    citation checks, defining specific quality modes (Standard, Deep Think, and Maximum), preventing file corruption with atomic writes, building adaptive ingestion pipelines to scan page complexity, and an agentic recursive
                     reasoning loop that stitches together multiple sessions to overcome the 4,096-token limit and answer exhaustively.
                   </p>
                 </div>
@@ -443,10 +447,12 @@
                 <div class="project-tech">
                   <span>Apple Intelligence</span>
                   <span>Foundation Models</span>
+                  <span>Private Cloud Compute</span>
                   <span>SwiftUI</span>
                   <span>Swift 6</span>
                   <span>On-Device RAG</span>
                   <span>Agentic Reasoning Loop</span>
+                  <span>Metal SIMD4</span>
                   <span>BNNS Vectors</span>
                   <span>Vision OCR</span>
                   <span>SQLite FTS5</span>
