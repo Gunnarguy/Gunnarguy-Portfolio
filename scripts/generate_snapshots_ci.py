@@ -440,8 +440,8 @@ def main():
 
         # Read README with fallbacks
         readme, readme_path = resolve_readme(repo_path)
-        if not readme:
-            print(f"   ⚠️  No README found (checked root + docs)")
+        if not readme or not readme.strip():
+            print(f"   ⚠️  No README found or README is empty (checked root + docs)")
             continue
         readme_label = (
             os.path.relpath(readme_path, repo_path) if readme_path else "README"
