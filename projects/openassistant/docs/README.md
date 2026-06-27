@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://apps.apple.com/app/apple-store/id6692613772?pt=127101782&ct=Portfolio_Traffic&mt=8">
+  <a href="https://apps.apple.com/us/app/openassistant/id6692613772">
     <img alt="Download on the App Store" src="https://img.shields.io/badge/App%20Store-Download-0D96F6?style=for-the-badge&logo=appstore&logoColor=white">
   </a>
   <img alt="Swift" src="https://img.shields.io/badge/Swift-5.9-F05138?style=for-the-badge&logo=swift&logoColor=white">
@@ -41,7 +41,7 @@ Additionally, because the Assistants API rejects common mobile formats (like HEI
 | Architecture | MVVM-S |
 | Primary APIs | OpenAI Assistants API (v2) / Firebase Core |
 | Storage | UserDefaults (via `@AppStorage`) |
-| App Store | [Download](https://apps.apple.com/app/apple-store/id6692613772?pt=127101782&ct=Portfolio_Traffic&mt=8) |
+| App Store | [Download](https://apps.apple.com/us/app/openassistant/id6692613772) |
 | Status | Archived |
 | License | [MIT](LICENSE) |
 
