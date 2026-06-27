@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://apps.apple.com/us/app/openresponses/id6757338355">
+  <a href="https://apps.apple.com/app/apple-store/id6757338355?pt=127101782&ct=Portfolio_Traffic&mt=8">
     <img alt="Download on the App Store" src="https://img.shields.io/badge/App%20Store-Download-0D96F6?style=for-the-badge&logo=appstore&logoColor=white">
   </a>
   <img alt="Swift" src="https://img.shields.io/badge/Swift-5.10-F05138?style=for-the-badge&logo=swift&logoColor=white">
@@ -39,7 +39,7 @@ OpenResponses is a native iOS and macOS (Catalyst) client designed for direct in
 | Architecture | MVVM-S |
 | Primary APIs | OpenAI Responses API, Notion API, EventKit, Contacts |
 | Storage | Keychain, sandboxed JSON files |
-| App Store | [Download](https://apps.apple.com/us/app/openresponses/id6757338355) |
+| App Store | [Download](https://apps.apple.com/app/apple-store/id6757338355?pt=127101782&ct=Portfolio_Traffic&mt=8) |
 | Status | Active |
 | License | [MIT](LICENSE) |
 

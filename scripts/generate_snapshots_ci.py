@@ -30,7 +30,7 @@ PROJECTS = {
         "repo_name": "OpenResponses",
         "title": "OpenResponses",
         "tagline": "Third app. Rebuilt on Responses after it became obvious OpenAssistant would age out on older endpoints.",
-        "app_store_url": "https://apps.apple.com/us/app/openresponses/id6757338355",
+        "app_store_url": "https://apps.apple.com/app/apple-store/id6757338355?pt=127101782&ct=Portfolio_Traffic&mt=8",
         "github_url": "https://github.com/Gunnarguy/OpenResponses",
         "accent_color": "#6366f1",
         "story_cards": [
@@ -52,7 +52,7 @@ PROJECTS = {
         "repo_name": "OpenIntelligence",
         "title": "OpenIntelligence",
         "tagline": "Fourth app. Built because I wanted an offline version of the same document workflow on Apple's Foundation Models path.",
-        "app_store_url": "https://apps.apple.com/us/app/openintelligence/id6756559175",
+        "app_store_url": "https://apps.apple.com/app/apple-store/id6756559175?pt=127101782&ct=Portfolio_Traffic&mt=8",
         "github_url": "https://github.com/Gunnarguy/OpenIntelligence",
         "accent_color": "#10b981",
         "story_cards": [
@@ -74,7 +74,7 @@ PROJECTS = {
         "repo_name": "OpenCone",
         "title": "OpenCone",
         "tagline": "Second app. Built when bigger document sets started stressing the earlier workflow and I wanted more retrieval control.",
-        "app_store_url": "https://apps.apple.com/us/app/opencone/id6744467668",
+        "app_store_url": "https://apps.apple.com/app/apple-store/id6744467668?pt=127101782&ct=Portfolio_Traffic&mt=8",
         "github_url": "https://github.com/Gunnarguy/OpenCone",
         "accent_color": "#f59e0b",
         "story_cards": [
@@ -96,7 +96,7 @@ PROJECTS = {
         "repo_name": "OpenAssistant",
         "title": "OpenAssistant",
         "tagline": "First app. Built because I wanted a better way to work through docs on iPhone.",
-        "app_store_url": "https://apps.apple.com/us/app/openassistant/id6692613772",
+        "app_store_url": "https://apps.apple.com/app/apple-store/id6692613772?pt=127101782&ct=Portfolio_Traffic&mt=8",
         "github_url": "https://github.com/Gunnarguy/OpenAssistant",
         "accent_color": "#8b5cf6",
         "story_cards": [

@@ -60,7 +60,7 @@ CONFIG: List[RepoConfig] = [
         owner="Gunnarguy",
         repo="OpenIntelligence",
         ref="main",
-        app_store_url="https://apps.apple.com/us/app/openintelligence/id6756559175",
+        app_store_url="https://apps.apple.com/app/apple-store/id6756559175?pt=127101782&ct=Portfolio_Traffic&mt=8",
         docs=[
             DocItem("README", "README.md"),
             DocItem("Roadmap", "docs/ROADMAP.md"),
@@ -74,7 +74,7 @@ CONFIG: List[RepoConfig] = [
         owner="Gunnarguy",
         repo="OpenCone",
         ref="main",
-        app_store_url="https://apps.apple.com/us/app/opencone/id6744467668",
+        app_store_url="https://apps.apple.com/app/apple-store/id6744467668?pt=127101782&ct=Portfolio_Traffic&mt=8",
         docs=[
             DocItem("README", "README.md"),
             DocItem("Roadmap", "docs/ROADMAP.md"),
@@ -88,7 +88,7 @@ CONFIG: List[RepoConfig] = [
         owner="Gunnarguy",
         repo="OpenAssistant",
         ref="main",
-        app_store_url="https://apps.apple.com/us/app/openassistant/id6692613772",
+        app_store_url="https://apps.apple.com/app/apple-store/id6692613772?pt=127101782&ct=Portfolio_Traffic&mt=8",
         docs=[
             DocItem("README", "README.md"),
             DocItem("Roadmap", "docs/ROADMAP.md"),
