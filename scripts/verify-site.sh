@@ -168,11 +168,11 @@ run_source_checks() {
   section "Source sanity"
   git diff --check
 
-  grep -nE '<link[^>]+stylesheet|scripts\.js|G-YZ95J7YFJV' index.html
+  grep -nE '<link[^>]+stylesheet|scripts\.js|G-8CQD5KZ06Y' index.html
 
   styles_ref="$(extract_first_match index.html 'styles\.css\?v=[^"]+')"
   scripts_ref="$(extract_first_match index.html 'scripts\.js\?v=[^"]+')"
-  ga_count="$(grep -c 'googletagmanager.com/gtag/js?id=G-YZ95J7YFJV' index.html || true)"
+  ga_count="$(grep -c 'googletagmanager.com/gtag/js?id=G-8CQD5KZ06Y' index.html || true)"
 
   [[ "$ga_count" == "1" ]] || {
     printf 'Expected exactly one GA tag in index.html, found %s\n' "$ga_count" >&2
@@ -319,11 +319,11 @@ run_live_checks() {
   assert_contains "$root_html" "$title"
   assert_contains "$root_html" "$styles_ref"
   assert_contains "$root_html" "$scripts_ref"
-  assert_contains "$root_html" 'G-YZ95J7YFJV'
+  assert_contains "$root_html" 'G-8CQD5KZ06Y'
   assert_contains "$root_html" 'Gunnar Hostetler'
   assert_contains "$root_html" 'Selected Work'
 
-  printf '%s\n' "$root_html" | grep -E -m 20 '<title>|Gunnar Hostetler|Selected Work|styles\.css|scripts\.js|G-YZ95J7YFJV'
+  printf '%s\n' "$root_html" | grep -E -m 20 '<title>|Gunnar Hostetler|Selected Work|styles\.css|scripts\.js|G-8CQD5KZ06Y'
   printf '\n'
 }
 
