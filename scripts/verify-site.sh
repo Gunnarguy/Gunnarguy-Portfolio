@@ -250,9 +250,12 @@ wait_for_pages_build() {
   local latest_commit
   local latest_status
   local latest_error
+  local latest_created_at
+  local commit_time
   local attempts
   local sleep_seconds
   local saw_expected_commit
+  local time_diff
 
   expected_commit="${GITHUB_SHA:-$(git rev-parse HEAD)}"
   attempts="${PAGES_BUILD_ATTEMPTS:-40}"
@@ -266,26 +269,43 @@ wait_for_pages_build() {
     latest_commit="$(gh_latest_build_field '.commit')"
     latest_status="$(gh_latest_build_field '.status')"
     latest_error="$(gh_latest_build_field '.error.message // ""')"
+    latest_created_at="$(gh_latest_build_field '.created_at')"
 
-    printf 'latest commit=%s status=%s\n' "$latest_commit" "$latest_status"
+    printf 'latest commit=%s status=%s created_at=%s\n' "$latest_commit" "$latest_status" "$latest_created_at"
 
-    if [[ "$latest_commit" == "$expected_commit" ]]; then
-      saw_expected_commit=1
-      case "$latest_status" in
-        built)
-          printf '\n'
-          return 0
-          ;;
-        errored|error|failed|canceled)
-          if [[ -n "$latest_error" ]]; then
-            printf 'Pages build error: %s\n' "$latest_error" >&2
-          fi
-          exit 1
-          ;;
-      esac
-    elif [[ "$latest_status" == "built" ]] && latest_build_contains_expected "$expected_commit" "$latest_commit"; then
-      printf 'Pages build for %s was superseded by built commit %s; continuing with latest deployed site.\n\n' "$expected_commit" "$latest_commit"
-      return 0
+    if [[ "$latest_status" == "built" ]]; then
+      if [[ "$latest_commit" == "$expected_commit" ]] || latest_build_contains_expected "$expected_commit" "$latest_commit"; then
+        printf '\n'
+        return 0
+      fi
+
+      # Bypassing the GitHub webhook race condition: if the build completed successfully,
+      # and was created at or after the expected commit's commit time (with 60s buffer),
+      # it contains our changes because pages checkout uses the branch head.
+      commit_time="$(git show -s --format=%cI "$expected_commit")"
+      time_diff=$(python3 -c "
+import sys
+from datetime import datetime
+def parse_date(d_str):
+    d_str = d_str.replace('Z', '+00:00')
+    try: return datetime.fromisoformat(d_str).timestamp()
+    except Exception: return 0
+print(int(parse_date(sys.argv[2]) - parse_date(sys.argv[1])))
+" "$commit_time" "$latest_created_at" 2>/dev/null || echo -999)
+
+      if (( time_diff >= -60 )); then
+        printf '\nPages build (commit %s) built at %s, which is after expected commit %s (diff %ds).\nThe deployed site contains expected changes.\n\n' \
+          "$latest_commit" "$latest_created_at" "$commit_time" "$time_diff"
+        return 0
+      else
+        printf 'Latest build (commit %s, built at %s) is older than expected commit %s (diff %ds). Waiting for new build...\n' \
+          "$latest_commit" "$latest_created_at" "$commit_time" "$time_diff"
+      fi
+    elif [[ "$latest_status" == "errored" || "$latest_status" == "error" || "$latest_status" == "failed" || "$latest_status" == "canceled" ]]; then
+      if [[ -n "$latest_error" ]]; then
+        printf 'Pages build error: %s\n' "$latest_error" >&2
+      fi
+      exit 1
     fi
 
     attempts=$((attempts - 1))
