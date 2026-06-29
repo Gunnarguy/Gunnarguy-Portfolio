@@ -73,9 +73,17 @@
     <meta name="theme-color" content="#00b8d4" />
     <link rel="stylesheet" href="styles.css?v=20260608a" />
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      />
+    </noscript>
 
     <script type="application/ld+json">
       {
@@ -223,15 +231,22 @@
     <!-- ====================================================================== -->
     <!-- UNIFIED GLOBAL TELEMETRY ENGINE & CUSTOM DATA INTERCEPTOR            -->
     <!-- ====================================================================== -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-8CQD5KZ06Y"
-    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
+
+      // Defer GTM script injection until load event to keep main thread clear during paint
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-8CQD5KZ06Y';
+          document.head.appendChild(script);
+        }, 800);
+      });
+
       const GA_MEASUREMENT_ID = "G-8CQD5KZ06Y";
       const GA_DEBUG_MODE = new URLSearchParams(window.location.search).has(
         "ga_debug",
@@ -413,6 +428,8 @@
                   loading="lazy"
                   src="assets/ragmlcore-icon.png"
                   alt="OpenIntelligence iOS App Icon"
+                  width="306"
+                  height="306"
                 />
               </div>
               <div class="project-content">
@@ -510,6 +527,8 @@
                   loading="lazy"
                   src="assets/openclinic-icon.png?v=4"
                   alt="OpenClinic iOS App Icon"
+                  width="306"
+                  height="306"
                 />
               </div>
               <div class="project-content">
@@ -581,6 +600,8 @@
                   loading="lazy"
                   src="assets/openresponses-icon.png"
                   alt="OpenResponses iOS App Icon"
+                  width="306"
+                  height="306"
                 />
               </div>
               <div class="project-content">
@@ -656,6 +677,8 @@
                   loading="lazy"
                   src="assets/opencone-icon.png?v=20260603a"
                   alt="OpenCone iOS App Icon"
+                  width="306"
+                  height="306"
                 />
               </div>
               <div class="project-content">
@@ -734,6 +757,8 @@
                   loading="lazy"
                   src="assets/openassistant-icon.png"
                   alt="OpenAssistant iOS App Icon"
+                  width="306"
+                  height="306"
                 />
               </div>
               <div class="project-content">
@@ -891,6 +916,8 @@
                   class="tree-icon"
                   src="assets/openclinic-icon.png?v=4"
                   alt="OpenClinic Icon"
+                  width="48"
+                  height="48"
                 />
                 <div class="tree-info">
                   <h3>OpenClinic</h3>
@@ -927,6 +954,8 @@
                   class="tree-icon"
                   src="assets/ragmlcore-icon.png"
                   alt="OpenIntelligence Icon"
+                  width="48"
+                  height="48"
                 />
                 <div class="tree-info">
                   <h3>OpenIntelligence</h3>
@@ -963,6 +992,8 @@
                   class="tree-icon"
                   src="assets/openresponses-icon.png"
                   alt="OpenResponses Icon"
+                  width="48"
+                  height="48"
                 />
                 <div class="tree-info">
                   <h3>OpenResponses</h3>
@@ -999,6 +1030,8 @@
                   class="tree-icon"
                   src="assets/opencone-icon.png?v=20260603a"
                   alt="OpenCone Icon"
+                  width="48"
+                  height="48"
                 />
                 <div class="tree-info">
                   <h3>OpenCone</h3>
@@ -1035,6 +1068,8 @@
                   class="tree-icon"
                   src="assets/openassistant-icon.png"
                   alt="OpenAssistant Icon"
+                  width="48"
+                  height="48"
                 />
                 <div class="tree-info">
                   <h3>OpenAssistant</h3>
@@ -1071,6 +1106,8 @@
                   class="tree-icon"
                   src="assets/plaudblender-icon.png"
                   alt="PlaudBlender Icon"
+                  width="48"
+                  height="48"
                 />
                 <div class="tree-info">
                   <h3>PlaudBlender</h3>
