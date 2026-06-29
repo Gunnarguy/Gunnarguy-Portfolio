@@ -18,7 +18,7 @@ This portfolio presents my journey from Medical Device Specialist to iOS Develop
 - **[OpenAssistant](https://apps.apple.com/app/apple-store/id6692613772?pt=127101782&ct=Portfolio_Traffic&mt=8)** - Native iOS app for OpenAI Assistants API interaction
 - **[OpenCone](https://apps.apple.com/app/apple-store/id6744467668?pt=127101782&ct=Portfolio_Traffic&mt=8)** - Semantic search and RAG workflow app with Pinecone integration
 - **[OpenResponses](https://github.com/Gunnarguy/OpenResponses)** - Next-generation response system for OpenAI API
-- **[OpenIntelligence (RAGMLCore)](https://github.com/Gunnarguy/RAGMLCore)** - Privacy-first RAG system for iOS 18 with Apple Intelligence
+- **[OpenIntelligence](https://github.com/Gunnarguy/OpenIntelligence)** - Privacy-first RAG system with Apple Intelligence
 
 ### Technical Projects
 

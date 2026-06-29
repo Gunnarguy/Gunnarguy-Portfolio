@@ -42,7 +42,7 @@ PROJECTS = {
         "app_store_url": "https://apps.apple.com/app/apple-store/id6756559175?pt=127101782&ct=Portfolio_Traffic&mt=8",
         "github_url": "https://github.com/Gunnarguy/OpenIntelligence",
         "accent_color": "#10b981",
-        "icon": "ragmlcore-icon.png",
+        "icon": "openintelligence-icon.webp",
         "story_cards": [
             {
                 "title": "What kicked it off",
